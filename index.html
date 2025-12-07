@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Poueme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #202122;
+            background-color: #f8f9fa;
+            font-size: 14px;
+        }
+        
+        .wiki-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .wiki-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 15px 20px;
+        }
+        
+        .wiki-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #202122;
+        }
+        
+        .wiki-content {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .wiki-main {
+            flex: 1;
+            max-width: 100%;
+        }
+        
+        .wiki-title {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 1.3;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+        
+        .wiki-intro {
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        
+        .infobox {
+            float: right;
+            margin: 0 0 10px 20px;
+            width: 280px;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .infobox-title {
+            background-color: #d3d3d3;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-image {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        
+        .infobox-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+        
+        .infobox-caption {
+            padding: 5px 10px;
+            font-size: 12px;
+            text-align: center;
+            font-style: italic;
+            background-color: white;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .infobox-label {
+            padding: 5px 10px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .infobox-data {
+            padding: 5px 10px;
+            background-color: white;
+        }
+        
+        .infobox-header {
+            padding: 8px 10px;
+            font-weight: bold;
+            background-color: #e8e8e8;
+            text-align: center;
+            border-bottom: 1px solid #a2a9b1;
+            font-size: 14px;
+        }
+        
+        h2 {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-size: 21px;
+            font-weight: normal;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 3px;
+        }
+        
+        h3 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+        
+        a:visited {
+            color: #0b0080;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .reference {
+            font-size: 11px;
+            vertical-align: super;
+            color: #0645ad;
+        }
+        
+        .mw-headline {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+        }
+        
+        .toc {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            display: inline-block;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .toc-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin: 5px 0;
+        }
+        
+        .toc a {
+            color: #0645ad;
+        }
+        
+        .reflist {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .reflist ol {
+            margin-left: 25px;
+        }
+        
+        .citation {
+            font-style: italic;
+        }
+        
+        .hatnote {
+            font-style: italic;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+        }
+        
+        .wikitable {
+            border-collapse: collapse;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .wikitable th {
+            background-color: #eaecf0;
+            padding: 8px;
+            border: 1px solid #a2a9b1;
+            font-weight: bold;
+        }
+        
+        .wikitable td {
+            padding: 8px;
+            border: 1px solid #a2a9b1;
+            background-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
+            
+            .wiki-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wiki-container">
+        <div class="wiki-header">
+            <div class="wiki-logo">Emmanuel Poueme - Biographie</div>
+        </div>
+        
+        <div class="wiki-content">
+            <div class="wiki-main">
+                <h1 class="wiki-title">Emmanuel Poueme</h1>
+                
+                <!-- Infobox -->
+                <div class="infobox">
+                    <div class="infobox-title">Emmanuel Poueme</div>
+                    
+                    <div class="infobox-image">
+                        <img src="photo.jpg" alt="Emmanuel Poueme">
+                    </div>
+                    
+                    <div class="infobox-caption">Emmanuel Poueme</div>
+                    
+                    <div class="infobox-header">Biographie</div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Naissance</div>
+                        <div class="infobox-data">1955<br>Foumbot (quartier Company), Cameroun</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Nationalité</div>
+                        <div class="infobox-data">🇨🇲 Camerounaise</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Formation</div>
+                        <div class="infobox-data">Licence en Sociologie (Économie du développement)<br>Université de Yaoundé</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Profession</div>
+                        <div class="infobox-data">Cadre supérieur de la fonction publique</div>
+                    </div>
+                    
+                    <div class="infobox-header">Distinctions</div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Décorations</div>
+                        <div class="infobox-data">
+                            • Commandeur de l'Ordre de la Valeur<br>
+                            • Médaille d'Or du Travail
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Introduction -->
+                <div class="wiki-intro">
+                    <p><strong>Emmanuel Poueme</strong>, né en 1955 à Foumbot (quartier Company, département du Noun, Région de l'Ouest, Cameroun), est un fonctionnaire camerounais à la retraite. Il a passé 36 ans à la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), où il a occupé le poste de Conseiller Technique N°1. Il est Commandeur de l'Ordre de la Valeur.</p>
+                </div>
+                
+                <!-- Table des matières -->
+                <div class="toc">
+                    <div class="toc-title">Sommaire</div>
+                    <ul>
+                        <li>1 <a href="#biographie">Biographie</a></li>
+                        <li>2 <a href="#formation">Formation</a></li>
+                        <li>3 <a href="#carriere">Carrière professionnelle</a>
+                            <ul style="margin-left: 20px;">
+                                <li>3.1 <a href="#debut">Début dans la fonction publique</a></li>
+                                <li>3.2 <a href="#csph">Carrière à la CSPH</a></li>
+                                <li>3.3 <a href="#autres">Autres responsabilités</a></li>
+                            </ul>
+                        </li>
+                        <li>4 <a href="#politique">Engagements politiques</a></li>
+                        <li>5 <a href="#distinctions">Distinctions et décorations</a></li>
+                        <li>6 <a href="#international">Représentation internationale</a></li>
+                        <li>7 <a href="#vie-privee">Vie privée</a></li>
+                        <li>8 <a href="#notes">Notes et références</a></li>
+                        <li>9 <a href="#voir-aussi">Voir aussi</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Biographie -->
+                <h2 id="biographie"><span class="mw-headline">Biographie</span></h2>
+                
+                <p>Né en 1955 à Foumbot (quartier Company, département du Noun dans la région de l'Ouest du Cameroun), Emmanuel Poueme obtient son Certificat d'Études Primaires Élémentaires (CEPE) en 1960 à l'École Primaire CEBEC de Baye.</p>
+                
+                <p>En 1966, il entre au Lycée Général Leclerc de Yaoundé. Il y poursuit ses études secondaires et obtient son Baccalauréat français série A5 (Philosophie-Lettres) en 1973.</p>
+                
+                <!-- Formation -->
+                <h2 id="formation"><span class="mw-headline">Formation</span></h2>
+                
+                <p>Après le lycée, Emmanuel Poueme poursuit ses études à l'Université de Yaoundé où il obtient en 1973 une Licence en Sociologie avec option Économie du développement.</p>
+                
+                <p>Au cours de sa carrière, il complète sa formation par plusieurs programmes spécialisés en économie pétrolière et participe à des séminaires à la SONARA portant sur la raffinerie, le stockage, le transport et la distribution. Il suit également une formation en rédaction administrative à l'Institut Supérieur de Management Public de Yaoundé.</p>
+                
+                <p>Il maîtrise le français et pratique l'anglais.</p>
+                
+                <!-- Carrière professionnelle -->
+                <h2 id="carriere"><span class="mw-headline">Carrière professionnelle</span></h2>
+                
+                <h3 id="debut">Début dans la fonction publique</h3>
+                
+                <p>En 1977, Emmanuel Poueme entre dans la fonction publique camerounaise comme Contractuel d'Administration. L'année suivante, il est nommé Chef de Bureau des Enquêtes Économiques au Ministère de l'Économie et du Plan.</p>
+                
+                <h3 id="csph">Carrière à la CSPH</h3>
+                
+                <p>En 1979, il rejoint la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), institution créée en 1974 pour réguler les prix des produits pétroliers au Cameroun, où il est nommé Chef de Bureau de la Documentation. En 1998, après 19 ans de service, il accède à une double fonction : Attaché de Direction à la Direction Générale et Secrétaire du Conseil d'Administration. Dans cette dernière fonction, il prépare les sessions du Conseil d'Administration, rédige les procès-verbaux et assure le suivi de l'exécution des résolutions.</p>
+                
+                <p>En 2004, il devient Chargé d'Études, se consacrant à l'analyse et au conseil stratégique auprès de la Direction Générale. Deux ans plus tard, en 2006, il est promu Chargé de Missions n°2. En 2012, Emmanuel Poueme est nommé Conseiller Technique N°1 Chargé de la Coopération Internationale, poste qu'il occupe sous la direction d'Elung Paul Che, nommé Directeur Général en mai 2013. Ses responsabilités incluent la représentation institutionnelle lors des cérémonies officielles, le conseil au Directeur Général sur les questions techniques et économiques, la coordination de la coopération internationale et la supervision de projets d'infrastructures.</p>
+                
+                <p>Le 30 janvier 2015, lors de la cérémonie des vœux de la CSPH, il prononce un discours sur l'importance de la discipline et de l'éthique : <span class="citation">« Sans la discipline, sans le respect de la déontologie et de l'éthique, rien de bon ne peut se construire. Pour tout organisme, la discipline est la voie du salut, la condition sine qua non du succès. »</span><a href="#ref1" class="reference">[1]</a></p>
+                
+                <p>En 2015, Emmanuel Poueme prend sa retraite après 36 années de service.</p>
+                
+                <h3 id="autres">Autres responsabilités</h3>
+                
+                <p>Au cours de sa carrière, Emmanuel Poueme a occupé plusieurs autres fonctions. Il a représenté la CSPH au Conseil d'Administration de la BICEC (Banque Internationale du Cameroun pour l'Épargne et le Crédit) et a été membre de la Commission de Passation de Marchés de la CSPH. Il a participé aux comités de suivi de nombreux projets d'infrastructures à travers le Cameroun, notamment les Centres Emplisseurs de Gaz Domestique de Maroua et de Bertoua, plus de 17 stations-service dans différentes régions, des infrastructures urbaines à Yaoundé (marchés de Mokolo et du Mfoundi, routes urbaines) et la construction du siège social de la CSPH au Carrefour Warda. Il a également assuré la responsabilité des activités de marketing de la CSPH, représentant l'institution dans des foires d'expositions et forums économiques.</p>
+                
+                <!-- Engagements politiques -->
+                <h2 id="politique"><span class="mw-headline">Engagements politiques</span></h2>
+                
+                <p>Emmanuel Poueme est membre du Rassemblement Démocratique du Peuple Camerounais (RDPC). Il occupe la fonction de Chargé de Mission pour la commission Départementale du RDPC dans le Ndé.</p>
+                
+                <p>Il a également été membre des Cellules d'Animation et Promotion Culturelles (CEPAC), structure d'encadrement culturel et politique du RDPC (1995-2000) et chargé de mission pour la province de l'Ouest avant la réorganisation du parti en commissions départementales.</p>
+                
+                <!-- Distinctions -->
+                <h2 id="distinctions"><span class="mw-headline">Distinctions et décorations</span></h2>
+                
+                <p>Au cours de sa carrière de 36 ans dans la fonction publique camerounaise, Emmanuel Poueme a reçu plusieurs distinctions honorifiques de la République du Cameroun, témoignant de la reconnaissance de l'État pour ses services rendus à la nation.</p>
+                
+                <h3>Ordre National de la Valeur</h3>
+                
+                <p>L'Ordre de la Valeur est l'une des plus hautes distinctions de la République du Cameroun. Emmanuel Poueme a progressivement accédé aux trois premiers grades de cet ordre :</p>
+                <ol>
+                    <li><strong>Chevalier de l'Ordre de la Valeur</strong> - Premier grade de reconnaissance pour services rendus à la nation</li>
+                    <li><strong>Officier de l'Ordre de la Valeur</strong> - Deuxième grade, confirmant l'excellence de son engagement</li>
+                    <li><strong>Commandeur de l'Ordre de la Valeur</strong> - Troisième grade, distinction exceptionnelle généralement réservée aux ministres, directeurs généraux d'institutions stratégiques et hauts fonctionnaires ayant rendu des services éminents à l'État</li>
+                </ol>
+                
+                <h3>Médailles du Travail</h3>
+                
+                <p>Les Médailles du Travail récompensent la loyauté et le dévouement des fonctionnaires et agents de l'État. Emmanuel Poueme a reçu les trois grades de cette distinction, confirmant son parcours professionnel exemplaire de 36 ans sans interruption :</p>
+                <ol>
+                    <li><strong>Médaille de Vermeil du Travail</strong> - Obtenue après 20 ans de service loyal</li>
+                    <li><strong>Médaille d'Argent du Travail</strong> - Obtenue après 30 ans de service</li>
+                    <li><strong>Médaille d'Or du Travail</strong> - Plus haute distinction du travail, obtenue après 35 à 40 ans de service continu, couronnant une carrière exemplaire</li>
+                </ol>
+                
+                <!-- Représentation internationale -->
+                <h2 id="international"><span class="mw-headline">Représentation internationale</span></h2>
+                
+                <p>Emmanuel Poueme a représenté le Cameroun lors de plusieurs événements internationaux dans le secteur de l'énergie.</p>
+                
+                <p>En 2009, il participe au 21st World Energy Congress à Montréal, Canada. En 2013, il est délégué au 22nd World Energy Congress à Daegu, en Corée du Sud.</p>
+                
+                <p>La même année, il fait partie de la délégation camerounaise au Sommet Korea-Cameroun à Séoul, portant sur la coopération bilatérale dans le secteur énergétique.</p>
+                
+                <p>Il a également représenté la CSPH au Forum Afrique Expansion au Canada lors des 8<sup>e</sup>, 9<sup>e</sup> et 10<sup>e</sup> sessions, forums consacrés aux investissements et aux opportunités d'affaires entre l'Afrique et le Canada.</p>
+                
+                <!-- Vie privée -->
+                <h2 id="vie-privee"><span class="mw-headline">Vie privée</span></h2>
+                
+                <p>Emmanuel Poueme est marié et père de quatre enfants. Il est ancien de l'Église Évangélique du Cameroun (Paroisse EEC de Nlongkak).</p>
+                
+                <!-- Notes et références -->
+                <h2 id="notes"><span class="mw-headline">Notes et références</span></h2>
+                
+                <div class="reflist">
+                    <ol>
+                        <li id="ref1">↑ <a href="https://www.csph.cm/index.php/fr/actualite/142-voeux-2015-a-la-csph" target="_blank">« VŒUX 2015 à la CSPH »</a>, sur csph.cm, 30 janvier 2015 (consulté le 30 novembre 2025)</li>
+                    </ol>
+                    
+                    <h3>Sources</h3>
+                    <ul>
+                        <li>CV officiel d'Emmanuel Poueme</li>
+                        <li>Archives de la CSPH (Caisse de Stabilisation des Prix des Hydrocarbures)</li>
+                        <li>Archives familiales</li>
+                        <li>Documentation des World Energy Congress (2009, 2013)</li>
+                        <li>Photo : <a href="https://commons.wikimedia.org/wiki/File:Emmanuel_Poueme.jpg" target="_blank">Wikimedia Commons - File:Emmanuel_Poueme.jpg</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Voir aussi -->
+                <h2 id="voir-aussi"><span class="mw-headline">Voir aussi</span></h2>
+                
+                <h3>Articles connexes</h3>
+                <ul>
+                    <li>Caisse de Stabilisation des Prix des Hydrocarbures (CSPH)</li>
+                    <li>Secteur pétrolier au Cameroun</li>
+                    <li>SONARA (Société Nationale de Raffinage)</li>
+                    <li>Ordre National de la Valeur (Cameroun)</li>
+                    <li>Rassemblement Démocratique du Peuple Camerounais (RDPC)</li>
+                </ul>
+                
+                <h3>Liens externes</h3>
+                <ul>
+                    <li><a href="https://www.worldenergy.org" target="_blank">World Energy Council</a></li>
+                    <li><a href="https://mincommerce.gov.cm" target="_blank">Ministère du Commerce du Cameroun</a></li>
+                    <li><a href="https://www.csph.cm" target="_blank">Site officiel de la CSPH</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
