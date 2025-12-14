@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,682 +10,676 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-```
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        color: #202122;
-        background-color: #f8f9fa;
-        font-size: 14px;
-    }
-    
-    .wiki-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background-color: white;
-        min-height: 100vh;
-    }
-    
-    .wiki-header {
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #a2a9b1;
-        padding: 15px 20px;
-    }
-    
-    .wiki-logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: #202122;
-    }
-    
-    .wiki-content {
-        padding: 20px;
-        display: flex;
-        gap: 20px;
-    }
-    
-    .wiki-main {
-        flex: 1;
-        max-width: 100%;
-    }
-    
-    .wiki-title {
-        font-family: "Linux Libertine", Georgia, Times, serif;
-        font-size: 28px;
-        font-weight: normal;
-        line-height: 1.3;
-        margin-bottom: 5px;
-        border-bottom: 1px solid #a2a9b1;
-        padding-bottom: 5px;
-    }
-    
-    .wiki-intro {
-        font-size: 14px;
-        margin: 15px 0;
-    }
-    
-    .infobox {
-        float: right;
-        margin: 0 0 10px 20px;
-        width: 280px;
-        border: 1px solid #a2a9b1;
-        background-color: #f8f9fa;
-        font-size: 13px;
-        line-height: 1.5;
-    }
-    
-    .infobox-title {
-        background-color: #d3d3d3;
-        padding: 10px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        border-bottom: 1px solid #a2a9b1;
-    }
-    
-    .infobox-image {
-        width: 100%;
-        padding: 10px;
-        text-align: center;
-        background-color: white;
-        border-bottom: 1px solid #a2a9b1;
-    }
-    
-    .infobox-image img {
-        max-width: 100%;
-        height: auto;
-        border: 1px solid #ddd;
-    }
-    
-    .infobox-image-placeholder {
-        width: 100%;
-        height: 250px;
-        background-color: #e8e8e8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 48px;
-        color: #999;
-        border: 1px solid #ddd;
-    }
-    
-    .infobox-caption {
-        padding: 5px 10px;
-        font-size: 12px;
-        text-align: center;
-        font-style: italic;
-        background-color: white;
-        border-bottom: 1px solid #a2a9b1;
-    }
-    
-    .infobox-row {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        border-bottom: 1px solid #ddd;
-    }
-    
-    .infobox-label {
-        padding: 5px 10px;
-        font-weight: bold;
-        background-color: #f0f0f0;
-        border-right: 1px solid #ddd;
-        vertical-align: top;
-    }
-    
-    .infobox-data {
-        padding: 5px 10px;
-        background-color: white;
-    }
-    
-    .infobox-header {
-        padding: 8px 10px;
-        font-weight: bold;
-        background-color: #e8e8e8;
-        text-align: center;
-        border-bottom: 1px solid #a2a9b1;
-        font-size: 14px;
-    }
-    
-    h2 {
-        font-family: "Linux Libertine", Georgia, Times, serif;
-        font-size: 21px;
-        font-weight: normal;
-        margin-top: 25px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #a2a9b1;
-        padding-bottom: 3px;
-    }
-    
-    h3 {
-        font-size: 17px;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-    
-    h4 {
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 15px;
-        margin-bottom: 8px;
-    }
-    
-    p {
-        margin-bottom: 12px;
-        text-align: justify;
-    }
-    
-    ul, ol {
-        margin-left: 30px;
-        margin-bottom: 12px;
-    }
-    
-    li {
-        margin-bottom: 5px;
-    }
-    
-    a {
-        color: #0645ad;
-        text-decoration: none;
-    }
-    
-    a:visited {
-        color: #0b0080;
-    }
-    
-    a:hover {
-        text-decoration: underline;
-    }
-    
-    .reference {
-        font-size: 11px;
-        vertical-align: super;
-        color: #0645ad;
-    }
-    
-    .mw-headline {
-        font-family: "Linux Libertine", Georgia, Times, serif;
-    }
-    
-    .toc {
-        border: 1px solid #a2a9b1;
-        background-color: #f8f9fa;
-        padding: 10px 15px;
-        display: inline-block;
-        margin: 15px 0;
-        font-size: 13px;
-    }
-    
-    .toc-title {
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    
-    .toc ul {
-        list-style: none;
-        margin: 0;
-    }
-    
-    .toc li {
-        margin: 5px 0;
-    }
-    
-    .toc a {
-        color: #0645ad;
-    }
-    
-    .reflist {
-        font-size: 12px;
-        margin-top: 20px;
-    }
-    
-    .reflist ol {
-        margin-left: 25px;
-    }
-    
-    .citation {
-        font-style: italic;
-    }
-    
-    .hatnote {
-        font-style: italic;
-        padding: 5px 10px;
-        margin-bottom: 10px;
-        border-left: 3px solid #a2a9b1;
-        background-color: #f8f9fa;
-        font-size: 13px;
-    }
-    
-    .wikitable {
-        border-collapse: collapse;
-        border: 1px solid #a2a9b1;
-        background-color: #f8f9fa;
-        margin: 15px 0;
-        font-size: 13px;
-    }
-    
-    .wikitable th {
-        background-color: #eaecf0;
-        padding: 8px;
-        border: 1px solid #a2a9b1;
-        font-weight: bold;
-    }
-    
-    .wikitable td {
-        padding: 8px;
-        border: 1px solid #a2a9b1;
-        background-color: white;
-    }
-    
-    @media (max-width: 768px) {
-        .infobox {
-            float: none;
-            width: 100%;
-            margin: 0 0 20px 0;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #202122;
+            background-color: #f8f9fa;
+            font-size: 14px;
+        }
+        
+        .wiki-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+        
+        .wiki-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 15px 20px;
+        }
+        
+        .wiki-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #202122;
         }
         
         .wiki-content {
-            flex-direction: column;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
         }
-    }
-</style>
-```
-
+        
+        .wiki-main {
+            flex: 1;
+            max-width: 100%;
+        }
+        
+        .wiki-title {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 1.3;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+        
+        .wiki-intro {
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        
+        .infobox {
+            float: right;
+            margin: 0 0 10px 20px;
+            width: 280px;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .infobox-title {
+            background-color: #d3d3d3;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-image {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        
+        .infobox-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+            border: 1px solid #ddd;
+        }
+        
+        .infobox-caption {
+            padding: 5px 10px;
+            font-size: 12px;
+            text-align: center;
+            font-style: italic;
+            background-color: white;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        
+        .infobox-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .infobox-label {
+            padding: 5px 10px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .infobox-data {
+            padding: 5px 10px;
+            background-color: white;
+        }
+        
+        .infobox-header {
+            padding: 8px 10px;
+            font-weight: bold;
+            background-color: #e8e8e8;
+            text-align: center;
+            border-bottom: 1px solid #a2a9b1;
+            font-size: 14px;
+        }
+        
+        h2 {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-size: 21px;
+            font-weight: normal;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 3px;
+        }
+        
+        h3 {
+            font-size: 17px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+        
+        a:visited {
+            color: #0b0080;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .reference {
+            font-size: 11px;
+            vertical-align: super;
+            color: #0645ad;
+        }
+        
+        .mw-headline {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+        }
+        
+        .toc {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            display: inline-block;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .toc-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin: 5px 0;
+        }
+        
+        .toc a {
+            color: #0645ad;
+        }
+        
+        .reflist {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .reflist ol {
+            margin-left: 25px;
+        }
+        
+        .citation {
+            font-style: italic;
+        }
+        
+        .hatnote {
+            font-style: italic;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+        }
+        
+        .wikitable {
+            border-collapse: collapse;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .wikitable th {
+            background-color: #eaecf0;
+            padding: 8px;
+            border: 1px solid #a2a9b1;
+            font-weight: bold;
+        }
+        
+        .wikitable td {
+            padding: 8px;
+            border: 1px solid #a2a9b1;
+            background-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
+            
+            .wiki-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="wiki-container">
         <div class="wiki-header">
             <div class="wiki-logo">Emmanuel Poueme - Biographie</div>
         </div>
-
-```
-    <div class="wiki-content">
-        <div class="wiki-main">
-            <h1 class="wiki-title">Emmanuel Poueme</h1>
-            
-            <!-- Infobox -->
-            <div class="infobox">
-                <div class="infobox-title">Emmanuel Poueme</div>
+        
+        <div class="wiki-content">
+            <div class="wiki-main">
+                <h1 class="wiki-title">Emmanuel Poueme</h1>
                 
-                <div class="infobox-image">
-                    <img src="photo.jpg" alt="Emmanuel Poueme">
-                </div>
-                
-                <div class="infobox-caption">Emmanuel Poueme</div>
-                
-                <div class="infobox-header">Biographie</div>
-                
-                <div class="infobox-row">
-                    <div class="infobox-label">Naissance</div>
-                    <div class="infobox-data">1955<br>Foumbot (quartier Company), Cameroun</div>
-                </div>
-                
-                <div class="infobox-row">
-                    <div class="infobox-label">Nationalité</div>
-                    <div class="infobox-data">🇨🇲 Camerounaise</div>
-                </div>
-                
-                <div class="infobox-row">
-                    <div class="infobox-label">Formation</div>
-                    <div class="infobox-data">Licence en Sociologie (Économie du développement)<br>Université de Yaoundé</div>
-                </div>
-                
-                <div class="infobox-row">
-                    <div class="infobox-label">Profession</div>
-                    <div class="infobox-data">Cadre supérieur de la fonction publique</div>
-                </div>
-                
-                <div class="infobox-header">Distinctions</div>
-                
-                <div class="infobox-row">
-                    <div class="infobox-label">Décorations</div>
-                    <div class="infobox-data">
-                        <strong>Ordre de la Valeur :</strong><br>
-                        • Chevalier<br>
-                        • Officier<br>
-                        • Commandeur<br>
-                        <strong>Médailles du Travail :</strong><br>
-                        • Médaille de Vermeil<br>
-                        • Médaille d'Argent<br>
-                        • Médaille d'Or
+                <!-- Infobox -->
+                <div class="infobox">
+                    <div class="infobox-title">Emmanuel Poueme</div>
+                    
+                    <div class="infobox-image">
+                        <img src="photo.jpg" alt="Emmanuel Poueme">
+                    </div>
+                    
+                    <div class="infobox-caption">Emmanuel Poueme</div>
+                    
+                    <div class="infobox-header">Biographie</div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Naissance</div>
+                        <div class="infobox-data">1955<br>Foumbot (quartier Company), Cameroun</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Nationalité</div>
+                        <div class="infobox-data">🇨🇲 Camerounaise</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Formation</div>
+                        <div class="infobox-data">Licence en Sociologie (Économie du développement)<br>Université de Yaoundé</div>
+                    </div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Profession</div>
+                        <div class="infobox-data">Cadre supérieur de la fonction publique</div>
+                    </div>
+                    
+                    <div class="infobox-header">Distinctions</div>
+                    
+                    <div class="infobox-row">
+                        <div class="infobox-label">Décorations</div>
+                        <div class="infobox-data">
+                            <strong>Ordre de la Valeur :</strong><br>
+                            • Chevalier<br>
+                            • Officier<br>
+                            • Commandeur<br>
+                            <strong>Médailles du Travail :</strong><br>
+                            • Médaille de Vermeil<br>
+                            • Médaille d'Argent<br>
+                            • Médaille d'Or
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Introduction -->
-            <div class="wiki-intro">
-                <p><strong>Emmanuel Poueme</strong>, né en 1955 à Foumbot (quartier Company, département du Noun, Région de l'Ouest, Cameroun), est un fonctionnaire camerounais à la retraite. Il a passé 36 ans à la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), où il a occupé le poste de Conseiller Technique N°1. Il est Commandeur de l'Ordre de la Valeur.</p>
-            </div>
-            
-            <!-- Table des matières -->
-            <div class="toc">
-                <div class="toc-title">Sommaire</div>
+                
+                <!-- Introduction -->
+                <div class="wiki-intro">
+                    <p><strong>Emmanuel Poueme</strong>, né en 1955 à Foumbot (quartier Company, département du Noun, Région de l'Ouest, Cameroun), est un fonctionnaire camerounais à la retraite. Il a passé 36 ans à la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), où il a occupé le poste de Conseiller Technique N°1. Il est Commandeur de l'Ordre de la Valeur.</p>
+                </div>
+                
+                <!-- Table des matières -->
+                <div class="toc">
+                    <div class="toc-title">Sommaire</div>
+                    <ul>
+                        <li>1 <a href="#biographie">Biographie</a></li>
+                        <li>2 <a href="#formation">Formation</a></li>
+                        <li>3 <a href="#carriere">Carrière professionnelle</a>
+                            <ul style="margin-left: 20px;">
+                                <li>3.1 <a href="#debut">Début dans la fonction publique</a></li>
+                                <li>3.2 <a href="#csph">Carrière à la CSPH</a></li>
+                                <li>3.3 <a href="#autres">Autres responsabilités</a></li>
+                            </ul>
+                        </li>
+                        <li>4 <a href="#politique">Engagements politiques</a></li>
+                        <li>5 <a href="#distinctions">Distinctions et décorations</a></li>
+                        <li>6 <a href="#international">Représentation internationale</a></li>
+                        <li>7 <a href="#vie-privee">Vie privée</a></li>
+                        <li>8 <a href="#notes">Notes et références</a></li>
+                        <li>9 <a href="#voir-aussi">Voir aussi</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Biographie -->
+                <h2 id="biographie"><span class="mw-headline">Biographie</span></h2>
+                
+                <p>Né en 1955 à Foumbot (quartier Company, département du Noun dans la région de l'Ouest du Cameroun), Emmanuel Poueme obtient son Certificat d'Études Primaires Élémentaires (CEPE) en 1960 à l'École Primaire CEBEC de Baye.</p>
+                
+                <p>En 1966, il entre au Lycée Général Leclerc de Yaoundé. Il y poursuit ses études secondaires et obtient son Baccalauréat français série A5 (Philosophie-Lettres) en 1973.</p>
+                
+                <!-- Formation -->
+                <h2 id="formation"><span class="mw-headline">Formation</span></h2>
+                
+                <p>Après le lycée, Emmanuel Poueme poursuit ses études à l'Université de Yaoundé où il obtient en 1973 une Licence en Sociologie avec option Économie du développement.</p>
+                
+                <h3>Formations professionnelles spécialisées</h3>
+                
+                <p>Au cours de sa carrière, Emmanuel Poueme complète sa formation initiale par plusieurs programmes spécialisés :</p>
                 <ul>
-                    <li>1 <a href="#biographie">Biographie</a></li>
-                    <li>2 <a href="#formation">Formation</a></li>
-                    <li>3 <a href="#carriere">Carrière professionnelle</a>
-                        <ul style="margin-left: 20px;">
-                            <li>3.1 <a href="#debut">Début dans la fonction publique</a></li>
-                            <li>3.2 <a href="#csph">Carrière à la CSPH</a></li>
-                            <li>3.3 <a href="#autres">Autres responsabilités</a></li>
-                        </ul>
-                    </li>
-                    <li>4 <a href="#politique">Engagements politiques</a></li>
-                    <li>5 <a href="#distinctions">Distinctions et décorations</a></li>
-                    <li>6 <a href="#international">Représentation internationale</a></li>
-                    <li>7 <a href="#vie-privee">Vie privée</a></li>
-                    <li>8 <a href="#notes">Notes et références</a></li>
-                    <li>9 <a href="#voir-aussi">Voir aussi</a></li>
+                    <li><strong>Économie pétrolière</strong> - Séminaire de formation sur l'industrie du secteur pétrolier aval : Raffinage, Stockage, Transports et Distribution (SONARA)</li>
+                    <li><strong>Informatique de Gestion et Auditeur interne</strong> (Cabinet KOOH & MURE)</li>
+                    <li><strong>Comptabilité Analytique des Entreprises</strong> (Cabinet Okala)</li>
+                    <li><strong>Gestion des ressources humaines</strong> (Cabinet VIDA Management)</li>
+                    <li><strong>Rédaction Administrative</strong> - Institut des Sciences de Management Public de Yaoundé (ISMP)</li>
                 </ul>
-            </div>
-            
-            <!-- Biographie -->
-            <h2 id="biographie"><span class="mw-headline">Biographie</span></h2>
-            
-            <p>Né en 1955 à Foumbot (quartier Company, département du Noun dans la région de l'Ouest du Cameroun), Emmanuel Poueme obtient son Certificat d'Études Primaires Élémentaires (CEPE) en 1960 à l'École Primaire CEBEC de Baye.</p>
-            
-            <p>En 1966, il entre au Lycée Général Leclerc de Yaoundé. Il y poursuit ses études secondaires et obtient son Baccalauréat français série A5 (Philosophie-Lettres) en 1973.</p>
-            
-            <!-- Formation -->
-            <h2 id="formation"><span class="mw-headline">Formation</span></h2>
-            
-            <p>Après le lycée, Emmanuel Poueme poursuit ses études à l'Université de Yaoundé où il obtient en 1973 une Licence en Sociologie avec option Économie du développement.</p>
-            
-            <h3>Formations professionnelles spécialisées</h3>
-            
-            <p>Au cours de sa carrière, Emmanuel Poueme complète sa formation initiale par plusieurs programmes spécialisés :</p>
-            <ul>
-                <li><strong>Économie pétrolière</strong> - Séminaire de formation sur l'industrie du secteur pétrolier aval : Raffinage, Stockage, Transports et Distribution (SONARA)</li>
-                <li><strong>Informatique de Gestion et Auditeur interne</strong> (Cabinet KOOH & MURE)</li>
-                <li><strong>Comptabilité Analytique des Entreprises</strong> (Cabinet Okala)</li>
-                <li><strong>Gestion des ressources humaines</strong> (Cabinet VIDA Management)</li>
-                <li><strong>Rédaction Administrative</strong> - Institut des Sciences de Management Public de Yaoundé (ISMP)</li>
-            </ul>
-            
-            <p>Il maîtrise le français et pratique l'anglais.</p>
-            
-            <!-- Carrière professionnelle -->
-            <h2 id="carriere"><span class="mw-headline">Carrière professionnelle</span></h2>
-            
-            <h3 id="debut">Début dans la fonction publique</h3>
-            
-            <p>En 1977, Emmanuel Poueme entre dans la fonction publique camerounaise comme Contractuel d'Administration. L'année suivante, en 1978, il est nommé Chef de Bureau des Études et des Enquêtes Économiques à la Direction des Prix, Poids et Mesures, au Ministère de l'Économie et du Plan.</p>
-            
-            <h3 id="csph">Carrière à la CSPH (1979-2015)</h3>
-            
-            <p>En 1979, Emmanuel Poueme rejoint la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), institution créée en 1974 pour réguler les prix des produits pétroliers au Cameroun. Il y est nommé Chef de Bureau de la Documentation et Secrétaire du Comité de Gestion. En 1984, il est intégré dans la fonction publique comme Cadre des Prix, Poids, Mesures et de la Métrologie, avant d'être reversé définitivement à la CSPH en 1987 avec prise en charge totale.</p>
-            
-            <p>Sa progression au sein de la CSPH se poursuit avec sa nomination en 1991 comme Chef de Bureau Comptable. En 1998, après 19 ans de service, il accède à une double fonction stratégique : Attaché de Direction à la Direction Générale et Secrétaire du Conseil d'Administration. Dans cette dernière fonction, il prépare les sessions du Conseil d'Administration, rédige les procès-verbaux et assure le suivi de l'exécution des résolutions.</p>
-            
-            <p>En 2004, il devient Chargé d'Études, se consacrant à l'analyse et au conseil stratégique auprès de la Direction Générale. Deux ans plus tard, en 2006, il est promu Chargé de Missions n°2. En 2012, Emmanuel Poueme est nommé Conseiller Technique N°1 Chargé de la Coopération Internationale, poste qu'il occupe sous la direction d'Elung Paul Che, nommé Directeur Général en mai 2013. Ses responsabilités incluent la représentation institutionnelle lors des cérémonies officielles, le conseil au Directeur Général sur les questions techniques et économiques, la coordination de la coopération internationale et la supervision de projets d'infrastructures.</p>
-            
-            <p>Le 30 janvier 2015, lors de la cérémonie des vœux de la CSPH, il prononce un discours sur l'importance de la discipline et de l'éthique : <span class="citation">« Sans la discipline, sans le respect de la déontologie et de l'éthique, rien de bon ne peut se construire. Pour tout organisme, la discipline est la voie du salut, la condition sine qua non du succès. »</span><a href="#ref1" class="reference">[1]</a></p>
-            
-            <p>En 2015, Emmanuel Poueme prend sa retraite après 36 années de service.</p>
-            
-            <h3 id="autres">Autres responsabilités</h3>
-            
-            <p>Au cours de sa carrière, Emmanuel Poueme a occupé plusieurs autres fonctions institutionnelles et techniques. Il a représenté la CSPH au Conseil d'Administration de la BICEC (Banque Internationale du Cameroun pour l'Épargne et le Crédit) et a été membre de la Commission de Passation de Marchés de la CSPH.</p>
-            
-            <h4>Supervision de projets d'infrastructures pétrolières</h4>
-            
-            <p>Emmanuel Poueme a participé aux comités de suivi de nombreux projets d'infrastructures à travers le Cameroun :</p>
-            <ul>
-                <li><strong>Centres Emplisseurs de Gaz Domestique</strong> : Maroua et Bertoua</li>
-                <li><strong>Stations-service pilotes</strong> (plus de 15 stations) : Lorlodof (Total), Djoum (Total), Ambam (Total), Akono, Ngoumou, Mfou (Tradex), Esse (Mobil puis Camoco), Ntui et Ombessa (Camoco), Omeng par Ndikiminiki (Tradex), Mora (Total), Ekodo Titi, Nguti, Tombel (Tradex) et Yabassi (Tradex)</li>
-                <li><strong>Infrastructures urbaines à Yaoundé</strong> : Marchés de Mokolo et du Mfoundi (avec le Ministre du Commerce Nomo Ongolo et le Délégué du Gouvernement auprès de la Communauté Urbaine de Yaoundé), routes urbaines (Bata Nlongkak - Pharmacie Lumière, Hôpital CNPS avenue Germaine camp Sonel, Dispensaire Mvog-Ada carrefour Mvog-Mbi)</li>
-                <li><strong>Construction du siège social de la CSPH</strong> au Carrefour Warda à Yaoundé</li>
-            </ul>
-            
-            <p>Il a également assuré la responsabilité des activités de marketing de la CSPH, représentant l'institution dans des foires d'expositions et forums économiques (PROMOTE, FIDD, Foire frontalière de Kyossi).</p>
-            
-            <!-- Engagements politiques -->
-            <h2 id="politique"><span class="mw-headline">Engagements politiques</span></h2>
-            
-            <p>Emmanuel Poueme est membre du Rassemblement Démocratique du Peuple Camerounais (RDPC) et a occupé de nombreuses fonctions au sein du parti sur une période de plus de 25 ans (1995-2020), démontrant un engagement politique constant au service du parti au pouvoir.</p>
-            
-            <h3>Fonctions au sein des structures du parti (années 1990-2000)</h3>
-            
-            <p>Dans les années 1990 et 2000, Emmanuel Poueme occupe plusieurs postes clés au sein des structures du RDPC :</p>
-            <ul>
-                <li><strong>Secrétaire Général de la Cellule de Promotion et d'Animation Culturelle (CEPAC)</strong> au Secrétariat Général du Comité Central du RDPC</li>
-                <li><strong>Secrétaire du Collectif des Cellules de Promotion et d'Animation (COPROMA)</strong> au Secrétariat Général du Comité Central du RDPC</li>
-                <li><strong>Personnalité ressource pour la Province de l'Ouest</strong> au Secrétariat Général du Comité Central du RDPC</li>
-                <li><strong>Membre de l'Observatoire Politique</strong> du Comité Central du RDPC</li>
-                <li><strong>Secrétaire de l'Observatoire National du RDPC</strong> au Comité Central</li>
-                <li><strong>Membre du Secrétariat Scientifique</strong> du Comité Central du RDPC</li>
-            </ul>
-            
-            <p>Il participe également à la mise en place de l'orchestre <em>La Voix du Rassemblement (VDR)</em> du RDPC avec un répertoire de chansons patriotiques, en collaboration avec Monsieur Bidoung Mpkatt, alors Directeur de l'Institut National de la Jeunesse et des Sports (INJS).</p>
-            
-            <h3>Participation aux événements nationaux</h3>
-            
-            <p>En tant que membre du Comité Central du RDPC, Emmanuel Poueme a fait partie de plusieurs délégations officielles à des événements d'importance nationale :</p>
-            <ul>
-                <li><strong>Inauguration du pipeline Tchad-Cameroun à Kribi</strong> (juin 2004) - Membre de la Délégation du Comité Central du RDPC</li>
-                <li><strong>Inauguration de la route Bertoua-Garoua Boulaï</strong> - Membre de la Délégation du Comité Central du RDPC</li>
-                <li><strong>Inauguration de la route Dschang-Melong</strong> - Membre de la Délégation du Comité Central du RDPC</li>
-                <li><strong>Sommet France-Afrique</strong> au Palais des Congrès - Membre du Protocole</li>
-                <li><strong>Cérémonie de rétrocession de l'École des Champions de Bangangté</strong> par la Première Dame, Madame Chantal Biya - Responsable de l'organisation</li>
-            </ul>
-            
-            <h3>Participation aux Congrès du RDPC</h3>
-            
-            <p>Emmanuel Poueme a joué un rôle actif dans l'organisation des congrès du parti :</p>
-            <ul>
-                <li><strong>1er Congrès du RDPC</strong> - Secrétaire de la Sous-commission de Mobilisation</li>
-                <li><strong>Bureau National de l'OFRDPC</strong> (Organisation des Femmes du RDPC) - Secrétaire du Congrès</li>
-                <li><strong>Premier Festival National des Cellules de Promotion et d'Animation (FECEL)</strong> à Bertoua - Secrétaire</li>
-                <li><strong>3ème Congrès Ordinaire du RDPC (2011)</strong> - Membre de la Sous-Commission « Accueil » pour le congrès tenu les 15-16 septembre 2011 au Palais des Congrès de Yaoundé<a href="#ref2" class="reference">[2]</a></li>
-            </ul>
-            
-            <p>Le 3ème Congrès Ordinaire, placé sous le thème "La nouvelle dynamique", a abouti à la réélection du Président Paul Biya comme Président National du parti et à la nomination de 326 membres du Comité Central (200 élus et 126 désignés).</p>
-            
-            <h3>Responsabilités électorales dans le département du Ndé (1996-2020)</h3>
-            
-            <p>Emmanuel Poueme a exercé des responsabilités électorales majeures dans le département du Ndé pendant près de 25 ans, occupant systématiquement le poste de <strong>Chargé de Mission Départemental N°1</strong> pour toutes les consultations électorales :</p>
-            
-            <h4>Années 1990</h4>
-            <ul>
-                <li><strong>Janvier 1996</strong> : Membre de la Délégation du Comité Central pour les investitures des Conseillers municipaux dans l'Arrondissement de Bangangté</li>
-                <li><strong>Avril 1996</strong> : Membre de la Délégation du Comité Central pour les élections municipales dans l'Arrondissement de Bangangté</li>
-                <li><strong>1996</strong> : Chargé de mission pour la campagne de renouvellement des bureaux des organes de base dans l'Arrondissement de Bangangté</li>
-                <li><strong>Mai 1997</strong> : Chargé de Mission Départemental N°1 pour les investitures des candidats et pour les élections législatives dans le Ndé</li>
-                <li><strong>Octobre 1997</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans la Circonscription électorale du Ndé</li>
-            </ul>
-            
-            <h4>Années 2000</h4>
-            <ul>
-                <li><strong>2002</strong> : Chargé de Mission Départemental N°1 pour le renouvellement des bureaux des organes de base, les investitures, les élections législatives et municipales dans le Ndé</li>
-                <li><strong>2004</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans le Ndé</li>
-                <li><strong>2007</strong> : Chargé de Mission Départemental N°1 pour le renouvellement des bureaux des organes de base, les investitures et les élections législatives et municipales dans le Ndé</li>
-                <li><strong>Années 2000</strong> : Chargé de Mission Provincial pour la reconstitution du sommier politique du RDPC dans la Province de l'Ouest</li>
-            </ul>
-            
-            <h4>Années 2010-2020</h4>
-            <ul>
-                <li><strong>2011</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans le Ndé</li>
-                <li><strong>2013</strong> : Chargé de Mission Départemental N°1 pour les élections législatives, municipales et sénatoriales dans le Ndé</li>
-                <li><strong>2018</strong> : Chargé de Mission Départemental N°1 pour les élections sénatoriales et présidentielles du 7 octobre dans le Ndé</li>
-                <li><strong>9 février 2020</strong> : Chargé de Mission Départemental N°1 pour les élections législatives dans le Ndé</li>
-                <li><strong>6 décembre 2020</strong> : Chargé de Mission Départemental N°1 pour les élections des conseillers régionaux dans le Ndé</li>
-            </ul>
-            
-            <h3>Nomination par le Président Paul Biya (2016)</h3>
-            
-            <p>En 2016, Emmanuel Poueme est nommé <strong>Chargé de Mission N°1 de la Délégation Permanente Départementale du Comité Central du RDPC pour le Ndé</strong> par décision du Président National du parti, Son Excellence Paul Biya. Cette nomination consacre sa position de responsable politique majeur du département.</p>
-            
-            <p>Il est également membre du <strong>Comité de Réflexion des Chargés de Mission du Comité Central du RDPC de la Région de l'Ouest</strong>, structure consultative autour du Président du Sénat.</p>
-            
-            <h3>Engagement pour la région de l'Ouest</h3>
-            
-            <p>En juin 2019, Emmanuel Poueme s'est joint à 170 autres personnalités de la région de l'Ouest du Cameroun pour signer l'« Appel des élites de la région au calme et à la raison »,<a href="#ref3" class="reference">[3]</a> démontrant ainsi son engagement aux côtés de ses pairs pour contribuer au développement et à la stabilité de la région.</p>
-            
-            <!-- Distinctions -->
-            <h2 id="distinctions"><span class="mw-headline">Distinctions et décorations</span></h2>
-            
-            <p>Au cours de sa carrière de 36 ans dans la fonction publique camerounaise, Emmanuel Poueme a reçu plusieurs distinctions honorifiques de la République du Cameroun, témoignant de la reconnaissance de l'État pour ses services rendus à la nation.</p>
-            
-            <h3>Ordre National de la Valeur</h3>
-            
-            <p>L'Ordre de la Valeur est l'une des plus hautes distinctions de la République du Cameroun. Emmanuel Poueme a progressivement accédé aux trois premiers grades de cet ordre :</p>
-            <ol>
-                <li><strong>Chevalier de l'Ordre de la Valeur</strong> - Premier grade de reconnaissance pour services rendus à la nation</li>
-                <li><strong>Officier de l'Ordre de la Valeur</strong> - Deuxième grade, confirmant l'excellence de son engagement</li>
-                <li><strong>Commandeur de l'Ordre de la Valeur</strong> - Troisième grade, distinction exceptionnelle généralement réservée aux ministres, directeurs généraux d'institutions stratégiques et hauts fonctionnaires ayant rendu des services éminents à l'État</li>
-            </ol>
-            
-            <h3>Médailles du Travail</h3>
-            
-            <p>Les Médailles du Travail récompensent la loyauté et le dévouement des fonctionnaires et agents de l'État. Emmanuel Poueme a reçu les trois grades de cette distinction, confirmant son parcours professionnel exemplaire de 36 ans sans interruption :</p>
-            <ol>
-                <li><strong>Médaille de Vermeil du Travail</strong> - Obtenue après 20 ans de service loyal</li>
-                <li><strong>Médaille d'Argent du Travail</strong> - Obtenue après 30 ans de service</li>
-                <li><strong>Médaille d'Or du Travail</strong> - Plus haute distinction du travail, obtenue après 35 à 40 ans de service continu, couronnant une carrière exemplaire</li>
-            </ol>
-            
-            <!-- Représentation internationale -->
-            <h2 id="international"><span class="mw-headline">Représentation internationale</span></h2>
-            
-            <p>Emmanuel Poueme a représenté le Cameroun lors de plusieurs événements internationaux dans le secteur de l'énergie.</p>
-            
-            <h3>World Energy Congress</h3>
-            
-            <p>En septembre 2010, il participe au 21st World Energy Congress à Montréal, Canada,<a href="#ref4" class="reference">[4]</a> au sein de la délégation camerounaise conduite par Son Excellence Michael Tomdio, Ministre de l'Eau et de l'Énergie, accompagné de Monsieur Tarh (Conseiller Technique) et de Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie).</p>
-            
-            <p>En octobre 2013, il est délégué au 22nd World Energy Congress à Daegu, en Corée du Sud,<a href="#ref5" class="reference">[5]</a> dans la délégation officielle menée par Son Excellence Dr. Basile Atangana Kouna, Ministre de l'Eau et de l'Énergie, avec Emmanuel Alam (Directeur Général Adjoint de la CSPH) et Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie). La délégation a effectué le trajet de l'aéroport international de Séoul à Daegu par route et a logé à l'Hôtel Hilton Daegu.</p>
-            
-            <h3>Coopération Korea-Cameroun</h3>
-            
-            <p>La même année 2013, il fait partie de la délégation camerounaise au Sommet Korea-Cameroun organisé à Séoul, portant sur la coopération bilatérale dans le secteur énergétique. La délégation était conduite par Son Excellence Dr. Basile Atangana Kouna, Ministre de l'Eau et de l'Énergie, accompagné d'Emmanuel Alam (Directeur Général Adjoint de la CSPH) et de Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie).</p>
-            
-            <h3>Forum Afrique Expansion</h3>
-            
-            <p>Il a également représenté la CSPH au Forum Afrique Expansion au Canada lors des 8<sup>e</sup>, 9<sup>e</sup> et 10<sup>e</sup> sessions, forums consacrés aux investissements et aux opportunités d'affaires entre l'Afrique et le Canada.</p>
-            
-            <!-- Vie privée -->
-            <h2 id="vie-privee"><span class="mw-headline">Vie privée et engagement communautaire</span></h2>
-            
-            <h3>Vie familiale</h3>
-            
-            <p>Emmanuel Poueme est marié et père de quatre enfants. Il est Chef de Famille Tousseu désigné de la Communauté Batchingou de Yaoundé.</p>
-            
-            <h3>Engagement dans la communauté Batchingou et le Ndé</h3>
-            
-            <p>Originaire de Batchingou dans le département du Ndé, Emmanuel Poueme s'est fortement engagé dans les structures de développement et d'entraide de sa communauté d'origine :</p>
-            
-            <h4>Responsabilités traditionnelles et associatives</h4>
-            <ul>
-                <li><strong>Notable de la cour royale de la chefferie Batchingou</strong></li>
-                <li><strong>Président des notables de la communauté Batchingou de Yaoundé</strong></li>
-                <li><strong>Vice-président du Comité du Développement du village Batchingou (CODEBA)</strong></li>
-                <li><strong>Membre Fondateur de la réunion des élites Batchingou de Yaoundé</strong></li>
-                <li><strong>Membre de la Réunion Générale Batchingou de Yaoundé</strong></li>
-                <li><strong>Membre désigné de la communauté Batchingou de Yaoundé au Conseil Supérieur du Ndé</strong></li>
-            </ul>
-            
-            <h4>Engagement dans les associations du Ndé</h4>
-            <ul>
-                <li><strong>Vice-président de l'Association de l'Amicale des Enfants du Ndé (AMENDE)</strong></li>
-                <li><strong>Membre de l'Association des Élites Ndé de Yaoundé (ASSENY)</strong></li>
-                <li><strong>Contrôleur de gestion de l'Association des Élites Ndé de Yaoundé (ASSENY)</strong></li>
-            </ul>
-            
-            <h3>Engagement religieux</h3>
-            
-            <p>Emmanuel Poueme est profondément engagé dans l'Église Évangélique du Cameroun (EEC) :</p>
-            <ul>
-                <li><strong>Ancien d'église à l'EEC Paroisse de Nlongkak</strong></li>
-                <li><strong>Membre du Consistoire Centre 4</strong></li>
-                <li><strong>Membre du Conseil Synodal Régional Centre-Sud 1</strong></li>
-                <li><strong>Membre du Synode Régional Centre-Sud 1</strong></li>
-                <li><strong>Membre de ENSEMBLE</strong> (cellule de prière de quelques anciens d'église)</li>
-                <li><strong>Prédicateur laïc</strong> - Il a prêché dans plusieurs localités : Oyo-Mabang (avec le pasteur Jérémie Ngassam), Nyom, Soa, la communauté tchadienne de Yaoundé, et diverses cellules de prière</li>
-            </ul>
-            
-            <p>Il a soutenu les pasteurs du Ndé en mettant à disposition des espaces de rencontre, en prenant en charge l'habillement de nouveaux pasteurs et en participant à un cercle de réflexion pour assurer le paiement régulier de leurs salaires.</p>
-            
-            <h3>Réalisations philanthropiques et projets de développement</h3>
-            
-            <p>Emmanuel Poueme a réalisé de nombreux projets au bénéfice de son village d'origine Batchingou et de la jeunesse du Ndé :</p>
-            
-            <h4>Infrastructures religieuses</h4>
-            <ul>
-                <li><strong>Aménagement de l'église évangélique de Batchingou et du presbytère</strong> (crépissage et autres travaux)</li>
-                <li><strong>Don de vernis pour le plafond du grand temple EEC de Bamgo</strong></li>
-            </ul>
-            
-            <h4>Infrastructures sanitaires</h4>
-            <ul>
-                <li><strong>Don de 10 lits, matelas, chaise roulante, seringues et autres équipements médicaux au dispensaire de Batchingou</strong> avec motivation des aides-soignants</li>
-                <li><strong>Don de 10 matelas supplémentaires au dispensaire de Batchingou</strong> (deuxième intervention)</li>
-            </ul>
-            
-            <h4>Infrastructures éducatives</h4>
-            <ul>
-                <li><strong>Initiative pour la création du CETIC de Batchingou</strong> - Demande signée par ses soins en collaboration avec Mbeu Tchakounté Jean et suivie au Ministère de l'Éducation Nationale par Sadrack Ngueyep (alors en service au MIN PTT) et Tchagwo Timothé. L'établissement a été transformé en Lycée Technique par le Ministre Louis Bapes Bapes</li>
-                <li><strong>Transformation du CETIC en Lycée Technique de Batchingou</strong> - Sur recommandation du Ministre Bapes Bapes Louis lors d'une mission à Bangangté, Emmanuel Poueme a participé avec Monsieur Ikong Joseph (particulier du ministre) à l'établissement de la liste des CETIC à transformer en Lycées Techniques dans le Ndé</li>
-                <li><strong>Initiative pour le CES bilingue de Batchingou Tousseu</strong> - Demande déposée en 2011 et suivie par Monsieur Ikong Joseph, alors particulier du Ministre Bapes Bapes Louis</li>
-                <li><strong>Encadrement des élèves et étudiants de Batchingou et du Ndé</strong> avec paiement de scolarité pour de nombreux bénéficiaires</li>
-            </ul>
-            
-            <h4>Autres contributions</h4>
-            <p>Emmanuel Poueme a également contribué au développement politique et social de Batchingou par la mise en place des premières structures RDPC locales, l'appui à la jeunesse sportive, l'installation d'infrastructures d'eau potable et le soutien matériel à la chefferie traditionnelle.</p>
-            
-            <h3>Engagement sportif</h3>
-            
-            <p>En 1996, Emmanuel Poueme a occupé des responsabilités au sein de la Fédération Camerounaise de Football (FECAFOOT) :</p>
-            <ul>
-                <li><strong>Président de la Commission Nationale des Coupes du Cameroun</strong> à la FECAFOOT (1996)</li>
-                <li><strong>Commissaire du match de la Coupe du Cameroun édition 1996</strong> (Racing de Bafoussam contre Stade de Bandjoun)</li>
-            </ul>
-            
-            <!-- Notes et références -->
-            <h2 id="notes"><span class="mw-headline">Notes et références</span></h2>
-            
-            <div class="reflist">
+                
+                <p>Il maîtrise le français et pratique l'anglais.</p>
+                
+                <!-- Carrière professionnelle -->
+                <h2 id="carriere"><span class="mw-headline">Carrière professionnelle</span></h2>
+                
+                <h3 id="debut">Début dans la fonction publique</h3>
+                
+                <p>En 1977, Emmanuel Poueme entre dans la fonction publique camerounaise comme Contractuel d'Administration. L'année suivante, en 1978, il est nommé Chef de Bureau des Études et des Enquêtes Économiques à la Direction des Prix, Poids et Mesures, au Ministère de l'Économie et du Plan.</p>
+                
+                <h3 id="csph">Carrière à la CSPH (1979-2015)</h3>
+                
+                <p>En 1979, Emmanuel Poueme rejoint la Caisse de Stabilisation des Prix des Hydrocarbures (CSPH), institution créée en 1974 pour réguler les prix des produits pétroliers au Cameroun. Il y est nommé Chef de Bureau de la Documentation et Secrétaire du Comité de Gestion. En 1984, il est intégré dans la fonction publique comme Cadre des Prix, Poids, Mesures et de la Métrologie, avant d'être reversé définitivement à la CSPH en 1987 avec prise en charge totale.</p>
+                
+                <p>Sa progression au sein de la CSPH se poursuit avec sa nomination en 1991 comme Chef de Bureau Comptable. En 1998, après 19 ans de service, il accède à une double fonction stratégique : Attaché de Direction à la Direction Générale et Secrétaire du Conseil d'Administration. Dans cette dernière fonction, il prépare les sessions du Conseil d'Administration, rédige les procès-verbaux et assure le suivi de l'exécution des résolutions.</p>
+                
+                <p>En 2004, il devient Chargé d'Études, se consacrant à l'analyse et au conseil stratégique auprès de la Direction Générale. Deux ans plus tard, en 2006, il est promu Chargé de Missions n°2. En 2012, Emmanuel Poueme est nommé Conseiller Technique N°1 Chargé de la Coopération Internationale, poste qu'il occupe sous la direction d'Elung Paul Che, nommé Directeur Général en mai 2013. Ses responsabilités incluent la représentation institutionnelle lors des cérémonies officielles, le conseil au Directeur Général sur les questions techniques et économiques, la coordination de la coopération internationale et la supervision de projets d'infrastructures.</p>
+                
+                <p>Le 30 janvier 2015, lors de la cérémonie des vœux de la CSPH, il prononce un discours sur l'importance de la discipline et de l'éthique : <span class="citation">« Sans la discipline, sans le respect de la déontologie et de l'éthique, rien de bon ne peut se construire. Pour tout organisme, la discipline est la voie du salut, la condition sine qua non du succès. »</span><a href="#ref1" class="reference">[1]</a></p>
+                
+                <p>En 2015, Emmanuel Poueme prend sa retraite après 36 années de service.</p>
+                
+                <h3 id="autres">Autres responsabilités</h3>
+                
+                <p>Au cours de sa carrière, Emmanuel Poueme a occupé plusieurs autres fonctions institutionnelles et techniques. Il a représenté la CSPH au Conseil d'Administration de la BICEC (Banque Internationale du Cameroun pour l'Épargne et le Crédit) et a été membre de la Commission de Passation de Marchés de la CSPH.</p>
+                
+                <h4>Supervision de projets d'infrastructures pétrolières</h4>
+                
+                <p>Emmanuel Poueme a participé aux comités de suivi de nombreux projets d'infrastructures à travers le Cameroun :</p>
+                <ul>
+                    <li><strong>Centres Emplisseurs de Gaz Domestique</strong> : Maroua et Bertoua</li>
+                    <li><strong>Stations-service pilotes</strong> (plus de 15 stations) : Lorlodof (Total), Djoum (Total), Ambam (Total), Akono, Ngoumou, Mfou (Tradex), Esse (Mobil puis Camoco), Ntui et Ombessa (Camoco), Omeng par Ndikiminiki (Tradex), Mora (Total), Ekodo Titi, Nguti, Tombel (Tradex) et Yabassi (Tradex)</li>
+                    <li><strong>Infrastructures urbaines à Yaoundé</strong> : Marchés de Mokolo et du Mfoundi (avec le Ministre du Commerce Nomo Ongolo et le Délégué du Gouvernement auprès de la Communauté Urbaine de Yaoundé), routes urbaines (Bata Nlongkak - Pharmacie Lumière, Hôpital CNPS avenue Germaine camp Sonel, Dispensaire Mvog-Ada carrefour Mvog-Mbi)</li>
+                    <li><strong>Construction du siège social de la CSPH</strong> au Carrefour Warda à Yaoundé</li>
+                </ul>
+                
+                <p>Il a également assuré la responsabilité des activités de marketing de la CSPH, représentant l'institution dans des foires d'expositions et forums économiques (PROMOTE, FIDD, Foire frontalière de Kyossi).</p>
+                
+                <!-- Engagements politiques -->
+                <h2 id="politique"><span class="mw-headline">Engagements politiques</span></h2>
+                
+                <p>Emmanuel Poueme est membre du Rassemblement Démocratique du Peuple Camerounais (RDPC) et a occupé de nombreuses fonctions au sein du parti sur une période de plus de 25 ans (1995-2020), démontrant un engagement politique constant au service du parti au pouvoir.</p>
+                
+                <h3>Fonctions au sein des structures du parti (années 1990-2000)</h3>
+                
+                <p>Dans les années 1990 et 2000, Emmanuel Poueme occupe plusieurs postes clés au sein des structures du RDPC :</p>
+                <ul>
+                    <li><strong>Secrétaire Général de la Cellule de Promotion et d'Animation Culturelle (CEPAC)</strong> au Secrétariat Général du Comité Central du RDPC</li>
+                    <li><strong>Secrétaire du Collectif des Cellules de Promotion et d'Animation (COPROMA)</strong> au Secrétariat Général du Comité Central du RDPC</li>
+                    <li><strong>Personnalité ressource pour la Province de l'Ouest</strong> au Secrétariat Général du Comité Central du RDPC</li>
+                    <li><strong>Membre de l'Observatoire Politique</strong> du Comité Central du RDPC</li>
+                    <li><strong>Secrétaire de l'Observatoire National du RDPC</strong> au Comité Central</li>
+                    <li><strong>Membre du Secrétariat Scientifique</strong> du Comité Central du RDPC</li>
+                </ul>
+                
+                <p>Il participe également à la mise en place de l'orchestre <em>La Voix du Rassemblement (VDR)</em> du RDPC avec un répertoire de chansons patriotiques, en collaboration avec Monsieur Bidoung Mpkatt, alors Directeur de l'Institut National de la Jeunesse et des Sports (INJS).</p>
+                
+                <h3>Participation aux événements nationaux</h3>
+                
+                <p>En tant que membre du Comité Central du RDPC, Emmanuel Poueme a fait partie de plusieurs délégations officielles à des événements d'importance nationale :</p>
+                <ul>
+                    <li><strong>Inauguration du pipeline Tchad-Cameroun à Kribi</strong> (juin 2004) - Membre de la Délégation du Comité Central du RDPC</li>
+                    <li><strong>Inauguration de la route Bertoua-Garoua Boulaï</strong> - Membre de la Délégation du Comité Central du RDPC</li>
+                    <li><strong>Inauguration de la route Dschang-Melong</strong> - Membre de la Délégation du Comité Central du RDPC</li>
+                    <li><strong>Sommet France-Afrique</strong> au Palais des Congrès - Membre du Protocole</li>
+                    <li><strong>Cérémonie de rétrocession de l'École des Champions de Bangangté</strong> par la Première Dame, Madame Chantal Biya - Responsable de l'organisation</li>
+                </ul>
+                
+                <h3>Participation aux Congrès du RDPC</h3>
+                
+                <p>Emmanuel Poueme a joué un rôle actif dans l'organisation des congrès du parti :</p>
+                <ul>
+                    <li><strong>1er Congrès du RDPC</strong> - Secrétaire de la Sous-commission de Mobilisation</li>
+                    <li><strong>Bureau National de l'OFRDPC</strong> (Organisation des Femmes du RDPC) - Secrétaire du Congrès</li>
+                    <li><strong>Premier Festival National des Cellules de Promotion et d'Animation (FECEL)</strong> à Bertoua - Secrétaire</li>
+                    <li><strong>3ème Congrès Ordinaire du RDPC (2011)</strong> - Membre de la Sous-Commission « Accueil » pour le congrès tenu les 15-16 septembre 2011 au Palais des Congrès de Yaoundé<a href="#ref2" class="reference">[2]</a></li>
+                </ul>
+                
+                <p>Le 3ème Congrès Ordinaire, placé sous le thème "La nouvelle dynamique", a abouti à la réélection du Président Paul Biya comme Président National du parti et à la nomination de 326 membres du Comité Central (200 élus et 126 désignés).</p>
+                
+                <h3>Responsabilités électorales dans le département du Ndé (1996-2020)</h3>
+                
+                <p>Emmanuel Poueme a exercé des responsabilités électorales majeures dans le département du Ndé pendant près de 25 ans, occupant systématiquement le poste de <strong>Chargé de Mission Départemental N°1</strong> pour toutes les consultations électorales :</p>
+                
+                <h4>Années 1990</h4>
+                <ul>
+                    <li><strong>Janvier 1996</strong> : Membre de la Délégation du Comité Central pour les investitures des Conseillers municipaux dans l'Arrondissement de Bangangté</li>
+                    <li><strong>Avril 1996</strong> : Membre de la Délégation du Comité Central pour les élections municipales dans l'Arrondissement de Bangangté</li>
+                    <li><strong>1996</strong> : Chargé de mission pour la campagne de renouvellement des bureaux des organes de base dans l'Arrondissement de Bangangté</li>
+                    <li><strong>Mai 1997</strong> : Chargé de Mission Départemental N°1 pour les investitures des candidats et pour les élections législatives dans le Ndé</li>
+                    <li><strong>Octobre 1997</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans la Circonscription électorale du Ndé</li>
+                </ul>
+                
+                <h4>Années 2000</h4>
+                <ul>
+                    <li><strong>2002</strong> : Chargé de Mission Départemental N°1 pour le renouvellement des bureaux des organes de base, les investitures, les élections législatives et municipales dans le Ndé</li>
+                    <li><strong>2004</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans le Ndé</li>
+                    <li><strong>2007</strong> : Chargé de Mission Départemental N°1 pour le renouvellement des bureaux des organes de base, les investitures et les élections législatives et municipales dans le Ndé</li>
+                    <li><strong>Années 2000</strong> : Chargé de Mission Provincial pour la reconstitution du sommier politique du RDPC dans la Province de l'Ouest</li>
+                </ul>
+                
+                <h4>Années 2010-2020</h4>
+                <ul>
+                    <li><strong>2011</strong> : Chargé de Mission Départemental N°1 pour les élections présidentielles dans le Ndé</li>
+                    <li><strong>2013</strong> : Chargé de Mission Départemental N°1 pour les élections législatives, municipales et sénatoriales dans le Ndé</li>
+                    <li><strong>2018</strong> : Chargé de Mission Départemental N°1 pour les élections sénatoriales et présidentielles du 7 octobre dans le Ndé</li>
+                    <li><strong>9 février 2020</strong> : Chargé de Mission Départemental N°1 pour les élections législatives dans le Ndé</li>
+                    <li><strong>6 décembre 2020</strong> : Chargé de Mission Départemental N°1 pour les élections des conseillers régionaux dans le Ndé</li>
+                </ul>
+                
+                <h3>Nomination par le Président Paul Biya (2016)</h3>
+                
+                <p>En 2016, Emmanuel Poueme est nommé <strong>Chargé de Mission N°1 de la Délégation Permanente Départementale du Comité Central du RDPC pour le Ndé</strong> par décision du Président National du parti, Son Excellence Paul Biya. Cette nomination consacre sa position de responsable politique majeur du département.</p>
+                
+                <p>Il est également membre du <strong>Comité de Réflexion des Chargés de Mission du Comité Central du RDPC de la Région de l'Ouest</strong>, structure consultative autour du Président du Sénat.</p>
+                
+                <h3>Engagement pour la région de l'Ouest</h3>
+                
+                <p>En juin 2019, Emmanuel Poueme s'est joint à 170 autres personnalités de la région de l'Ouest du Cameroun pour signer l'« Appel des élites de la région au calme et à la raison »,<a href="#ref3" class="reference">[3]</a> démontrant ainsi son engagement aux côtés de ses pairs pour contribuer au développement et à la stabilité de la région.</p>
+                
+                <!-- Distinctions -->
+                <h2 id="distinctions"><span class="mw-headline">Distinctions et décorations</span></h2>
+                
+                <p>Au cours de sa carrière de 36 ans dans la fonction publique camerounaise, Emmanuel Poueme a reçu plusieurs distinctions honorifiques de la République du Cameroun, témoignant de la reconnaissance de l'État pour ses services rendus à la nation.</p>
+                
+                <h3>Ordre National de la Valeur</h3>
+                
+                <p>L'Ordre de la Valeur est l'une des plus hautes distinctions de la République du Cameroun. Emmanuel Poueme a progressivement accédé aux trois premiers grades de cet ordre :</p>
                 <ol>
-                    <li id="ref1">↑ <a href="https://www.csph.cm/index.php/fr/actualite/142-voeux-2015-a-la-csph" target="_blank">« VŒUX 2015 à la CSPH »</a>, sur csph.cm, 30 janvier 2015 (consulté le 7 décembre 2024)</li>
-                    <li id="ref2">↑ <a href="http://journal.rdpcpdm.cm/2011/09/note-du-secretaire-general-relative-a-lorganisation-et-au-fonctionnement-des-sous-commissions-du-comite-dorganisation-du-3eme-congres-ordinaire-du-rdpc/" target="_blank">« Note du Secrétaire général relative à l'organisation et au fonctionnement des sous-commissions du Comité d'Organisation du 3ème Congrès Ordinaire du RDPC »</a>, L'Action N° 782, journal.rdpcpdm.cm, 6 septembre 2011 (consulté le 7 décembre 2024)</li>
-                    <li id="ref3">↑ <a href="https://actucameroun.com/wp-content/uploads/2019/06/liste-des-elites-de-la-region-de-louest1.pdf" target="_blank">« Liste des signatures de l'appel des élites de la région au calme et à la raison »</a>, ActuCameroun, juin 2019 (consulté le 7 décembre 2024)</li>
-                    <li id="ref4">↑ <a href="https://www.mcgilldaily.com/2010/09/world_energy_congress_hits_montreal/" target="_blank">« World Energy Congress hits Montreal »</a>, The McGill Daily, 21 septembre 2010 (consulté le 7 décembre 2024)</li>
-                    <li id="ref5">↑ <a href="https://www.worldenergy.org/experiences-events/world-energy-congress/22nd-world-energy-congress-daegu-2013" target="_blank">« 22nd World Energy Congress, Daegu 2013 »</a>, World Energy Council (consulté le 7 décembre 2024)</li>
+                    <li><strong>Chevalier de l'Ordre de la Valeur</strong> - Premier grade de reconnaissance pour services rendus à la nation</li>
+                    <li><strong>Officier de l'Ordre de la Valeur</strong> - Deuxième grade, confirmant l'excellence de son engagement</li>
+                    <li><strong>Commandeur de l'Ordre de la Valeur</strong> - Troisième grade, distinction exceptionnelle généralement réservée aux ministres, directeurs généraux d'institutions stratégiques et hauts fonctionnaires ayant rendu des services éminents à l'État</li>
                 </ol>
                 
-                <h3>Sources</h3>
+                <h3>Médailles du Travail</h3>
+                
+                <p>Les Médailles du Travail récompensent la loyauté et le dévouement des fonctionnaires et agents de l'État. Emmanuel Poueme a reçu les trois grades de cette distinction, confirmant son parcours professionnel exemplaire de 36 ans sans interruption :</p>
+                <ol>
+                    <li><strong>Médaille de Vermeil du Travail</strong> - Obtenue après 20 ans de service loyal</li>
+                    <li><strong>Médaille d'Argent du Travail</strong> - Obtenue après 30 ans de service</li>
+                    <li><strong>Médaille d'Or du Travail</strong> - Plus haute distinction du travail, obtenue après 35 à 40 ans de service continu, couronnant une carrière exemplaire</li>
+                </ol>
+                
+                <!-- Représentation internationale -->
+                <h2 id="international"><span class="mw-headline">Représentation internationale</span></h2>
+                
+                <p>Emmanuel Poueme a représenté le Cameroun lors de plusieurs événements internationaux dans le secteur de l'énergie.</p>
+                
+                <h3>World Energy Congress</h3>
+                
+                <p>En septembre 2010, il participe au 21st World Energy Congress à Montréal, Canada,<a href="#ref4" class="reference">[4]</a> au sein de la délégation camerounaise conduite par Son Excellence Michael Tomdio, Ministre de l'Eau et de l'Énergie, accompagné de Monsieur Tarh (Conseiller Technique) et de Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie).</p>
+                
+                <p>En octobre 2013, il est délégué au 22nd World Energy Congress à Daegu, en Corée du Sud,<a href="#ref5" class="reference">[5]</a> dans la délégation officielle menée par Son Excellence Dr. Basile Atangana Kouna, Ministre de l'Eau et de l'Énergie, avec Emmanuel Alam (Directeur Général Adjoint de la CSPH) et Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie). La délégation a effectué le trajet de l'aéroport international de Séoul à Daegu par route et a logé à l'Hôtel Hilton Daegu.</p>
+                
+                <h3>Coopération Korea-Cameroun</h3>
+                
+                <p>La même année 2013, il fait partie de la délégation camerounaise au Sommet Korea-Cameroun organisé à Séoul, portant sur la coopération bilatérale dans le secteur énergétique. La délégation était conduite par Son Excellence Dr. Basile Atangana Kouna, Ministre de l'Eau et de l'Énergie, accompagné d'Emmanuel Alam (Directeur Général Adjoint de la CSPH) et de Jean Pierre Ghonnang (Directeur de l'Électricité au Ministère de l'Eau et de l'Énergie).</p>
+                
+                <h3>Forum Afrique Expansion</h3>
+                
+                <p>Il a également représenté la CSPH au Forum Afrique Expansion au Canada lors des 8<sup>e</sup>, 9<sup>e</sup> et 10<sup>e</sup> sessions, forums consacrés aux investissements et aux opportunités d'affaires entre l'Afrique et le Canada.</p>
+                
+                <!-- Vie privée -->
+                <h2 id="vie-privee"><span class="mw-headline">Vie privée et engagement communautaire</span></h2>
+                
+                <h3>Vie familiale</h3>
+                
+                <p>Emmanuel Poueme est marié et père de quatre enfants. Il est Chef de Famille Tousseu désigné de la Communauté Batchingou de Yaoundé.</p>
+                
+                <h3>Engagement dans la communauté Batchingou et le Ndé</h3>
+                
+                <p>Originaire de Batchingou dans le département du Ndé, Emmanuel Poueme s'est fortement engagé dans les structures de développement et d'entraide de sa communauté d'origine :</p>
+                
+                <h4>Responsabilités traditionnelles et associatives</h4>
                 <ul>
-                    <li>CV officiel d'Emmanuel Poueme</li>
-                    <li>Archives de la CSPH (Caisse de Stabilisation des Prix des Hydrocarbures)</li>
-                    <li>Archives familiales</li>
-                    <li>Photo : <a href="https://commons.wikimedia.org/wiki/File:Emmanuel_Poueme.jpg" target="_blank">Wikimedia Commons - File:Emmanuel_Poueme.jpg</a></li>
+                    <li><strong>Notable de la cour royale de la chefferie Batchingou</strong></li>
+                    <li><strong>Président des notables de la communauté Batchingou de Yaoundé</strong></li>
+                    <li><strong>Vice-président du Comité du Développement du village Batchingou (CODEBA)</strong></li>
+                    <li><strong>Membre Fondateur de la réunion des élites Batchingou de Yaoundé</strong></li>
+                    <li><strong>Membre de la Réunion Générale Batchingou de Yaoundé</strong></li>
+                    <li><strong>Membre désigné de la communauté Batchingou de Yaoundé au Conseil Supérieur du Ndé</strong></li>
                 </ul>
+                
+                <h4>Engagement dans les associations du Ndé</h4>
+                <ul>
+                    <li><strong>Vice-président de l'Association de l'Amicale des Enfants du Ndé (AMENDE)</strong></li>
+                    <li><strong>Membre de l'Association des Élites Ndé de Yaoundé (ASSENY)</strong></li>
+                    <li><strong>Contrôleur de gestion de l'Association des Élites Ndé de Yaoundé (ASSENY)</strong></li>
+                </ul>
+                
+                <h3>Engagement religieux</h3>
+                
+                <p>Emmanuel Poueme est profondément engagé dans l'Église Évangélique du Cameroun (EEC) :</p>
+                <ul>
+                    <li><strong>Ancien d'église à l'EEC Paroisse de Nlongkak</strong></li>
+                    <li><strong>Membre du Consistoire Centre 4</strong></li>
+                    <li><strong>Membre du Conseil Synodal Régional Centre-Sud 1</strong></li>
+                    <li><strong>Membre du Synode Régional Centre-Sud 1</strong></li>
+                    <li><strong>Membre de ENSEMBLE</strong> (cellule de prière de quelques anciens d'église)</li>
+                    <li><strong>Prédicateur laïc</strong> - Il a prêché dans plusieurs localités : Oyo-Mabang (avec le pasteur Jérémie Ngassam), Nyom, Soa, la communauté tchadienne de Yaoundé, et diverses cellules de prière</li>
+                </ul>
+                
+                <p>Il a soutenu les pasteurs du Ndé en mettant à disposition des espaces de rencontre, en prenant en charge l'habillement de nouveaux pasteurs et en participant à un cercle de réflexion pour assurer le paiement régulier de leurs salaires.</p>
+                
+                <h3>Réalisations philanthropiques et projets de développement</h3>
+                
+                <p>Emmanuel Poueme a réalisé de nombreux projets au bénéfice de son village d'origine Batchingou et de la jeunesse du Ndé :</p>
+                
+                <h4>Infrastructures religieuses</h4>
+                <ul>
+                    <li><strong>Aménagement de l'église évangélique de Batchingou et du presbytère</strong> (crépissage et autres travaux)</li>
+                    <li><strong>Don de vernis pour le plafond du grand temple EEC de Bamgo</strong></li>
+                </ul>
+                
+                <h4>Infrastructures sanitaires</h4>
+                <ul>
+                    <li><strong>Don de 10 lits, matelas, chaise roulante, seringues et autres équipements médicaux au dispensaire de Batchingou</strong> avec motivation des aides-soignants</li>
+                    <li><strong>Don de 10 matelas supplémentaires au dispensaire de Batchingou</strong> (deuxième intervention)</li>
+                </ul>
+                
+                <h4>Infrastructures éducatives</h4>
+                <ul>
+                    <li><strong>Initiative pour la création du CETIC de Batchingou</strong> - Demande signée par ses soins en collaboration avec Mbeu Tchakounté Jean et suivie au Ministère de l'Éducation Nationale par Sadrack Ngueyep (alors en service au MIN PTT) et Tchagwo Timothé. L'établissement a été transformé en Lycée Technique par le Ministre Louis Bapes Bapes</li>
+                    <li><strong>Transformation du CETIC en Lycée Technique de Batchingou</strong> - Sur recommandation du Ministre Bapes Bapes Louis lors d'une mission à Bangangté, Emmanuel Poueme a participé avec Monsieur Ikong Joseph (particulier du ministre) à l'établissement de la liste des CETIC à transformer en Lycées Techniques dans le Ndé</li>
+                    <li><strong>Initiative pour le CES bilingue de Batchingou Tousseu</strong> - Demande déposée en 2011 et suivie par Monsieur Ikong Joseph, alors particulier du Ministre Bapes Bapes Louis</li>
+                    <li><strong>Encadrement des élèves et étudiants de Batchingou et du Ndé</strong> avec paiement de scolarité pour de nombreux bénéficiaires</li>
+                </ul>
+                
+                <h4>Autres contributions</h4>
+                <p>Emmanuel Poueme a également contribué au développement politique et social de Batchingou par la mise en place des premières structures RDPC locales, l'appui à la jeunesse sportive, l'installation d'infrastructures d'eau potable et le soutien matériel à la chefferie traditionnelle.</p>
+                
+                <h3>Engagement sportif</h3>
+                
+                <p>En 1996, Emmanuel Poueme a occupé des responsabilités au sein de la Fédération Camerounaise de Football (FECAFOOT) :</p>
+                <ul>
+                    <li><strong>Président de la Commission Nationale des Coupes du Cameroun</strong> à la FECAFOOT (1996)</li>
+                    <li><strong>Commissaire du match de la Coupe du Cameroun édition 1996</strong> (Racing de Bafoussam contre Stade de Bandjoun)</li>
+                </ul>
+                
+                <!-- Notes et références -->
+                <h2 id="notes"><span class="mw-headline">Notes et références</span></h2>
+                
+                <div class="reflist">
+                    <ol>
+                        <li id="ref1">↑ <a href="https://www.csph.cm/index.php/fr/actualite/142-voeux-2015-a-la-csph" target="_blank">« VŒUX 2015 à la CSPH »</a>, sur csph.cm, 30 janvier 2015 (consulté le 7 décembre 2024)</li>
+                        <li id="ref2">↑ <a href="http://journal.rdpcpdm.cm/2011/09/note-du-secretaire-general-relative-a-lorganisation-et-au-fonctionnement-des-sous-commissions-du-comite-dorganisation-du-3eme-congres-ordinaire-du-rdpc/" target="_blank">« Note du Secrétaire général relative à l'organisation et au fonctionnement des sous-commissions du Comité d'Organisation du 3ème Congrès Ordinaire du RDPC »</a>, L'Action N° 782, journal.rdpcpdm.cm, 6 septembre 2011 (consulté le 7 décembre 2024)</li>
+                        <li id="ref3">↑ <a href="https://actucameroun.com/wp-content/uploads/2019/06/liste-des-elites-de-la-region-de-louest1.pdf" target="_blank">« Liste des signatures de l'appel des élites de la région au calme et à la raison »</a>, ActuCameroun, juin 2019 (consulté le 7 décembre 2024)</li>
+                        <li id="ref4">↑ <a href="https://www.mcgilldaily.com/2010/09/world_energy_congress_hits_montreal/" target="_blank">« World Energy Congress hits Montreal »</a>, The McGill Daily, 21 septembre 2010 (consulté le 7 décembre 2024)</li>
+                        <li id="ref5">↑ <a href="https://www.worldenergy.org/experiences-events/world-energy-congress/22nd-world-energy-congress-daegu-2013" target="_blank">« 22nd World Energy Congress, Daegu 2013 »</a>, World Energy Council (consulté le 7 décembre 2024)</li>
+                    </ol>
+                    
+                    <h3>Sources</h3>
+                    <ul>
+                        <li>CV officiel d'Emmanuel Poueme</li>
+                        <li>Archives de la CSPH (Caisse de Stabilisation des Prix des Hydrocarbures)</li>
+                        <li>Archives familiales</li>
+                        <li>Photo : <a href="https://commons.wikimedia.org/wiki/File:Emmanuel_Poueme.jpg" target="_blank">Wikimedia Commons - File:Emmanuel_Poueme.jpg</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Voir aussi -->
+                <h2 id="voir-aussi"><span class="mw-headline">Voir aussi</span></h2>
+                
+                <h3>Articles connexes</h3>
+                <ul>
+                    <li>Caisse de Stabilisation des Prix des Hydrocarbures (CSPH)</li>
+                    <li>Secteur pétrolier au Cameroun</li>
+                    <li>SONARA (Société Nationale de Raffinage)</li>
+                    <li>Ordre National de la Valeur (Cameroun)</li>
+                    <li>Rassemblement Démocratique du Peuple Camerounais (RDPC)</li>
+                </ul>
+                
+                <h3>Liens externes</h3>
+                <ul>
+                    <li><a href="https://www.worldenergy.org" target="_blank">World Energy Council</a></li>
+                    <li><a href="https://mincommerce.gov.cm" target="_blank">Ministère du Commerce du Cameroun</a></li>
+                    <li><a href="https://www.csph.cm" target="_blank">Site officiel de la CSPH</a></li>
+                </ul>
+                
             </div>
-            
-            <!-- Voir aussi -->
-            <h2 id="voir-aussi"><span class="mw-headline">Voir aussi</span></h2>
-            
-            <h3>Articles connexes</h3>
-            <ul>
-                <li>Caisse de Stabilisation des Prix des Hydrocarbures (CSPH)</li>
-                <li>Secteur pétrolier au Cameroun</li>
-                <li>SONARA (Société Nationale de Raffinage)</li>
-                <li>Ordre National de la Valeur (Cameroun)</li>
-                <li>Rassemblement Démocratique du Peuple Camerounais (RDPC)</li>
-            </ul>
-            
-            <h3>Liens externes</h3>
-            <ul>
-                <li><a href="https://www.worldenergy.org" target="_blank">World Energy Council</a></li>
-                <li><a href="https://mincommerce.gov.cm" target="_blank">Ministère du Commerce du Cameroun</a></li>
-                <li><a href="https://www.csph.cm" target="_blank">Site officiel de la CSPH</a></li>
-            </ul>
-            
         </div>
     </div>
-</div>
-```
-
 </body>
 </html>
