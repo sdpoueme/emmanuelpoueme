@@ -682,6 +682,23 @@
             margin: 30px 0;
             text-align: center;
         }
+        
+        .generation-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tree-nodes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            align-items: center;
+        }
 
         .tree-connections {
             stroke: var(--gray-400);
@@ -1988,9 +2005,44 @@
             tab.addEventListener('click', function() {
                 document.querySelectorAll('[data-people-tab]').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                // Filter logic would go here
+                
+                const filterValue = this.getAttribute('data-people-tab');
+                filterPeopleByGeneration(filterValue);
             });
         });
+
+        // Filter people by generation
+        function filterPeopleByGeneration(filter) {
+            if (!familyData || !familyData.families) return;
+            
+            const allPeopleGrid = document.querySelector('#allPeople');
+            if (!allPeopleGrid) return;
+            
+            let html = '';
+            let filteredPeople = familyData.families;
+            
+            if (filter !== 'all') {
+                if (filter === 'gen1') {
+                    filteredPeople = familyData.families.filter(p => p.generation === 'Génération 1');
+                } else if (filter === 'gen2-3') {
+                    filteredPeople = familyData.families.filter(p => 
+                        p.generation === 'Génération 2' || p.generation === 'Génération 3'
+                    );
+                } else if (filter === 'gen4') {
+                    filteredPeople = familyData.families.filter(p => p.generation === 'Génération 4');
+                } else if (filter === 'gen5') {
+                    filteredPeople = familyData.families.filter(p => p.generation === 'Génération 5');
+                } else if (filter === 'gen6') {
+                    filteredPeople = familyData.families.filter(p => p.generation === 'Génération 6' || p.generation === 'Génération 7');
+                }
+            }
+            
+            filteredPeople.forEach(person => {
+                html += generatePersonCard(person);
+            });
+            
+            allPeopleGrid.innerHTML = html || '<p style="text-align: center; padding: 40px; color: var(--gray-500);">Aucune personne dans cette génération</p>';
+        }
 
         // Filter chips
         document.querySelectorAll('.filter-chip').forEach(chip => {
@@ -2001,12 +2053,81 @@
             });
         });
 
+        // Sort people functionality
+        const sortPeopleSelect = document.getElementById('sortPeople');
+        if (sortPeopleSelect) {
+            sortPeopleSelect.addEventListener('change', function() {
+                const sortBy = this.value;
+                sortPeople(sortBy);
+            });
+        }
+
+        // Sort people by various criteria
+        function sortPeople(sortBy) {
+            if (!familyData || !familyData.families) return;
+            
+            const allPeopleGrid = document.querySelector('#allPeople');
+            if (!allPeopleGrid) return;
+            
+            let sortedPeople = [...familyData.families];
+            
+            if (sortBy === 'name') {
+                sortedPeople.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortBy === 'generation') {
+                const genOrder = {
+                    'Génération 1': 1, 'Génération 2': 2, 'Génération 3': 3,
+                    'Génération 4': 4, 'Génération 5': 5, 'Génération 6': 6, 'Génération 7': 7
+                };
+                sortedPeople.sort((a, b) => {
+                    const genA = genOrder[a.generation] || 99;
+                    const genB = genOrder[b.generation] || 99;
+                    return genA - genB;
+                });
+            } else if (sortBy === 'birth') {
+                sortedPeople.sort((a, b) => {
+                    const yearA = a.born || a.dates || '9999';
+                    const yearB = b.born || b.dates || '9999';
+                    return yearA.localeCompare(yearB);
+                });
+            } else if (sortBy === 'location') {
+                sortedPeople.sort((a, b) => {
+                    const locA = a.birthPlace || '';
+                    const locB = b.birthPlace || '';
+                    return locA.localeCompare(locB);
+                });
+            }
+            
+            let html = '';
+            sortedPeople.forEach(person => {
+                html += generatePersonCard(person);
+            });
+            
+            allPeopleGrid.innerHTML = html;
+        }
+
         // Search functionality
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            // Search logic would go here
-            console.log('Searching for:', searchTerm);
+            
+            if (!familyData || !familyData.families) return;
+            
+            const allPeopleGrid = document.querySelector('#allPeople');
+            if (!allPeopleGrid) return;
+            
+            let html = '';
+            const filteredPeople = familyData.families.filter(person => {
+                return person.name.toLowerCase().includes(searchTerm) ||
+                       (person.ndap && person.ndap.toLowerCase().includes(searchTerm)) ||
+                       (person.birthPlace && person.birthPlace.toLowerCase().includes(searchTerm)) ||
+                       (person.occupation && person.occupation.toLowerCase().includes(searchTerm));
+            });
+            
+            filteredPeople.forEach(person => {
+                html += generatePersonCard(person);
+            });
+            
+            allPeopleGrid.innerHTML = html || '<p style="text-align: center; padding: 40px; color: var(--gray-500);">Aucune personne trouvée</p>';
         });
 
         // Modal functions
@@ -2216,7 +2337,7 @@
             if (!treeContainer) return;
             
             let html = '';
-            familyData.generations.forEach(gen => {
+            familyData.generations.forEach((gen, genIndex) => {
                 html += `<div class="tree-level">
                     <div class="generation-label">Génération ${gen.level} (${gen.year})</div>
                     <div class="tree-nodes">`;
@@ -2239,6 +2360,18 @@
                 });
                 
                 html += `</div></div>`;
+                
+                // Add connector lines between generations
+                if (genIndex < familyData.generations.length - 1) {
+                    html += `
+                        <div style="height: 40px; position: relative; display: flex; justify-content: center; align-items: center;">
+                            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                                <line x1="50%" y1="0" x2="50%" y2="100%" 
+                                      stroke="var(--gray-300)" stroke-width="2" stroke-dasharray="4,4"/>
+                            </svg>
+                        </div>
+                    `;
+                }
             });
             
             treeContainer.innerHTML = html;
@@ -2248,27 +2381,47 @@
         function renderPeopleCards() {
             if (!familyData || !familyData.families) return;
             
-            const peopleGrid = document.querySelector('.people-grid');
-            if (!peopleGrid) return;
+            // Render featured people (homepage)
+            const featuredGrid = document.querySelector('#featuredPeople');
+            if (featuredGrid) {
+                let featuredHtml = '';
+                // Show only key people for featured section
+                const keyPeople = familyData.families.filter(p => 
+                    p.highlight || p.role === 'PATRIARCHE' || p.role === 'HÉRITIER' || p.status === 'Futur Ta\'a fieu'
+                ).slice(0, 6);
+                
+                keyPeople.forEach(person => {
+                    featuredHtml += generatePersonCard(person);
+                });
+                featuredGrid.innerHTML = featuredHtml;
+            }
             
-            let html = '';
-            familyData.families.forEach(person => {
-                html += `
-                    <div class="person-card" onclick="openPersonModal('${person.id}')">
-                        <div class="person-header">
-                            <h3>${person.name}</h3>
-                            <p class="person-role">${person.role || person.generation}</p>
-                        </div>
-                        <div class="person-info">
-                            ${person.dates ? `<p><i class="fas fa-calendar"></i> ${person.dates}</p>` : ''}
-                            ${person.born ? `<p><i class="fas fa-birthday-cake"></i> Né: ${person.born}</p>` : ''}
-                            ${person.birthPlace ? `<p><i class="fas fa-map-marker-alt"></i> ${person.birthPlace}</p>` : ''}
-                        </div>
+            // Render all people (people tab)
+            const allPeopleGrid = document.querySelector('#allPeople');
+            if (allPeopleGrid) {
+                let allHtml = '';
+                familyData.families.forEach(person => {
+                    allHtml += generatePersonCard(person);
+                });
+                allPeopleGrid.innerHTML = allHtml;
+            }
+        }
+
+        // Generate a person card HTML
+        function generatePersonCard(person) {
+            return `
+                <div class="person-card" onclick="openPersonModal('${person.id}')">
+                    <div class="person-header">
+                        <h3>${person.name}</h3>
+                        <p class="person-role">${person.role || person.generation}</p>
                     </div>
-                `;
-            });
-            
-            peopleGrid.innerHTML = html;
+                    <div class="person-info">
+                        ${person.dates ? `<p><i class="fas fa-calendar"></i> ${person.dates}</p>` : ''}
+                        ${person.born ? `<p><i class="fas fa-birthday-cake"></i> Né: ${person.born}</p>` : ''}
+                        ${person.birthPlace ? `<p><i class="fas fa-map-marker-alt"></i> ${person.birthPlace}</p>` : ''}
+                    </div>
+                </div>
+            `;
         }
 
         // Render locations cards
