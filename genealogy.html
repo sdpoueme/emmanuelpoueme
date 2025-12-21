@@ -2165,55 +2165,6 @@
             modalBody.innerHTML = html;
             modal.style.display = 'flex';
         }
-            if (person.generation) {
-                html += `<div class="detail-item"><div class="detail-label">Génération</div><div class="detail-value">${person.generation}</div></div>`;
-            }
-            if (person.birthPlace) {
-                html += `<div class="detail-item"><div class="detail-label">Lieu de naissance</div><div class="detail-value">${person.birthPlace}</div></div>`;
-            }
-            
-            html += '</div></div>';
-            
-            if (person.spouses || person.spouse) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-heart"></i> Famille</div>';
-                html += '<div class="detail-grid">';
-                
-                if (person.spouses) {
-                    html += `<div class="detail-item"><div class="detail-label">Épouses</div><div class="detail-value">${person.spouses.join('<br>')}</div></div>`;
-                } else if (person.spouse) {
-                    html += `<div class="detail-item"><div class="detail-label">Épouse</div><div class="detail-value">${person.spouse}</div></div>`;
-                }
-                
-                if (person.children) {
-                    html += `<div class="detail-item"><div class="detail-label">Enfants</div><div class="detail-value">${person.children}</div></div>`;
-                }
-                
-                html += '</div></div>';
-            }
-            
-            if (person.occupation || person.titles) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-briefcase"></i> Activités et Titres</div>';
-                
-                if (person.occupation) {
-                    html += `<p style="margin-bottom: 12px;"><strong>Profession:</strong> ${person.occupation}</p>`;
-                }
-                
-                if (person.titles) {
-                    html += '<p><strong>Titres et fonctions:</strong></p><ul style="margin-left: 20px; margin-top: 8px;">';
-                    person.titles.forEach(title => {
-                        html += `<li style="margin-bottom: 4px;">${title}</li>`;
-                    });
-                    html += '</ul>';
-                }
-                
-                html += '</div>';
-            }
-            
-            modalBody.innerHTML = html;
-            modal.classList.add('active');
-        }
 
         function closeModal() {
             document.getElementById('personModal').style.display = 'none';
