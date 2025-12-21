@@ -6,153 +6,182 @@
     <title>Arbre Généalogique - Tinang Joseph</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #333; line-height: 1.6; min-height: 100vh; }
         
-        .header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 30px; text-align: center; }
-        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        .header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 36px; margin-bottom: 10px; font-weight: 700; }
+        .header p { font-size: 16px; opacity: 0.9; }
         
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
         
-        .tabs { background: white; display: flex; gap: 10px; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .tabs button { padding: 10px 20px; border: none; background: #eee; cursor: pointer; border-radius: 4px; font-weight: bold; }
-        .tabs button.active { background: #2d5016; color: white; }
+        .nav { background: white; display: flex; gap: 15px; padding: 20px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex-wrap: wrap; }
+        .nav-btn { padding: 12px 24px; border: none; background: #f0f0f0; cursor: pointer; border-radius: 8px; font-weight: 600; transition: all 0.3s; font-size: 14px; }
+        .nav-btn:hover { background: #e0e0e0; transform: translateY(-2px); }
+        .nav-btn.active { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; }
         
-        .content { display: none; }
-        .content.active { display: block; }
+        .tab { display: none; }
+        .tab.active { display: block; }
         
-        .tree-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .generation { margin: 30px 0; text-align: center; }
-        .generation-title { font-size: 14px; color: #666; margin-bottom: 15px; text-transform: uppercase; }
-        .generation-members { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; align-items: center; min-height: 80px; }
-        .member { background: white; border: 2px solid #ddd; padding: 12px 15px; min-width: 140px; text-align: center; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
-        .member:hover { border-color: #2d5016; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-2px); }
-        .member.patriarch { border-color: #d97706; background: rgba(217, 119, 6, 0.05); }
-        .member.heir { border-color: #059669; background: rgba(5, 150, 105, 0.05); }
-        .member-name { font-weight: bold; color: #111; margin-bottom: 4px; font-size: 13px; }
-        .member-dates { font-size: 11px; color: #666; }
-        .divider { color: #ccc; font-size: 16px; margin: 10px 0; }
+        .search { background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .search input { width: 100%; padding: 12px 20px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; transition: border-color 0.3s; }
+        .search input:focus { outline: none; border-color: #2d5016; }
         
-        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
-        .card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-2px); }
-        .card-header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 15px; }
-        .card-title { font-weight: bold; margin-bottom: 4px; }
-        .card-subtitle { font-size: 12px; opacity: 0.9; }
-        .card-body { padding: 15px; font-size: 13px; }
-        .card-item { margin-bottom: 6px; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+        .card-header { border-bottom: 2px solid #f0f0f0; padding-bottom: 12px; margin-bottom: 12px; }
+        .card-title { font-size: 18px; font-weight: 700; color: #2d5016; margin-bottom: 4px; }
+        .card-subtitle { font-size: 14px; color: #666; }
+        .card-body { font-size: 14px; }
+        .card-item { margin: 8px 0; }
+        .card-item strong { color: #555; }
         
-        .search { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
-        .search input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        .tree { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow-x: auto; }
+        .generation { margin: 40px 0; text-align: center; }
+        .generation-title { font-size: 14px; color: #666; margin-bottom: 20px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        .generation-members { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; align-items: center; }
+        .tree-node { background: white; border: 3px solid #2d5016; border-radius: 12px; padding: 15px 20px; min-width: 150px; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .tree-node:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); border-color: #d97706; }
+        .tree-node.patriarch { border-color: #d97706; border-width: 4px; background: linear-gradient(135deg, #fff9e6, #ffffff); }
+        .tree-node.heir { border-color: #059669; border-width: 3px; background: linear-gradient(135deg, #e6fff9, #ffffff); }
+        .node-name { font-weight: 700; font-size: 15px; color: #2d5016; margin-bottom: 4px; }
+        .node-dates { font-size: 12px; color: #666; }
+        .node-role { font-size: 11px; color: #d97706; margin-top: 4px; font-weight: 600; }
         
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
-        .modal.show { display: flex; }
-        .modal-content { background: white; border-radius: 8px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
-        .modal-header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .modal-close { background: rgba(255,255,255,0.3); border: none; color: white; font-size: 24px; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; }
-        .modal-body { padding: 20px; }
-        .modal-section { margin-bottom: 20px; }
-        .modal-section-title { font-weight: bold; color: #2d5016; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #2d5016; }
-        .modal-section p { margin-bottom: 6px; font-size: 13px; }
-        .modal-section ul { margin-left: 20px; font-size: 13px; }
-        .modal-section li { margin-bottom: 4px; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+        .modal.active { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: white; border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .modal-header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 20px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; align-items: center; }
+        .modal-title { font-size: 22px; font-weight: 700; }
+        .modal-close { background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s; }
+        .modal-close:hover { background: rgba(255,255,255,0.2); }
+        .modal-body { padding: 30px; }
+        .modal-section { margin-bottom: 24px; }
+        .modal-section-title { font-size: 16px; font-weight: 700; color: #2d5016; margin-bottom: 12px; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }
+        .modal-item { margin: 8px 0; font-size: 14px; }
+        .modal-item strong { color: #555; }
         
-        .loading { text-align: center; padding: 40px; color: #666; }
-        .error { background: #fee; border: 1px solid #fcc; color: #c33; padding: 15px; margin: 20px; border-radius: 4px; }
+        .footer { background: #2d5016; color: white; text-align: center; padding: 30px 20px; margin-top: 60px; }
+        .footer p { margin: 8px 0; }
+        
+        .loading { text-align: center; padding: 40px; color: #666; font-size: 16px; }
+        .error { background: #fee; color: #c00; padding: 20px; border-radius: 8px; margin: 20px; text-align: center; }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 28px; }
+            .cards { grid-template-columns: 1fr; }
+            .nav { flex-direction: column; }
+            .nav-btn { width: 100%; }
+            .tree { padding: 20px; }
+            .generation-members { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>🌳 Arbre Généalogique</h1>
-    <p>Famille Ta'a Fieu Tagni Tinang Joseph • 1770-2025</p>
+    <h1>🌳 Arbre Généalogique Familial</h1>
+    <p>Ta'a Fieu Tagni Tinang Joseph • Batchingou • Foumbot • Balengou</p>
 </div>
 
 <div class="container">
-    <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('overview')">📋 Aperçu</button>
-        <button class="tab-btn" onclick="showTab('generations')">🌳 Générations</button>
-        <button class="tab-btn" onclick="showTab('people')">👥 Personnes</button>
-        <button class="tab-btn" onclick="showTab('locations')">📍 Localités</button>
+    <div class="nav">
+        <button class="nav-btn active" onclick="switchTab('overview')">📋 Aperçu</button>
+        <button class="nav-btn" onclick="switchTab('generations')">🌳 Générations</button>
+        <button class="nav-btn" onclick="switchTab('people')">👥 Personnes</button>
+        <button class="nav-btn" onclick="switchTab('locations')">📍 Localités</button>
     </div>
 
-    <div id="overview" class="content active">
-        <div class="search"><input type="text" onkeyup="filterTab('overview')" placeholder="🔍 Chercher..."></div>
-        <div class="cards" id="overviewCards"><div class="loading">Chargement...</div></div>
+    <div id="overview" class="tab active">
+        <div class="search">
+            <input type="text" id="searchOverview" placeholder="🔍 Chercher une personne..." onkeyup="filterCards('overview')">
+        </div>
+        <div class="cards" id="overviewCards"></div>
     </div>
 
-    <div id="generations" class="content">
-        <div class="tree-container" id="generationsTree"><div class="loading">Chargement...</div></div>
+    <div id="generations" class="tab">
+        <div class="tree" id="generationsTree">
+            <div class="loading">Chargement de l'arbre généalogique...</div>
+        </div>
     </div>
 
-    <div id="people" class="content">
-        <div class="search"><input type="text" onkeyup="filterTab('people')" placeholder="🔍 Chercher..."></div>
-        <div class="cards" id="peopleCards"><div class="loading">Chargement...</div></div>
+    <div id="people" class="tab">
+        <div class="search">
+            <input type="text" id="searchPeople" placeholder="🔍 Chercher une personne..." onkeyup="filterCards('people')">
+        </div>
+        <div class="cards" id="peopleCards"></div>
     </div>
 
-    <div id="locations" class="content">
-        <div class="cards" id="locationsCards"><div class="loading">Chargement...</div></div>
+    <div id="locations" class="tab">
+        <div class="cards" id="locationsCards"></div>
     </div>
 </div>
 
-<div id="modal" class="modal" onclick="if(event.target.id==='modal') closeModal()">
-    <div class="modal-content">
+<div id="personModal" class="modal" onclick="if(event.target.id==='personModal') closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
         <div class="modal-header">
-            <div id="modalTitle" style="font-weight: bold;">Titre</div>
-            <button class="modal-close" onclick="closeModal()">×</button>
+            <div class="modal-title" id="modalTitle">Titre</div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
         </div>
         <div class="modal-body" id="modalBody">Contenu</div>
     </div>
 </div>
 
-<script>
-console.log("Script démarré");
+<div class="footer">
+    <p>Généalogie familiale • 1770-2025 • 7 générations • 100+ membres</p>
+    <p style="margin-top: 12px; font-size: 13px;">"La famille est la source de vie et de bonheur"</p>
+</div>
 
+<script>
+// Global data
 let familyData = null;
 
-// Charger les données JSON
+// Load JSON data
 async function loadData() {
+    console.log('Script démarré');
+    console.log('Chargement du fichier family-data-complete.json...');
     try {
-        console.log("Chargement du fichier family-data.json...");
-        const response = await fetch('family-data.json');
+        const response = await fetch('family-data-complete.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         familyData = await response.json();
-        console.log("✓ Données chargées:", familyData);
+        console.log('✓ Données chargées:', familyData);
+        console.log('Nombre de familles:', familyData.families.length);
+        console.log('Nombre de générations:', familyData.generations.length);
         renderAll();
     } catch (error) {
-        console.error("Erreur lors du chargement:", error);
-        document.getElementById('overviewCards').innerHTML = '<div class="error">Erreur: Impossible de charger family-data.json</div>';
+        console.error('Erreur lors du chargement:', error);
+        document.getElementById('overviewCards').innerHTML = '<div class="error">Erreur: Impossible de charger family-data-complete.json. Assurez-vous que le fichier est dans le même dossier que genealogy.html.</div>';
+        document.getElementById('generationsTree').innerHTML = '<div class="error">Erreur de chargement des données.</div>';
     }
 }
 
-// Afficher un onglet
-function showTab(tabName) {
-    console.log("Affichage onglet:", tabName);
-    
-    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    
+// Switch tabs
+function switchTab(tabName) {
+    console.log('Affichage onglet:', tabName);
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
     document.getElementById(tabName).classList.add('active');
     event.target.classList.add('active');
 }
 
-// Rendre tout
+// Render all sections
 function renderAll() {
-    console.log("renderAll() appelé");
+    console.log('renderAll() appelé');
     renderOverview();
     renderGenerations();
     renderPeople();
     renderLocations();
 }
 
-// Aperçu - 3 personnes principales
+// Render Overview (3 main people)
 function renderOverview() {
-    console.log("renderOverview()");
+    console.log('renderOverview()');
     const container = document.getElementById('overviewCards');
     if (!familyData || !familyData.families) return;
     
-    const featured = familyData.families.slice(0, 3);
+    const featured = familyData.families.slice(0, 5);
     container.innerHTML = featured.map(person => `
         <div class="card" onclick="showPerson('${person.id}')">
             <div class="card-header">
@@ -169,50 +198,51 @@ function renderOverview() {
     `).join('');
 }
 
-// Générations - Arbre visuel
+// Render Generations (Visual tree)
 function renderGenerations() {
-    console.log("renderGenerations()");
+    console.log('renderGenerations()');
     const container = document.getElementById('generationsTree');
     if (!familyData || !familyData.generations) return;
     
     let html = '';
-    familyData.generations.forEach((gen, idx) => {
+    familyData.generations.forEach(gen => {
         html += `<div class="generation">
             <div class="generation-title">Génération ${gen.level} (${gen.year})</div>
             <div class="generation-members">`;
         
         gen.members.forEach(member => {
-            const classes = [];
-            if (member.id === 'tinang-joseph') classes.push('patriarch');
-            if (member.id === 'poueme-emmanuel') classes.push('heir');
+            const classes = ['tree-node'];
+            if (member.id === 'tinang-joseph' || member.highlight) classes.push('patriarch');
+            if (member.id === 'poueme-emmanuel' || member.role === 'Héritier') classes.push('heir');
             
             const clickHandler = member.id ? `onclick="showPerson('${member.id}')"` : '';
             
-            html += `<div class="member ${classes.join(' ')}" ${clickHandler}>
-                <div class="member-name">${member.name}</div>
-                ${member.dates ? `<div class="member-dates">${member.dates}</div>` : ''}
-                ${member.location ? `<div class="member-dates">📍 ${member.location}</div>` : ''}
-            </div>`;
+            html += `
+                <div class="${classes.join(' ')}" ${clickHandler}>
+                    <div class="node-name">${member.name}</div>
+                    ${member.dates ? `<div class="node-dates">${member.dates}</div>` : ''}
+                    ${member.role ? `<div class="node-role">${member.role}</div>` : ''}
+                    ${member.status ? `<div class="node-role">${member.status}</div>` : ''}
+                    ${member.location ? `<div class="node-dates">${member.location}</div>` : ''}
+                </div>
+            `;
         });
         
-        html += `</div>`;
-        if (idx < familyData.generations.length - 1) {
-            html += `<div class="divider">↓</div>`;
-        }
-        html += `</div>`;
+        html += `</div></div>`;
     });
     
     container.innerHTML = html;
+    console.log('Arbre généalogique rendu');
 }
 
-// Personnes - Toutes les personnes
+// Render People (All family members)
 function renderPeople() {
-    console.log("renderPeople()");
+    console.log('renderPeople()');
     const container = document.getElementById('peopleCards');
     if (!familyData || !familyData.families) return;
     
     container.innerHTML = familyData.families.map(person => `
-        <div class="card" onclick="showPerson('${person.id}')">
+        <div class="card person-card" onclick="showPerson('${person.id}')">
             <div class="card-header">
                 <div class="card-title">${person.name}</div>
                 <div class="card-subtitle">${person.role || person.generation}</div>
@@ -220,121 +250,121 @@ function renderPeople() {
             <div class="card-body">
                 ${person.dates ? `<div class="card-item"><strong>Dates:</strong> ${person.dates}</div>` : ''}
                 ${person.born ? `<div class="card-item"><strong>Né:</strong> ${person.born}</div>` : ''}
-                ${person.generation ? `<div class="card-item"><strong>Génération:</strong> ${person.generation}</div>` : ''}
-                ${person.birthPlace ? `<div class="card-item"><strong>Lieu:</strong> ${person.birthPlace}</div>` : ''}
+                ${person.birthPlace ? `<div class="card-item"><strong>Naissance:</strong> ${person.birthPlace}</div>` : ''}
+                ${person.residence ? `<div class="card-item"><strong>Résidence:</strong> ${person.residence}</div>` : ''}
+                ${person.occupation ? `<div class="card-item"><strong>Profession:</strong> ${person.occupation}</div>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-// Localités
+// Render Locations
 function renderLocations() {
-    console.log("renderLocations()");
+    console.log('renderLocations()');
     const container = document.getElementById('locationsCards');
     if (!familyData || !familyData.locations) return;
     
     container.innerHTML = familyData.locations.map(location => `
         <div class="card">
             <div class="card-header">
-                <div class="card-title">📍 ${location.name}</div>
-                <div class="card-subtitle">${location.region}</div>
+                <div class="card-title">${location.name}</div>
+                <div class="card-subtitle">${location.region || ''}</div>
             </div>
             <div class="card-body">
                 ${location.quarter ? `<div class="card-item"><strong>Quartier:</strong> ${location.quarter}</div>` : ''}
                 ${location.established ? `<div class="card-item"><strong>Établi:</strong> ${location.established}</div>` : ''}
                 ${location.founder ? `<div class="card-item"><strong>Fondateur:</strong> ${location.founder}</div>` : ''}
+                ${location.residents ? `<div class="card-item"><strong>Résidents:</strong> ${location.residents}</div>` : ''}
+                ${location.significance ? `<div class="card-item"><strong>Importance:</strong> ${location.significance}</div>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-// Afficher une personne dans la modal
+// Show person modal
 function showPerson(personId) {
-    console.log("showPerson():", personId);
-    
-    if (!familyData || !familyData.families) {
-        console.error("familyData n'est pas chargé");
-        return;
-    }
+    console.log('Affichage personne:', personId);
+    if (!familyData || !familyData.families) return;
     
     const person = familyData.families.find(p => p.id === personId);
     if (!person) {
-        console.error("Personne non trouvée:", personId);
+        console.error('Personne non trouvée:', personId);
         return;
     }
     
-    console.log("Personne trouvée:", person.name);
-    
-    const modal = document.getElementById('modal');
-    const title = document.getElementById('modalTitle');
-    const body = document.getElementById('modalBody');
-    
-    title.textContent = person.name;
+    document.getElementById('modalTitle').textContent = person.name;
     
     let html = '';
     
-    // Informations
+    // Informations générales
     html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">ℹ️ Informations</div>';
-    if (person.dates) html += `<p><strong>Dates:</strong> ${person.dates}</p>`;
-    if (person.born) html += `<p><strong>Né(e):</strong> ${person.born}</p>`;
-    if (person.generation) html += `<p><strong>Génération:</strong> ${person.generation}</p>`;
-    if (person.birthPlace) html += `<p><strong>Lieu de naissance:</strong> ${person.birthPlace}</p>`;
-    if (person.deathPlace) html += `<p><strong>Lieu de décès:</strong> ${person.deathPlace}</p>`;
+    html += '<div class="modal-section-title">ℹ️ Informations Générales</div>';
+    if (person.ndap) html += `<div class="modal-item"><strong>Ndap:</strong> ${person.ndap}</div>`;
+    if (person.dates) html += `<div class="modal-item"><strong>Dates:</strong> ${person.dates}</div>`;
+    if (person.born) html += `<div class="modal-item"><strong>Né:</strong> ${person.born}</div>`;
+    if (person.lifespan) html += `<div class="modal-item"><strong>Durée de vie:</strong> ${person.lifespan}</div>`;
+    if (person.generation) html += `<div class="modal-item"><strong>Génération:</strong> ${person.generation}</div>`;
+    if (person.birthPlace) html += `<div class="modal-item"><strong>Lieu de naissance:</strong> ${person.birthPlace}</div>`;
+    if (person.deathPlace) html += `<div class="modal-item"><strong>Lieu de décès:</strong> ${person.deathPlace}</div>`;
+    if (person.burialPlace) html += `<div class="modal-item"><strong>Lieu d'inhumation:</strong> ${person.burialPlace}</div>`;
+    if (person.residence) html += `<div class="modal-item"><strong>Résidence:</strong> ${person.residence}</div>`;
     html += '</div>';
     
     // Famille
-    if (person.spouse || person.spouses) {
+    if (person.father || person.mother || person.spouse || person.spouses || person.children) {
         html += '<div class="modal-section">';
         html += '<div class="modal-section-title">💍 Famille</div>';
-        
-        if (person.spouses) {
-            person.spouses.forEach(s => {
-                html += `<p><strong>${s.name}</strong>`;
-                if (s.dates) html += ` (${s.dates})`;
-                if (s.place) html += ` — ${s.place}`;
-                html += '</p>';
+        if (person.father) html += `<div class="modal-item"><strong>Père:</strong> ${person.father}</div>`;
+        if (person.mother) html += `<div class="modal-item"><strong>Mère:</strong> ${person.mother}</div>`;
+        if (person.spouse) html += `<div class="modal-item"><strong>Épouse:</strong> ${person.spouse}</div>`;
+        if (person.spouses && person.spouses.length) {
+            html += '<div class="modal-item"><strong>Épouses:</strong></div>';
+            person.spouses.forEach(sp => {
+                html += `<div class="modal-item" style="margin-left: 20px;">• ${sp.name}${sp.dates ? ' (' + sp.dates + ')' : ''}${sp.place ? ' - ' + sp.place : ''}</div>`;
+                if (sp.children && sp.children.length) {
+                    html += `<div class="modal-item" style="margin-left: 40px; font-size: 12px;">Enfants: ${sp.children.join(', ')}</div>`;
+                }
             });
-        } else if (person.spouse) {
-            html += `<p><strong>Épouse(s):</strong> ${person.spouse}</p>`;
         }
-        
-        if (person.children) html += `<p><strong>Enfants:</strong> ${person.children}</p>`;
-        if (person.childrenNames) {
-            html += '<p><strong>Noms des enfants:</strong></p><ul>';
-            person.childrenNames.forEach(name => {
-                html += `<li>${name}</li>`;
-            });
-            html += '</ul>';
+        if (person.children) html += `<div class="modal-item"><strong>Nombre d'enfants:</strong> ${person.children}</div>`;
+        if (person.childrenNames && person.childrenNames.length) {
+            html += `<div class="modal-item"><strong>Noms des enfants:</strong> ${person.childrenNames.join(', ')}</div>`;
         }
         html += '</div>';
     }
     
-    // Profession
-    if (person.occupation || person.titles || person.activities) {
+    // Profession & Titres
+    if (person.occupation || person.titles || person.workPlace || person.activities) {
         html += '<div class="modal-section">';
-        html += '<div class="modal-section-title">💼 Profession</div>';
-        if (person.occupation) html += `<p><strong>Métier:</strong> ${person.occupation}</p>`;
-        if (person.titles) {
-            html += '<p><strong>Titres:</strong></p><ul>';
-            person.titles.forEach(t => html += `<li>${t}</li>`);
-            html += '</ul>';
+        html += '<div class="modal-section-title">💼 Profession & Titres</div>';
+        if (person.occupation) html += `<div class="modal-item"><strong>Profession:</strong> ${person.occupation}</div>`;
+        if (person.workPlace) html += `<div class="modal-item"><strong>Lieu de travail:</strong> ${person.workPlace}</div>`;
+        if (person.titles && person.titles.length) {
+            html += '<div class="modal-item"><strong>Titres:</strong></div>';
+            person.titles.forEach(title => {
+                html += `<div class="modal-item" style="margin-left: 20px;">• ${title}</div>`;
+            });
         }
-        if (person.activities) {
-            html += '<p><strong>Activités:</strong></p><ul>';
-            person.activities.forEach(a => html += `<li>${a}</li>`);
-            html += '</ul>';
+        if (person.activities && person.activities.length) {
+            html += '<div class="modal-item"><strong>Activités:</strong></div>';
+            person.activities.forEach(activity => {
+                html += `<div class="modal-item" style="margin-left: 20px;">• ${activity}</div>`;
+            });
         }
         html += '</div>';
     }
     
     // Distinctions
-    if (person.awards) {
+    if (person.awards || person.succession || person.status) {
         html += '<div class="modal-section">';
         html += '<div class="modal-section-title">🏆 Distinctions</div>';
-        person.awards.forEach(award => {
-            html += `<p>⭐ ${award}</p>`;
-        });
+        if (person.awards && person.awards.length) {
+            person.awards.forEach(award => {
+                html += `<div class="modal-item">• ${award}</div>`;
+            });
+        }
+        if (person.succession) html += `<div class="modal-item"><strong>Succession:</strong> ${person.succession}</div>`;
+        if (person.status) html += `<div class="modal-item"><strong>Statut:</strong> ${person.status}</div>`;
         html += '</div>';
     }
     
@@ -342,46 +372,47 @@ function showPerson(personId) {
     if (person.notes) {
         html += '<div class="modal-section">';
         html += '<div class="modal-section-title">💭 Notes</div>';
-        html += `<p style="font-style: italic;">${person.notes}</p>`;
+        html += `<div class="modal-item">${person.notes}</div>`;
         html += '</div>';
     }
     
-    body.innerHTML = html;
-    modal.classList.add('show');
-    console.log("Modal affichée");
+    document.getElementById('modalBody').innerHTML = html;
+    document.getElementById('personModal').classList.add('active');
 }
 
-// Fermer la modal
+// Close modal
 function closeModal() {
-    console.log("closeModal()");
-    document.getElementById('modal').classList.remove('show');
+    document.getElementById('personModal').classList.remove('active');
 }
 
-// Filtrer les cartes
-function filterTab(tabName) {
-    const input = event.target.value.toLowerCase();
-    const containerId = tabName === 'overview' ? 'overviewCards' : tabName === 'people' ? 'peopleCards' : 'locationsCards';
-    const cards = document.getElementById(containerId).querySelectorAll('.card');
+// Filter cards
+function filterCards(section) {
+    const searchId = section === 'overview' ? 'searchOverview' : 'searchPeople';
+    const cardsId = section === 'overview' ? 'overviewCards' : 'peopleCards';
+    
+    const searchTerm = document.getElementById(searchId).value.toLowerCase();
+    const cards = document.querySelectorAll(`#${cardsId} .card`);
     
     cards.forEach(card => {
-        if (input === '' || card.textContent.toLowerCase().includes(input)) {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            card.style.display = 'block';
             card.style.opacity = '1';
-            card.style.pointerEvents = 'auto';
         } else {
             card.style.opacity = '0.3';
-            card.style.pointerEvents = 'none';
         }
     });
 }
 
-// Fermer avec Escape
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
+// Close modal on Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
 });
 
-// Au chargement de la page
-console.log("DOM loaded, starting loadData()");
-loadData();
+// Initialize on page load
+window.addEventListener('DOMContentLoaded', loadData);
 </script>
 
 </body>
