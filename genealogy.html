@@ -1938,6 +1938,72 @@
     </footer>
 
     <script>
+        // ============ COMPREHENSIVE FAMILY DATABASE ============
+        const familyDatabase = {
+            'tinang-joseph': {
+                name: 'Ta\'a Fieu Tagni Tinang Joseph',
+                ndap: 'Ta\'a Fieu',
+                dates: '1898 - 2001',
+                lifespan: '103 ans',
+                generation: 'Génération 4 - Patriarche',
+                birthPlace: 'Batchingou (Toukou)',
+                birthYear: 1898,
+                deathPlace: 'Hôpital Protestant Njissé, Foumban',
+                deathDate: '1er août 2001',
+                burialPlace: 'Batchingou (Toukou), Quartier Toukou',
+                spouses: [
+                    { name: 'Megni Ngongang Rebecca', dates: '1906-1998', place: 'Bamena', children: ['Ngoughou Théodore', 'Poueme Emmanuel'] },
+                    { name: 'Mekeze Emilienne', place: 'Batchingou', children: [] },
+                    { name: 'Megni Rachel', place: 'Feugou', children: ['Datouo David', 'Ngnoumegni Elise', 'Langue Samuel', 'Ndjankep Lucienne', 'Pangwa Maryse', 'Lélé Jean', 'Kouakep Valerie'] }
+                ],
+                totalChildren: 9,
+                occupation: 'Commerçant ambulant, Agriculteur (caféiculture), Notable de la cour royale',
+                activities: [
+                    'Commerce ambulant aux marchés du Ndé et de l\'Ouest',
+                    'Plantations de café à Foumbot',
+                    'Plantations de raphia à Batchingou',
+                    'Membre des associations culturelles: Meyeb, Kep, Majong Ladi, Dadji'
+                ],
+                titles: [
+                    'Ta\'a fieu (Père du chef)',
+                    'Chef de la communauté Batchingou de Foumbot',
+                    'Adjoint au chef du quartier Company',
+                    'Notable de la cour royale de Foumbot',
+                    'Assesseur à la Mairie de Foumbot',
+                    'Collecteur d\'impôts',
+                    'Chef de 3ème degré du village Company'
+                ],
+                awards: ['Médaille du mérite camerounais'],
+                notes: 'Patriarche fondamental, a rassemblé la famille malgré l\'indépendance et le maquis'
+            },
+            'poueme-emmanuel': {
+                name: 'Poueme Emmanuel',
+                ndap: 'Tasseuh',
+                born: 1950,
+                generation: 'Génération 5 - Héritier',
+                birthPlace: 'Batchingou (Toukou)',
+                residence: 'Batchingou (Toukou)',
+                spouse: 'Ngankeu Tooua Adeline Paule (Balengou)',
+                children: 4,
+                succession: 'Héritier désigné en 2001',
+                title: 'Ta\'a fieu Tinang Joseph',
+                notes: 'Fils du Patriarche, responsable du rassemblement familial et de la préservation de l\'héritage'
+            },
+            'megni-rebecca': {
+                name: 'Megni Ngongang Rebecca',
+                dates: '1906 - 1998',
+                lifespan: '92 ans',
+                generation: 'Génération 4 - Première épouse',
+                birthPlace: 'Bamena',
+                deathPlace: 'Foumbot',
+                burialPlace: 'Batchingou (Toukou)',
+                spouse: 'Ta\'a Fieu Tagni Tinang Joseph',
+                children: 2,
+                activities: ['Chrétienne évangélique', 'Groupe Tambour', 'Membre UNC'],
+                notes: 'Femme de grande foi, point focal du foyer familial, mère aimante'
+            }
+        };
+
         // Tab Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1991,106 +2057,127 @@
             const modalTitle = document.getElementById('modalPersonName');
             const modalBody = document.getElementById('modalBody');
             
-            // Example data - would come from a data structure
-            const personData = {
-                patriarch: {
-                    name: 'Ta\'a Fieu Tagni Tinang Joseph',
-                    dates: '1898 - 2001',
-                    lifespan: '103 ans',
-                    generation: 'Génération 4',
-                    birthPlace: 'Batchingou (Toukou)',
-                    deathPlace: 'Hôpital Protestant Njissé, Foumban',
-                    burialPlace: 'Batchingou (Toukou)',
-                    spouses: ['Megni Ngongang Rebecca (1906-1998)', 'Mekeze Emilienne', 'Megni Rachel'],
-                    children: 9,
-                    occupation: 'Commerçant, Agriculteur, Notable',
-                    titles: ['Ta\'a fieu (Père du chef)', 'Chef de communauté Batchingou (Foumbot)', 'Notable de la cour royale'],
-                    awards: ['Médaille du mérite camerounais']
-                },
-                heir: {
-                    name: 'Poueme Emmanuel',
-                    dates: 'Né en 1950',
-                    generation: 'Génération 5',
-                    birthPlace: 'Batchingou',
-                    residence: 'Batchingou',
-                    spouse: 'Ngankeu Tooua Adeline Paule (Balengou)',
-                    children: 4,
-                    succession: '2001',
-                    title: 'Ta\'a fieu Tinang Joseph (Héritier désigné)'
-                },
-                grandmother: {
-                    name: 'Megni Ngongang Rebecca',
-                    dates: '1906 - 1998',
-                    lifespan: '92 ans',
-                    generation: 'Génération 4',
-                    birthPlace: 'Bamena',
-                    deathPlace: 'Foumbot',
-                    burialPlace: 'Batchingou',
-                    father: 'Ta\'a Nanwou (Bamena)',
-                    spouse: 'Ta\'a Fieu Tagni Tinang Joseph',
-                    children: 2,
-                    activities: ['Chrétienne évangélique', 'Groupe Tambour', 'Membre UNC']
-                }
-            };
-            
-            const person = personData[personId];
-            if (!person) return;
+            const person = familyDatabase[personId];
+            if (!person) {
+                modalBody.innerHTML = '<p style="color: var(--gray-500);"><i class="fas fa-info-circle"></i> Informations détaillées à venir...</p>';
+                modal.classList.add('active');
+                return;
+            }
             
             modalTitle.textContent = person.name;
             
-            let html = '<div class="detail-section">';
+            let html = '';
+            
+            // General Info Section
+            html += '<div class="detail-section">';
             html += '<div class="detail-section-title"><i class="fas fa-info-circle"></i> Informations Générales</div>';
             html += '<div class="detail-grid">';
             
-            if (person.dates) {
-                html += `<div class="detail-item"><div class="detail-label">Dates</div><div class="detail-value">${person.dates}</div></div>`;
-            }
-            if (person.lifespan) {
-                html += `<div class="detail-item"><div class="detail-label">Longévité</div><div class="detail-value">${person.lifespan}</div></div>`;
-            }
-            if (person.generation) {
-                html += `<div class="detail-item"><div class="detail-label">Génération</div><div class="detail-value">${person.generation}</div></div>`;
-            }
-            if (person.birthPlace) {
-                html += `<div class="detail-item"><div class="detail-label">Lieu de naissance</div><div class="detail-value">${person.birthPlace}</div></div>`;
-            }
+            if (person.dates) html += `<div class="detail-item"><div class="detail-label">Dates</div><div class="detail-value">${person.dates}</div></div>`;
+            if (person.born) html += `<div class="detail-item"><div class="detail-label">Né(e)</div><div class="detail-value">${person.born}</div></div>`;
+            if (person.lifespan) html += `<div class="detail-item"><div class="detail-label">Longévité</div><div class="detail-value">${person.lifespan}</div></div>`;
+            if (person.generation) html += `<div class="detail-item"><div class="detail-label">Génération</div><div class="detail-value">${person.generation}</div></div>`;
+            if (person.ndap) html += `<div class="detail-item"><div class="detail-label">Ndap</div><div class="detail-value">${person.ndap}</div></div>`;
+            if (person.birthPlace) html += `<div class="detail-item"><div class="detail-label">Lieu de naissance</div><div class="detail-value">${person.birthPlace}</div></div>`;
+            if (person.residence) html += `<div class="detail-item"><div class="detail-label">Résidence</div><div class="detail-value">${person.residence}</div></div>`;
+            if (person.deathPlace) html += `<div class="detail-item"><div class="detail-label">Lieu de décès</div><div class="detail-value">${person.deathPlace}</div></div>`;
+            if (person.burialPlace) html += `<div class="detail-item"><div class="detail-label">Lieu d'inhumation</div><div class="detail-value">${person.burialPlace}</div></div>`;
             
             html += '</div></div>';
             
+            // Family Section
             if (person.spouses || person.spouse) {
                 html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-heart"></i> Famille</div>';
-                html += '<div class="detail-grid">';
+                html += '<div class="detail-section-title"><i class="fas fa-heart"></i> Unions Matrimoniales</div>';
                 
-                if (person.spouses) {
-                    html += `<div class="detail-item"><div class="detail-label">Épouses</div><div class="detail-value">${person.spouses.join('<br>')}</div></div>`;
+                if (person.spouses && Array.isArray(person.spouses)) {
+                    person.spouses.forEach((s, idx) => {
+                        html += `<div style="margin-bottom: 10px; padding: 10px; background: var(--gray-50); border-radius: 4px;">`;
+                        html += `<strong>${s.name}</strong>`;
+                        if (s.dates) html += ` <span style="color: var(--gray-600);">(${s.dates})</span>`;
+                        if (s.place) html += ` <span style="color: var(--gray-600);">— ${s.place}</span>`;
+                        if (s.children && s.children.length > 0) {
+                            html += `<div style="margin-top: 6px; font-size: 13px; color: var(--gray-700);">Enfants: ${s.children.join(', ')}</div>`;
+                        }
+                        html += `</div>`;
+                    });
                 } else if (person.spouse) {
-                    html += `<div class="detail-item"><div class="detail-label">Épouse</div><div class="detail-value">${person.spouse}</div></div>`;
+                    html += `<p><strong>Épouse:</strong> ${person.spouse}`;
+                    if (person.spousePlace) html += ` <span style="color: var(--gray-600);">(${person.spousePlace})</span>`;
+                    html += '</p>';
                 }
                 
-                if (person.children) {
-                    html += `<div class="detail-item"><div class="detail-label">Enfants</div><div class="detail-value">${person.children}</div></div>`;
+                if (person.children || person.totalChildren) {
+                    html += `<p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gray-200);"><strong>Enfants:</strong> ${person.children || person.totalChildren}</p>`;
                 }
                 
+                html += '</div>';
+            }
+            
+            // Children List
+            if (person.childrenList && person.childrenList.length > 0) {
+                html += '<div class="detail-section">';
+                html += '<div class="detail-section-title"><i class="fas fa-users"></i> Progéniture</div>';
+                html += '<div style="display: grid; grid-template-columns: 1fr; gap: 6px; max-height: 200px; overflow-y: auto;">';
+                person.childrenList.forEach(child => {
+                    html += `<div style="padding: 8px; background: var(--gray-50); border-left: 3px solid var(--primary-green); border-radius: 2px;">`;
+                    html += `<strong style="color: var(--primary-green);">${child.name}</strong>`;
+                    if (child.dates) html += ` <span style="color: var(--gray-600);">(${child.dates})</span>`;
+                    if (child.place) html += `<div style="font-size: 12px; color: var(--gray-500); margin-top: 2px;">📍 ${child.place}</div>`;
+                    html += '</div>';
+                });
                 html += '</div></div>';
             }
             
-            if (person.occupation || person.titles) {
+            // Profession & Activities
+            if (person.occupation || person.activities) {
                 html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-briefcase"></i> Activités et Titres</div>';
+                html += '<div class="detail-section-title"><i class="fas fa-briefcase"></i> Profession et Activités</div>';
                 
                 if (person.occupation) {
-                    html += `<p style="margin-bottom: 12px;"><strong>Profession:</strong> ${person.occupation}</p>`;
+                    html += `<p style="margin-bottom: 12px;"><strong>Profession:</strong><br><span style="color: var(--gray-700);">${person.occupation}</span></p>`;
                 }
                 
-                if (person.titles) {
-                    html += '<p><strong>Titres et fonctions:</strong></p><ul style="margin-left: 20px; margin-top: 8px;">';
-                    person.titles.forEach(title => {
-                        html += `<li style="margin-bottom: 4px;">${title}</li>`;
+                if (person.workPlace) {
+                    html += `<p style="margin-bottom: 12px;"><strong>Lieu de travail:</strong> ${person.workPlace}</p>`;
+                }
+                
+                if (person.activities && person.activities.length > 0) {
+                    html += '<p><strong>Activités et engagements:</strong></p><ul style="margin-left: 20px; margin-top: 8px;">';
+                    person.activities.forEach(activity => {
+                        html += `<li style="margin-bottom: 6px; color: var(--gray-700);">${activity}</li>`;
                     });
                     html += '</ul>';
                 }
                 
+                html += '</div>';
+            }
+            
+            // Titles & Positions
+            if (person.titles && person.titles.length > 0) {
+                html += '<div class="detail-section">';
+                html += '<div class="detail-section-title"><i class="fas fa-crown"></i> Titres et Fonctions</div>';
+                html += '<ul style="margin-left: 20px; margin-top: 8px;">';
+                person.titles.forEach(title => {
+                    html += `<li style="margin-bottom: 8px; color: var(--gray-700);">✦ ${title}</li>`;
+                });
+                html += '</ul></div>';
+            }
+            
+            // Awards
+            if (person.awards && person.awards.length > 0) {
+                html += '<div class="detail-section">';
+                html += '<div class="detail-section-title"><i class="fas fa-medal"></i> Distinctions et Honneurs</div>';
+                person.awards.forEach(award => {
+                    html += `<p style="margin-bottom: 8px;"><i class="fas fa-star" style="color: var(--accent-gold); margin-right: 8px;"></i><strong>${award}</strong></p>`;
+                });
+                html += '</div>';
+            }
+            
+            // Notes
+            if (person.notes) {
+                html += '<div class="detail-section" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.05), rgba(193, 154, 91, 0.05)); padding: 16px; border-radius: 8px; border-left: 4px solid var(--primary-green);">';
+                html += `<p style="font-style: italic; color: var(--gray-700);">💭 ${person.notes}</p>`;
                 html += '</div>';
             }
             
