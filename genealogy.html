@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Famille Tinang Joseph - Arbre Généalogique</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome CDN with fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -63,6 +64,17 @@
             color: var(--gray-800);
             background: var(--gray-50);
             min-height: 100vh;
+        }
+
+        /* CRITICAL: Ensure all text is visible by default */
+        * {
+            color: inherit;
+        }
+
+        p, span, div, h1, h2, h3, h4, h5, h6, li {
+            color: inherit;
+            visibility: visible;
+            opacity: 1;
         }
 
         /* Header */
@@ -640,6 +652,14 @@
             transition: all 0.2s;
             margin: 10px;
             display: inline-block;
+            color: #111827 !important;
+        }
+
+        .tree-node * {
+            color: inherit !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
         }
 
         .tree-node:hover {
@@ -649,18 +669,30 @@
 
         .tree-node-name {
             font-weight: 600;
-            color: var(--gray-900);
+            color: #111827;
             margin-bottom: 4px;
+            font-size: 15px;
+            display: block;
+            visibility: visible;
+            opacity: 1;
         }
 
         .tree-node-dates {
             font-size: 12px;
-            color: var(--gray-600);
+            color: #4B5563;
+            display: block;
+            visibility: visible;
+            opacity: 1;
         }
 
         .tree-level {
             margin: 30px 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            visibility: visible;
+            opacity: 1;
         }
 
         .tree-connections {
@@ -2205,9 +2237,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Genealogy tree loaded');
             
-            // You would load actual data here
-            // populatePeopleData();
-            // setupSearchIndex();
+            // Diagnostic: Check if tree nodes are visible
+            const treeNodes = document.querySelectorAll('.tree-node-name');
+            console.log(`Found ${treeNodes.length} tree node names`);
+            
+            treeNodes.forEach((node, index) => {
+                const text = node.textContent;
+                const isVisible = node.offsetHeight > 0;
+                console.log(`[${index}] "${text}" - Visible: ${isVisible}`);
+                
+                // Force visibility if hidden
+                if (!isVisible) {
+                    node.style.display = 'block';
+                    node.style.visibility = 'visible';
+                    node.style.opacity = '1';
+                    console.log(`  → Fixed visibility for: ${text}`);
+                }
+            });
         });
     </script>
 </body>
