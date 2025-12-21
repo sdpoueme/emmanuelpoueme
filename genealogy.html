@@ -1217,7 +1217,7 @@
 
             <div class="people-grid" id="featuredPeople">
                 <!-- Patriarch Card -->
-                <div class="person-card" onclick="openPersonModal('patriarch')">
+                <div class="person-card" onclick="openPersonModal('tinang-joseph')" style="cursor: pointer;">
                     <div class="person-card-header">
                         <div class="person-header-top">
                             <div class="person-avatar">TJ</div>
@@ -1264,7 +1264,7 @@
                 </div>
 
                 <!-- Current Heir Card -->
-                <div class="person-card" onclick="openPersonModal('heir')">
+                <div class="person-card" onclick="openPersonModal('poueme-emmanuel')" style="cursor: pointer;">
                     <div class="person-card-header">
                         <div class="person-header-top">
                             <div class="person-avatar" style="background: linear-gradient(135deg, #D97706, #F59E0B);">PE</div>
@@ -1311,7 +1311,7 @@
                 </div>
 
                 <!-- Grandmother Card -->
-                <div class="person-card" onclick="openPersonModal('grandmother')">
+                <div class="person-card" onclick="openPersonModal('megni-rebecca')" style="cursor: pointer;">
                     <div class="person-card-header">
                         <div class="person-header-top">
                             <div class="person-avatar" style="background: linear-gradient(135deg, #DB2777, #EC4899);">MR</div>
@@ -1970,291 +1970,154 @@
     </footer>
 
     <script>
-        // ============ COMPREHENSIVE FAMILY DATABASE ============
+        // Family Database
         const familyDatabase = {
-            'tinang-joseph': {
-                name: 'Ta\'a Fieu Tagni Tinang Joseph',
-                ndap: 'Ta\'a Fieu',
-                dates: '1898 - 2001',
-                lifespan: '103 ans',
-                generation: 'Génération 4 - Patriarche',
-                birthPlace: 'Batchingou (Toukou)',
-                birthYear: 1898,
-                deathPlace: 'Hôpital Protestant Njissé, Foumban',
-                deathDate: '1er août 2001',
-                burialPlace: 'Batchingou (Toukou), Quartier Toukou',
-                spouses: [
-                    { name: 'Megni Ngongang Rebecca', dates: '1906-1998', place: 'Bamena', children: ['Ngoughou Théodore', 'Poueme Emmanuel'] },
-                    { name: 'Mekeze Emilienne', place: 'Batchingou', children: [] },
-                    { name: 'Megni Rachel', place: 'Feugou', children: ['Datouo David', 'Ngnoumegni Elise', 'Langue Samuel', 'Ndjankep Lucienne', 'Pangwa Maryse', 'Lélé Jean', 'Kouakep Valerie'] }
-                ],
-                totalChildren: 9,
-                occupation: 'Commerçant ambulant, Agriculteur (caféiculture), Notable de la cour royale',
-                activities: [
-                    'Commerce ambulant aux marchés du Ndé et de l\'Ouest',
-                    'Plantations de café à Foumbot',
-                    'Plantations de raphia à Batchingou',
-                    'Membre des associations culturelles: Meyeb, Kep, Majong Ladi, Dadji'
-                ],
-                titles: [
-                    'Ta\'a fieu (Père du chef)',
-                    'Chef de la communauté Batchingou de Foumbot',
-                    'Adjoint au chef du quartier Company',
-                    'Notable de la cour royale de Foumbot',
-                    'Assesseur à la Mairie de Foumbot',
-                    'Collecteur d\'impôts',
-                    'Chef de 3ème degré du village Company'
-                ],
-                awards: ['Médaille du mérite camerounais'],
-                notes: 'Patriarche fondamental, a rassemblé la famille malgré l\'indépendance et le maquis'
-            },
-            'poueme-emmanuel': {
-                name: 'Poueme Emmanuel',
-                ndap: 'Tasseuh',
-                born: 1950,
-                generation: 'Génération 5 - Héritier',
-                birthPlace: 'Batchingou (Toukou)',
-                residence: 'Batchingou (Toukou)',
-                spouse: 'Ngankeu Tooua Adeline Paule (Balengou)',
-                children: 4,
-                succession: 'Héritier désigné en 2001',
-                title: 'Ta\'a fieu Tinang Joseph',
-                notes: 'Fils du Patriarche, responsable du rassemblement familial et de la préservation de l\'héritage'
-            },
-            'megni-rebecca': {
-                name: 'Megni Ngongang Rebecca',
-                dates: '1906 - 1998',
-                lifespan: '92 ans',
-                generation: 'Génération 4 - Première épouse',
-                birthPlace: 'Bamena',
-                deathPlace: 'Foumbot',
-                burialPlace: 'Batchingou (Toukou)',
-                spouse: 'Ta\'a Fieu Tagni Tinang Joseph',
-                children: 2,
-                activities: ['Chrétienne évangélique', 'Groupe Tambour', 'Membre UNC'],
-                notes: 'Femme de grande foi, point focal du foyer familial, mère aimante'
-            }
+            'tinang-joseph': {name:'Ta\'a Fieu Tagni Tinang Joseph',dates:'1898-2001',generation:'Génération 4',birthPlace:'Batchingou',spouses:[{name:'Megni Ngongang Rebecca',dates:'1906-1998'},{name:'Mekeze Emilienne'},{name:'Megni Rachel'}],children:9,titles:['Ta\'a fieu','Chef de communauté','Notable de cour royale'],awards:['Médaille du mérite camerounais'],notes:'Patriarche fondateur'},
+            'poueme-emmanuel': {name:'Poueme Emmanuel',born:1950,generation:'Génération 5',birthPlace:'Batchingou',spouse:'Ngankeu Tooua Adeline Paule',children:4,notes:'Héritier désigné en 2001'},
+            'megni-rebecca': {name:'Megni Ngongang Rebecca',dates:'1906-1998',generation:'Génération 4',birthPlace:'Bamena',spouse:'Ta\'a Fieu Tagni Tinang Joseph',children:2,notes:'Première épouse, femme de foi'}
         };
 
-        // Tab Navigation
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show corresponding tab content
-                const tabName = this.getAttribute('data-tab');
-                document.querySelectorAll('.tab-content').forEach(tab => {
-                    tab.classList.remove('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✓ Page loaded');
+
+            // Navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    const tabName = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                    const tab = document.getElementById(tabName + '-tab');
+                    if (tab) tab.classList.add('active');
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                 });
-                document.getElementById(tabName + '-tab').classList.add('active');
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Tree nodes clickable
+            document.querySelectorAll('.tree-node').forEach(node => {
+                node.style.cursor = 'pointer';
+                node.addEventListener('click', function() {
+                    const name = this.querySelector('.tree-node-name');
+                    if (name) {
+                        const text = name.textContent.trim();
+                        for (let key in familyDatabase) {
+                            if (familyDatabase[key].name.includes(text)) {
+                                openPersonModal(key);
+                                break;
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Search
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const term = e.target.value.toLowerCase();
+                    document.querySelectorAll('.person-card').forEach(card => {
+                        if (term === '' || card.textContent.toLowerCase().includes(term)) {
+                            card.style.opacity = '1';
+                            card.style.borderColor = '';
+                        } else {
+                            card.style.opacity = '0.5';
+                        }
+                    });
+                });
+            }
+
+            // Sub-tabs
+            document.querySelectorAll('[data-people-tab]').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('[data-people-tab]').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Chips
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Modal close
+            const modal = document.getElementById('personModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) closeModal();
+                });
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
             });
         });
 
-        // Sub-tabs (People section)
-        document.querySelectorAll('[data-people-tab]').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('[data-people-tab]').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                // Filter logic would go here
-            });
-        });
-
-        // Filter chips
-        document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
-                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-                // Filter logic would go here
-            });
-        });
-
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            // Search logic would go here
-            console.log('Searching for:', searchTerm);
-        });
-
-        // Modal functions
         function openPersonModal(personId) {
             const modal = document.getElementById('personModal');
-            const modalTitle = document.getElementById('modalPersonName');
-            const modalBody = document.getElementById('modalBody');
+            const title = document.getElementById('modalPersonName');
+            const body = document.getElementById('modalBody');
             
             const person = familyDatabase[personId];
-            if (!person) {
-                modalBody.innerHTML = '<p style="color: var(--gray-500);"><i class="fas fa-info-circle"></i> Informations détaillées à venir...</p>';
-                modal.classList.add('active');
-                return;
-            }
+            if (!person) return;
             
-            modalTitle.textContent = person.name;
+            title.textContent = person.name;
+            let html = '<div class="detail-section"><div class="detail-section-title">ℹ️ Informations</div>';
             
-            let html = '';
+            if (person.dates) html += `<p><strong>Dates:</strong> ${person.dates}</p>`;
+            if (person.born) html += `<p><strong>Né:</strong> ${person.born}</p>`;
+            if (person.generation) html += `<p><strong>Génération:</strong> ${person.generation}</p>`;
+            if (person.birthPlace) html += `<p><strong>Lieu:</strong> ${person.birthPlace}</p>`;
             
-            // General Info Section
-            html += '<div class="detail-section">';
-            html += '<div class="detail-section-title"><i class="fas fa-info-circle"></i> Informations Générales</div>';
-            html += '<div class="detail-grid">';
+            html += '</div>';
             
-            if (person.dates) html += `<div class="detail-item"><div class="detail-label">Dates</div><div class="detail-value">${person.dates}</div></div>`;
-            if (person.born) html += `<div class="detail-item"><div class="detail-label">Né(e)</div><div class="detail-value">${person.born}</div></div>`;
-            if (person.lifespan) html += `<div class="detail-item"><div class="detail-label">Longévité</div><div class="detail-value">${person.lifespan}</div></div>`;
-            if (person.generation) html += `<div class="detail-item"><div class="detail-label">Génération</div><div class="detail-value">${person.generation}</div></div>`;
-            if (person.ndap) html += `<div class="detail-item"><div class="detail-label">Ndap</div><div class="detail-value">${person.ndap}</div></div>`;
-            if (person.birthPlace) html += `<div class="detail-item"><div class="detail-label">Lieu de naissance</div><div class="detail-value">${person.birthPlace}</div></div>`;
-            if (person.residence) html += `<div class="detail-item"><div class="detail-label">Résidence</div><div class="detail-value">${person.residence}</div></div>`;
-            if (person.deathPlace) html += `<div class="detail-item"><div class="detail-label">Lieu de décès</div><div class="detail-value">${person.deathPlace}</div></div>`;
-            if (person.burialPlace) html += `<div class="detail-item"><div class="detail-label">Lieu d'inhumation</div><div class="detail-value">${person.burialPlace}</div></div>`;
-            
-            html += '</div></div>';
-            
-            // Family Section
-            if (person.spouses || person.spouse) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-heart"></i> Unions Matrimoniales</div>';
-                
-                if (person.spouses && Array.isArray(person.spouses)) {
-                    person.spouses.forEach((s, idx) => {
-                        html += `<div style="margin-bottom: 10px; padding: 10px; background: var(--gray-50); border-radius: 4px;">`;
-                        html += `<strong>${s.name}</strong>`;
-                        if (s.dates) html += ` <span style="color: var(--gray-600);">(${s.dates})</span>`;
-                        if (s.place) html += ` <span style="color: var(--gray-600);">— ${s.place}</span>`;
-                        if (s.children && s.children.length > 0) {
-                            html += `<div style="margin-top: 6px; font-size: 13px; color: var(--gray-700);">Enfants: ${s.children.join(', ')}</div>`;
-                        }
-                        html += `</div>`;
+            if (person.spouse || person.spouses) {
+                html += '<div class="detail-section"><div class="detail-section-title">💍 Famille</div>';
+                if (person.spouses) {
+                    person.spouses.forEach(s => {
+                        html += `<p><strong>${s.name}</strong>`;
+                        if (s.dates) html += ` (${s.dates})`;
+                        html += '</p>';
                     });
-                } else if (person.spouse) {
-                    html += `<p><strong>Épouse:</strong> ${person.spouse}`;
-                    if (person.spousePlace) html += ` <span style="color: var(--gray-600);">(${person.spousePlace})</span>`;
-                    html += '</p>';
+                } else {
+                    html += `<p><strong>Épouse:</strong> ${person.spouse}</p>`;
                 }
-                
-                if (person.children || person.totalChildren) {
-                    html += `<p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gray-200);"><strong>Enfants:</strong> ${person.children || person.totalChildren}</p>`;
-                }
-                
+                if (person.children) html += `<p><strong>Enfants:</strong> ${person.children}</p>`;
                 html += '</div>';
             }
             
-            // Children List
-            if (person.childrenList && person.childrenList.length > 0) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-users"></i> Progéniture</div>';
-                html += '<div style="display: grid; grid-template-columns: 1fr; gap: 6px; max-height: 200px; overflow-y: auto;">';
-                person.childrenList.forEach(child => {
-                    html += `<div style="padding: 8px; background: var(--gray-50); border-left: 3px solid var(--primary-green); border-radius: 2px;">`;
-                    html += `<strong style="color: var(--primary-green);">${child.name}</strong>`;
-                    if (child.dates) html += ` <span style="color: var(--gray-600);">(${child.dates})</span>`;
-                    if (child.place) html += `<div style="font-size: 12px; color: var(--gray-500); margin-top: 2px;">📍 ${child.place}</div>`;
-                    html += '</div>';
-                });
-                html += '</div></div>';
-            }
-            
-            // Profession & Activities
-            if (person.occupation || person.activities) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-briefcase"></i> Profession et Activités</div>';
-                
-                if (person.occupation) {
-                    html += `<p style="margin-bottom: 12px;"><strong>Profession:</strong><br><span style="color: var(--gray-700);">${person.occupation}</span></p>`;
-                }
-                
-                if (person.workPlace) {
-                    html += `<p style="margin-bottom: 12px;"><strong>Lieu de travail:</strong> ${person.workPlace}</p>`;
-                }
-                
-                if (person.activities && person.activities.length > 0) {
-                    html += '<p><strong>Activités et engagements:</strong></p><ul style="margin-left: 20px; margin-top: 8px;">';
-                    person.activities.forEach(activity => {
-                        html += `<li style="margin-bottom: 6px; color: var(--gray-700);">${activity}</li>`;
-                    });
+            if (person.titles || person.occupation) {
+                html += '<div class="detail-section"><div class="detail-section-title">💼 Rôles</div>';
+                if (person.occupation) html += `<p>${person.occupation}</p>`;
+                if (person.titles) {
+                    html += '<ul style="margin-left:20px">';
+                    person.titles.forEach(t => html += `<li>${t}</li>`);
                     html += '</ul>';
                 }
-                
                 html += '</div>';
             }
             
-            // Titles & Positions
-            if (person.titles && person.titles.length > 0) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-crown"></i> Titres et Fonctions</div>';
-                html += '<ul style="margin-left: 20px; margin-top: 8px;">';
-                person.titles.forEach(title => {
-                    html += `<li style="margin-bottom: 8px; color: var(--gray-700);">✦ ${title}</li>`;
-                });
-                html += '</ul></div>';
-            }
-            
-            // Awards
-            if (person.awards && person.awards.length > 0) {
-                html += '<div class="detail-section">';
-                html += '<div class="detail-section-title"><i class="fas fa-medal"></i> Distinctions et Honneurs</div>';
-                person.awards.forEach(award => {
-                    html += `<p style="margin-bottom: 8px;"><i class="fas fa-star" style="color: var(--accent-gold); margin-right: 8px;"></i><strong>${award}</strong></p>`;
-                });
+            if (person.awards) {
+                html += '<div class="detail-section"><div class="detail-section-title">🏆 Distinctions</div>';
+                person.awards.forEach(a => html += `<p>⭐ ${a}</p>`);
                 html += '</div>';
             }
             
-            // Notes
             if (person.notes) {
-                html += '<div class="detail-section" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.05), rgba(193, 154, 91, 0.05)); padding: 16px; border-radius: 8px; border-left: 4px solid var(--primary-green);">';
-                html += `<p style="font-style: italic; color: var(--gray-700);">💭 ${person.notes}</p>`;
-                html += '</div>';
+                html += `<div style="background:#f5f5f5;padding:15px;border-radius:8px;border-left:4px solid var(--primary-green)"><p style="font-style:italic;color:#666">💭 ${person.notes}</p></div>`;
             }
             
-            modalBody.innerHTML = html;
+            body.innerHTML = html;
             modal.classList.add('active');
         }
 
         function closeModal() {
-            document.getElementById('personModal').classList.remove('active');
+            const modal = document.getElementById('personModal');
+            if (modal) modal.classList.remove('active');
         }
-
-        // Close modal on outside click
-        document.getElementById('personModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Export function
-        function exportData() {
-            alert('Fonction d\'export en développement. Vous pourrez télécharger:\n\n• PDF de l\'arbre généalogique\n• Fichier GEDCOM\n• Images haute résolution');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Genealogy tree loaded');
-            
-            // Diagnostic: Check if tree nodes are visible
-            const treeNodes = document.querySelectorAll('.tree-node-name');
-            console.log(`Found ${treeNodes.length} tree node names`);
-            
-            treeNodes.forEach((node, index) => {
-                const text = node.textContent;
-                const isVisible = node.offsetHeight > 0;
-                console.log(`[${index}] "${text}" - Visible: ${isVisible}`);
-                
-                // Force visibility if hidden
-                if (!isVisible) {
-                    node.style.display = 'block';
-                    node.style.visibility = 'visible';
-                    node.style.opacity = '1';
-                    console.log(`  → Fixed visibility for: ${text}`);
-                }
-            });
-        });
     </script>
 </body>
 </html>
