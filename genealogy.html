@@ -1,1 +1,1235 @@
-t
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Généalogie - Ta'a Fieu Tagni Tinang Joseph (1898-2001)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --border-color: #bdc3c7;
+            --gen1-color: #3498db;
+            --gen2-color: #2ecc71;
+            --gen3-color: #f39c12;
+            --gen4-color: #9b59b6;
+            --gen5-color: #e74c3c;
+            --gen6-color: #1abc9c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: var(--light-bg);
+            padding: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        .generation {
+            background: var(--light-bg);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .generation.gen1 { border-left-color: var(--gen1-color); }
+        .generation.gen2 { border-left-color: var(--gen2-color); }
+        .generation.gen3 { border-left-color: var(--gen3-color); }
+        .generation.gen4 { border-left-color: var(--gen4-color); }
+        .generation.gen5 { border-left-color: var(--gen5-color); }
+        .generation.gen6 { border-left-color: var(--gen6-color); }
+
+        .generation-header {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .person {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .person:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateX(5px);
+        }
+
+        .person-name {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .person-details {
+            color: var(--secondary-color);
+            font-size: 0.95em;
+            margin-left: 20px;
+        }
+
+        .marriage {
+            color: var(--gen4-color);
+            font-weight: 600;
+        }
+
+        .children {
+            margin-left: 40px;
+            border-left: 3px solid var(--border-color);
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .location {
+            display: inline-block;
+            background: var(--gen1-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            background: var(--border-color);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .status.deceased { background: #7f8c8d; color: white; }
+        .status.heir { background: var(--accent-color); color: white; }
+
+        .tree-visual {
+            font-family: 'Courier New', monospace;
+            background: var(--primary-color);
+            color: #0f0;
+            padding: 30px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .summary-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .summary-card ul {
+            list-style-position: inside;
+            color: var(--secondary-color);
+        }
+
+        .summary-card li {
+            padding: 5px 0;
+        }
+
+        .legend {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            nav, .back-to-top {
+                display: none;
+            }
+            
+            section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .children {
+                margin-left: 20px;
+                padding-left: 15px;
+            }
+            
+            .tree-visual {
+                font-size: 0.7em;
+            }
+        }
+
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible::before {
+            content: '▼ ';
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .collapsible.collapsed::before {
+            transform: rotate(-90deg);
+        }
+
+        .collapsible-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible-content.hidden {
+            max-height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌳 Arbre Généalogique</h1>
+            <div class="subtitle">Patriarche Ta'a Fieu Tagni Tinang Joseph (1898-2001)</div>
+            <div class="subtitle">Famille Batchingou - Balengou - Bamena</div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#overview">Vue d'ensemble</a></li>
+                <li><a href="#gen1">Génération 1</a></li>
+                <li><a href="#gen2-3">Générations 2-3</a></li>
+                <li><a href="#gen4">Génération 4</a></li>
+                <li><a href="#gen5">Génération 5</a></li>
+                <li><a href="#gen6">Génération 6</a></li>
+                <li><a href="#locations">Géographie</a></li>
+                <li><a href="#royal">Lignées Royales</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- OVERVIEW SECTION -->
+            <section id="overview">
+                <h2>📊 Vue d'ensemble</h2>
+                
+                <div class="legend">
+                    <div class="legend-title">Légende des Générations</div>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen1-color);"></div>
+                            <span>Génération 1 (~1770s)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen2-color);"></div>
+                            <span>Génération 2 (~1800s)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen3-color);"></div>
+                            <span>Génération 3 (~1860s)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen4-color);"></div>
+                            <span>Génération 4 (1898)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen5-color);"></div>
+                            <span>Génération 5 (1940s-70s)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--gen6-color);"></div>
+                            <span>Génération 6 (1970s-2000s)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>Lignée Principale</h4>
+                        <ul>
+                            <li>Wetio Kouamou (Balengou, ~1770s)</li>
+                            <li>Magni Kouabou (Batchingou, ~1800s)</li>
+                            <li>Ngnoumegni (~1868)</li>
+                            <li>Ta'a Fieu Tagni Tinang Joseph (1898-2001)</li>
+                            <li>Poueme Emmanuel (1950-présent)</li>
+                            <li>Génération actuelle (6 enfants)</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>Connexions Royales</h4>
+                        <ul>
+                            <li>Chefferie Baleng</li>
+                            <li>Chefferie Balengou</li>
+                            <li>Chefferie Batchingou</li>
+                            <li>Chefferie Bamena</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>Distribution Géographique</h4>
+                        <ul>
+                            <li>Batchingou (principal)</li>
+                            <li>Foumbot</li>
+                            <li>Balengou</li>
+                            <li>Bamena</li>
+                            <li>Bana, Bafia, Bafang, Bameka</li>
+                            <li>Makenene</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATION 1 -->
+            <section id="gen1">
+                <h2>Génération 1 - Origines Balengou (~1770s)</h2>
+
+                <div class="generation gen1">
+                    <div class="generation-header">NANDJO & NEYOU - Fondateurs</div>
+                    
+                    <div class="person">
+                        <div class="person-name">Prince NANDJO <span class="location">Baleng → Balengou</span></div>
+                        <div class="person-details">
+                            Prince de Baleng, migré vers Balengou pour la chasse<br>
+                            Devint chef de la contrée de Kouodjou (Balengou)
+                        </div>
+                    </div>
+
+                    <div class="person">
+                        <div class="person-name">NEYOU <span class="location">Baleng → Balengou</span></div>
+                        <div class="person-details">
+                            Neveu de Prince Nandjo<br>
+                            S'installa à Ndepgweu-tu, fonda plusieurs familles
+                        </div>
+
+                        <div class="children">
+                            <div class="person">
+                                <div class="person-name">WETIO KOUAMOU <span class="marriage">══ Magni JUEBOU</span> <span class="location">Ndepgweu-tu</span></div>
+                                <div class="person-details">Descendant de Neyou - Patriarche fondateur de la lignée</div>
+                                
+                                <div class="children">
+                                    <div class="person">
+                                        <div class="person-name">1. MAGNI KOUABOU (fille aînée)</div>
+                                        <div class="person-details">
+                                            <span class="marriage">══ Ta'a Wéjiéwou</span> <span class="location">Batchingou (Toukou)</span><br>
+                                            → 3 enfants: Njionda, Ngnoumegni, Wétié
+                                        </div>
+                                    </div>
+
+                                    <div class="person">
+                                        <div class="person-name">2. CHA NEYOU (fils)</div>
+                                        <div class="person-details">
+                                            <span class="marriage">══ Ketchignou & Tchayep</span> <span class="location">Ndepgweu-tu</span><br>
+                                            → 6 enfants: Mbiendu Sadrack, Neyou, Tchuindjang, Wetie Gabriel, Doussa Elisabeth, Ngantchou Etienne
+                                        </div>
+                                    </div>
+
+                                    <div class="person">
+                                        <div class="person-name">3. WAJIAMOU (fille)</div>
+                                        <div class="person-details">
+                                            <span class="location">Tieuptchoui, Balengou → Bazou</span><br>
+                                            → Kouakep → Tagni Nguenang Martin "Le Chancelier" <span class="location">Makenene</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="person">
+                                        <div class="person-name">4. NGUEBOU (fille)</div>
+                                        <div class="person-details">
+                                            <span class="status deceased">Pas de progression</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATION 2-3 -->
+            <section id="gen2-3">
+                <h2>Générations 2-3 - Établissement Batchingou (~1860s-1900s)</h2>
+
+                <div class="generation gen2">
+                    <div class="generation-header">LIGNE MAGNI KOUABOU - Batchingou</div>
+                    
+                    <div class="person">
+                        <div class="person-name">MAGNI KOUABOU <span class="marriage">══ TA'A WÉJIÉWOU</span> <span class="location">Toukou, Tousseu</span></div>
+                        <div class="person-details">
+                            Fille aînée de Wetio Kouamou<br>
+                            Mariée à Batchingou, établit la concession ancestrale
+                        </div>
+
+                        <div class="children">
+                            <div class="person">
+                                <div class="person-name">NJIONDA <span class="status deceased">†</span></div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name">NGNOUMEGNI (b. ~1868) <span class="status">Survivante unique</span></div>
+                                <div class="person-details">
+                                    <span class="marriage">══ TCHASSEP "Ta'a Tchiendjo"</span> (b. ~1862)<br>
+                                    Fils de Tchié Ngantchié (Notable Batchingou)
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name">WÉTIÉ <span class="status deceased">†</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation gen3">
+                    <div class="generation-header">LIGNE TCHIÉ NGANTCHIÉ - Batchingou</div>
+                    
+                    <div class="person">
+                        <div class="person-name">TCHIÉ NGANTCHIÉ <span class="location">Batchingou</span></div>
+                        <div class="person-details">
+                            Notable de la chefferie Batchingou<br>
+                            Ministre de la défense - Responsable du lieu sacré Metchoumbouh
+                        </div>
+
+                        <div class="children">
+                            <h3 class="collapsible">TCHASSEP "Ta'a Tchiendjo" & descendants</h3>
+                            <div class="collapsible-content">
+                                <div class="person">
+                                    <div class="person-name">TCHASSEP "Ta'a Tchiendjo" (b. ~1862)</div>
+                                    <div class="person-details">
+                                        <span class="marriage">1ère épouse: NGNOUMEGNI</span><br>
+                                        <span class="marriage">2ème épouse: TCHAKOUYAP</span>
+                                    </div>
+
+                                    <div class="children">
+                                        <div class="person">
+                                            <div class="person-name">De Ngnoumegni:</div>
+                                            <div class="person-details">
+                                                <strong>TA'A FIEU TAGNI TINANG JOSEPH (1898-2001)</strong> <span class="status heir">Patriarche</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="person">
+                                            <div class="person-name">De Tchakouyap:</div>
+                                            <div class="person-details">
+                                                1. NOUGUE Pauline <span class="marriage">══ Époux</span> <span class="location">Bamena</span>
+                                                <div class="children">
+                                                    → Nankep Christian<br>
+                                                    → Tinang Hermine
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="person">
+                                            <div class="person-details">
+                                                2. NAGOUO Gaston <span class="marriage">══ Bangou/Mega Ze Hélène (Ndongwou)</span> <span class="status heir">Héritier de Ta'a Tchiendjo</span>
+                                                <div class="children">
+                                                    → Kouamou Yvette<br>
+                                                    → M
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="person">
+                                            <div class="person-details">
+                                                3. NGOKO Monique <span class="marriage">══ Époux</span> <span class="location">Bangou</span>
+                                                <div class="children">
+                                                    → Tinang Joseph <span class="status heir">Héritier</span><br>
+                                                    → Bernard
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="person">
+                                            <div class="person-details">
+                                                4. KOUAKEP Catherine <span class="marriage">══ Papa Abel</span> <span class="location">Fo Trou</span>
+                                                <div class="children">
+                                                    → Tchaya Félix <span class="status heir">Héritier</span><br>
+                                                    → Rodrigue
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="person">
+                                            <div class="person-details">
+                                                5. NGOMEGNI Benoit <span class="status">utérin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="collapsible">NDOMOU Juliette "Maman Souhé"</h3>
+                            <div class="collapsible-content">
+                                <div class="person">
+                                    <div class="person-name">NDOMOU Juliette "Maman Souhé" <span class="marriage">══ Ngomeni Nanwouo Jean "Bèba"</span></div>
+                                    <div class="children">
+                                        → Nguenang Daniel<br>
+                                        → Nguegang Yakopine<br>
+                                        → Ndjanpouep<br>
+                                        → Noungheu Félix<br>
+                                        → Piakep Nicaisse
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="collapsible">TAGNI MEYUKA</h3>
+                            <div class="collapsible-content">
+                                <div class="person">
+                                    <div class="person-name">TAGNI MEYUKA <span class="marriage">══ WOUGANG</span></div>
+                                    <div class="person-details">
+                                        Emprisonné à Matoum pour raisons politiques, libéré
+                                    </div>
+                                    <div class="children">
+                                        → Tinang Joseph <span class="status">sans nouvelles</span><br>
+                                        → Samou Pierre<br>
+                                        → Nanwou (Wouoché)<br>
+                                        → Konya Jeanne<br>
+                                        → Tchiengang Philippe<br>
+                                        → Ngouleu Emmanuel <span class="status heir">Héritier</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATION 4 -->
+            <section id="gen4">
+                <h2>Génération 4 - Le Patriarche (1898-2001)</h2>
+
+                <div class="generation gen4">
+                    <div class="generation-header">TA'A FIEU TAGNI TINANG JOSEPH</div>
+                    
+                    <div class="person">
+                        <div class="person-name">TA'A FIEU TAGNI TINANG JOSEPH (1898-2001) <span class="status heir">Patriarche</span></div>
+                        <div class="person-details">
+                            <strong>Né:</strong> ~1898, Batchingou (règne du roi Tchiengué)<br>
+                            <strong>Décédé:</strong> 1er août 2001, Hôpital Protestant Njissé, Foumban<br>
+                            <strong>Inhumé:</strong> 3 août 2001, Batchingou (Toukou)<br>
+                            <strong>Titre:</strong> "Ta'a fieu" = Père du chef (accordé par chef Balengou)<br>
+                            <strong>Professions:</strong> Commerçant ambulant, agriculteur (café)<br>
+                            <strong>Fonctions sociales:</strong>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Adjoint au chef du quartier Company (Foumbot)</li>
+                                <li>Assesseur à la Mairie de Foumbot</li>
+                                <li>Notable de la cour royale (Chefferie Foumbot)</li>
+                                <li>Collecteur d'impôts</li>
+                                <li>Chef de la Communauté Batchingou de Foumbot</li>
+                                <li>Médaille du mérite camerounais</li>
+                            </ul>
+                        </div>
+
+                        <div class="children">
+                            <h3>Épouses et Enfants</h3>
+                            
+                            <div class="person">
+                                <div class="person-name"><span class="marriage">1ère épouse: Megni Ngongang REBECCA (1906-1998)</span> <span class="location">Bamena</span></div>
+                                <div class="person-details">
+                                    Fille de Ta'a Nanwou (Bamena)<br>
+                                    Décédée: 1998, Foumbot<br>
+                                    Inhumée: Batchingou
+                                </div>
+                                <div class="children">
+                                    <strong>2 fils:</strong><br>
+                                    → Ngoughou Théodore (1947)<br>
+                                    → Poueme Emmanuel (1950) <span class="status heir">Héritier désigné</span>
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name"><span class="marriage">2ème épouse: MEKEZE Emilienne</span> <span class="location">Batchingou</span></div>
+                                <div class="person-details">
+                                    Commerçante (vin blanc)<br>
+                                    Pas d'enfants biologiques<br>
+                                    A élevé: Tinang Flaubert (Batchingou), Jules (Foumbot), Christian (Douala)
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name"><span class="marriage">3ème épouse: MEGNI Rachel</span> <span class="location">Feugou</span></div>
+                                <div class="person-details">
+                                    Fille de papa Langue Samuel de Feugou<br>
+                                    Amenée au mariage: Viviane, Lap, Jean
+                                </div>
+                                <div class="children">
+                                    <strong>7 enfants:</strong><br>
+                                    → Datouo David <span class="status deceased">† jeune</span><br>
+                                    → Ngnoumegni Elise<br>
+                                    → Langue Samuel <span class="status deceased">†</span><br>
+                                    → Ndjankep Lucienne<br>
+                                    → Pangwa Maryse<br>
+                                    → Lélé Jean <span class="status deceased">†</span><br>
+                                    → Kouakep Valérie
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation gen2">
+                    <div class="generation-header">LIGNE MATERNELLE - Bamena (Ta'a Nanwou)</div>
+                    
+                    <div class="person">
+                        <div class="person-name">TA'A NANWOU <span class="location">Bamena</span> <span class="marriage">══ [Épouse]</span></div>
+                        <div class="person-details">Grand-père maternel de Ta'a fieu Tagni Tinang Joseph</div>
+
+                        <div class="children">
+                            <div class="person">
+                                <div class="person-name">Megni Ngongang REBECCA (1906-1998)</div>
+                                <div class="person-details">
+                                    <span class="marriage">══ Ta'a fieu Tagni Tinang Joseph</span>
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name">NGOKO André</div>
+                                <div class="person-details">
+                                    <span class="marriage">══ Épouses Bamoun (plusieurs)</span><br>
+                                    → Kamka Martin (fils aîné)<br>
+                                    → Autres enfants Bamoun
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name">KETCHOZO Dieudonné <span class="location">Loum</span></div>
+                                <div class="person-details">
+                                    → Yodjang Marie (fille aînée)<br>
+                                    → Autres enfants
+                                </div>
+                            </div>
+
+                            <div class="person">
+                                <div class="person-name">NGONGANG Elisabeth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATION 5 -->
+            <section id="gen5">
+                <h2>Génération 5 - Les 9 Enfants (1940s-1970s)</h2>
+
+                <div class="generation gen5">
+                    <h3 class="collapsible">1. NGOUGHOU Théodore (1947) - Batchingou</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">NGOUGHOU Théodore (b. 1947, d. ?) <span class="location">Batchingou</span></div>
+                            <div class="person-details">
+                                Fils aîné de Rebecca<br>
+                                Métier: Garagiste dieseliste (formation à Loum)<br>
+                                <span class="marriage">══ Mbouguen Lucienne</span> (Batchingou)
+                            </div>
+                            <div class="children">
+                                <strong>1 fille:</strong><br>
+                                → Inesta Ngoughou
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">2. POUEME Emmanuel (1950) - Héritier</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">POUEME Emmanuel (b. 1950) <span class="location">Batchingou</span> <span class="status heir">HÉRITIER - Ta'a fieu Tinang Joseph</span></div>
+                            <div class="person-details">
+                                Deuxième fils de Rebecca<br>
+                                Succession: 2001<br>
+                                <span class="marriage">══ Ngankeu Tooua Adeline Paule</span> (Balengou)
+                            </div>
+                            <div class="children">
+                                <strong>4 fils:</strong><br>
+                                → Poueme Daouda Serge Donald (aîné)<br>
+                                → Poueme Tooua Armand Cédric<br>
+                                → Poueme Tinang Eric Joel<br>
+                                → Poueme Ngoughou Thierry Williams
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">3. DATOUO David</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">DATOUO David <span class="status deceased">† Mort jeune</span></div>
+                            <div class="person-details">Premier fils de Rachel</div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">4. NGNOUMEGNI Elise - Bana</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">NGNOUMEGNI Elise <span class="location">Bana</span></div>
+                            <div class="person-details">
+                                <span class="marriage">══ [Époux]</span> (Bana)
+                            </div>
+                            <div class="children">
+                                <strong>3 enfants:</strong><br>
+                                → Ngongang Carine<br>
+                                → Tuisseu Junior<br>
+                                → Kombou Rolande
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">5. LANGUE Samuel - Batchingou</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">LANGUE Samuel (d. ?) <span class="location">Batchingou</span> <span class="status deceased">†</span></div>
+                            <div class="person-details">
+                                <span class="marriage">══ LANGUE Pulchérie</span> (Bafia)
+                            </div>
+                            <div class="children">
+                                <strong>4 filles:</strong><br>
+                                → Estha Langue<br>
+                                → Josiane Langue<br>
+                                → Linda Langue<br>
+                                → Erika Langue
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">6. NDJANKEP Lucienne - Bafia</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">NDJANKEP Lucienne <span class="location">Bafia</span></div>
+                            <div class="person-details">
+                                <span class="marriage">══ Djoh A Koung Ruben</span> (Bafia)
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">7. PANGWA Maryse - Bafang</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">PANGWA Sophie Maryse <span class="location">Bafang</span></div>
+                            <div class="person-details">
+                                <span class="marriage">══ Nassi Eric</span> (Bafang)
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">8. LÉLÉ Jean - Batchingou</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">LÉLÉ Jean "Vieux" (d. ?) <span class="location">Batchingou</span> <span class="status deceased">†</span></div>
+                            <div class="person-details">
+                                Premier enfant retourné au village après la guerre<br>
+                                Élevé par maman Ndomou Juliette "Maman Souhé"<br>
+                                <span class="marriage">══ LELE Eveline</span> (Batchingou)
+                            </div>
+                            <div class="children">
+                                <strong>6 enfants:</strong><br>
+                                → Poueme Lele Steve<br>
+                                → Koualong Lele Dilane<br>
+                                → Ngoughou Lele Boris<br>
+                                → Magne Lele Daina Lorvine<br>
+                                → Kouatchang Lele Daniel<br>
+                                → Pangoua Lele Christien
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="collapsible">9. KOUAKEP Valérie - Bameka</h3>
+                    <div class="collapsible-content">
+                        <div class="person">
+                            <div class="person-name">KOUAKEP Valérie <span class="location">Bameka</span></div>
+                            <div class="person-details">
+                                <span class="marriage">══ MAMBOU Jean Jacques</span> (Bameka)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATION 6 -->
+            <section id="gen6">
+                <h2>Génération 6 - Petits-enfants (1970s-2000s)</h2>
+
+                <div class="generation gen6">
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <h4>Batchingou</h4>
+                            <ul>
+                                <li>Inesta Ngoughou (fille de Théodore)</li>
+                                <li>4 fils de Poueme Emmanuel</li>
+                                <li>4 filles de Langue Samuel</li>
+                                <li>6 enfants de Lélé Jean</li>
+                            </ul>
+                            <strong>Total: ~15 personnes</strong>
+                        </div>
+
+                        <div class="summary-card">
+                            <h4>Autres Localités</h4>
+                            <ul>
+                                <li><strong>Bana:</strong> 3 enfants d'Elise</li>
+                                <li><strong>Bafia:</strong> Enfants de Lucienne</li>
+                                <li><strong>Bafang:</strong> Enfants de Maryse</li>
+                                <li><strong>Bameka:</strong> Enfants de Valérie</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Signification des Prénoms (Fils de Poueme Emmanuel)</h3>
+                    <div class="person">
+                        <div class="person-details">
+                            <strong>Poueme Daouda Serge Donald:</strong><br>
+                            - Poueme = nom de famille paternel<br>
+                            - Daouda = honore l'oncle décédé Datouo David<br>
+                            - Serge = prénom moderne<br><br>
+
+                            <strong>Poueme Tooua Armand Cédric:</strong><br>
+                            - Tooua = nom de famille maternel (Balengou)<br><br>
+
+                            <strong>Poueme Tinang Eric Joel:</strong><br>
+                            - Tinang = prénom du grand-père (continuation)<br><br>
+
+                            <strong>Poueme Ngoughou Thierry Williams:</strong><br>
+                            - Ngoughou = prénom de l'oncle décédé Théodore
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LOCATIONS -->
+            <section id="locations">
+                <h2>🗺️ Distribution Géographique</h2>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>BATCHINGOU (Principal)</h4>
+                        <ul>
+                            <li><strong>Toukou, Tousseu:</strong> Concession ancestrale</li>
+                            <li><strong>Établie par:</strong> Magni Kouabou & Ta'a Wéjiéwou (~1800s)</li>
+                            <li><strong>Développée par:</strong> Ta'a fieu Tagni Tinang Joseph</li>
+                            <li><strong>Résidents actuels:</strong>
+                                <ul style="margin-left: 20px;">
+                                    <li>Famille Poueme Emmanuel (4 fils)</li>
+                                    <li>Famille Langue Samuel (4 filles)</li>
+                                    <li>Famille Lélé Jean (6 enfants)</li>
+                                    <li>Inesta Ngoughou</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sites sacrés:</strong> Kou Tchap (raphias, source)</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>FOUMBOT</h4>
+                        <ul>
+                            <li><strong>Quartier:</strong> Company</li>
+                            <li><strong>Titre foncier:</strong> "TINANG JOSEPH"</li>
+                            <li><strong>Période:</strong> 1960-2001 (résidence principale)</li>
+                            <li><strong>Rôle historique:</strong>
+                                <ul style="margin-left: 20px;">
+                                    <li>Centre commercial (boutique au marché)</li>
+                                    <li>Siège communauté Batchingou</li>
+                                    <li>Résidence de régence (chef village Company)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>BALENGOU</h4>
+                        <ul>
+                            <li><strong>Ndepgweu-tu:</strong> Origine familiale (~1770s)</li>
+                            <li><strong>Lignée:</strong> Wetio Kouamou, Cha Neyou</li>
+                            <li><strong>Connexion:</strong>
+                                <ul style="margin-left: 20px;">
+                                    <li>Magni Kouabou (ancêtre)</li>
+                                    <li>Adeline Paule (épouse de Poueme Emmanuel)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Titre:</strong> "Ta'a fieu" accordé par chef Balengou</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>BAMENA</h4>
+                        <ul>
+                            <li><strong>Lignée:</strong> Ta'a Nanwou</li>
+                            <li><strong>Connexion:</strong> Megni Ngongang Rebecca (grand-mère)</li>
+                            <li><strong>Famille:</strong> Ngoko André, Ketchozo Dieudonné, etc.</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>AUTRES LOCALITÉS</h4>
+                        <ul>
+                            <li><strong>Bana:</strong> Ngnoumegni Elise + 3 enfants</li>
+                            <li><strong>Bafia:</strong> Ndjankep Lucienne, Langue Pulchérie + 4 filles</li>
+                            <li><strong>Bafang:</strong> Pangwa Maryse</li>
+                            <li><strong>Bameka:</strong> Kouakep Valérie</li>
+                            <li><strong>Makenene:</strong> Tagni Nguenang Martin "Le Chancelier"</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ROYAL LINEAGES -->
+            <section id="royal">
+                <h2>👑 Lignées Royales</h2>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>1. CHEFFERIE BALENG</h4>
+                        <ul>
+                            <li><strong>Connexion:</strong> Prince Nandjo (~1770s)</li>
+                            <li><strong>Migration:</strong> Baleng → Balengou</li>
+                            <li><strong>Rôle:</strong> Fondateur de Balengou (Kouodjou)</li>
+                            <li><strong>Descendance:</strong> Via neveu Neyou</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>2. CHEFFERIE BALENGOU</h4>
+                        <ul>
+                            <li><strong>Connexion:</strong> Neyou → Wetio Kouamou</li>
+                            <li><strong>Lignée:</strong> Magni Kouabou (Ndepgweu-tu)</li>
+                            <li><strong>Titre accordé:</strong> "Ta'a fieu" à Joseph Tinang</li>
+                            <li><strong>Signification:</strong> "Père du chef" - haute reconnaissance</li>
+                            <li><strong>Connexion actuelle:</strong> Adeline Paule (épouse)</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>3. CHEFFERIE BATCHINGOU</h4>
+                        <ul>
+                            <li><strong>Connexion:</strong> Tchié Ngantchié</li>
+                            <li><strong>Fonction:</strong> Ministre de la Défense (Metchoumbouh)</li>
+                            <li><strong>Lignée:</strong> Tchassep "Ta'a Tchiendjo"</li>
+                            <li><strong>Concession:</strong> Toukou, Tousseu (terre ancestrale)</li>
+                            <li><strong>Rois connus:</strong> Tchiengué, Ngongang Salomon, Kepgang Mathieu Denis, Nana André Flaubert</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h4>4. CHEFFERIE BAMENA</h4>
+                        <ul>
+                            <li><strong>Connexion:</strong> Ta'a Nanwou</li>
+                            <li><strong>Lignée:</strong> Megni Ngongang Rebecca (grand-mère)</li>
+                            <li><strong>Statut:</strong> Petite-fille du chef Bamena</li>
+                            <li><strong>Famille:</strong> Ngoko André, Ketchozo Dieudonné</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="generation gen4">
+                    <h3>Statut Royal des Descendants</h3>
+                    <div class="person-details">
+                        En tant que descendants des chefferies Baleng, Balengou, Batchingou et Bamena, 
+                        les petits-fils et arrière-petits-fils de Megni Kouabou et de Tchié Ngantchié 
+                        sont des <strong>princes et altesses royales</strong>.
+                        <br><br>
+                        <strong>Génération actuelle (6):</strong> Tous les petits-enfants de Ta'a fieu Tagni Tinang Joseph 
+                        portent ce statut royal à travers quatre lignées distinctes.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISUAL TREE -->
+            <section>
+                <h2>🌲 Arbre Visuel Simplifié</h2>
+                <div class="tree-visual">
+Wetio Kouamou (Balengou, ~1770s)
+│
+├── Magni Kouabou → Batchingou
+│   │
+│   └── Ngnoumegni
+│       │
+│       └── Ta'a Fieu Tagni Tinang Joseph (1898-2001)
+│           │
+│           ├── Ngoughou Théodore (1947)
+│           │   └── Inesta
+│           │
+│           ├── Poueme Emmanuel (1950) [HÉRITIER]
+│           │   ├── Serge Donald (aîné)
+│           │   ├── Armand Cédric
+│           │   ├── Eric Joel
+│           │   └── Thierry Williams
+│           │
+│           ├── Datouo David [†]
+│           │
+│           ├── Ngnoumegni Elise → Bana
+│           │   ├── Carine
+│           │   ├── Junior
+│           │   └── Rolande
+│           │
+│           ├── Langue Samuel [†] → Batchingou
+│           │   ├── Estha
+│           │   ├── Josiane
+│           │   ├── Linda
+│           │   └── Erika
+│           │
+│           ├── Ndjankep Lucienne → Bafia
+│           │
+│           ├── Pangwa Maryse → Bafang
+│           │
+│           ├── Lélé Jean [†] → Batchingou
+│           │   ├── Steve
+│           │   ├── Dilane
+│           │   ├── Boris
+│           │   ├── Lorvine
+│           │   ├── Daniel
+│           │   └── Christien
+│           │
+│           └── Kouakep Valérie → Bameka
+│
+├── Cha Neyou → Balengou
+│   └── 6 enfants (Mbiendu Sadrack, etc.)
+│
+└── Wajiamou → Bazou → Makenene
+    └── Tagni Nguenang Martin "Le Chancelier"
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p><strong>Arbre Généalogique - Famille Ta'a Fieu Tagni Tinang Joseph</strong></p>
+            <p>Batchingou - Balengou - Bamena</p>
+            <p>7 Générations • ~1770s - 2025</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                Document préservé pour les générations futures<br>
+                "La famille est la source de vie et de bonheur qui ne finit jamais"
+            </p>
+        </footer>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Collapsible sections
+        document.querySelectorAll('.collapsible').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('collapsed');
+                const content = this.nextElementSibling;
+                content.classList.toggle('hidden');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
