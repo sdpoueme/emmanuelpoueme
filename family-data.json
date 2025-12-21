@@ -1,0 +1,866 @@
+{
+  "families": [
+    {
+      "id": "wetio-kouamou",
+      "name": "Wetio Kouamou",
+      "generation": "Génération 1",
+      "dates": "~1770s",
+      "role": "Ancêtre fondateur",
+      "birthPlace": "Balengou",
+      "spouse": "Magni Juebou",
+      "children": 4,
+      "childrenNames": ["Magni Kouabou", "Cha Neyou", "Wajiamou", "Nguebou"],
+      "notes": "Descendant de Prince Neyou de Baleng. Fondateur de la lignée à Balengou."
+    },
+    {
+      "id": "magni-kouabou",
+      "name": "Magni Kouabou",
+      "generation": "Génération 2",
+      "dates": "~1800s",
+      "role": "Fille aînée de Wetio Kouamou",
+      "birthPlace": "Balengou",
+      "father": "Wetio Kouamou",
+      "mother": "Magni Juebou",
+      "spouse": "Ta'a Wéjiéwou (Batchingou)",
+      "children": 3,
+      "childrenNames": ["Njionda", "Ngnoumegni", "Wétié"],
+      "notes": "A épousé Ta'a Wéjiéwou à Batchingou. Fondatrice de la branche Batchingou."
+    },
+    {
+      "id": "cha-neyou",
+      "name": "Cha Neyou",
+      "generation": "Génération 2",
+      "dates": "~1800s",
+      "role": "Fils de Wetio Kouamou",
+      "birthPlace": "Balengou",
+      "father": "Wetio Kouamou",
+      "mother": "Magni Juebou",
+      "spouses": [
+        {"name": "Ketchignou", "place": "Balengou"},
+        {"name": "Tchayep", "place": "Balengou"}
+      ],
+      "children": 6,
+      "childrenNames": ["Wemba Mbiendu Sadrack", "Neyou", "Tchuindjang", "Wetie Gabriel", "Doussa Elisabeth", "Ngantchou Etienne"],
+      "notes": "Fondateur de la branche Balengou (Ndepgweu)."
+    },
+    {
+      "id": "wajiamou",
+      "name": "Wajiamou",
+      "generation": "Génération 2",
+      "dates": "~1800s",
+      "role": "Fils de Wetio Kouamou",
+      "birthPlace": "Balengou",
+      "father": "Wetio Kouamou",
+      "mother": "Magni Juebou",
+      "notes": "Ancêtre de Tagni Nguenang Martin 'Le Chancelier' à Makenene."
+    },
+    {
+      "id": "nguebou",
+      "name": "Nguebou",
+      "generation": "Génération 2",
+      "dates": "~1800s",
+      "role": "Fils de Wetio Kouamou",
+      "birthPlace": "Balengou",
+      "father": "Wetio Kouamou",
+      "mother": "Magni Juebou"
+    },
+    {
+      "id": "ngnoumegni",
+      "name": "Ngnoumegni",
+      "generation": "Génération 3",
+      "dates": "~1868 - ?",
+      "role": "Mère du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Ta'a Wéjiéwou",
+      "mother": "Magni Kouabou",
+      "spouse": "Tchassep (Ta'a Tchiendjo)",
+      "children": 1,
+      "childrenNames": ["Ta'a Fieu Tagni Tinang Joseph"],
+      "notes": "Fille de Magni Kouabou. Mère du Patriarche Ta'a Fieu Tagni Tinang Joseph."
+    },
+    {
+      "id": "mbiendu-sadrack",
+      "name": "Wemba Mbiendu Sadrack",
+      "generation": "Génération 3",
+      "dates": "~1868 - ?",
+      "role": "Patriarche de Ndepgweu",
+      "birthPlace": "Balengou (Ndepgweu)",
+      "father": "Cha Neyou",
+      "notes": "Fils aîné de Cha Neyou. Patriarche de la branche Ndepgweu à Balengou."
+    },
+    {
+      "id": "tagni-martin",
+      "name": "Tagni Nguenang Martin",
+      "ndap": "Le Chancelier",
+      "generation": "Génération 3",
+      "dates": "~1870s - ?",
+      "role": "Le Chancelier",
+      "birthPlace": "Makenene",
+      "residence": "Makenene",
+      "notes": "Descendant de Wajiamou. Surnommé 'Le Chancelier'. Établi à Makenene."
+    },
+    {
+      "id": "tinang-joseph",
+      "name": "Ta'a Fieu Tagni Tinang Joseph",
+      "ndap": "Ta'a Fieu",
+      "dates": "1898 - 2001",
+      "lifespan": "103 ans",
+      "generation": "Génération 4",
+      "role": "Patriarche",
+      "birthPlace": "Batchingou (Toukou)",
+      "deathPlace": "Hôpital Protestant Njissé, Foumban",
+      "deathDate": "1er août 2001",
+      "burialPlace": "Batchingou (Toukou), Quartier Toukou",
+      "father": "Tchassep (Ta'a Tchiendjo)",
+      "mother": "Ngnoumegni",
+      "spouses": [
+        {
+          "name": "Megni Ngongang Rebecca",
+          "dates": "1906-1998",
+          "lifespan": "92 ans",
+          "place": "Bamena",
+          "father": "Ta'a Nanwou (Chef de Bamena)",
+          "children": ["Ngoughou Théodore", "Poueme Emmanuel"]
+        },
+        {
+          "name": "Mekeze Emilienne",
+          "place": "Batchingou",
+          "children": []
+        },
+        {
+          "name": "Megni Rachel",
+          "place": "Feugou",
+          "children": ["Datouo David", "Ngnoumegni Elise", "Langue Samuel", "Ndjankep Lucienne", "Pangwa Maryse", "Lélé Jean", "Kouakep Valérie"]
+        }
+      ],
+      "children": 9,
+      "occupation": "Commerçant ambulant, Agriculteur, Notable",
+      "titles": [
+        "Ta'a fieu (Père du chef)",
+        "Chef de la communauté Batchingou de Foumbot",
+        "Notable de la cour royale de Foumbot",
+        "Assesseur à la Mairie de Foumbot",
+        "Adjoint au chef (Company quarter)",
+        "Percepteur des impôts"
+      ],
+      "awards": ["Médaille du mérite camerounais"],
+      "activities": [
+        "Commerce ambulant aux marchés du Ndé et de l'Ouest",
+        "Plantations de café à Foumbot",
+        "Vente de tissus, outils, fournitures"
+      ],
+      "properties": [
+        "Concession Batchingou (Toukou)",
+        "Propriété titrée Foumbot (Company quarter)"
+      ],
+      "notes": "Patriarche fondateur. 103 ans de vie. A rassemblé la famille pendant l'indépendance du Cameroun et le maquis (1958-1960). Notable de grande influence dans les communautés de Batchingou et Foumbot."
+    },
+    {
+      "id": "megni-rebecca",
+      "name": "Megni Ngongang Rebecca",
+      "dates": "1906 - 1998",
+      "lifespan": "92 ans",
+      "generation": "Génération 4",
+      "role": "Première épouse du Patriarche",
+      "birthPlace": "Bamena",
+      "deathPlace": "Foumbot",
+      "burialPlace": "Batchingou",
+      "father": "Ta'a Nanwou (Chef de Bamena)",
+      "spouse": "Ta'a Fieu Tagni Tinang Joseph",
+      "married": "~1925",
+      "children": 2,
+      "childrenNames": ["Ngoughou Théodore (1947)", "Poueme Emmanuel (1950)"],
+      "activities": [
+        "Chrétienne évangélique",
+        "Membre du groupe Tambour",
+        "Membre UNC (Union Nationale Camerounaise)"
+      ],
+      "notes": "Première épouse du Patriarche. Femme de grande foi et de caractère. Point focal du foyer familial pendant 92 ans. Fille du Chef de Bamena."
+    },
+    {
+      "id": "ngoughou-theodore",
+      "name": "Ngoughou Théodore",
+      "dates": "1947 - 2017",
+      "lifespan": "70 ans",
+      "generation": "Génération 5",
+      "role": "Fils aîné du Patriarche",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Ngongang Rebecca",
+      "spouse": "Mbouguen Lucienne (Batchingou)",
+      "children": 1,
+      "childrenNames": ["Inesta Ngoughou"],
+      "occupation": "Garagiste dieseliste",
+      "workPlace": "Loum",
+      "notes": "Fils aîné du Patriarche et Megni Rebecca. A contribué au support familial en tant que garagiste à Loum."
+    },
+    {
+      "id": "poueme-emmanuel",
+      "name": "Poueme Emmanuel",
+      "ndap": "Tasseuh",
+      "born": "1950",
+      "generation": "Génération 5",
+      "role": "Héritier - Ta'a fieu Tinang Joseph",
+      "birthPlace": "Batchingou (Toukou)",
+      "residence": "Batchingou / Québec",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Ngongang Rebecca",
+      "spouse": "Ngankeu Tooua Adeline Paule (Balengou)",
+      "children": 4,
+      "childrenNames": [
+        "Poueme Daouda Serge Donald (Mbeu Gaze)",
+        "Poueme Tooua Armand Cédric",
+        "Poueme Tinang Eric Joel",
+        "Poueme Ngoughou Thierry Williams"
+      ],
+      "succession": "Désigné héritier en août 2001",
+      "title": "Ta'a fieu Tinang Joseph",
+      "status": "Héritier actuel",
+      "notes": "Fils aîné survivant du Patriarche. Désigné héritier en 2001. Responsable du rassemblement familial et de la préservation de l'héritage familial."
+    },
+    {
+      "id": "datouo-david",
+      "name": "Datouo David",
+      "dates": "† jeune",
+      "generation": "Génération 5",
+      "role": "Fils du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "notes": "Fils du Patriarche et Megni Rachel. Décédé jeune."
+    },
+    {
+      "id": "ngnoumegni-elise",
+      "name": "Ngnoumegni Elise",
+      "generation": "Génération 5",
+      "role": "Fille du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Bana",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "children": 3,
+      "childrenNames": ["Ngongang Carine", "Tuisseu Junior", "Kombou Rolande"],
+      "notes": "Fille du Patriarche et Megni Rachel. Établie à Bana avec sa famille."
+    },
+    {
+      "id": "langue-samuel",
+      "name": "Langue Samuel",
+      "dates": "1968 - 2017",
+      "lifespan": "49 ans",
+      "generation": "Génération 5",
+      "role": "Fils du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Batchingou / Bafia",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "spouse": "Pulchérie Langue (Bafia)",
+      "children": 4,
+      "childrenNames": ["Estha", "Josiane", "Linda", "Erika"],
+      "notes": "Fils du Patriarche et Megni Rachel. Résidait entre Batchingou et Bafia."
+    },
+    {
+      "id": "ndjankep-lucienne",
+      "name": "Ndjankep Lucienne",
+      "generation": "Génération 5",
+      "role": "Fille du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Bafia",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "spouse": "Djoh A Koung Ruben (Bafia)",
+      "notes": "Fille du Patriarche et Megni Rachel. Établie à Bafia."
+    },
+    {
+      "id": "pangwa-maryse",
+      "name": "Pangwa Maryse",
+      "generation": "Génération 5",
+      "role": "Fille du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Bafang",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "spouse": "Nassi Eric (Bafang)",
+      "notes": "Fille du Patriarche et Megni Rachel. Établie à Bafang."
+    },
+    {
+      "id": "lele-jean",
+      "name": "Lélé Jean",
+      "dates": "? - 2017",
+      "generation": "Génération 5",
+      "role": "Fils du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Batchingou",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "spouse": "Eveline (Batchingou)",
+      "children": 6,
+      "childrenNames": ["Poueme Lele Steve", "Koualong Lele Dilane", "Ngoughou Lele Boris", "+3 autres"],
+      "notes": "Fils du Patriarche et Megni Rachel. Famille nombreuse établie à Batchingou."
+    },
+    {
+      "id": "kouakep-valerie",
+      "name": "Kouakep Valérie",
+      "generation": "Génération 5",
+      "role": "Fille du Patriarche",
+      "birthPlace": "Foumbot",
+      "residence": "Bameka",
+      "father": "Ta'a Fieu Tagni Tinang Joseph",
+      "mother": "Megni Rachel",
+      "notes": "Fille du Patriarche et Megni Rachel. Établie à Bameka."
+    },
+    {
+      "id": "inesta-ngoughou",
+      "name": "Inesta Ngoughou",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Ngoughou Théodore",
+      "mother": "Mbouguen Lucienne",
+      "notes": "Fille unique de Ngoughou Théodore."
+    },
+    {
+      "id": "poueme-daouda",
+      "name": "Poueme Daouda Serge Donald",
+      "generation": "Génération 6",
+      "role": "Mbeu Gaze - Futur Ta'a fieu",
+      "birthPlace": "Batchingou",
+      "father": "Poueme Emmanuel",
+      "mother": "Ngankeu Tooua Adeline Paule",
+      "status": "Mbeu Gaze (Fils aîné de l'héritier)",
+      "notes": "Fils aîné de l'héritier Poueme Emmanuel. Mbeu Gaze, futur Ta'a fieu de la famille."
+    },
+    {
+      "id": "poueme-armand",
+      "name": "Poueme Tooua Armand Cédric",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "father": "Poueme Emmanuel",
+      "mother": "Ngankeu Tooua Adeline Paule",
+      "notes": "2e fils de l'héritier Poueme Emmanuel."
+    },
+    {
+      "id": "poueme-eric",
+      "name": "Poueme Tinang Eric Joel",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "father": "Poueme Emmanuel",
+      "mother": "Ngankeu Tooua Adeline Paule",
+      "notes": "3e fils de l'héritier Poueme Emmanuel."
+    },
+    {
+      "id": "poueme-thierry",
+      "name": "Poueme Ngoughou Thierry Williams",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "father": "Poueme Emmanuel",
+      "mother": "Ngankeu Tooua Adeline Paule",
+      "notes": "4e fils de l'héritier Poueme Emmanuel."
+    },
+    {
+      "id": "ngongang-carine",
+      "name": "Ngongang Carine",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bana",
+      "father": "Époux de Ngnoumegni Elise",
+      "mother": "Ngnoumegni Elise",
+      "notes": "Fille de Ngnoumegni Elise."
+    },
+    {
+      "id": "tuisseu-junior",
+      "name": "Tuisseu Junior",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "birthPlace": "Bana",
+      "father": "Époux de Ngnoumegni Elise",
+      "mother": "Ngnoumegni Elise",
+      "notes": "Fils de Ngnoumegni Elise."
+    },
+    {
+      "id": "kombou-rolande",
+      "name": "Kombou Rolande",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bana",
+      "father": "Époux de Ngnoumegni Elise",
+      "mother": "Ngnoumegni Elise",
+      "notes": "Fille de Ngnoumegni Elise."
+    },
+    {
+      "id": "estha",
+      "name": "Estha",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bafia",
+      "father": "Langue Samuel",
+      "mother": "Pulchérie Langue",
+      "notes": "Fille de Langue Samuel."
+    },
+    {
+      "id": "josiane",
+      "name": "Josiane",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bafia",
+      "father": "Langue Samuel",
+      "mother": "Pulchérie Langue",
+      "notes": "Fille de Langue Samuel."
+    },
+    {
+      "id": "linda",
+      "name": "Linda",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bafia",
+      "father": "Langue Samuel",
+      "mother": "Pulchérie Langue",
+      "notes": "Fille de Langue Samuel."
+    },
+    {
+      "id": "erika",
+      "name": "Erika",
+      "generation": "Génération 6",
+      "role": "Petite-fille du Patriarche",
+      "birthPlace": "Bafia",
+      "father": "Langue Samuel",
+      "mother": "Pulchérie Langue",
+      "notes": "Fille de Langue Samuel."
+    },
+    {
+      "id": "poueme-steve",
+      "name": "Poueme Lele Steve",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Lélé Jean",
+      "mother": "Eveline",
+      "children": 3,
+      "childrenNames": ["Magne", "Pangoua", "Kouatchang"],
+      "notes": "Fils de Lélé Jean."
+    },
+    {
+      "id": "koualong-dilane",
+      "name": "Koualong Lele Dilane",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Lélé Jean",
+      "mother": "Eveline",
+      "notes": "Fils de Lélé Jean."
+    },
+    {
+      "id": "ngoughou-boris",
+      "name": "Ngoughou Lele Boris",
+      "generation": "Génération 6",
+      "role": "Petit-fils du Patriarche",
+      "birthPlace": "Batchingou",
+      "father": "Lélé Jean",
+      "mother": "Eveline",
+      "notes": "Fils de Lélé Jean."
+    },
+    {
+      "id": "magne",
+      "name": "Magne",
+      "generation": "Génération 7",
+      "role": "Arrière-petit-fils du Patriarche",
+      "father": "Poueme Lele Steve",
+      "notes": "Fils de Poueme Lele Steve."
+    },
+    {
+      "id": "pangoua",
+      "name": "Pangoua",
+      "generation": "Génération 7",
+      "role": "Arrière-petit-fils du Patriarche",
+      "father": "Poueme Lele Steve",
+      "notes": "Fils de Poueme Lele Steve."
+    },
+    {
+      "id": "kouatchang",
+      "name": "Kouatchang",
+      "generation": "Génération 7",
+      "role": "Arrière-petit-fils du Patriarche",
+      "father": "Poueme Lele Steve",
+      "notes": "Fils de Poueme Lele Steve."
+    }
+  ],
+  "generations": [
+    {
+      "level": 1,
+      "year": "~1770s",
+      "location": "Balengou",
+      "members": [
+        {
+          "id": "wetio-kouamou",
+          "name": "Wetio Kouamou",
+          "dates": "~1770s",
+          "location": "Balengou",
+          "notes": "Ancêtre fondateur - Descendant de Prince Neyou"
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "year": "~1800s",
+      "location": "Balengou, Batchingou, Bazou",
+      "members": [
+        {
+          "id": "magni-kouabou",
+          "name": "Magni Kouabou",
+          "location": "Batchingou",
+          "spouse": "Ta'a Wéjiéwou",
+          "notes": "Fille aînée → Fondatrice branche Batchingou"
+        },
+        {
+          "id": "cha-neyou",
+          "name": "Cha Neyou",
+          "location": "Balengou",
+          "notes": "Fondateur branche Ndepgweu"
+        },
+        {
+          "id": "wajiamou",
+          "name": "Wajiamou",
+          "location": "Bazou",
+          "notes": "Ancêtre de Tagni Martin (Makenene)"
+        },
+        {
+          "id": "nguebou",
+          "name": "Nguebou",
+          "location": "?",
+          "notes": "4e enfant"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "year": "~1868",
+      "location": "Batchingou, Balengou, Makenene",
+      "members": [
+        {
+          "id": "ngnoumegni",
+          "name": "Ngnoumegni",
+          "dates": "~1868",
+          "location": "Batchingou",
+          "role": "Mère du Patriarche",
+          "highlight": true
+        },
+        {
+          "id": "mbiendu-sadrack",
+          "name": "Wemba Mbiendu Sadrack",
+          "location": "Balengou (Ndepgweu)",
+          "role": "Patriarche Ndepgweu"
+        },
+        {
+          "id": "tagni-martin",
+          "name": "Tagni Nguenang Martin",
+          "location": "Makenene",
+          "role": "Le Chancelier"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "year": "1898",
+      "location": "Batchingou",
+      "members": [
+        {
+          "id": "tinang-joseph",
+          "name": "Ta'a Fieu Tagni Tinang Joseph",
+          "dates": "1898-2001",
+          "location": "Patriarche",
+          "role": "PATRIARCHE",
+          "highlight": true,
+          "lifespan": "103 ans"
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "year": "1947-1970",
+      "location": "Batchingou, Foumbot",
+      "members": [
+        {
+          "id": "ngoughou-theodore",
+          "name": "Ngoughou Théodore",
+          "dates": "1947-2017"
+        },
+        {
+          "id": "poueme-emmanuel",
+          "name": "Poueme Emmanuel",
+          "dates": "1950-",
+          "role": "HÉRITIER",
+          "status": "Ta'a fieu actuel",
+          "highlight": true
+        },
+        {
+          "id": "datouo-david",
+          "name": "Datouo David",
+          "dates": "† jeune"
+        },
+        {
+          "id": "ngnoumegni-elise",
+          "name": "Ngnoumegni Elise",
+          "location": "Bana"
+        },
+        {
+          "id": "langue-samuel",
+          "name": "Langue Samuel",
+          "dates": "1968-2017",
+          "location": "Bafia"
+        },
+        {
+          "id": "ndjankep-lucienne",
+          "name": "Ndjankep Lucienne",
+          "location": "Bafia"
+        },
+        {
+          "id": "pangwa-maryse",
+          "name": "Pangwa Maryse",
+          "location": "Bafang"
+        },
+        {
+          "id": "lele-jean",
+          "name": "Lélé Jean",
+          "dates": "?-2017",
+          "location": "Batchingou"
+        },
+        {
+          "id": "kouakep-valerie",
+          "name": "Kouakep Valérie",
+          "location": "Bameka"
+        }
+      ]
+    },
+    {
+      "level": 6,
+      "year": "1975-2000",
+      "location": "Multiple locations",
+      "members": [
+        {
+          "id": "poueme-daouda",
+          "name": "Poueme Daouda Serge Donald",
+          "status": "Mbeu Gaze (Futur Ta'a fieu)",
+          "highlight": true
+        },
+        {
+          "id": "poueme-armand",
+          "name": "Poueme Tooua Armand Cédric"
+        },
+        {
+          "id": "poueme-eric",
+          "name": "Poueme Tinang Eric Joel"
+        },
+        {
+          "id": "poueme-thierry",
+          "name": "Poueme Ngoughou Thierry Williams"
+        },
+        {
+          "id": "inesta-ngoughou",
+          "name": "Inesta Ngoughou"
+        },
+        {
+          "id": "ngongang-carine",
+          "name": "Ngongang Carine"
+        },
+        {
+          "id": "tuisseu-junior",
+          "name": "Tuisseu Junior"
+        },
+        {
+          "id": "kombou-rolande",
+          "name": "Kombou Rolande"
+        },
+        {
+          "id": "estha",
+          "name": "Estha"
+        },
+        {
+          "id": "josiane",
+          "name": "Josiane"
+        },
+        {
+          "id": "linda",
+          "name": "Linda"
+        },
+        {
+          "id": "erika",
+          "name": "Erika"
+        },
+        {
+          "id": "poueme-steve",
+          "name": "Poueme Lele Steve"
+        },
+        {
+          "id": "koualong-dilane",
+          "name": "Koualong Lele Dilane"
+        },
+        {
+          "id": "ngoughou-boris",
+          "name": "Ngoughou Lele Boris"
+        },
+        {
+          "name": "+ 5 autres petits-enfants"
+        }
+      ]
+    },
+    {
+      "level": 7,
+      "year": "2000+",
+      "location": "Batchingou et ailleurs",
+      "members": [
+        {
+          "id": "magne",
+          "name": "Magne"
+        },
+        {
+          "id": "pangoua",
+          "name": "Pangoua"
+        },
+        {
+          "id": "kouatchang",
+          "name": "Kouatchang"
+        },
+        {
+          "name": "+ 20 autres arrière-petits-enfants"
+        }
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "name": "Balengou",
+      "region": "Ndé, Région de l'Ouest",
+      "quarter": "Ndepgweu-tu",
+      "established": "~1770s",
+      "founder": "Prince Neyou / Wetio Kouamou",
+      "significance": "Foyer ancestral originel. Lieu d'origine de la lignée familiale.",
+      "residents": "Branche Cha Neyou (Wemba Mbiendu Sadrack et descendants)",
+      "period": "1770s - présent"
+    },
+    {
+      "name": "Batchingou",
+      "region": "Ndé, Région de l'Ouest",
+      "quarter": "Toukou / Tousseu",
+      "established": "~1800s",
+      "founder": "Magni Kouabou & Ta'a Wéjiéwou",
+      "significance": "Foyer historique principal de la famille. Concession ancestrale.",
+      "residents": "15+ membres actuels (Poueme Emmanuel, famille Lélé Jean, etc.)",
+      "properties": "Concession Toukou, maisons familiales",
+      "period": "1800s - présent"
+    },
+    {
+      "name": "Foumbot",
+      "region": "Noun, Région de l'Ouest",
+      "quarter": "Company",
+      "established": "1960",
+      "leader": "Ta'a Fieu Tagni Tinang Joseph",
+      "significance": "Centre commercial et résidence du Patriarche (1960-2001). Communauté Batchingou.",
+      "properties": "Propriété titrée au nom 'Tinang Joseph'",
+      "period": "1960 - 2001 (activité principale)"
+    },
+    {
+      "name": "Bamena",
+      "region": "Mezam, Région du Nord-Ouest",
+      "significance": "Lieu d'origine de Megni Ngongang Rebecca (1ère épouse). Chefferie de Ta'a Nanwou.",
+      "connection": "Famille royale de Bamena"
+    },
+    {
+      "name": "Makenene",
+      "region": "Mbam-et-Inoubou",
+      "significance": "Résidence de Tagni Nguenang Martin 'Le Chancelier' (descendant de Wajiamou).",
+      "branch": "Branche Wajiamou"
+    },
+    {
+      "name": "Bafia",
+      "region": "Mbam-et-Inoubou, Région du Centre",
+      "significance": "Résidence de Langue Samuel, Ndjankep Lucienne et familles.",
+      "residents": "2+ familles"
+    },
+    {
+      "name": "Bana",
+      "region": "Région de l'Ouest",
+      "significance": "Résidence de Ngnoumegni Elise et ses 3 enfants."
+    },
+    {
+      "name": "Bafang",
+      "region": "Haut-Nkam, Région de l'Ouest",
+      "significance": "Résidence de Pangwa Maryse."
+    },
+    {
+      "name": "Bameka",
+      "region": "Région de l'Ouest",
+      "significance": "Résidence de Kouakep Valérie."
+    }
+  ],
+  "timeline": [
+    {
+      "year": "~1770",
+      "event": "Migration de Prince Nandjo de Baleng vers Balengou. Établissement de la lignée.",
+      "generation": 1
+    },
+    {
+      "year": "~1800",
+      "event": "Magni Kouabou épouse Ta'a Wéjiéwou à Batchingou. Fondation de la branche Batchingou.",
+      "generation": 2
+    },
+    {
+      "year": "~1868",
+      "event": "Naissance de Ngnoumegni (mère du Patriarche) à Batchingou.",
+      "generation": 3
+    },
+    {
+      "year": "1898",
+      "event": "Naissance de Ta'a Fieu Tagni Tinang Joseph à Batchingou (Toukou).",
+      "generation": 4,
+      "importance": "Naissance du Patriarche"
+    },
+    {
+      "year": "~1925",
+      "event": "Mariage du Patriarche avec Megni Ngongang Rebecca de Bamena.",
+      "generation": 4
+    },
+    {
+      "year": "1947",
+      "event": "Naissance de Ngoughou Théodore (1er fils).",
+      "generation": 5
+    },
+    {
+      "year": "1950",
+      "event": "Naissance de Poueme Emmanuel (futur héritier).",
+      "generation": 5,
+      "importance": "Naissance de l'héritier"
+    },
+    {
+      "year": "1958-1960",
+      "event": "Indépendance du Cameroun. Maquis. Guerre civile. Famille séparée. Patriarche rassemble la famille.",
+      "generation": 4,
+      "importance": "Période critique - Maquis"
+    },
+    {
+      "year": "1960",
+      "event": "Patriarche s'installe à Foumbot (Company quarter). Reconstruction post-maquis.",
+      "generation": 4
+    },
+    {
+      "year": "1960-2001",
+      "event": "Patriarche mène activités commerciales à Foumbot. Notable, Assesseur, Chef communauté.",
+      "generation": 4
+    },
+    {
+      "year": "1998",
+      "event": "Décès de Megni Ngongang Rebecca (92 ans). Enterrée à Batchingou.",
+      "generation": 4
+    },
+    {
+      "year": "2001",
+      "event": "Décès du Patriarche Ta'a Fieu Tagni Tinang Joseph (103 ans). Poueme Emmanuel désigné héritier.",
+      "generation": 4,
+      "importance": "Succession - Poueme Emmanuel devient Ta'a fieu"
+    },
+    {
+      "year": "2001-2025",
+      "event": "Poueme Emmanuel assure la continuité familiale, rassemblements, préservation de l'héritage.",
+      "generation": 5
+    }
+  ]
+}
