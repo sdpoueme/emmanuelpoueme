@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbre Généalogique - Tinang Joseph</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        
+        .header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 32px; margin-bottom: 10px; }
+        
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        
+        .tabs { background: white; display: flex; gap: 10px; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tabs button { padding: 10px 20px; border: none; background: #eee; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .tabs button.active { background: #2d5016; color: white; }
+        
+        .content { display: none; }
+        .content.active { display: block; }
+        
+        .tree-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .generation { margin: 30px 0; text-align: center; }
+        .generation-title { font-size: 14px; color: #666; margin-bottom: 15px; text-transform: uppercase; }
+        .generation-members { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; align-items: center; min-height: 80px; }
+        .member { background: white; border: 2px solid #ddd; padding: 12px 15px; min-width: 140px; text-align: center; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+        .member:hover { border-color: #2d5016; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .member.patriarch { border-color: #d97706; background: rgba(217, 119, 6, 0.05); }
+        .member.heir { border-color: #059669; background: rgba(5, 150, 105, 0.05); }
+        .member-name { font-weight: bold; color: #111; margin-bottom: 4px; font-size: 13px; }
+        .member-dates { font-size: 11px; color: #666; }
+        .divider { color: #ccc; font-size: 16px; margin: 10px 0; }
+        
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
+        .card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .card-header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 15px; }
+        .card-title { font-weight: bold; margin-bottom: 4px; }
+        .card-subtitle { font-size: 12px; opacity: 0.9; }
+        .card-body { padding: 15px; font-size: 13px; }
+        .card-item { margin-bottom: 6px; }
+        
+        .search { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+        .search input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.show { display: flex; }
+        .modal-content { background: white; border-radius: 8px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
+        .modal-header { background: linear-gradient(135deg, #2d5016, #3d6b1f); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .modal-close { background: rgba(255,255,255,0.3); border: none; color: white; font-size: 24px; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; }
+        .modal-body { padding: 20px; }
+        .modal-section { margin-bottom: 20px; }
+        .modal-section-title { font-weight: bold; color: #2d5016; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #2d5016; }
+        .modal-section p { margin-bottom: 6px; font-size: 13px; }
+        .modal-section ul { margin-left: 20px; font-size: 13px; }
+        .modal-section li { margin-bottom: 4px; }
+        
+        .loading { text-align: center; padding: 40px; color: #666; }
+        .error { background: #fee; border: 1px solid #fcc; color: #c33; padding: 15px; margin: 20px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🌳 Arbre Généalogique</h1>
+    <p>Famille Ta'a Fieu Tagni Tinang Joseph • 1770-2025</p>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('overview')">📋 Aperçu</button>
+        <button class="tab-btn" onclick="showTab('generations')">🌳 Générations</button>
+        <button class="tab-btn" onclick="showTab('people')">👥 Personnes</button>
+        <button class="tab-btn" onclick="showTab('locations')">📍 Localités</button>
+    </div>
+
+    <div id="overview" class="content active">
+        <div class="search"><input type="text" onkeyup="filterTab('overview')" placeholder="🔍 Chercher..."></div>
+        <div class="cards" id="overviewCards"><div class="loading">Chargement...</div></div>
+    </div>
+
+    <div id="generations" class="content">
+        <div class="tree-container" id="generationsTree"><div class="loading">Chargement...</div></div>
+    </div>
+
+    <div id="people" class="content">
+        <div class="search"><input type="text" onkeyup="filterTab('people')" placeholder="🔍 Chercher..."></div>
+        <div class="cards" id="peopleCards"><div class="loading">Chargement...</div></div>
+    </div>
+
+    <div id="locations" class="content">
+        <div class="cards" id="locationsCards"><div class="loading">Chargement...</div></div>
+    </div>
+</div>
+
+<div id="modal" class="modal" onclick="if(event.target.id==='modal') closeModal()">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div id="modalTitle" style="font-weight: bold;">Titre</div>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body" id="modalBody">Contenu</div>
+    </div>
+</div>
+
+<script>
+console.log("Script démarré");
+
+let familyData = null;
+
+// Charger les données JSON
+async function loadData() {
+    try {
+        console.log("Chargement du fichier family-data.json...");
+        const response = await fetch('family-data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        familyData = await response.json();
+        console.log("✓ Données chargées:", familyData);
+        renderAll();
+    } catch (error) {
+        console.error("Erreur lors du chargement:", error);
+        document.getElementById('overviewCards').innerHTML = '<div class="error">Erreur: Impossible de charger family-data.json</div>';
+    }
+}
+
+// Afficher un onglet
+function showTab(tabName) {
+    console.log("Affichage onglet:", tabName);
+    
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(tabName).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// Rendre tout
+function renderAll() {
+    console.log("renderAll() appelé");
+    renderOverview();
+    renderGenerations();
+    renderPeople();
+    renderLocations();
+}
+
+// Aperçu - 3 personnes principales
+function renderOverview() {
+    console.log("renderOverview()");
+    const container = document.getElementById('overviewCards');
+    if (!familyData || !familyData.families) return;
+    
+    const featured = familyData.families.slice(0, 3);
+    container.innerHTML = featured.map(person => `
+        <div class="card" onclick="showPerson('${person.id}')">
+            <div class="card-header">
+                <div class="card-title">${person.name}</div>
+                <div class="card-subtitle">${person.role || person.generation}</div>
+            </div>
+            <div class="card-body">
+                ${person.dates ? `<div class="card-item"><strong>Dates:</strong> ${person.dates}</div>` : ''}
+                ${person.born ? `<div class="card-item"><strong>Né:</strong> ${person.born}</div>` : ''}
+                ${person.birthPlace ? `<div class="card-item"><strong>Lieu:</strong> ${person.birthPlace}</div>` : ''}
+                ${person.children ? `<div class="card-item"><strong>Enfants:</strong> ${person.children}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Générations - Arbre visuel
+function renderGenerations() {
+    console.log("renderGenerations()");
+    const container = document.getElementById('generationsTree');
+    if (!familyData || !familyData.generations) return;
+    
+    let html = '';
+    familyData.generations.forEach((gen, idx) => {
+        html += `<div class="generation">
+            <div class="generation-title">Génération ${gen.level} (${gen.year})</div>
+            <div class="generation-members">`;
+        
+        gen.members.forEach(member => {
+            const classes = [];
+            if (member.id === 'tinang-joseph') classes.push('patriarch');
+            if (member.id === 'poueme-emmanuel') classes.push('heir');
+            
+            const clickHandler = member.id ? `onclick="showPerson('${member.id}')"` : '';
+            
+            html += `<div class="member ${classes.join(' ')}" ${clickHandler}>
+                <div class="member-name">${member.name}</div>
+                ${member.dates ? `<div class="member-dates">${member.dates}</div>` : ''}
+                ${member.location ? `<div class="member-dates">📍 ${member.location}</div>` : ''}
+            </div>`;
+        });
+        
+        html += `</div>`;
+        if (idx < familyData.generations.length - 1) {
+            html += `<div class="divider">↓</div>`;
+        }
+        html += `</div>`;
+    });
+    
+    container.innerHTML = html;
+}
+
+// Personnes - Toutes les personnes
+function renderPeople() {
+    console.log("renderPeople()");
+    const container = document.getElementById('peopleCards');
+    if (!familyData || !familyData.families) return;
+    
+    container.innerHTML = familyData.families.map(person => `
+        <div class="card" onclick="showPerson('${person.id}')">
+            <div class="card-header">
+                <div class="card-title">${person.name}</div>
+                <div class="card-subtitle">${person.role || person.generation}</div>
+            </div>
+            <div class="card-body">
+                ${person.dates ? `<div class="card-item"><strong>Dates:</strong> ${person.dates}</div>` : ''}
+                ${person.born ? `<div class="card-item"><strong>Né:</strong> ${person.born}</div>` : ''}
+                ${person.generation ? `<div class="card-item"><strong>Génération:</strong> ${person.generation}</div>` : ''}
+                ${person.birthPlace ? `<div class="card-item"><strong>Lieu:</strong> ${person.birthPlace}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Localités
+function renderLocations() {
+    console.log("renderLocations()");
+    const container = document.getElementById('locationsCards');
+    if (!familyData || !familyData.locations) return;
+    
+    container.innerHTML = familyData.locations.map(location => `
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">📍 ${location.name}</div>
+                <div class="card-subtitle">${location.region}</div>
+            </div>
+            <div class="card-body">
+                ${location.quarter ? `<div class="card-item"><strong>Quartier:</strong> ${location.quarter}</div>` : ''}
+                ${location.established ? `<div class="card-item"><strong>Établi:</strong> ${location.established}</div>` : ''}
+                ${location.founder ? `<div class="card-item"><strong>Fondateur:</strong> ${location.founder}</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Afficher une personne dans la modal
+function showPerson(personId) {
+    console.log("showPerson():", personId);
+    
+    if (!familyData || !familyData.families) {
+        console.error("familyData n'est pas chargé");
+        return;
+    }
+    
+    const person = familyData.families.find(p => p.id === personId);
+    if (!person) {
+        console.error("Personne non trouvée:", personId);
+        return;
+    }
+    
+    console.log("Personne trouvée:", person.name);
+    
+    const modal = document.getElementById('modal');
+    const title = document.getElementById('modalTitle');
+    const body = document.getElementById('modalBody');
+    
+    title.textContent = person.name;
+    
+    let html = '';
+    
+    // Informations
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">ℹ️ Informations</div>';
+    if (person.dates) html += `<p><strong>Dates:</strong> ${person.dates}</p>`;
+    if (person.born) html += `<p><strong>Né(e):</strong> ${person.born}</p>`;
+    if (person.generation) html += `<p><strong>Génération:</strong> ${person.generation}</p>`;
+    if (person.birthPlace) html += `<p><strong>Lieu de naissance:</strong> ${person.birthPlace}</p>`;
+    if (person.deathPlace) html += `<p><strong>Lieu de décès:</strong> ${person.deathPlace}</p>`;
+    html += '</div>';
+    
+    // Famille
+    if (person.spouse || person.spouses) {
+        html += '<div class="modal-section">';
+        html += '<div class="modal-section-title">💍 Famille</div>';
+        
+        if (person.spouses) {
+            person.spouses.forEach(s => {
+                html += `<p><strong>${s.name}</strong>`;
+                if (s.dates) html += ` (${s.dates})`;
+                if (s.place) html += ` — ${s.place}`;
+                html += '</p>';
+            });
+        } else if (person.spouse) {
+            html += `<p><strong>Épouse(s):</strong> ${person.spouse}</p>`;
+        }
+        
+        if (person.children) html += `<p><strong>Enfants:</strong> ${person.children}</p>`;
+        if (person.childrenNames) {
+            html += '<p><strong>Noms des enfants:</strong></p><ul>';
+            person.childrenNames.forEach(name => {
+                html += `<li>${name}</li>`;
+            });
+            html += '</ul>';
+        }
+        html += '</div>';
+    }
+    
+    // Profession
+    if (person.occupation || person.titles || person.activities) {
+        html += '<div class="modal-section">';
+        html += '<div class="modal-section-title">💼 Profession</div>';
+        if (person.occupation) html += `<p><strong>Métier:</strong> ${person.occupation}</p>`;
+        if (person.titles) {
+            html += '<p><strong>Titres:</strong></p><ul>';
+            person.titles.forEach(t => html += `<li>${t}</li>`);
+            html += '</ul>';
+        }
+        if (person.activities) {
+            html += '<p><strong>Activités:</strong></p><ul>';
+            person.activities.forEach(a => html += `<li>${a}</li>`);
+            html += '</ul>';
+        }
+        html += '</div>';
+    }
+    
+    // Distinctions
+    if (person.awards) {
+        html += '<div class="modal-section">';
+        html += '<div class="modal-section-title">🏆 Distinctions</div>';
+        person.awards.forEach(award => {
+            html += `<p>⭐ ${award}</p>`;
+        });
+        html += '</div>';
+    }
+    
+    // Notes
+    if (person.notes) {
+        html += '<div class="modal-section">';
+        html += '<div class="modal-section-title">💭 Notes</div>';
+        html += `<p style="font-style: italic;">${person.notes}</p>`;
+        html += '</div>';
+    }
+    
+    body.innerHTML = html;
+    modal.classList.add('show');
+    console.log("Modal affichée");
+}
+
+// Fermer la modal
+function closeModal() {
+    console.log("closeModal()");
+    document.getElementById('modal').classList.remove('show');
+}
+
+// Filtrer les cartes
+function filterTab(tabName) {
+    const input = event.target.value.toLowerCase();
+    const containerId = tabName === 'overview' ? 'overviewCards' : tabName === 'people' ? 'peopleCards' : 'locationsCards';
+    const cards = document.getElementById(containerId).querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        if (input === '' || card.textContent.toLowerCase().includes(input)) {
+            card.style.opacity = '1';
+            card.style.pointerEvents = 'auto';
+        } else {
+            card.style.opacity = '0.3';
+            card.style.pointerEvents = 'none';
+        }
+    });
+}
+
+// Fermer avec Escape
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+});
+
+// Au chargement de la page
+console.log("DOM loaded, starting loadData()");
+loadData();
+</script>
+
+</body>
+</html>
