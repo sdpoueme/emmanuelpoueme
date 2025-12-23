@@ -2336,7 +2336,7 @@
             }
         }
 
-        // Render complete family tree with all 98 people and their connections
+        // Render complete family tree with all 98 people - horizontal format
         function renderGenerationsTree() {
             if (!familyData || !familyData.families) return;
             
@@ -2355,126 +2355,93 @@
                 }
             });
             
-            // Create spouse mapping (for people mentioned in spouse fields but not in families array)
-            const spouseMap = new Map();
-            familyData.families.forEach(person => {
-                if (person.spouse) {
-                    const spouseName = typeof person.spouse === 'string' ? person.spouse : person.spouse.name;
-                    if (spouseName) {
-                        spouseMap.set(person.id + '-spouse', {
-                            name: spouseName,
-                            isSpouse: true,
-                            partnerId: person.id,
-                            generation: person.generation
-                        });
-                    }
-                } else if (person.spouses && Array.isArray(person.spouses)) {
-                    person.spouses.forEach((sp, idx) => {
-                        const spouseName = typeof sp === 'string' ? sp : sp.name;
-                        if (spouseName) {
-                            spouseMap.set(person.id + '-spouse-' + idx, {
-                                name: spouseName,
-                                isSpouse: true,
-                                partnerId: person.id,
-                                generation: person.generation
-                            });
-                        }
-                    });
-                }
-            });
-            
             let html = '<div class="tree-wrapper" style="width: 100%; overflow-x: auto; padding: 40px 20px;">';
-            html += '<div style="min-width: 1200px;">';
+            html += '<div style="min-width: 1400px;">';
             
             genOrder.forEach((genName, genIndex) => {
                 const people = generations[genName];
                 if (people.length === 0) return;
                 
                 const genNumber = genIndex + 1;
-                const genColor = `var(--gen${genNumber})`;
                 
                 html += `
-                    <div class="tree-generation" style="margin: 60px 0; position: relative;">
-                        <div class="generation-label" style="background: ${genColor}; color: white; padding: 8px 24px; border-radius: 20px; display: inline-block; margin-bottom: 30px; font-weight: 600;">
-                            <i class="fas fa-layer-group"></i> ${genName} - ${people.length} personne${people.length > 1 ? 's' : ''}
+                    <div class="tree-level" style="margin: 50px 0;">
+                        <div class="generation-label" style="text-align: center; margin-bottom: 30px;">
+                            <i class="fas fa-layer-group"></i> 
+                            ${genName} - ${people.length} personne${people.length > 1 ? 's' : ''}
                         </div>
-                        
-                        <div class="people-grid" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: flex-start; position: relative;">
+                        <div class="tree-nodes" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; position: relative;">
                 `;
                 
-                // Group people by family units (parent + spouse(s) + children)
-                const processed = new Set();
-                
-                people.forEach(person => {
-                    if (processed.has(person.id)) return;
-                    processed.add(person.id);
+                // Display ALL people in this generation
+                people.forEach((person, personIndex) => {
+                    html += renderPersonTreeNode(person);
                     
-                    // Create family unit
-                    html += '<div class="family-unit" style="position: relative; padding: 20px; background: var(--gray-50); border-radius: 12px; border: 2px solid var(--gray-200);">';
-                    
-                    // Show person
-                    html += renderPersonCard(person, true);
-                    
-                    // Show spouse(s) if any
+                    // Add spouse(s) if any - displayed next to the person
                     if (person.spouse || person.spouses) {
-                        html += '<div class="spouse-connector" style="margin: 10px 0; text-align: center; color: var(--accent-gold); font-size: 20px;">💑</div>';
-                        
                         const spouses = person.spouses || [person.spouse];
-                        spouses.forEach((sp, idx) => {
+                        spouses.forEach(sp => {
                             const spouseName = typeof sp === 'string' ? sp : sp.name;
+                            const spousePlace = typeof sp === 'object' && sp.place ? sp.place : '';
                             if (spouseName) {
                                 html += `
-                                    <div class="tree-node spouse-node" style="background: #FFF9F0; border: 2px solid var(--accent-gold); border-radius: 8px; padding: 12px; margin: 10px 0;">
-                                        <div style="font-weight: 600; color: var(--gray-900); margin-bottom: 4px;">
-                                            <i class="fas fa-ring"></i> ${spouseName}
+                                    <div class="tree-node spouse-node" style="background: #FFF9F0; border: 2px solid var(--accent-gold); min-width: 200px;">
+                                        <div class="tree-node-name" style="color: var(--accent-gold);">
+                                            💑 ${spouseName}
                                         </div>
-                                        ${typeof sp === 'object' && sp.place ? `<div style="font-size: 12px; color: var(--gray-600);"><i class="fas fa-map-marker-alt"></i> ${sp.place}</div>` : ''}
+                                        ${spousePlace ? `<div class="tree-node-dates"><i class="fas fa-map-marker-alt"></i> ${spousePlace}</div>` : ''}
                                     </div>
                                 `;
                             }
                         });
                     }
-                    
-                    // Show children if mentioned
-                    if (person.childrenNames && person.childrenNames.length > 0) {
-                        html += '<div class="children-connector" style="margin: 15px 0; text-align: center;">';
-                        html += '<div style="width: 2px; height: 20px; background: var(--primary-green); margin: 0 auto;"></div>';
-                        html += '<div style="color: var(--primary-green); font-size: 12px; font-weight: 600; margin: 5px 0;"><i class="fas fa-arrow-down"></i> Enfants</div>';
-                        html += '</div>';
-                        
-                        html += '<div class="children-list" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">';
-                        person.childrenNames.forEach(childName => {
-                            // Try to find this child in the next generation
-                            const nextGen = genOrder[genIndex + 1];
-                            const childPerson = nextGen ? generations[nextGen].find(p => p.name === childName) : null;
-                            
-                            if (childPerson && !processed.has(childPerson.id)) {
-                                // Don't show here, will show in next generation
-                            } else {
-                                // Show as tag only
-                                html += `<span class="child-tag" style="background: var(--primary-green); color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 500;">${childName}</span>`;
-                            }
-                        });
-                        html += '</div>';
-                    }
-                    
-                    html += '</div>'; // End family-unit
                 });
                 
                 html += `</div></div>`;
                 
-                // Add generation connector
+                // Add connector lines between generations
                 if (genIndex < genOrder.length - 1 && generations[genOrder[genIndex + 1]].length > 0) {
+                    const currentCount = people.length;
+                    const nextCount = generations[genOrder[genIndex + 1]].length;
+                    
                     html += `
-                        <div class="generation-connector" style="height: 60px; display: flex; justify-content: center; align-items: center; position: relative;">
-                            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
+                        <div class="generation-connector" style="height: 80px; position: relative; width: 100%; display: flex; justify-content: center; align-items: center;">
+                            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;" preserveAspectRatio="none">
+                                <!-- Main vertical trunk -->
                                 <line x1="50%" y1="0" x2="50%" y2="100%" 
-                                      stroke="var(--primary-green)" stroke-width="3" stroke-dasharray="8,4"/>
+                                      stroke="var(--primary-green)" stroke-width="4" stroke-dasharray="8,4"/>
+                                
+                                ${currentCount > 1 && nextCount > 1 ? `
+                                <!-- Horizontal family line -->
+                                <line x1="25%" y1="20%" x2="75%" y2="20%" 
+                                      stroke="var(--accent-gold)" stroke-width="2" stroke-dasharray="4,2"/>
+                                
+                                <!-- Side branches -->
+                                <line x1="30%" y1="20%" x2="30%" y2="80%" 
+                                      stroke="var(--gray-400)" stroke-width="2" stroke-dasharray="3,3"/>
+                                <line x1="70%" y1="20%" x2="70%" y2="80%" 
+                                      stroke="var(--gray-400)" stroke-width="2" stroke-dasharray="3,3"/>
+                                ` : ''}
+                                
+                                ${nextCount > 5 ? `
+                                <!-- Fan-out for large families -->
+                                <line x1="50%" y1="60%" x2="20%" y2="100%" 
+                                      stroke="var(--gray-300)" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="50%" y1="60%" x2="35%" y2="100%" 
+                                      stroke="var(--gray-300)" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="50%" y1="60%" x2="65%" y2="100%" 
+                                      stroke="var(--gray-300)" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="50%" y1="60%" x2="80%" y2="100%" 
+                                      stroke="var(--gray-300)" stroke-width="1.5" opacity="0.6"/>
+                                ` : ''}
+                                
+                                <!-- Center connector dot -->
                                 <circle cx="50%" cy="50%" r="8" 
                                         fill="var(--primary-green)" stroke="white" stroke-width="2"/>
                             </svg>
-                            <div style="position: relative; z-index: 1; background: white; padding: 6px 16px; border-radius: 16px; font-size: 11px; color: var(--primary-green); border: 2px solid var(--primary-green); font-weight: 600;">
-                                <i class="fas fa-arrow-down"></i> Génération suivante
+                            
+                            <div style="position: relative; z-index: 1; background: white; padding: 6px 16px; border-radius: 16px; font-size: 11px; color: var(--primary-green); border: 2px solid var(--primary-green); font-weight: 600; box-shadow: var(--shadow-sm);">
+                                <i class="fas fa-arrow-down"></i> Descendance
                             </div>
                         </div>
                     `;
@@ -2504,22 +2471,23 @@
                         </div>
                         <div class="legend-item">
                             <span style="font-size: 28px;">💑</span>
-                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Lien matrimonial</span>
+                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Époux/Épouse</span>
                         </div>
                         <div class="legend-item">
                             <div style="width: 40px; height: 3px; background: var(--primary-green); display: inline-block; vertical-align: middle;"></div>
-                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Descendance</span>
+                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Ligne de descendance</span>
                         </div>
                         <div class="legend-item">
-                            <div style="display: inline-block; background: #FFF9F0; border: 2px solid var(--accent-gold); padding: 4px 12px; border-radius: 6px; vertical-align: middle;">Époux/se</div>
-                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Conjoint(e)</span>
+                            <div style="width: 40px; height: 2px; background: var(--accent-gold); display: inline-block; vertical-align: middle;"></div>
+                            <span style="margin-left: 10px; color: var(--gray-700); font-weight: 500;">Lien familial</span>
                         </div>
                     </div>
                     
                     <div style="margin-top: 20px; padding: 16px; background: var(--gray-50); border-radius: 8px; border-left: 3px solid var(--info);">
                         <p style="color: var(--gray-700); font-size: 14px; margin: 0; line-height: 1.6;">
                             <i class="fas fa-lightbulb" style="color: var(--info);"></i> 
-                            <strong>Astuce :</strong> Faites défiler horizontalement pour voir toutes les familles. Cliquez sur une personne pour voir sa fiche complète.
+                            <strong>Astuce :</strong> Faites défiler horizontalement pour voir toutes les personnes. 
+                            Les cartes avec fond doré (💑) sont les époux/épouses. Cliquez sur une personne pour voir sa fiche complète.
                         </p>
                     </div>
                 </div>
@@ -2529,11 +2497,11 @@
             
             treeContainer.innerHTML = html;
             
-            console.log(`✅ Arbre généalogique complet rendu: ${familyData.families.length} personnes affichées`);
+            console.log(`✅ Arbre généalogique rendu: ${familyData.families.length} personnes sur 7 générations`);
         }
         
-        // Helper function to render a person card in the tree
-        function renderPersonCard(person, includeSymbol = true) {
+        // Helper function to render a person node in the tree
+        function renderPersonTreeNode(person) {
             const classes = ['tree-node'];
             if (person.highlight) classes.push('patriarch');
             if (person.role === 'HÉRITIER') classes.push('heir');
@@ -2543,25 +2511,23 @@
             
             // Determine symbol
             let symbol = '';
-            if (includeSymbol) {
-                if (person.role === 'PATRIARCHE' || person.highlight) {
-                    symbol = '<span class="role-symbol patriarch-symbol" title="Patriarche">👑</span>';
-                } else if (person.role === 'HÉRITIER') {
-                    symbol = '<span class="role-symbol heir-symbol" title="Héritier">⭐</span>';
-                } else if (person.role === 'FONDATEUR') {
-                    symbol = '<span class="role-symbol founder-symbol" title="Fondateur">🌳</span>';
-                }
+            if (person.role === 'PATRIARCHE' || person.highlight) {
+                symbol = '<span class="role-symbol patriarch-symbol" title="Patriarche">👑</span>';
+            } else if (person.role === 'HÉRITIER') {
+                symbol = '<span class="role-symbol heir-symbol" title="Héritier">⭐</span>';
+            } else if (person.role === 'FONDATEUR') {
+                symbol = '<span class="role-symbol founder-symbol" title="Fondateur">🌳</span>';
             }
             
             return `
                 <div class="${classes.join(' ')}" ${clickable} 
-                     style="cursor: ${cursorStyle}; position: relative; min-width: 220px; margin: 10px 0;">
+                     style="cursor: ${cursorStyle}; position: relative; min-width: 200px; flex: 0 0 auto;">
                     ${symbol}
-                    <div class="tree-node-name" style="font-weight: 600; font-size: 15px; margin-bottom: 6px;">${person.name}</div>
-                    ${person.ndap ? `<div style="font-size: 11px; color: var(--accent-gold); font-style: italic; margin-bottom: 4px;">"${person.ndap}"</div>` : ''}
+                    <div class="tree-node-name">${person.name}</div>
+                    ${person.ndap ? `<div style="font-size: 11px; color: var(--accent-gold); font-style: italic; margin-top: 4px;">"${person.ndap}"</div>` : ''}
                     ${person.dates || person.born ? `<div class="tree-node-dates"><i class="fas fa-calendar-alt"></i> ${person.dates || person.born}</div>` : ''}
                     ${person.birthPlace ? `<div class="tree-node-dates"><i class="fas fa-map-marker-alt"></i> ${person.birthPlace}</div>` : ''}
-                    ${person.role && !person.role.includes('PATRIARCHE') && !person.role.includes('HÉRITIER') ? `<div class="tree-node-role" style="font-size: 11px; color: var(--primary-green); margin-top: 4px;">${person.role}</div>` : ''}
+                    ${person.role && !person.role.includes('PATRIARCHE') && !person.role.includes('HÉRITIER') && !person.role.includes('FONDATEUR') ? `<div class="tree-node-role">${person.role}</div>` : ''}
                 </div>
             `;
         }
