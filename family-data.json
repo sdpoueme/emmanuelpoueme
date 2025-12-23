@@ -774,16 +774,13 @@
     {
       "id": "poueme-daouda",
       "name": "Poueme Daouda Serge Donald",
-      "ndap": "Mbeu Gaze",
       "generation": "Génération 6",
       "dates": "~1980",
-      "role": "Futur héritier",
-      "status": "Mbeu Gaze",
       "birthPlace": "Batchingou",
       "residence": "Batchingou",
       "father": "Poueme Emmanuel",
       "mother": "Ngankeu Tooua Adeline Paule",
-      "notes": "Fils aîné de l'héritier Poueme Emmanuel"
+      "notes": "Fils aîné de l'héritier Poueme Emmanuel."
     },
     {
       "id": "poueme-armand",
@@ -1150,9 +1147,7 @@
       "members": [
         {
           "id": "poueme-daouda",
-          "name": "Poueme Daouda Serge Donald",
-          "status": "Mbeu Gaze (Futur Ta'a fieu)",
-          "highlight": true
+          "name": "Poueme Daouda Serge Donald"
         },
         {
           "id": "poueme-armand",
