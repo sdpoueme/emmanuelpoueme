@@ -12,6 +12,7 @@
             box-sizing: border-box;
         }
 
+```
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -543,7 +544,7 @@
         flex: 1;
     }
 </style>
-
+```
 
 </head>
 <body>
@@ -553,6 +554,7 @@
         <p style="font-size: 0.9em; color: #888; margin-top: 10px;">Patriarche (1898-2001) • 7 Générations • 1770s - 2025</p>
     </div>
 
+```
 <div class="boarding-pass">
     <h2>🌿 Patrimoine Familial</h2>
     <p><strong>Sept générations, une histoire</strong></p>
@@ -565,12 +567,12 @@
 
 <div class="tabs-container">
     <div class="tabs">
-        <button class="tab active" onclick="switchTab('overview')">📊 Aperçu</button>
-        <button class="tab" onclick="switchTab('royal')">👑 Lignées Royales</button>
-        <button class="tab" onclick="switchTab('tree')">🌳 Arbre</button>
-        <button class="tab" onclick="switchTab('persons')">👥 Personnes</button>
-        <button class="tab" onclick="switchTab('locations')">📍 Localités</button>
-        <button class="tab" onclick="switchTab('timeline')">📅 Dates Clés</button>
+        <button class="tab active" onclick="switchTab('overview', this)">📊 Aperçu</button>
+        <button class="tab" onclick="switchTab('royal', this)">👑 Lignées Royales</button>
+        <button class="tab" onclick="switchTab('tree', this)">🌳 Arbre</button>
+        <button class="tab" onclick="switchTab('persons', this)">👥 Personnes</button>
+        <button class="tab" onclick="switchTab('locations', this)">📍 Localités</button>
+        <button class="tab" onclick="switchTab('timeline', this)">📅 Dates Clés</button>
     </div>
 
     <!-- Overview Tab -->
@@ -653,6 +655,7 @@
         <div style="background: #f5f5f5; padding: 30px; border-radius: 12px; margin-top: 30px;">
             <h3 style="color: #2c5f4f; margin-bottom: 20px; text-align: center;">🌳 Lignée Royale Simplifiée</h3>
             <pre style="font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8; color: #333; overflow-x: auto;">
+```
 
 <strong>Génération 1 (~1770s)</strong>
 Prince Nandjo (Baleng) & Neveu Neyou
@@ -684,7 +687,7 @@ Ngnoumegni (fille de Magni Kouabou)        │
     </pre>
     </div>
     
-    
+    ```
        <!-- Note sur la transmission -->
        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 25px; border-radius: 12px; margin-top: 25px; border-left: 5px solid #4caf50;">
            <h4 style="color: #2c5f4f; margin-bottom: 15px;">📌 Transmission du Statut Royal</h4>
@@ -700,7 +703,7 @@ Ngnoumegni (fille de Magni Kouabou)        │
                confirme le statut royal de la lignée familiale.
            </p>
        </div>
-    
+    ```
     
        </div>
     
@@ -788,7 +791,7 @@ Ngnoumegni (fille de Magni Kouabou)        │
         }
   
         // Tab switching
-        function switchTab(tabName) {
+        function switchTab(tabName, element) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
@@ -801,7 +804,9 @@ Ngnoumegni (fille de Magni Kouabou)        │
             document.getElementById(tabName).classList.add('active');
   
             // Add active class to clicked button
-            event.target.classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            }
         }
   
         function renderStats() {
