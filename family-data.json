@@ -1,6 +1,101 @@
 {
   "families": [
     {
+      "id": "nandjo-prince",
+      "name": "Prince Nandjo",
+      "dates": "~1770s",
+      "generation": "Génération 1",
+      "role": "Fondateur",
+      "birthPlace": "Baleng",
+      "residence": "Migration vers Balengou (Kouodjou)",
+      "notes": "Prince de la chefferie Baleng. Fondateur de Balengou avec son neveu Neyou. Esprit de conquête et d'exploration.",
+      "occupation": "Prince, Explorateur"
+    },
+    {
+      "id": "neyou",
+      "name": "Neyou",
+      "dates": "~1770s",
+      "generation": "Génération 1",
+      "role": "Co-fondateur",
+      "birthPlace": "Baleng",
+      "residence": "Ndepgweu-tu (Balengou)",
+      "notes": "Neveu du Prince Nandjo. Co-fondateur de la localité de Ndepgweu-tu. Ancêtre de la lignée Wetio Kouamou.",
+      "occupation": "Explorateur, Fondateur"
+    },
+    {
+      "id": "wetio-kouamou",
+      "name": "Wetio Kouamou",
+      "dates": "~1800s",
+      "generation": "Génération 2",
+      "role": "Patriarche référentiel",
+      "birthPlace": "Balengou",
+      "residence": "Balengou",
+      "spouse": "Magni Juebou",
+      "children": 4,
+      "childrenNames": [
+        "Magni Kouabou",
+        "Cha Neyou",
+        "Wajiamou",
+        "Wou Ngabo"
+      ],
+      "notes": "Descendant de Neyou. Patriarche de la souche originelle. Père de Magni Kouabou qui épousera Ta'a Wéjiéwou à Batchingou.",
+      "occupation": "Chef de famille"
+    },
+    {
+      "id": "magni-kouabou",
+      "name": "Magni Kouabou",
+      "dates": "~1800s",
+      "generation": "Génération 2",
+      "role": "Matriarche",
+      "birthPlace": "Balengou",
+      "residence": "Batchingou (Toukou)",
+      "spouse": "Ta'a Wéjiéwou (Batchingou)",
+      "children": 1,
+      "childrenNames": ["Ngnoumegni"],
+      "notes": "Fille aînée de Wetio Kouamou. Épouse de Ta'a Wéjiéwou, descendant de Tchié Ngantchié. Matriarche de la lignée.",
+      "occupation": "Matriarche"
+    },
+    {
+      "id": "tchie-ngantchie",
+      "name": "Tchié Ngantchié",
+      "dates": "~1800s",
+      "generation": "Génération 2",
+      "role": "Notable royal",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "titles": ["Ministre de la Défense (Metchoumbouh)", "Notable de la chefferie Batchingou"],
+      "notes": "Ministre de la Défense de la chefferie Batchingou. Ancêtre de la lignée Ta'a Tchiendjo. Propriétaire des concessions Toukou et Tousseu.",
+      "occupation": "Ministre de la Défense"
+    },
+    {
+      "id": "ngnoumegni",
+      "name": "Ngnoumegni",
+      "dates": "~1868",
+      "generation": "Génération 3",
+      "role": "Matriarche",
+      "birthPlace": "Batchingou (Toukou)",
+      "residence": "Batchingou",
+      "spouse": "Tchassep 'Ta'a Tchiendjo'",
+      "children": 1,
+      "childrenNames": ["Ta'a Fieu Tagni Tinang Joseph"],
+      "notes": "Fille de Magni Kouabou et Ta'a Wéjiéwou. Épouse de Tchassep. Mère du patriarche Joseph.",
+      "occupation": "Matriarche"
+    },
+    {
+      "id": "tchassep",
+      "name": "Tchassep 'Ta'a Tchiendjo'",
+      "dates": "~1868",
+      "generation": "Génération 3",
+      "role": "Notable",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou (Toukou)",
+      "spouse": "Ngnoumegni",
+      "children": 1,
+      "childrenNames": ["Ta'a Fieu Tagni Tinang Joseph"],
+      "notes": "Descendant de Tchié Ngantchié. Père du patriarche Joseph. Gardien des concessions Toukou et Tousseu.",
+      "occupation": "Notable"
+    },
+    {
       "id": "tinang-joseph",
       "name": "Ta'a Fieu Tagni Tinang Joseph",
       "ndap": "Ta'a Fieu",
@@ -513,6 +608,24 @@
     }
   ],
   "generations": [
+    {
+      "level": "Génération 1",
+      "year": "~1770s",
+      "location": "Baleng → Balengou",
+      "members": ["nandjo-prince", "neyou"]
+    },
+    {
+      "level": "Génération 2",
+      "year": "~1800s",
+      "location": "Balengou et Batchingou",
+      "members": ["wetio-kouamou", "magni-kouabou", "tchie-ngantchie"]
+    },
+    {
+      "level": "Génération 3",
+      "year": "~1868",
+      "location": "Batchingou",
+      "members": ["ngnoumegni", "tchassep"]
+    },
     {
       "level": "Génération 4",
       "year": "1898-2001",
