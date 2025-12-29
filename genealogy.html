@@ -488,6 +488,84 @@
             color: #666;
             line-height: 1.6;
         }
+
+        /* Royal Lineage Diagram */
+        .royal-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 800px;
+        }
+
+        .diagram-level {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .diagram-person {
+            background: white;
+            border: 2px solid #4a7c6b;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 0 10px;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .diagram-person.royal {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%);
+            border-color: #ffd54f;
+        }
+
+        .diagram-person.patriarch {
+            background: linear-gradient(135deg, #f4e04d 0%, #e8d73a 100%);
+            border-color: #d4c230;
+            font-weight: bold;
+        }
+
+        .diagram-person h4 {
+            color: #2c5f4f;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .diagram-person p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 2px 0;
+        }
+
+        .diagram-connector {
+            width: 2px;
+            height: 40px;
+            background: #4a7c6b;
+            margin: 0 auto;
+        }
+
+        .diagram-branch {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diagram-branch::before {
+            content: '';
+            width: 100px;
+            height: 2px;
+            background: #4a7c6b;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
@@ -593,37 +671,120 @@
 
             </div>
 
-            <!-- Arbre Généalogique Royal Simplifié -->
-            <div style="background: #f5f5f5; padding: 30px; border-radius: 12px; margin-top: 30px;">
-                <h3 style="color: #2c5f4f; margin-bottom: 20px; text-align: center;">🌳 Lignée Royale Simplifiée</h3>
-                <pre style="font-family: 'Courier New', monospace; font-size: 0.95em; line-height: 1.8; color: #333; overflow-x: auto;">
-<strong>Génération 1 (~1770s)</strong>
-Prince Nandjo (Baleng) & Neveu Neyou
-│
-<strong>Génération 2 (~1800s)</strong>
-Wetio Kouamou (descendant de Neyou, Balengou)
-│
-├── Magni Kouabou (fille aînée) ────────────┐
-│                                           │
-<strong>Génération 3 (~1868)</strong>                        │
-Ngnoumegni (fille de Magni Kouabou)        │
-+ Tchassep "Ta'a Tchiendjo"                │
-  (Ministre Défense Batchingou)            │
-│                                           │
-<strong>Génération 4 (1898-2001)</strong>                    │
-👑 <strong>Ta'a Fieu Tagni Tinang Joseph</strong>           │
-   (Patriarche - 103 ans)                  │
-   + Megni Ngongang Rebecca (Bamena) ──────┘
-│
-<strong>Génération 5 (1948-1964)</strong>
-9 enfants du patriarche
-│
-<strong>Génération 6 (1975-2002)</strong>
-36+ petits-enfants
-│
-<strong>Génération 7 (2015-présent)</strong>
-Nouvelle génération
-                </pre>
+            <!-- Diagramme de la Lignée Royale -->
+            <div class="royal-diagram">
+                <h3 style="color: #2c5f4f; margin-bottom: 20px; text-align: center;">🌳 Diagramme de la Lignée Royale</h3>
+                <div class="diagram-container">
+                    
+                    <!-- Génération 1 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person royal">
+                            <h4>👑 Prince Nandjo</h4>
+                            <p>~1770s</p>
+                            <p>Chefferie Baleng</p>
+                        </div>
+                        <div class="diagram-branch"></div>
+                        <div class="diagram-person royal">
+                            <h4>👑 Neyou</h4>
+                            <p>~1770s</p>
+                            <p>Neveu du Prince</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 2 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person royal">
+                            <h4>👑 Wetio Kouamou</h4>
+                            <p>~1800s</p>
+                            <p>Descendant de Neyou</p>
+                        </div>
+                        <div class="diagram-branch"></div>
+                        <div class="diagram-person royal">
+                            <h4>👑 Magni Kouabou</h4>
+                            <p>~1800s</p>
+                            <p>Fille aînée</p>
+                        </div>
+                        <div class="diagram-branch"></div>
+                        <div class="diagram-person royal">
+                            <h4>👑 Tchié Ngantchié</h4>
+                            <p>~1800s</p>
+                            <p>Ministre Défense Batchingou</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 3 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person royal">
+                            <h4>👑 Ngnoumegni</h4>
+                            <p>~1868</p>
+                            <p>Fille de Magni Kouabou</p>
+                        </div>
+                        <div class="diagram-branch"></div>
+                        <div class="diagram-person royal">
+                            <h4>👑 Tchassep "Ta'a Tchiendjo"</h4>
+                            <p>~1868</p>
+                            <p>Descendant de Tchié Ngantchié</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 4 - Patriarche -->
+                    <div class="diagram-level">
+                        <div class="diagram-person patriarch">
+                            <h4>👑 Ta'a Fieu Tagni Tinang Joseph</h4>
+                            <p>1898-2001 (103 ans)</p>
+                            <p><strong>PATRIARCHE</strong></p>
+                            <p>+ Megni Ngongang Rebecca (Bamena)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 5 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person">
+                            <h4>⭐ Poueme Emmanuel</h4>
+                            <p>Né 1950</p>
+                            <p><strong>HÉRITIER</strong></p>
+                        </div>
+                        <div style="margin: 0 20px; text-align: center; color: #666;">
+                            <p>+ 8 autres enfants</p>
+                            <p>(1948-1964)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 6 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person">
+                            <h4>Poueme Serge Donald</h4>
+                            <p>Né 1982</p>
+                            <p>Futur successeur</p>
+                        </div>
+                        <div style="margin: 0 20px; text-align: center; color: #666;">
+                            <p>+ 35+ cousins</p>
+                            <p>(1975-2002)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-connector"></div>
+                    
+                    <!-- Génération 7 -->
+                    <div class="diagram-level">
+                        <div class="diagram-person">
+                            <h4>Poueme Serena & Noa</h4>
+                            <p>2015-2018</p>
+                            <p>Nouvelle génération</p>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
 
             <!-- Note sur la transmission -->
