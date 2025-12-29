@@ -465,6 +465,114 @@
             background: #666;
             color: white;
         }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 2px solid #4a7c6b;
+            border-radius: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+            color: #e2e8f0;
+        }
+
+        body.dark .header,
+        body.dark .boarding-pass,
+        body.dark .tabs-container,
+        body.dark .tree-container,
+        body.dark .generation-filters {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        body.dark .modal-content {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+
+        body.dark .theme-toggle {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a7c6b;
+        }
+
+        /* Person Icons */
+        .person-icons {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .person-icon {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        /* Export Button */
+        .export-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4a7c6b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .export-btn:hover {
+            background: #2c5f4f;
+            transform: translateY(-3px);
+        }
+
+        /* Search Bar */
+        .tree-search {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4a7c6b;
+            box-shadow: 0 0 10px rgba(74, 124, 107, 0.2);
+        }
+
+        .person-box.highlighted {
+            border-color: #ff6b6b !important;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5) !important;
+        }
             border-bottom-color: #4a7c6b;
             font-weight: 600;
         }
@@ -662,6 +770,14 @@
     </style>
 </head>
 <body>
+    <div class="theme-toggle" onclick="toggleTheme()" title="Changer de thème">
+        🌙
+    </div>
+
+    <button class="export-btn" onclick="exportTree()" title="Télécharger l'arbre">
+        💾 Télécharger
+    </button>
+
     <div class="header">
         <h1>🌳 Arbre Généalogique</h1>
         <p><strong>Ta'a Fieu Tagni Tinang Joseph</strong></p>
@@ -901,6 +1017,11 @@
         <!-- Tree Tab -->
         <div id="tree" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">Arbre généalogique</h2>
+            
+            <!-- Search Bar -->
+            <div class="tree-search">
+                <input type="text" class="search-input" id="treeSearch" placeholder="🔍 Rechercher une personne dans l'arbre..." onkeyup="searchInTree()">
+            </div>
             
             <!-- Generation Filters -->
             <div class="generation-filters">
@@ -1204,6 +1325,69 @@
             updateGenerationCounts();
         }
 
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const toggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                toggle.innerHTML = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggle.innerHTML = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const toggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                toggle.innerHTML = '☀️';
+            }
+        }
+
+        // Search in tree
+        function searchInTree() {
+            const searchTerm = document.getElementById('treeSearch').value.toLowerCase();
+            const personBoxes = document.querySelectorAll('.person-box');
+            
+            personBoxes.forEach(box => {
+                const name = box.getAttribute('data-name');
+                if (searchTerm === '' || name.includes(searchTerm)) {
+                    box.classList.remove('highlighted');
+                    if (searchTerm !== '' && name.includes(searchTerm)) {
+                        box.classList.add('highlighted');
+                    }
+                } else {
+                    box.classList.remove('highlighted');
+                }
+            });
+        }
+
+        // Export tree as image
+        function exportTree() {
+            const treeContainer = document.querySelector('.tree-container');
+            
+            // Use html2canvas library if available, otherwise show message
+            if (typeof html2canvas !== 'undefined') {
+                html2canvas(treeContainer).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'arbre-genealogique-poueme.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            } else {
+                // Simple fallback - open print dialog
+                window.print();
+            }
+        }
+
         function createPersonBox(person, genNum) {
             const isPatriarch = person.role === 'Patriarche';
             const isHeir = person.role === 'Héritier';
@@ -1216,13 +1400,23 @@
 
             const dates = person.dates || (person.born ? `né ${person.born}` : '');
             const role = person.role && !isPatriarch && !isHeir && !isRoyal ? `<div class="person-role">${person.role}</div>` : '';
+            
+            // Add icons based on person data
+            let icons = [];
+            if (person.residence) icons.push('🏠');
+            if (person.occupation) icons.push('💼');
+            if (person.spouse || person.spouses) icons.push('💑');
+            if (person.children || person.childrenNames) icons.push('👨‍👩‍👧‍👦');
+            
+            const iconsHtml = icons.length > 0 ? `<div class="person-icons">${icons.map(icon => `<span class="person-icon">${icon}</span>`).join('')}</div>` : '';
 
             return `
-                <div class="person-box gen-${genNum}" onclick="showModal('${person.id}')">
+                <div class="person-box gen-${genNum}" onclick="showModal('${person.id}')" data-name="${person.name.toLowerCase()}" data-person-id="${person.id}">
                     ${starIcon}
                     <div class="person-name">${person.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
+                    ${iconsHtml}
                 </div>
             `;
         }
@@ -1476,7 +1670,10 @@
         });
 
         // Load data when page loads
-        document.addEventListener('DOMContentLoaded', loadData);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            loadTheme();
+        });
 
         // Generation filter functions
         let visibleGenerations = new Set([1, 2, 3, 4, 5, 6, 7]);
