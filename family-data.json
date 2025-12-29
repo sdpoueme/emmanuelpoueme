@@ -107,7 +107,7 @@
       "birthPlace": "Bamena",
       "residence": "Foumbot / Batchingou",
       "spouse": "Ta'a fieu Tagni Tinang Joseph",
-      "childrenNames": ["Ngoughou Théodore (1947)", "Poueme Emmanuel (1950)"],
+      "childrenNames": ["Ngoughou Théodore (1947)", "Poueme Emmanuel (1955)"],
       "notes": "Première épouse du patriarche, petite-fille du chef Bamena"
     },
     {
@@ -272,7 +272,7 @@
           "name": "Megni Ngongang Rebecca",
           "dates": "1906-1998",
           "place": "Bamena",
-          "children": ["Ngoughou Théodore (1947)", "Poueme Emmanuel (1950)"]
+          "children": ["Ngoughou Théodore (1947)", "Poueme Emmanuel (1955)"]
         },
         {
           "name": "Mekeze Emilienne",
@@ -297,7 +297,7 @@
       "awards": ["Médaille du mérite camerounais"],
       "childrenNames": [
         "Ngoughou Théodore (1947-2017)",
-        "Poueme Emmanuel (1950)",
+        "Poueme Emmanuel (1955)",
         "Datouo David (décédé jeune)",
         "Ngnoumegni Elise",
         "Langue Samuel (1968-2017)",
@@ -424,7 +424,7 @@
       "id": "heir",
       "name": "Poueme Emmanuel",
       "ndap": "Ta'a Fieu Tinang Joseph",
-      "born": "1950",
+      "born": "1955",
       "generation": "Génération 6 - Enfants du Patriarche",
       "role": "Héritier",
       "birthPlace": "Batchingou, Toukou",
@@ -725,6 +725,7 @@
       "name": "Poueme Tooua Armand Cédric",
       "generation": "Génération 7 - Petits-Enfants",
       "birthPlace": "Yaoundé",
+       "residence": "Canada (Québec)",
       "notes": "Fils de Emmanuel Poueme"
     },
     {
@@ -732,6 +733,7 @@
       "name": "Poueme Tinang Eric Joel",
       "generation": "Génération 7 - Petits-Enfants",
       "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
       "notes": "Fils de Emmanuel Poueme"
     },
     {
@@ -739,13 +741,15 @@
       "name": "Poueme Ngoughou Thierry Williams",
       "generation": "Génération 7 - Petits-Enfants",
       "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
       "notes": "Fils de Emmanuel Poueme"
     },
     {
       "id": "inesta",
       "name": "Inesta Ngoughou",
       "generation": "Génération 7 - Petits-Enfants",
-      "birthPlace": "Batchingou",
+      "birthPlace": "Bertoua",
+      "residence": "Bertoua (Cameroun)",
       "notes": "Fille de Ngoughou Theodore"
     },
     {
