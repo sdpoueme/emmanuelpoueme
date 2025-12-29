@@ -11,28 +11,6 @@
       "notes": "Prince de Baleng, fondateur de la chefferie de Balengou. Migré de Baleng vers Bamena puis Balengou."
     },
     {
-      "id": "gen1_neyou",
-      "name": "Neyou",
-      "dates": "~1770s",
-      "generation": "Génération 1 - Origines Royales",
-      "role": "Lignée royale",
-      "birthPlace": "Baleng",
-      "residence": "Balengou (Ndepgweu-tu)",
-      "notes": "Neveu du Prince Nandjo, installé à Ndepgweu-tu"
-    },
-    {
-      "id": "gen2_wetio",
-      "name": "Wetio Kouamou",
-      "dates": "~1800s",
-      "generation": "Génération 2 - Lignée Royale",
-      "role": "Lignée royale",
-      "birthPlace": "Balengou",
-      "residence": "Balengou, Ndepgweu-tu",
-      "spouse": "Magni Juebou",
-      "childrenNames": ["Magni Kouabou", "Cha Neyou", "Wajiamou", "Nguebou"],
-      "notes": "Descendant de Neyou, patriarche de la souche originelle à Ndepgweu"
-    },
-    {
       "id": "gen2_tchie",
       "name": "Tchié Ngantchié",
       "dates": "~1800s",
@@ -42,30 +20,6 @@
       "residence": "Batchingou, Tousseu",
       "titles": ["Ministre chargé de la défense de l'intégrité territoriale", "Responsable du lieu sacré Metchoumbouh"],
       "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou"
-    },
-    {
-      "id": "gen2_chaneyou",
-      "name": "Cha Neyou",
-      "dates": "~1800s",
-      "generation": "Génération 2 - Lignée Royale",
-      "birthPlace": "Balengou, Ndepgweu-tu",
-      "residence": "Balengou, Ndepgweu-tu",
-      "spouses": [
-        {"name": "Ketchignou"},
-        {"name": "Tchayep"}
-      ],
-      "childrenNames": ["Wemba Mbiendu Sadrack", "Neyou", "Tchuidjang", "Wetie Gabriel", "Doussa Elisabeth", "Ngantchou Etienne"],
-      "notes": "Frère de Magni Kouabou, patriarche de la branche Balengou"
-    },
-    {
-      "id": "gen2_wajiamou",
-      "name": "Wajiamou",
-      "dates": "~1800s",
-      "generation": "Génération 2 - Lignée Royale",
-      "birthPlace": "Balengou",
-      "residence": "Balengou, Tieuptchoui",
-      "childrenNames": ["Kouakep"],
-      "notes": "Frère de Magni Kouabou, ancêtre de la branche Makenene"
     },
     {
       "id": "gen3_kouabou",
@@ -760,7 +714,7 @@
     {
       "id": "serge",
       "name": "Poueme Daouda Serge Donald",
-      "born": "1982",
+      "born": "1983",
       "generation": "Génération 7 - Petits-Enfants",
       "birthPlace": "Yaoundé",
       "residence": "Canada (Québec)",
@@ -877,12 +831,12 @@
     {
       "level": "Génération 1 - Origines Royales",
       "year": "~1770s",
-      "members": ["gen1_nandjo", "gen1_neyou"]
+      "members": ["gen1_nandjo"]
     },
     {
       "level": "Génération 2 - Lignée Royale",
       "year": "~1800s",
-      "members": ["gen2_wetio", "gen2_tchie", "gen2_chaneyou", "gen2_wajiamou"]
+      "members": ["gen2_tchie"]
     },
     {
       "level": "Génération 3 - Arrière-Grands-Parents",
