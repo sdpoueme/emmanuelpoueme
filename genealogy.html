@@ -1082,13 +1082,9 @@
             const isHeir = person.role === 'Héritier';
             const isRoyal = person.role === 'Fondateur de la lignée' || person.role === 'Lignée royale';
             
-            let crownIcon = '';
-            if (isPatriarch) {
-                crownIcon = '<div class="patriarch-crown">👑</div>';
-            } else if (isHeir) {
-                crownIcon = '<div class="heir-star">⭐</div>';
-            } else if (isRoyal) {
-                crownIcon = '<div class="patriarch-crown">👑</div>';
+            let starIcon = '';
+            if (isPatriarch || isHeir || isRoyal) {
+                starIcon = '<div class="heir-star">⭐</div>';
             }
 
             const dates = person.dates || (person.born ? `né ${person.born}` : '');
@@ -1096,7 +1092,7 @@
 
             return `
                 <div class="person-box gen-${genNum}" onclick="showModal('${person.id}')">
-                    ${crownIcon}
+                    ${starIcon}
                     <div class="person-name">${person.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
