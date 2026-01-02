@@ -466,8 +466,12 @@
 
         function calculateGenerations() {
             generationsMap.clear();
-            const roots = familyData.persons.filter(p => !p.parentId);
-            roots.forEach(p => generationsMap.set(p.id, 1));
+            
+            // Step 1: Assign generation 1 to roots (no parentId and no spouseIds)
+            const trueRoots = familyData.persons.filter(p => !p.parentId && (!p.spouseIds || p.spouseIds.length === 0));
+            trueRoots.forEach(p => generationsMap.set(p.id, 1));
+            
+            // Step 2: Calculate generations based on parent-child relationships
             let changed = true, iter = 0;
             while (changed && iter++ < 20) {
                 changed = false;
@@ -477,6 +481,26 @@
                         if (parentGen !== undefined) {
                             generationsMap.set(p.id, parentGen + 1);
                             changed = true;
+                        }
+                    }
+                });
+            }
+            
+            // Step 3: Assign spouses to same generation as their partner
+            iter = 0;
+            changed = true;
+            while (changed && iter++ < 20) {
+                changed = false;
+                familyData.persons.forEach(p => {
+                    if (!generationsMap.has(p.id) && p.spouseIds && p.spouseIds.length > 0) {
+                        // This person is a spouse - find their partner's generation
+                        for (const spouseId of p.spouseIds) {
+                            const spouseGen = generationsMap.get(spouseId);
+                            if (spouseGen !== undefined) {
+                                generationsMap.set(p.id, spouseGen);
+                                changed = true;
+                                break;
+                            }
                         }
                     }
                 });
@@ -671,7 +695,14 @@
             const maxGen = Math.max(...Array.from(generationsMap.values()));
             let html = '';
             for (let g = 1; g <= maxGen; g++) {
-                const ps = familyData.persons.filter(p => getGeneration(p.id) === g);
+                // Filtrer : seulement les personnes qui ont un parent OU qui n'ont pas de conjoint
+                // (évite d'afficher les conjoints comme boîtes séparées)
+                const ps = familyData.persons.filter(p => {
+                    if (getGeneration(p.id) !== g) return false;
+                    // Afficher si : a un parent OU n'a pas de conjoint OU n'a pas de parentId mais est une vraie racine
+                    return p.parentId || !p.spouseIds || p.spouseIds.length === 0 || (!p.parentId && g === 1);
+                });
+                
                 if (ps.length === 0) continue;
                 html += `<div class="generation-row" data-generation="${g}">
                     <div class="generation-label">Génération ${g}<br><span style="font-size:0.8em;">(${ps.length})</span></div>
@@ -686,11 +717,46 @@
             const c = getGenerationColor(g);
             const dates = p.dates || (p.born ? `né ${p.born}` : '');
             const role = p.role ? `<div class="person-role">${p.role}</div>` : '';
+            
+            // Trouver le(s) conjoint(s)
+            let spouseInfo = '';
+            if (p.spouseIds && p.spouseIds.length > 0) {
+                const spouses = p.spouseIds
+                    .map(id => familyData.persons.find(s => s.id === id))
+                    .filter(s => s); // Filtrer les undefined
+                
+                if (spouses.length > 0) {
+                    spouseInfo = '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.3);">';
+                    spouses.forEach((spouse, idx) => {
+                        const spouseName = spouse.name.split(' ').slice(-2).join(' '); // Prendre 2 derniers mots
+                        
+                        // Détecter le genre
+                        const nameLower = spouse.name.toLowerCase();
+                        const femaleNames = ['adeline', 'rebecca', 'marie', 'hortense', 'marguerite', 'isabelle', 
+                            'juliette', 'francine', 'nadège', 'elisabeth', 'paule', 'véronique', 'célestine'];
+                        let gender = 'M';
+                        for (const fn of femaleNames) {
+                            if (nameLower.includes(fn)) { gender = 'F'; break; }
+                        }
+                        const firstName = spouse.name.split(' ')[0].toLowerCase();
+                        if (firstName.endsWith('ine') || firstName.endsWith('elle') || firstName.endsWith('ette') || 
+                            firstName.endsWith('a') || firstName.endsWith('ie')) {
+                            gender = 'F';
+                        }
+                        
+                        const label = gender === 'F' ? 'Conjointe' : 'Conjoint';
+                        spouseInfo += `<div style="font-size: 0.85em; opacity: 0.9;"><strong>${label}:</strong> ${spouseName}</div>`;
+                    });
+                    spouseInfo += '</div>';
+                }
+            }
+            
             return `
                 <div class="person-box" data-name="${p.name.toLowerCase()}" style="background: ${c.bg}; border-color: ${c.border}; ${c.color ? `color: ${c.color};` : ''}" onclick="showPersonDetails('${p.id}')">
                     <div class="person-name">${p.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
+                    ${spouseInfo}
                 </div>
             `;
         }
@@ -699,6 +765,34 @@
             const p = familyData.persons.find(x => x.id === id);
             const parent = p.parentId ? familyData.persons.find(x => x.id === p.parentId) : null;
             const children = familyData.persons.filter(x => x.parentId === p.id);
+            
+            // Informations sur le(s) conjoint(s)
+            let spousesHTML = '';
+            if (p.spouseIds && p.spouseIds.length > 0) {
+                const spouses = p.spouseIds
+                    .map(sid => familyData.persons.find(s => s.id === sid))
+                    .filter(s => s);
+                
+                if (spouses.length > 0) {
+                    spousesHTML = '<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px;">';
+                    spousesHTML += `<h3 style="color: #2c5f4f; margin-bottom: 15px;">Conjoint${spouses.length > 1 ? 's' : ''}</h3>`;
+                    
+                    spouses.forEach((spouse, idx) => {
+                        if (idx > 0) spousesHTML += '<hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">';
+                        spousesHTML += `<div>`;
+                        spousesHTML += `<h4 style="color: #4a7c6b; margin-bottom: 8px;">${spouse.name}</h4>`;
+                        if (spouse.ndap) spousesHTML += `<p><strong>Ndap:</strong> ${spouse.ndap}</p>`;
+                        if (spouse.dates || spouse.born) spousesHTML += `<p><strong>📅:</strong> ${spouse.dates || 'Né ' + spouse.born}</p>`;
+                        if (spouse.birthPlace) spousesHTML += `<p><strong>📍 Naissance:</strong> ${spouse.birthPlace}</p>`;
+                        if (spouse.residence) spousesHTML += `<p><strong>🏠 Résidence:</strong> ${spouse.residence}</p>`;
+                        if (spouse.notes) spousesHTML += `<p style="margin-top: 8px;"><em>${spouse.notes}</em></p>`;
+                        spousesHTML += `</div>`;
+                    });
+                    
+                    spousesHTML += '</div>';
+                }
+            }
+            
             document.getElementById('modalBody').innerHTML = `
                 <h2 style="color: #2c5f4f;">${p.name}</h2>
                 ${p.ndap ? `<p><em>Ndap: ${p.ndap}</em></p>` : ''}
@@ -708,6 +802,7 @@
                 ${p.residence ? `<p><strong>🏠 Résidence:</strong> ${p.residence}</p>` : ''}
                 ${p.role ? `<p><strong>👑 Rôle:</strong> ${p.role}</p>` : ''}
                 ${parent ? `<p style="margin-top:15px;"><strong>⬆️ Parent:</strong> ${parent.name}</p>` : ''}
+                ${spousesHTML}
                 ${children.length > 0 ? `<div style="margin-top:15px;"><strong>⬇️ Enfants (${children.length}):</strong><ul style="margin-left:20px;">${children.map(c => `<li>${c.name}</li>`).join('')}</ul></div>` : ''}
                 ${p.notes ? `<p style="margin-top:15px;"><strong>📝:</strong> ${p.notes}</p>` : ''}
             `;
