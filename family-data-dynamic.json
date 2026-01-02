@@ -233,7 +233,7 @@
       "gender": "F"
     },
     {
-      "id": "gen4_rebecca",
+      "id": "spouse_rebecca",
       "name": "Megni Ngongang Rebecca",
       "dates": "1906-1998",
       "birthPlace": "Bamena",
@@ -334,7 +334,7 @@
       "burialPlace": "Batchingou, Toukou (Tousseu)",
       "parentId": "gen4_ngnoumegni",
       "spouseIds": [
-        "gen4_rebecca",
+        "spouse_rebecca",
         "spouse_emilienne",
         "spouse_rachel"
       ],
