@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Éditeur Généalogique - Accès Privé</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header .lock-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .alert h3 {
+            margin-bottom: 10px;
+        }
+
+        .editor-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 8px;
+            font-size: 1em;
+        }
+
+        .file-upload {
+            border: 3px dashed #667eea;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        .file-upload:hover {
+            background: #f8f9ff;
+            border-color: #764ba2;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="lock-icon">🔒</div>
+            <h1>Éditeur Généalogique</h1>
+            <p style="color: #666; margin-top: 10px;">Accès Privé • Application Sécurisée</p>
+        </div>
+
+        <div class="alert">
+            <h3>⚠️ Important - Processus de mise à jour</h3>
+            <p style="margin-top: 10px; line-height: 1.6;">
+                <strong>Cet éditeur ne peut PAS pousser automatiquement vers GitHub.</strong><br>
+                Après avoir ajouté/modifié des personnes :
+            </p>
+            <ol style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                <li>Cliquez sur <strong>"📥 Exporter JSON"</strong> pour télécharger le fichier modifié</li>
+                <li>Allez sur GitHub dans votre repository</li>
+                <li>Remplacez <code>family-data-dynamic.json</code> par le fichier téléchargé</li>
+                <li>Le site public se mettra à jour automatiquement !</li>
+            </ol>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <!-- Stats will be generated -->
+        </div>
+
+        <div class="file-upload" onclick="document.getElementById('jsonFileInput').click()">
+            <div style="font-size: 3em; margin-bottom: 15px;">📂</div>
+            <h3 style="color: #667eea; margin-bottom: 10px;">Charger un fichier JSON existant</h3>
+            <p style="color: #666;">Cliquez pour sélectionner family-data-dynamic.json</p>
+            <input type="file" id="jsonFileInput" accept=".json" onchange="loadJSONFile(event)">
+        </div>
+
+        <div class="editor-container">
+            <div class="success-message" id="successMessage">
+                ✅ Personne ajoutée avec succès ! N'oubliez pas d'exporter le JSON.
+            </div>
+
+            <h2 style="color: #667eea; margin-bottom: 25px;">➕ Ajouter une nouvelle personne</h2>
+
+            <form id="personForm" onsubmit="addPerson(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personId">🆔 ID unique* <span style="font-size: 0.8em; font-weight: normal;">(ex: jean_doe_2025)</span></label>
+                        <input type="text" id="personId" required placeholder="identifiant_unique">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personName">👤 Nom complet*</label>
+                        <input type="text" id="personName" required placeholder="Prénom Nom">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personDates">📅 Dates <span style="font-size: 0.8em; font-weight: normal;">(optionnel)</span></label>
+                        <input type="text" id="personDates" placeholder="1983 ou 1950-2020">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personBorn">🎂 Année de naissance <span style="font-size: 0.8em; font-weight: normal;">(optionnel)</span></label>
+                        <input type="text" id="personBorn" placeholder="1983">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personBirthPlace">📍 Lieu de naissance</label>
+                        <input type="text" id="personBirthPlace" placeholder="Yaoundé, Cameroun">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personResidence">🏠 Résidence actuelle</label>
+                        <input type="text" id="personResidence" placeholder="Canada (Québec)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="personParent">👨‍👩‍👦 Parent (sélectionner dans la liste)</label>
+                    <select id="personParent">
+                        <option value="">-- Aucun parent (génération 1) --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="personRole">👑 Rôle <span style="font-size: 0.8em; font-weight: normal;">(optionnel)</span></label>
+                    <input type="text" id="personRole" placeholder="Héritier, Patriarche, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label for="personNotes">📝 Notes / Informations additionnelles</label>
+                    <textarea id="personNotes" placeholder="Toute information pertinente..."></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Ajouter la personne
+                    </button>
+                    <button type="button" class="btn btn-export" onclick="exportJSON()">
+                        📥 Exporter JSON (pour GitHub)
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                        🔄 Réinitialiser le formulaire
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let familyData = { persons: [], locations: [] };
+
+        // Load JSON file
+        function loadJSONFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    familyData = JSON.parse(e.target.result);
+                    console.log('Fichier chargé:', familyData.persons.length, 'personnes');
+                    updateStats();
+                    populateParentSelect();
+                    alert('✅ Fichier JSON chargé avec succès !');
+                } catch (error) {
+                    alert('❌ Erreur lors de la lecture du fichier JSON: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${familyData.persons.length}</div>
+                    <div class="stat-label">Personnes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${familyData.locations ? familyData.locations.length : 0}</div>
+                    <div class="stat-label">Localités</div>
+                </div>
+            `;
+        }
+
+        // Populate parent dropdown
+        function populateParentSelect() {
+            const select = document.getElementById('personParent');
+            select.innerHTML = '<option value="">-- Aucun parent (génération 1) --</option>';
+            
+            familyData.persons
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .forEach(person => {
+                    const option = document.createElement('option');
+                    option.value = person.id;
+                    option.textContent = person.name;
+                    select.appendChild(option);
+                });
+        }
+
+        // Add new person
+        function addPerson(event) {
+            event.preventDefault();
+
+            const newPerson = {
+                id: document.getElementById('personId').value.trim(),
+                name: document.getElementById('personName').value.trim(),
+                dates: document.getElementById('personDates').value.trim() || undefined,
+                born: document.getElementById('personBorn').value.trim() || undefined,
+                birthPlace: document.getElementById('personBirthPlace').value.trim() || undefined,
+                residence: document.getElementById('personResidence').value.trim() || undefined,
+                parentId: document.getElementById('personParent').value || null,
+                role: document.getElementById('personRole').value.trim() || undefined,
+                notes: document.getElementById('personNotes').value.trim() || undefined,
+                spouseIds: []
+            };
+
+            // Check if ID already exists
+            if (familyData.persons.find(p => p.id === newPerson.id)) {
+                alert('❌ Cet ID existe déjà. Veuillez en choisir un autre.');
+                return;
+            }
+
+            // Add person
+            familyData.persons.push(newPerson);
+            
+            // Update UI
+            updateStats();
+            populateParentSelect();
+
+            // Show success message
+            const msg = document.getElementById('successMessage');
+            msg.classList.add('show');
+            setTimeout(() => msg.classList.remove('show'), 5000);
+
+            // Reset form
+            document.getElementById('personForm').reset();
+
+            console.log('Personne ajoutée:', newPerson.name);
+        }
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('personForm').reset();
+        }
+
+        // Export JSON
+        function exportJSON() {
+            if (familyData.persons.length === 0) {
+                alert('⚠️ Aucune donnée à exporter. Chargez d\'abord un fichier JSON ou ajoutez des personnes.');
+                return;
+            }
+
+            const dataStr = JSON.stringify(familyData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'family-data-dynamic.json';
+            link.click();
+            
+            URL.revokeObjectURL(url);
+
+            alert('✅ Fichier JSON téléchargé !\n\n📝 Prochaine étape:\n1. Allez sur GitHub\n2. Remplacez family-data-dynamic.json\n3. Votre site se mettra à jour automatiquement !');
+        }
+
+        // Initialize
+        updateStats();
+    </script>
+</body>
+</html>
