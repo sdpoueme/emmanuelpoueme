@@ -486,14 +486,35 @@
                 });
             }
             
-            // Step 3: Assign spouses to same generation as their partner
+            // Step 3: For people who marry into the family (have BOTH parentId AND spouseIds)
+            // Use spouse's generation for DISPLAY if it's higher (merged lineages)
+            iter = 0;
+            changed = true;
+            while (changed && iter++ < 20) {
+                changed = false;
+                familyData.persons.forEach(p => {
+                    if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
+                        const currentGen = generationsMap.get(p.id);
+                        // Find spouse with highest generation
+                        for (const spouseId of p.spouseIds) {
+                            const spouseGen = generationsMap.get(spouseId);
+                            if (spouseGen !== undefined && spouseGen > currentGen) {
+                                generationsMap.set(p.id, spouseGen);
+                                changed = true;
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Step 4: Assign remaining spouses to same generation as their partner
             iter = 0;
             changed = true;
             while (changed && iter++ < 20) {
                 changed = false;
                 familyData.persons.forEach(p => {
                     if (!generationsMap.has(p.id) && p.spouseIds && p.spouseIds.length > 0) {
-                        // This person is a spouse - find their partner's generation
                         for (const spouseId of p.spouseIds) {
                             const spouseGen = generationsMap.get(spouseId);
                             if (spouseGen !== undefined) {
@@ -718,6 +739,21 @@
             const dates = p.dates || (p.born ? `né ${p.born}` : '');
             const role = p.role ? `<div class="person-role">${p.role}</div>` : '';
             
+            // Détecter si c'est une lignée fusionnée (a des parents ET un conjoint)
+            let mergedLineageIndicator = '';
+            if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
+                const parent = familyData.persons.find(x => x.id === p.parentId);
+                if (parent) {
+                    const parentGen = getGeneration(p.parentId);
+                    const currentGen = getGeneration(p.id);
+                    if (parentGen < currentGen - 1 || parentGen === currentGen) {
+                        // Cette personne apporte sa propre lignée
+                        const lineageSource = p.birthPlace || (parent.birthPlace || 'autre famille');
+                        mergedLineageIndicator = `<div style="font-size: 0.75em; opacity: 0.7; margin-top: 4px; font-style: italic;">↖ Lignée ${lineageSource}</div>`;
+                    }
+                }
+            }
+            
             // Trouver le(s) conjoint(s)
             let spouseInfo = '';
             if (p.spouseIds && p.spouseIds.length > 0) {
@@ -743,6 +779,7 @@
                     <div class="person-name">${p.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
+                    ${mergedLineageIndicator}
                     ${spouseInfo}
                 </div>
             `;
@@ -752,6 +789,27 @@
             const p = familyData.persons.find(x => x.id === id);
             const parent = p.parentId ? familyData.persons.find(x => x.id === p.parentId) : null;
             const children = familyData.persons.filter(x => x.parentId === p.id);
+            
+            // Vérifier si c'est une lignée fusionnée
+            let mergedLineageHTML = '';
+            if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
+                const parentGen = getGeneration(p.parentId);
+                const currentGen = getGeneration(p.id);
+                const spouse = familyData.persons.find(s => s.id === p.spouseIds[0]);
+                const spouseGen = spouse ? getGeneration(spouse.id) : null;
+                
+                if (parentGen && spouseGen && currentGen === spouseGen && parentGen < currentGen) {
+                    mergedLineageHTML = `
+                        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin-top: 15px;">
+                            <strong>🔗 Fusion de deux lignées familiales</strong><br>
+                            <em style="font-size: 0.9em;">
+                                ${p.name} apporte sa propre lignée ancestrale (${p.birthPlace || 'origine familiale'}) 
+                                et rejoint la famille par mariage avec ${spouse ? spouse.name : 'conjoint'}.
+                            </em>
+                        </div>
+                    `;
+                }
+            }
             
             // Informations sur le(s) conjoint(s)
             let spousesHTML = '';
@@ -789,6 +847,7 @@
                 ${p.residence ? `<p><strong>🏠 Résidence:</strong> ${p.residence}</p>` : ''}
                 ${p.role ? `<p><strong>👑 Rôle:</strong> ${p.role}</p>` : ''}
                 ${parent ? `<p style="margin-top:15px;"><strong>⬆️ Parent:</strong> ${parent.name}</p>` : ''}
+                ${mergedLineageHTML}
                 ${spousesHTML}
                 ${children.length > 0 ? `<div style="margin-top:15px;"><strong>⬇️ Enfants (${children.length}):</strong><ul style="margin-left:20px;">${children.map(c => `<li>${c.name}</li>`).join('')}</ul></div>` : ''}
                 ${p.notes ? `<p style="margin-top:15px;"><strong>📝:</strong> ${p.notes}</p>` : ''}
