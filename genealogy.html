@@ -730,21 +730,8 @@
                     spouses.forEach((spouse, idx) => {
                         const spouseName = spouse.name.split(' ').slice(-2).join(' '); // Prendre 2 derniers mots
                         
-                        // Détecter le genre
-                        const nameLower = spouse.name.toLowerCase();
-                        const femaleNames = ['adeline', 'rebecca', 'marie', 'hortense', 'marguerite', 'isabelle', 
-                            'juliette', 'francine', 'nadège', 'elisabeth', 'paule', 'véronique', 'célestine'];
-                        let gender = 'M';
-                        for (const fn of femaleNames) {
-                            if (nameLower.includes(fn)) { gender = 'F'; break; }
-                        }
-                        const firstName = spouse.name.split(' ')[0].toLowerCase();
-                        if (firstName.endsWith('ine') || firstName.endsWith('elle') || firstName.endsWith('ette') || 
-                            firstName.endsWith('a') || firstName.endsWith('ie')) {
-                            gender = 'F';
-                        }
-                        
-                        const label = gender === 'F' ? 'Conjointe' : 'Conjoint';
+                        // Utiliser le champ gender du JSON
+                        const label = spouse.gender === 'F' ? 'Conjointe' : 'Conjoint';
                         spouseInfo += `<div style="font-size: 0.85em; opacity: 0.9;"><strong>${label}:</strong> ${spouseName}</div>`;
                     });
                     spouseInfo += '</div>';
