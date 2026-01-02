@@ -65,6 +65,91 @@
         .tab.active { color: #2c5f4f; border-bottom-color: #4a7c6b; font-weight: 600; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        
+        /* Tree specific */
+        .tree-search {
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #4a7c6b;
+            box-shadow: 0 0 10px rgba(74, 124, 107, 0.2);
+        }
+        
+        /* Generation Filters */
+        .generation-filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .filter-title {
+            color: #2c5f4f;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .gen-filter {
+            padding: 8px 16px;
+            border: 2px solid #4a7c6b;
+            background: white;
+            color: #4a7c6b;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .gen-filter.active {
+            background: #4a7c6b;
+            color: white;
+        }
+        .gen-filter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .filter-count {
+            background: rgba(255,255,255,0.3);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+        .all-filters {
+            padding: 8px 16px;
+            border: 2px solid #666;
+            background: white;
+            color: #666;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .all-filters.active {
+            background: #666;
+            color: white;
+        }
+        
         .tree-container {
             background: white;
             padding: 40px;
@@ -79,6 +164,7 @@
             margin-bottom: 60px;
             position: relative;
         }
+        .generation-row.hidden { display: none; }
         .generation-row::after {
             content: '';
             position: absolute;
@@ -119,9 +205,15 @@
             position: relative;
         }
         .person-box:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .person-box.highlighted {
+            border-color: #ff6b6b !important;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5) !important;
+        }
         .person-name { font-weight: bold; font-size: 1.1em; margin-bottom: 5px; }
         .person-dates { font-size: 0.9em; opacity: 0.8; }
         .person-role { font-size: 0.85em; margin-top: 5px; font-style: italic; }
+        
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -156,6 +248,8 @@
             border: none;
         }
         .modal-close:hover { color: #000; }
+        
+        /* Persons list */
         .person-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -173,6 +267,8 @@
         .person-item:hover { background: #e9ecef; transform: translateX(5px); }
         .person-item h4 { color: #2c5f4f; margin-bottom: 5px; }
         .person-item p { font-size: 0.9em; color: #666; }
+        
+        /* Locations */
         .locations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -185,6 +281,8 @@
             padding: 20px;
         }
         .location-card h3 { color: #2c5f4f; margin-bottom: 10px; }
+        
+        /* Timeline */
         .timeline { position: relative; padding: 20px 0; }
         .timeline-item { display: flex; margin-bottom: 30px; position: relative; }
         .timeline-date {
@@ -203,6 +301,7 @@
         }
         .timeline-content h4 { color: #2c5f4f; margin-bottom: 8px; }
         .timeline-content p { color: #666; line-height: 1.6; }
+        
         @media (max-width: 768px) {
             .header h1 { font-size: 1.8em; }
             .generation-label { writing-mode: horizontal-tb; margin-right: 0; margin-bottom: 10px; }
@@ -228,11 +327,15 @@
             <button class="tab" onclick="switchTab('timeline', this)">📅 Dates Clés</button>
         </div>
 
+        <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
-            <h2 style="color: #2c5f4f; margin-bottom: 20px;">Vue d'ensemble</h2>
-            <div id="overviewContent"></div>
+            <h2 style="color: #2c5f4f; margin-bottom: 20px;">Vue d'ensemble de la famille</h2>
+            <div id="overviewContent">
+                <!-- Will be generated -->
+            </div>
         </div>
 
+        <!-- Royal Lineages Tab -->
         <div id="royal" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">👑 Lignées Royales</h2>
             <div style="background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%); padding: 30px; border-radius: 15px; margin-bottom: 30px; border: 3px solid #ffd54f;">
@@ -274,23 +377,50 @@
             </div>
         </div>
 
+        <!-- Tree Tab -->
         <div id="tree" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">Arbre (générations automatiques)</h2>
+            
+            <!-- Search Bar -->
+            <div class="tree-search">
+                <input type="text" class="search-input" id="treeSearch" placeholder="🔍 Rechercher une personne dans l'arbre..." onkeyup="searchInTree()">
+            </div>
+            
+            <!-- Generation Filters -->
+            <div class="generation-filters">
+                <div class="filter-title">
+                    🔍 Filtrer par génération
+                    <span id="visibleCount" style="color: #666; font-size: 0.9em;"></span>
+                </div>
+                <div class="filter-buttons" id="filterButtons">
+                    <!-- Will be generated by JavaScript -->
+                </div>
+            </div>
+            
             <div id="familyTree" class="tree-container">
                 <p style="text-align: center; color: #666;">Chargement...</p>
             </div>
         </div>
 
+        <!-- Persons Tab -->
         <div id="persons" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">Tous les membres</h2>
+            
+            <!-- Search for persons -->
+            <div class="tree-search">
+                <input type="text" class="search-input" id="personSearch" placeholder="🔍 Rechercher par nom..." onkeyup="filterPersons()">
+            </div>
+            
             <div id="personsList" class="person-list"></div>
         </div>
 
+        <!-- Locations Tab -->
         <div id="locations" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">Localités familiales</h2>
             <div id="locationsGrid" class="locations-grid"></div>
         </div>
 
+        <!-- Timeline Tab -->
         <div id="timeline" class="tab-content">
             <h2 style="color: #2c5f4f; margin-bottom: 20px;">Chronologie</h2>
             <div id="timelineContent" class="timeline"></div>
@@ -307,18 +437,28 @@
     <script>
         let familyData = { persons: [], locations: [] };
         let generationsMap = new Map();
+        let visibleGenerations = new Set();
 
         async function loadData() {
             try {
                 const response = await fetch('family-data-dynamic.json');
                 familyData = await response.json();
                 calculateGenerations();
+                
+                // Initialize all generations as visible
+                const maxGen = Math.max(...Array.from(generationsMap.values()));
+                for (let i = 1; i <= maxGen; i++) {
+                    visibleGenerations.add(i);
+                }
+                
                 renderStats();
                 renderOverview();
                 renderTree();
+                renderGenerationFilters();
                 renderPersonsList();
                 renderLocations();
                 renderTimeline();
+                updateVisibleCount();
             } catch (error) {
                 console.error('Erreur:', error);
             }
@@ -364,24 +504,167 @@
                 <div class="stat-card"><div class="stat-number">${familyData.persons.length}</div><div class="stat-label">Membres</div></div>
                 <div class="stat-card"><div class="stat-number">${maxGen}</div><div class="stat-label">Générations (auto)</div></div>
                 <div class="stat-card"><div class="stat-number">${familyData.locations.length}</div><div class="stat-label">Localités</div></div>
+                <div class="stat-card"><div class="stat-number">255</div><div class="stat-label">Ans d'histoire</div></div>
             `;
         }
 
         function renderOverview() {
             const p = familyData.persons.find(x => x.role === 'Patriarche');
             const h = familyData.persons.find(x => x.role === 'Héritier');
+            
             document.getElementById('overviewContent').innerHTML = `
                 <div style="background: linear-gradient(135deg, #f0f8f5 0%, #e8f4f0 100%); padding: 30px; border-radius: 10px; margin-bottom: 20px;">
-                    <h3 style="color: #2c5f4f;">👑 Le Patriarche</h3>
+                    <h3 style="color: #2c5f4f; margin-bottom: 15px;">👑 Le Patriarche</h3>
                     <h4 style="color: #4a7c6b;">${p.name}</h4>
                     <p><strong>${p.dates}</strong> (${p.lifespan})</p>
+                    <p style="margin-top: 10px;">${p.birthPlace}</p>
+                    <p style="margin-top: 10px;"><em>${p.notes}</em></p>
                 </div>
-                <div style="background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%); padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #2c5f4f;">⭐ L'Héritier</h3>
+
+                <div style="background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%); padding: 30px; border-radius: 10px; margin-bottom: 20px;">
+                    <h3 style="color: #2c5f4f; margin-bottom: 15px;">⭐ L'Héritier</h3>
                     <h4 style="color: #4a7c6b;">${h.name}</h4>
+                    <p><strong>Ndap:</strong> ${h.ndap}</p>
                     <p><strong>Né:</strong> ${h.born}</p>
+                    <p style="margin-top: 10px;">${h.notes}</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%); padding: 30px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #f4d03f;">
+                    <h3 style="color: #2c5f4f; margin-bottom: 20px; text-align: center;">👑 Lignées Royales</h3>
+                    <p style="text-align: center; margin-bottom: 20px; font-style: italic; color: #666;">
+                        La famille descend de quatre chefferies royales Bamiléké
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #e67e22;">
+                            <h4 style="color: #e67e22; margin-bottom: 12px;">1️⃣ BALENG</h4>
+                            <p style="color: #555; line-height: 1.6;"><strong>📍 Prince Nandjo</strong> (~1770s) - Fondateur</p>
+                        </div>
+
+                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #27ae60;">
+                            <h4 style="color: #27ae60; margin-bottom: 12px;">2️⃣ BALENGOU</h4>
+                            <p style="color: #555; line-height: 1.6;"><strong>👑 Wetio Kouamou</strong> - Titre "Ta'a fieu"</p>
+                        </div>
+
+                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #c0392b;">
+                            <h4 style="color: #c0392b; margin-bottom: 12px;">3️⃣ BATCHINGOU</h4>
+                            <p style="color: #555; line-height: 1.6;"><strong>⚔️ Tchié Ngantchié</strong> - Ministre Défense</p>
+                        </div>
+
+                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #8e44ad;">
+                            <h4 style="color: #8e44ad; margin-bottom: 12px;">4️⃣ BAMENA</h4>
+                            <p style="color: #555; line-height: 1.6;"><strong>👨‍👩‍👧‍👦 Ta'a Nanwou</strong> - Patriarche de Bamena</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #d4af37;">
+                        <h4 style="color: #8b4513; margin-bottom: 10px;">📊 Histoire</h4>
+                        <p><strong>255 ans</strong></p>
+                        <p style="font-size: 0.9em; color: #666;">~1770s - 2025</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #4a7c6b;">
+                        <h4 style="color: #2c5f4f; margin-bottom: 10px;">📊 Le Patriarche</h4>
+                        <p><strong>9 enfants</strong></p>
+                        <p style="font-size: 0.9em; color: #666;">3 épouses</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #4a7c6b;">
+                        <h4 style="color: #2c5f4f; margin-bottom: 10px;">📊 Génération 7</h4>
+                        <p><strong>18 petits-enfants</strong></p>
+                        <p style="font-size: 0.9em; color: #666;">Dispersés mondialement</p>
+                    </div>
                 </div>
             `;
+        }
+
+        function renderGenerationFilters() {
+            const maxGen = Math.max(...Array.from(generationsMap.values()));
+            let html = '<button class="all-filters active" onclick="toggleAllGenerations()">Toutes</button>';
+            
+            for (let g = 1; g <= maxGen; g++) {
+                const count = familyData.persons.filter(p => getGeneration(p.id) === g).length;
+                html += `
+                    <button class="gen-filter active" data-gen="${g}" onclick="toggleGeneration(${g})">
+                        Gén ${g} <span class="filter-count" id="count-${g}">${count}</span>
+                    </button>
+                `;
+            }
+            
+            document.getElementById('filterButtons').innerHTML = html;
+        }
+
+        function toggleGeneration(genNum) {
+            const button = document.querySelector(`[data-gen="${genNum}"]`);
+            const rows = document.querySelectorAll(`[data-generation="${genNum}"]`);
+            
+            if (visibleGenerations.has(genNum)) {
+                visibleGenerations.delete(genNum);
+                button.classList.remove('active');
+                rows.forEach(row => row.classList.add('hidden'));
+            } else {
+                visibleGenerations.add(genNum);
+                button.classList.add('active');
+                rows.forEach(row => row.classList.remove('hidden'));
+            }
+            
+            updateAllButton();
+            updateVisibleCount();
+        }
+
+        function toggleAllGenerations() {
+            const maxGen = Math.max(...Array.from(generationsMap.values()));
+            const allButton = document.querySelector('.all-filters');
+            const isAllVisible = visibleGenerations.size === maxGen;
+            
+            if (isAllVisible) {
+                visibleGenerations.clear();
+                document.querySelectorAll('.gen-filter').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.generation-row').forEach(row => row.classList.add('hidden'));
+                allButton.classList.remove('active');
+            } else {
+                for (let i = 1; i <= maxGen; i++) visibleGenerations.add(i);
+                document.querySelectorAll('.gen-filter').forEach(btn => btn.classList.add('active'));
+                document.querySelectorAll('.generation-row').forEach(row => row.classList.remove('hidden'));
+                allButton.classList.add('active');
+            }
+            
+            updateVisibleCount();
+        }
+
+        function updateAllButton() {
+            const maxGen = Math.max(...Array.from(generationsMap.values()));
+            const allButton = document.querySelector('.all-filters');
+            if (visibleGenerations.size === maxGen) {
+                allButton.classList.add('active');
+            } else {
+                allButton.classList.remove('active');
+            }
+        }
+
+        function updateVisibleCount() {
+            const totalVisible = Array.from(visibleGenerations).reduce((sum, gen) => {
+                const count = familyData.persons.filter(p => getGeneration(p.id) === gen).length;
+                return sum + count;
+            }, 0);
+            document.getElementById('visibleCount').textContent = `(${totalVisible} membres visibles)`;
+        }
+
+        function searchInTree() {
+            const searchTerm = document.getElementById('treeSearch').value.toLowerCase();
+            const personBoxes = document.querySelectorAll('.person-box');
+            
+            personBoxes.forEach(box => {
+                const name = box.getAttribute('data-name');
+                if (searchTerm === '' || name.includes(searchTerm)) {
+                    box.classList.remove('highlighted');
+                    if (searchTerm !== '' && name.includes(searchTerm)) {
+                        box.classList.add('highlighted');
+                    }
+                } else {
+                    box.classList.remove('highlighted');
+                }
+            });
         }
 
         function renderTree() {
@@ -390,7 +673,7 @@
             for (let g = 1; g <= maxGen; g++) {
                 const ps = familyData.persons.filter(p => getGeneration(p.id) === g);
                 if (ps.length === 0) continue;
-                html += `<div class="generation-row">
+                html += `<div class="generation-row" data-generation="${g}">
                     <div class="generation-label">Génération ${g}<br><span style="font-size:0.8em;">(${ps.length})</span></div>
                     <div class="members-container">`;
                 ps.forEach(p => html += createPersonBox(p, g));
@@ -404,7 +687,7 @@
             const dates = p.dates || (p.born ? `né ${p.born}` : '');
             const role = p.role ? `<div class="person-role">${p.role}</div>` : '';
             return `
-                <div class="person-box" style="background: ${c.bg}; border-color: ${c.border}; ${c.color ? `color: ${c.color};` : ''}" onclick="showPersonDetails('${p.id}')">
+                <div class="person-box" data-name="${p.name.toLowerCase()}" style="background: ${c.bg}; border-color: ${c.border}; ${c.color ? `color: ${c.color};` : ''}" onclick="showPersonDetails('${p.id}')">
                     <div class="person-name">${p.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
@@ -423,9 +706,10 @@
                 <p><strong>🧬 Génération:</strong> ${getGeneration(id)}</p>
                 ${p.birthPlace ? `<p><strong>📍 Naissance:</strong> ${p.birthPlace}</p>` : ''}
                 ${p.residence ? `<p><strong>🏠 Résidence:</strong> ${p.residence}</p>` : ''}
-                ${parent ? `<p><strong>⬆️ Parent:</strong> ${parent.name}</p>` : ''}
-                ${children.length > 0 ? `<div><strong>⬇️ Enfants (${children.length}):</strong><ul style="margin-left:20px;">${children.map(c => `<li>${c.name}</li>`).join('')}</ul></div>` : ''}
-                ${p.notes ? `<p><strong>📝:</strong> ${p.notes}</p>` : ''}
+                ${p.role ? `<p><strong>👑 Rôle:</strong> ${p.role}</p>` : ''}
+                ${parent ? `<p style="margin-top:15px;"><strong>⬆️ Parent:</strong> ${parent.name}</p>` : ''}
+                ${children.length > 0 ? `<div style="margin-top:15px;"><strong>⬇️ Enfants (${children.length}):</strong><ul style="margin-left:20px;">${children.map(c => `<li>${c.name}</li>`).join('')}</ul></div>` : ''}
+                ${p.notes ? `<p style="margin-top:15px;"><strong>📝:</strong> ${p.notes}</p>` : ''}
             `;
             document.getElementById('personModal').classList.add('active');
         }
@@ -445,12 +729,21 @@
                 return d !== 0 ? d : a.name.localeCompare(b.name);
             });
             document.getElementById('personsList').innerHTML = sorted.map(p => `
-                <div class="person-item" onclick="showPersonDetails('${p.id}')">
+                <div class="person-item" data-name="${p.name.toLowerCase()}" onclick="showPersonDetails('${p.id}')">
                     <h4>${p.name}</h4>
                     <p>Génération ${getGeneration(p.id)}</p>
                     ${p.residence ? `<p>📍 ${p.residence}</p>` : ''}
                 </div>
             `).join('');
+        }
+
+        function filterPersons() {
+            const searchTerm = document.getElementById('personSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.person-item');
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                item.style.display = name.includes(searchTerm) ? 'block' : 'none';
+            });
         }
 
         function renderLocations() {
@@ -464,12 +757,15 @@
 
         function renderTimeline() {
             const events = [
-                { date: "~1770s", title: "Origines Royales", content: "Prince Nandjo, fondateur" },
-                { date: "1898", title: "Naissance Patriarche", content: "Ta'a Fieu Tagni Tinang Joseph" },
-                { date: "1906", title: "Mariage", content: "Union avec Rebecca" },
-                { date: "1947-1968", title: "Génération 6", content: "9 enfants" },
-                { date: "1960", title: "Indépendance", content: "Installation Foumbot" },
-                { date: "2001", title: "Succession", content: "Emmanuel intronisé" }
+                { date: "~1770s", title: "Origines Royales", content: "Prince Nandjo, fondateur de la chefferie de Balengou. Migration de Baleng vers Bamena puis Balengou." },
+                { date: "~1800s", title: "Lignée Royale", content: "Wetio Kouamou et Tchié Ngantchié établissent les lignées de Balengou et Batchingou." },
+                { date: "~1850s", title: "Génération 3", content: "Magni Kouabou s'installe à Batchingou. Mariage avec Ta'a Wéjiéwou au lieu sacré Kou Tchap." },
+                { date: "1898", title: "Naissance du Patriarche", content: "Ta'a Fieu Tagni Tinang Joseph naît à Batchingou (Toukou) sous le règne du roi Tchiengué." },
+                { date: "1906", title: "Mariage principal", content: "Union avec Megni Ngongang Rebecca de Bamena, petite-fille du chef Bamena." },
+                { date: "1947-1968", title: "Génération 6", content: "Naissance des 9 enfants du patriarche à travers trois épouses." },
+                { date: "1960", title: "Indépendance", content: "Indépendance du Cameroun. Installation principale à Foumbot, quartier Company." },
+                { date: "1983-2002", title: "Génération 7", content: "Naissance de 18 petits-enfants, dispersés entre le Cameroun et le Canada." },
+                { date: "2001", title: "Succession", content: "Décès du patriarche à 103 ans. Poueme Emmanuel intronisé comme Ta'a Fieu Tinang Joseph." }
             ];
             document.getElementById('timelineContent').innerHTML = events.map(e => `
                 <div class="timeline-item">
