@@ -759,13 +759,9 @@
             const maxGen = Math.max(...Array.from(generationsMap.values()));
             let html = '';
             for (let g = 1; g <= maxGen; g++) {
-                // Filtrer : seulement les personnes qui ont un parent OU qui n'ont pas de conjoint
-                // (évite d'afficher les conjoints comme boîtes séparées)
-                const ps = familyData.persons.filter(p => {
-                    if (getGeneration(p.id) !== g) return false;
-                    // Afficher si : a un parent OU n'a pas de conjoint OU n'a pas de parentId mais est une vraie racine
-                    return p.parentId || !p.spouseIds || p.spouseIds.length === 0 || (!p.parentId && g === 1);
-                });
+                // Afficher toutes les personnes de cette génération
+                // Y compris les conjoints pour pouvoir tracer les lignes
+                const ps = familyData.persons.filter(p => getGeneration(p.id) === g);
                 
                 if (ps.length === 0) continue;
                 html += `<div class="generation-row" data-generation="${g}">
@@ -781,8 +777,10 @@
         }
         
         function drawMarriageLines() {
-            // Parcourir toutes les générations
-            document.querySelectorAll('.generation-row').forEach(genRow => {
+            console.log('Drawing marriage lines...');
+            
+            // Parcourir toutes les générations visibles
+            document.querySelectorAll('.generation-row:not(.hidden)').forEach(genRow => {
                 // Supprimer les anciennes lignes SVG s'il y en a
                 const oldSvg = genRow.querySelector('.marriage-lines');
                 if (oldSvg) oldSvg.remove();
@@ -802,17 +800,37 @@
                 const boxes = genRow.querySelectorAll('.person-box');
                 const boxesArray = Array.from(boxes);
                 
+                console.log(`Generation has ${boxesArray.length} boxes`);
+                
+                // Garder trace des paires déjà dessinées pour éviter les doublons
+                const drawnPairs = new Set();
+                
                 // Pour chaque boîte, vérifier si elle a un conjoint dans la même génération
                 boxesArray.forEach(box1 => {
                     const person1Id = box1.getAttribute('data-id');
                     const person1 = familyData.persons.find(p => p.id === person1Id);
                     
-                    if (person1 && person1.spouseIds) {
+                    if (person1 && person1.spouseIds && person1.spouseIds.length > 0) {
+                        console.log(`${person1.name} has ${person1.spouseIds.length} spouse(s)`);
+                        
                         person1.spouseIds.forEach(spouseId => {
+                            // Vérifier si on n'a pas déjà dessiné cette paire
+                            const pairKey1 = `${person1Id}-${spouseId}`;
+                            const pairKey2 = `${spouseId}-${person1Id}`;
+                            
+                            if (drawnPairs.has(pairKey1) || drawnPairs.has(pairKey2)) {
+                                return; // Déjà dessiné
+                            }
+                            
                             // Trouver la boîte du conjoint
                             const box2 = boxesArray.find(b => b.getAttribute('data-id') === spouseId);
                             
                             if (box2 && box1 !== box2) {
+                                console.log(`Drawing line between ${person1.name} and spouse`);
+                                
+                                // Marquer cette paire comme dessinée
+                                drawnPairs.add(pairKey1);
+                                
                                 // Calculer les positions
                                 const rect1 = box1.getBoundingClientRect();
                                 const rect2 = box2.getBoundingClientRect();
@@ -824,47 +842,20 @@
                                 const x2 = rect2.left - containerRect.left + rect2.width / 2;
                                 const y2 = rect2.top - containerRect.top + rect2.height / 2;
                                 
-                                // Créer une ligne avec un petit cœur au milieu
+                                // Créer une ligne en pointillés
                                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                                 line.setAttribute('x1', x1);
                                 line.setAttribute('y1', y1);
                                 line.setAttribute('x2', x2);
                                 line.setAttribute('y2', y2);
-                                line.setAttribute('stroke', '#ff69b4');
-                                line.setAttribute('stroke-width', '3');
+                                line.setAttribute('stroke', '#2c5f4f');
+                                line.setAttribute('stroke-width', '2');
                                 line.setAttribute('stroke-dasharray', '5,5');
-                                line.setAttribute('opacity', '0.6');
+                                line.setAttribute('opacity', '0.5');
                                 
                                 svg.appendChild(line);
-                                
-                                // Ajouter le texte "Union" au milieu de la ligne
-                                const midX = (x1 + x2) / 2;
-                                const midY = (y1 + y2) / 2;
-                                
-                                // Fond blanc pour le texte
-                                const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                                bg.setAttribute('x', midX - 25);
-                                bg.setAttribute('y', midY - 10);
-                                bg.setAttribute('width', '50');
-                                bg.setAttribute('height', '20');
-                                bg.setAttribute('fill', 'white');
-                                bg.setAttribute('opacity', '0.9');
-                                bg.setAttribute('rx', '4');
-                                svg.appendChild(bg);
-                                
-                                // Texte "Union"
-                                const unionText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                                unionText.setAttribute('x', midX);
-                                unionText.setAttribute('y', midY);
-                                unionText.setAttribute('text-anchor', 'middle');
-                                unionText.setAttribute('dominant-baseline', 'middle');
-                                unionText.setAttribute('font-size', '12');
-                                unionText.setAttribute('font-weight', 'bold');
-                                unionText.setAttribute('fill', '#2c5f4f');
-                                unionText.setAttribute('font-family', 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif');
-                                unionText.textContent = 'Union';
-                                
-                                svg.appendChild(unionText);
+                            } else {
+                                console.log(`Spouse ${spouseId} not found in same generation`);
                             }
                         });
                     }
@@ -872,7 +863,10 @@
                 
                 // Ajouter le SVG au début du conteneur de génération
                 if (svg.childElementCount > 0) {
+                    console.log(`Adding SVG with ${svg.childElementCount} elements`);
                     genRow.insertBefore(svg, genRow.firstChild);
+                } else {
+                    console.log('No lines to draw in this generation');
                 }
             });
         }
