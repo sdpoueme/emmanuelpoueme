@@ -204,6 +204,29 @@
             text-align: center;
             position: relative;
         }
+        
+        /* Lignée fusionnée - Bordure double distinctive */
+        .person-box.merged-lineage {
+            border: 3px double #ffc107 !important;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+        }
+        .person-box.merged-lineage::before {
+            content: "🔗";
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: #ffc107;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
         .person-box:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .person-box.highlighted {
             border-color: #ff6b6b !important;
@@ -212,6 +235,24 @@
         .person-name { font-weight: bold; font-size: 1.1em; margin-bottom: 5px; }
         .person-dates { font-size: 0.9em; opacity: 0.8; }
         .person-role { font-size: 0.85em; margin-top: 5px; font-style: italic; }
+        
+        /* Conteneur pour les lignes SVG de connexion */
+        .generation-row {
+            position: relative;
+        }
+        .marriage-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .members-container {
+            position: relative;
+            z-index: 2;
+        }
         
         /* Modal */
         .modal {
@@ -655,6 +696,7 @@
             
             updateAllButton();
             updateVisibleCount();
+            setTimeout(drawMarriageLines, 50);
         }
 
         function toggleAllGenerations() {
@@ -675,6 +717,7 @@
             }
             
             updateVisibleCount();
+            setTimeout(drawMarriageLines, 50);
         }
 
         function updateAllButton() {
@@ -732,12 +775,115 @@
                 html += `</div></div>`;
             }
             document.getElementById('familyTree').innerHTML = html;
+            
+            // Dessiner les lignes de connexion entre époux
+            setTimeout(drawMarriageLines, 100);
+        }
+        
+        function drawMarriageLines() {
+            // Parcourir toutes les générations
+            document.querySelectorAll('.generation-row').forEach(genRow => {
+                // Supprimer les anciennes lignes SVG s'il y en a
+                const oldSvg = genRow.querySelector('.marriage-lines');
+                if (oldSvg) oldSvg.remove();
+                
+                // Créer un SVG pour cette génération
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('class', 'marriage-lines');
+                svg.style.position = 'absolute';
+                svg.style.top = '0';
+                svg.style.left = '0';
+                svg.style.width = '100%';
+                svg.style.height = '100%';
+                svg.style.pointerEvents = 'none';
+                svg.style.zIndex = '1';
+                
+                // Trouver toutes les boîtes dans cette génération
+                const boxes = genRow.querySelectorAll('.person-box');
+                const boxesArray = Array.from(boxes);
+                
+                // Pour chaque boîte, vérifier si elle a un conjoint dans la même génération
+                boxesArray.forEach(box1 => {
+                    const person1Id = box1.getAttribute('data-id');
+                    const person1 = familyData.persons.find(p => p.id === person1Id);
+                    
+                    if (person1 && person1.spouseIds) {
+                        person1.spouseIds.forEach(spouseId => {
+                            // Trouver la boîte du conjoint
+                            const box2 = boxesArray.find(b => b.getAttribute('data-id') === spouseId);
+                            
+                            if (box2 && box1 !== box2) {
+                                // Calculer les positions
+                                const rect1 = box1.getBoundingClientRect();
+                                const rect2 = box2.getBoundingClientRect();
+                                const containerRect = genRow.getBoundingClientRect();
+                                
+                                // Positions relatives au conteneur
+                                const x1 = rect1.left - containerRect.left + rect1.width / 2;
+                                const y1 = rect1.top - containerRect.top + rect1.height / 2;
+                                const x2 = rect2.left - containerRect.left + rect2.width / 2;
+                                const y2 = rect2.top - containerRect.top + rect2.height / 2;
+                                
+                                // Créer une ligne avec un petit cœur au milieu
+                                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                                line.setAttribute('x1', x1);
+                                line.setAttribute('y1', y1);
+                                line.setAttribute('x2', x2);
+                                line.setAttribute('y2', y2);
+                                line.setAttribute('stroke', '#ff69b4');
+                                line.setAttribute('stroke-width', '3');
+                                line.setAttribute('stroke-dasharray', '5,5');
+                                line.setAttribute('opacity', '0.6');
+                                
+                                svg.appendChild(line);
+                                
+                                // Ajouter le texte "Union" au milieu de la ligne
+                                const midX = (x1 + x2) / 2;
+                                const midY = (y1 + y2) / 2;
+                                
+                                // Fond blanc pour le texte
+                                const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                                bg.setAttribute('x', midX - 25);
+                                bg.setAttribute('y', midY - 10);
+                                bg.setAttribute('width', '50');
+                                bg.setAttribute('height', '20');
+                                bg.setAttribute('fill', 'white');
+                                bg.setAttribute('opacity', '0.9');
+                                bg.setAttribute('rx', '4');
+                                svg.appendChild(bg);
+                                
+                                // Texte "Union"
+                                const unionText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                                unionText.setAttribute('x', midX);
+                                unionText.setAttribute('y', midY);
+                                unionText.setAttribute('text-anchor', 'middle');
+                                unionText.setAttribute('dominant-baseline', 'middle');
+                                unionText.setAttribute('font-size', '12');
+                                unionText.setAttribute('font-weight', 'bold');
+                                unionText.setAttribute('fill', '#2c5f4f');
+                                unionText.setAttribute('font-family', 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif');
+                                unionText.textContent = 'Union';
+                                
+                                svg.appendChild(unionText);
+                            }
+                        });
+                    }
+                });
+                
+                // Ajouter le SVG au début du conteneur de génération
+                if (svg.childElementCount > 0) {
+                    genRow.insertBefore(svg, genRow.firstChild);
+                }
+            });
         }
 
         function createPersonBox(p, g) {
             const c = getGenerationColor(g);
             const dates = p.dates || (p.born ? `né ${p.born}` : '');
             const role = p.role ? `<div class="person-role">${p.role}</div>` : '';
+            
+            // Classes CSS additionnelles
+            let cssClasses = 'person-box';
             
             // Détecter si c'est une lignée fusionnée (a des parents ET un conjoint)
             let mergedLineageIndicator = '';
@@ -748,10 +894,16 @@
                     const currentGen = getGeneration(p.id);
                     if (parentGen < currentGen - 1 || parentGen === currentGen) {
                         // Cette personne apporte sa propre lignée
+                        cssClasses += ' merged-lineage';
                         const lineageSource = p.birthPlace || (parent.birthPlace || 'autre famille');
                         mergedLineageIndicator = `<div style="font-size: 0.75em; opacity: 0.7; margin-top: 4px; font-style: italic;">↖ Lignée ${lineageSource}</div>`;
                     }
                 }
+            }
+            
+            // Badge mariage si la personne a un/des conjoint(s)
+            if (p.spouseIds && p.spouseIds.length > 0) {
+                cssClasses += ' married';
             }
             
             // Trouver le(s) conjoint(s)
@@ -775,7 +927,7 @@
             }
             
             return `
-                <div class="person-box" data-name="${p.name.toLowerCase()}" style="background: ${c.bg}; border-color: ${c.border}; ${c.color ? `color: ${c.color};` : ''}" onclick="showPersonDetails('${p.id}')">
+                <div class="${cssClasses}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" style="background: ${c.bg}; border-color: ${c.border}; ${c.color ? `color: ${c.color};` : ''}" onclick="showPersonDetails('${p.id}')">
                     <div class="person-name">${p.name}</div>
                     ${dates ? `<div class="person-dates">${dates}</div>` : ''}
                     ${role}
