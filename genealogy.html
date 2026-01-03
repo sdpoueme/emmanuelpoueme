@@ -105,6 +105,7 @@
             gap: 10px;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: space-between;
         }
         .gen-filter {
             padding: 8px 16px;
@@ -479,6 +480,7 @@
         let familyData = { persons: [], locations: [] };
         let generationsMap = new Map();
         let visibleGenerations = new Set();
+        let showSpousesAsSeparateBoxes = false; // Toggle pour afficher les conjoints séparément
 
         async function loadData() {
             try {
@@ -677,6 +679,17 @@
                 `;
             }
             
+            // Ajouter le toggle pour les conjoints
+            html += `
+                <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9em; color: #666;">
+                        <input type="checkbox" id="spousesToggle" onchange="toggleSpousesDisplay()" 
+                               style="width: 18px; height: 18px; cursor: pointer;">
+                        <span>Afficher conjoints séparément + lignes</span>
+                    </label>
+                </div>
+            `;
+            
             document.getElementById('filterButtons').innerHTML = html;
         }
 
@@ -737,6 +750,11 @@
             }, 0);
             document.getElementById('visibleCount').textContent = `(${totalVisible} membres visibles)`;
         }
+        
+        function toggleSpousesDisplay() {
+            showSpousesAsSeparateBoxes = document.getElementById('spousesToggle').checked;
+            renderTree(); // Re-rendre l'arbre avec ou sans conjoints séparés
+        }
 
         function searchInTree() {
             const searchTerm = document.getElementById('treeSearch').value.toLowerCase();
@@ -759,9 +777,20 @@
             const maxGen = Math.max(...Array.from(generationsMap.values()));
             let html = '';
             for (let g = 1; g <= maxGen; g++) {
-                // Afficher toutes les personnes de cette génération
-                // Y compris les conjoints pour pouvoir tracer les lignes
-                const ps = familyData.persons.filter(p => getGeneration(p.id) === g);
+                let ps;
+                
+                if (showSpousesAsSeparateBoxes) {
+                    // Mode ÉTENDU : Afficher toutes les personnes, y compris les conjoints
+                    ps = familyData.persons.filter(p => getGeneration(p.id) === g);
+                } else {
+                    // Mode COMPACT : Ne pas afficher les conjoints comme boîtes séparées
+                    // (ils sont déjà mentionnés dans la boîte de leur époux/épouse)
+                    ps = familyData.persons.filter(p => {
+                        if (getGeneration(p.id) !== g) return false;
+                        // Afficher si : a un parent OU n'a pas de conjoint OU est une racine
+                        return p.parentId || !p.spouseIds || p.spouseIds.length === 0 || (!p.parentId && g === 1);
+                    });
+                }
                 
                 if (ps.length === 0) continue;
                 html += `<div class="generation-row" data-generation="${g}">
@@ -772,8 +801,10 @@
             }
             document.getElementById('familyTree').innerHTML = html;
             
-            // Dessiner les lignes de connexion entre époux
-            setTimeout(drawMarriageLines, 100);
+            // Dessiner les lignes de connexion entre époux (seulement si le toggle est activé)
+            if (showSpousesAsSeparateBoxes) {
+                setTimeout(drawMarriageLines, 100);
+            }
         }
         
         function drawMarriageLines() {
@@ -902,7 +933,8 @@
             
             // Trouver le(s) conjoint(s)
             let spouseInfo = '';
-            if (p.spouseIds && p.spouseIds.length > 0) {
+            // N'afficher les infos de conjoint EN BAS de la boîte que si le toggle est DÉSACTIVÉ
+            if (!showSpousesAsSeparateBoxes && p.spouseIds && p.spouseIds.length > 0) {
                 const spouses = p.spouseIds
                     .map(id => familyData.persons.find(s => s.id === id))
                     .filter(s => s); // Filtrer les undefined
