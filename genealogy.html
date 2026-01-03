@@ -885,6 +885,24 @@
                                 line.setAttribute('opacity', '0.5');
                                 
                                 svg.appendChild(line);
+                                
+                                // Ajouter un cercle connecteur à l'extrémité 1
+                                const circle1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                                circle1.setAttribute('cx', x1);
+                                circle1.setAttribute('cy', y1);
+                                circle1.setAttribute('r', '5');
+                                circle1.setAttribute('fill', '#2c5f4f');
+                                circle1.setAttribute('opacity', '0.8');
+                                svg.appendChild(circle1);
+                                
+                                // Ajouter un cercle connecteur à l'extrémité 2
+                                const circle2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                                circle2.setAttribute('cx', x2);
+                                circle2.setAttribute('cy', y2);
+                                circle2.setAttribute('r', '5');
+                                circle2.setAttribute('fill', '#2c5f4f');
+                                circle2.setAttribute('opacity', '0.8');
+                                svg.appendChild(circle2);
                             } else {
                                 console.log(`Spouse ${spouseId} not found in same generation`);
                             }
