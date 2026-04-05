@@ -1,4 +1,4 @@
-# Biographie d'Emmanuel Poueme - GitHub Pages
+# Biographie de Emmanuel Poueme - GitHub Pages
 
 Cette page documente la biographie et la carrière d'Emmanuel Poueme, cadre supérieur de la fonction publique camerounaise et Commandeur de l'Ordre de la Valeur.
 
