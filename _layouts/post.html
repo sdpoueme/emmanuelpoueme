@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    {% if page.number %}<div class="post-number">{{ page.number }}</div>{% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      {% if page.tag %}<span class="tag">{{ page.tag }}</span>{% endif %}
+      {% if page.season %}<span>{{ page.season }}</span>{% endif %}
+    </div>
+    {% if page.author and page.author != "Serge Poueme" %}<div class="post-author" style="margin-top: 8px; font-size: 14px; color: var(--text-muted);">Par {{ page.author }}</div>{% endif %}
+    {% if page.wayback_url %}<div class="post-wayback" style="margin-top: 8px; font-size: 13px;"><a href="{{ page.wayback_url }}" style="color: var(--text-muted); text-decoration: underline;">🕰️ Voir l'original sur la Wayback Machine</a></div>{% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="divider"><hr></div>
+    <nav class="post-nav">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="post-nav-prev">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="post-nav-next">{{ page.next.title }} →</a>
+      {% endif %}
+    </nav>
+  </footer>
+</article>

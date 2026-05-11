@@ -1,0 +1,70 @@
+# Site Settings
+title: "Serge Poueme"
+description: "Writing on technology, cities, and the systems that connect them."
+url: "https://sdpoueme.github.io"
+baseurl: ""
+author: "Serge Poueme"
+email: "sergepoueme@gmail.com"
+lang: "en"
+
+# Build Settings
+markdown: kramdown
+permalink: /posts/:title/
+future: true
+sass:
+  style: compressed
+
+# Collections
+collections:
+  writing:
+    output: true
+    permalink: /writing/:title/
+  technology:
+    output: true
+    permalink: /technology/:title/
+  memories:
+    output: true
+    permalink: /memories/:title/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "writing"
+    values:
+      layout: "post"
+      collection_label: "Writing · Écriture"
+  - scope:
+      path: ""
+      type: "technology"
+    values:
+      layout: "post"
+      collection_label: "Technology · Technologie"
+  - scope:
+      path: ""
+      type: "memories"
+    values:
+      layout: "post"
+      collection_label: "Memories · Souvenirs"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
