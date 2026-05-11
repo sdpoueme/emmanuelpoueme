@@ -1,28 +1,64 @@
 {
   "persons": [
     {
+      "id": "gen0_fondoup",
+      "name": "Fô Fondoup",
+      "dates": "~XVIIe siècle",
+      "role": "1er Roi de Baleng",
+      "birthPlace": "Plaines Tikar (Cameroun central)",
+      "residence": "Baleng, Bafoussam",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "notes": "Premier roi de Baleng. Venu des plaines Tikar. Fondateur de la dynastie royale de Baleng. Père de Fô Tchoungafo."
+    },
+    {
+      "id": "gen0_tchoungafo",
+      "name": "Fô Tchoungafo",
+      "dates": "~XVIIe-XVIIIe siècle",
+      "role": "2ème Roi de Baleng",
+      "birthPlace": "Baleng, Bafoussam",
+      "residence": "Baleng, Bafoussam",
+      "parentId": "gen0_fondoup",
+      "spouseIds": [],
+      "gender": "M",
+      "notes": "2ème roi de Baleng. Fils de Fô Fondoup. C'est sous son règne que le royaume se stabilise. Père de trois fils majeurs : Lefoum Kougoung (son successeur), Notchwegom (fondateur de Bandjoun) et Prince Nanjo (fondateur de Balengou)."
+    },
+    {
       "id": "gen1_nandjo",
       "name": "Prince Nandjo",
       "dates": "~1770s",
       "role": "Fondateur de la lignée",
       "birthPlace": "Baleng, Bafoussam",
       "residence": "Balengou (Kouodjou)",
-      "parentId": null,
+      "parentId": "gen0_tchoungafo",
       "spouseIds": [],
-      "notes": "Prince de Baleng, fils du Fon (chef) de Baleng (~1740s). Fondateur de la chefferie de Balengou. Selon la tradition orale, il a migré de Baleng vers Bamena puis Balengou. Oncle de Neyou (fils de son frère). Nom du père et du frère à confirmer dans les archives familiales.",
+      "notes": "Fils cadet de Fô Tchoungafo, 2ème roi de Baleng. Prince de Baleng. Leader de la migration de 1770 vers le sud. Devient le 1er roi de Balengou. Oncle de Neyou (fils de son frère Lefoum Kougoung). Frère de Notchwegom (fondateur de Bandjoun).",
       "gender": "M"
     },
     {
-      "id": "gen1_frere_nandjo",
-      "name": "Frère du Prince Nandjo (nom inconnu)",
-      "dates": "~1750s",
-      "role": "Ancêtre (à confirmer)",
+      "id": "gen1_notchwegom",
+      "name": "Notchwegom",
+      "dates": "~1740s",
+      "role": "Fondateur de Bandjoun",
       "birthPlace": "Baleng, Bafoussam",
-      "residence": "Baleng → Ndepgweu-tu (Balengou)",
-      "parentId": null,
+      "residence": "Bandjoun",
+      "parentId": "gen0_tchoungafo",
       "spouseIds": [],
       "gender": "M",
-      "notes": "Fils du Fon de Baleng (~1740s). Frère du Prince Nandjo. Père de Neyou. S'est installé à Ndepgweu-tu (Balengou) avec son neveu. Son nom réel est inconnu — à retrouver dans la tradition orale familiale ou les archives du palais de Baleng."
+      "notes": "Fils de Fô Tchoungafo. Frère de Lefoum Kougoung et du Prince Nanjo. Quitte Baleng pour fonder la chefferie de Bandjoun."
+    },
+    {
+      "id": "gen1_lefoum_kougoung",
+      "name": "Fô Lefoum Kougoung",
+      "dates": "~1740s-1780s",
+      "role": "3ème Roi de Baleng",
+      "birthPlace": "Baleng, Bafoussam",
+      "residence": "Baleng, Bafoussam",
+      "parentId": "gen0_tchoungafo",
+      "spouseIds": [],
+      "gender": "M",
+      "notes": "3ème roi de Baleng. Fils aîné de Fô Tchoungafo. Reste sur le trône principal après le départ de ses frères. Père de Neyou, qui choisit de suivre son oncle Nanjo dans l'exil de 1770."
     },
     {
       "id": "gen1_neyou",
@@ -31,9 +67,9 @@
       "role": "Lignée royale",
       "birthPlace": "Baleng",
       "residence": "Balengou (Ndepgweu-tu)",
-      "parentId": "gen1_frere_nandjo",
+      "parentId": "gen1_lefoum_kougoung",
       "spouseIds": [],
-      "notes": "Fils du frère du Prince Nandjo. Neveu du Prince Nandjo, fondateur de la lignée de Balengou. Installé à Ndepgweu-tu. Sa mère est inconnue — à confirmer.",
+      "notes": "Fils de Fô Lefoum Kougoung (3ème roi de Baleng). Neveu du Prince Nanjo. Choisit de suivre son oncle dans l'exil de 1770 plutôt que de rester à Baleng pour succéder au trône. Ancêtre des grandes lignées de notables à Balengou, dont les Ta'a Fieu.",
       "gender": "M"
     },
     {
@@ -253,9 +289,15 @@
       "spouseIds": [
         "patriarch"
       ],
-      "notes": "Première épouse du patriarche. Princesse — petite-fille du chef de Bamena, fille de Ta'a Nanwou.",
+      "notes": "Princesse de Bamena — petite-fille du chef de la chefferie de Bamena. Fille de Ta'a Nanwou. Son mariage avec le patriarche Ta'a Fieu Tagni Tinang Joseph unit deux lignées royales : celle de Balengou (issue du Prince Nanjo de Baleng) et celle de Bamena. Cette union renforce le statut noble de leurs descendants.",
       "gender": "F",
-      "parentId": "gen3_nanwou"
+      "parentId": "gen3_nanwou",
+      "role": "Princesse de Bamena",
+      "titles": [
+        "Petite-fille du chef de Bamena",
+        "Fille de Ta'a Nanwou (noble de Bamena)",
+        "Première épouse du Patriarche Ta'a Fieu"
+      ]
     },
     {
       "id": "gen4_nougue",
