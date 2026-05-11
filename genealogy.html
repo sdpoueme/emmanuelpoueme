@@ -1130,23 +1130,37 @@
         let d3Svg, d3Zoom;
 
         function buildHierarchy() {
-            const maxGen = Math.max(...Array.from(generationsMap.values()));
+            // Two-pass approach: add ALL bloodline nodes first, then wire parents.
+            // This avoids ordering issues where a child's generationsMap gen is lower
+            // than the parent's (because the parent was bumped up via spouse-merge).
             const root = { id: '__root__', name: '', children: [] };
             const nm = { '__root__': root };
-            // Only bloodline persons — spouses are positioned separately after layout
-            for (let g = 1; g <= maxGen; g++) {
-                familyData.persons
-                    .filter(p => generationsMap.get(p.id) === g)
-                    .filter(p => p.parentId || (!p.parentId && (!p.spouseIds || !p.spouseIds.length)))
-                    .forEach(p => {
-                        const node = { id: p.id, name: p.name, gen: g, data: p, children: [] };
-                        nm[p.id] = node;
-                        (p.parentId && nm[p.parentId] ? nm[p.parentId] : root).children.push(node);
-                    });
-            }
+
+            // Bloodline = has parentId OR (no parentId AND no spouseIds)
+            const bloodline = familyData.persons.filter(p =>
+                p.parentId || (!p.parentId && (!p.spouseIds || !p.spouseIds.length))
+            );
+
+            // Pass 1: create all nodes
+            bloodline.forEach(p => {
+                const g = generationsMap.get(p.id) || 1;
+                nm[p.id] = { id: p.id, name: p.name, gen: g, data: p, children: [] };
+            });
+
+            // Pass 2: wire parent-child relationships
+            bloodline.forEach(p => {
+                const node = nm[p.id];
+                if (p.parentId && nm[p.parentId]) {
+                    nm[p.parentId].children.push(node);
+                } else {
+                    root.children.push(node);
+                }
+            });
+
             return d3.hierarchy(root);
         }
 
+        
         // Get all spouse-only nodes (no parentId, has spouseIds)
         function getSpouseNodes() {
             return familyData.persons.filter(p => !p.parentId && p.spouseIds && p.spouseIds.length > 0);
@@ -1368,6 +1382,35 @@
             nodeGroups.append('title').text(d => d.data.name+' — G'+d.data.gen+'\nDouble-clic → profil');
 
             // ── Spouse dashed lines ─────────────────────────
+            // ── Marriage connectors for bloodline members who have spouseIds ──
+            // (they stay in the tree at their proper bloodline position, but get a
+            //  dashed ochre connector to their spouse)
+            const drawnMarriages = new Set();
+            allNodes.forEach(n => {
+                const p = n.data.data;
+                if (!p || !p.spouseIds || !p.spouseIds.length) return;
+                p.spouseIds.forEach(sid => {
+                    const key = [n.data.id, sid].sort().join('|');
+                    if (drawnMarriages.has(key)) return;
+                    drawnMarriages.add(key);
+                    const spouseNode = allNodes.find(d => d.data.id === sid);
+                    if (!spouseNode) return;  // spouse is a spouse-only node (drawn separately)
+                    // Draw dashed marriage connector between two bloodline members
+                    gGroup.append('line')
+                        .attr('x1', nx(n)).attr('y1', ny(n))
+                        .attr('x2', nx(spouseNode)).attr('y2', ny(spouseNode))
+                        .attr('stroke','#C07D2A').attr('stroke-width',2.5)
+                        .attr('stroke-dasharray','6,4').attr('stroke-opacity',0.85);
+                    // ♥ at midpoint
+                    gGroup.append('text')
+                        .attr('x',(nx(n)+nx(spouseNode))/2)
+                        .attr('y',(ny(n)+ny(spouseNode))/2+4)
+                        .attr('text-anchor','middle').attr('font-size','11px')
+                        .attr('fill','#C07D2A').attr('opacity',0.8)
+                        .attr('pointer-events','none').text('♥');
+                });
+            });
+
             // ── Spouse nodes (positioned beside their partner, not as children) ──
             // Perpendicular offset for spouse nodes (beside partner, not below)
             // LR/cluster: offset vertically (perpendicular to left-right flow)
@@ -1459,6 +1502,25 @@
                     }
                 }
             }
+
+            // ── Uncle-nephew connectors (special non-parent relationships) ──
+            // Draw a dotted line between Nandjo and Neyou to show the uncle-nephew bond
+            const uncleNephewPairs = [['gen1_nandjo', 'gen1_neyou']];
+            uncleNephewPairs.forEach(([uid, nid]) => {
+                const un = allNodes.find(d => d.data.id === uid);
+                const nn = allNodes.find(d => d.data.id === nid);
+                if (!un || !nn) return;
+                gGroup.append('line')
+                    .attr('x1', nx(un)).attr('y1', ny(un))
+                    .attr('x2', nx(nn)).attr('y2', ny(nn))
+                    .attr('stroke','#8B6914').attr('stroke-width',1.5)
+                    .attr('stroke-dasharray','3,5').attr('stroke-opacity',0.6);
+                gGroup.append('text')
+                    .attr('x',(nx(un)+nx(nn))/2).attr('y',(ny(un)+ny(nn))/2-6)
+                    .attr('text-anchor','middle').attr('font-size','8px')
+                    .attr('fill','#8B6914').attr('opacity',0.75).attr('pointer-events','none')
+                    .text('oncle / neveu');
+            });
 
             setTimeout(() => autoFitD3(allNodes, viz, W, H), 30);
 
@@ -1552,6 +1614,28 @@
 
             window._d3ForceSimulation = simulation;
 
+            // ── Bloodline marriage connectors in force mode ──
+            // (e.g. Rebecca in her lineage + connected to patriarch)
+            const bloodlineMarriageLines = [];
+            const drawnBM = new Set();
+            allNodes.forEach(n => {
+                const p = n.data.data;
+                if (!p || !p.spouseIds || !p.spouseIds.length) return;
+                p.spouseIds.forEach(sid => {
+                    const key = [n.data.id, sid].sort().join('|');
+                    if (drawnBM.has(key)) return; drawnBM.add(key);
+                    const spouseNode = allNodes.find(d => d.data.id === sid);
+                    if (!spouseNode) return;
+                    const lineEl = gGroup.append('line')
+                        .attr('stroke','#C07D2A').attr('stroke-width',2.5)
+                        .attr('stroke-dasharray','6,4').attr('stroke-opacity',0.8);
+                    const heartEl = gGroup.append('text')
+                        .attr('text-anchor','middle').attr('font-size','13px')
+                        .attr('fill','#C07D2A').attr('opacity',0.85).attr('pointer-events','none').text('♥');
+                    bloodlineMarriageLines.push({ n1: n, n2: spouseNode, lineEl, heartEl });
+                });
+            });
+
             // ── Spouses in force mode — anchored to their partner ──
             const spouseElems = [];
             getSpouseNodes().forEach(sp => {
@@ -1584,7 +1668,21 @@
                 linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
                       .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
                 nodeEl.attr('transform', d => 'translate('+d.x+','+d.y+')');
+                // Update bloodline marriage connectors
+                bloodlineMarriageLines.forEach(({n1,n2,lineEl,heartEl}) => {
+                    lineEl.attr('x1',n1.x).attr('y1',n1.y).attr('x2',n2.x).attr('y2',n2.y);
+                    heartEl.attr('x',(n1.x+n2.x)/2).attr('y',(n1.y+n2.y)/2+5);
+                });
                 // Update spouse positions (beside partner, slight offset)
+                // Uncle-nephew connectors in force mode
+                [['gen1_nandjo', 'gen1_neyou']].forEach(([uid, nid]) => {
+                    const un = allNodes.find(d => d.data.id === uid);
+                    const nn = allNodes.find(d => d.data.id === nid);
+                    if (un && nn) {
+                        gGroup.selectAll('.uncle-nephew-'+uid+'-'+nid)
+                            .attr('x1',un.x).attr('y1',un.y).attr('x2',nn.x).attr('y2',nn.y);
+                    }
+                });
                 spouseElems.forEach(({sp,partner,lineEl,heartEl,spG}) => {
                     const px=partner.x, py=partner.y;
                     const sx=px, sy=py+40;  // below in force mode

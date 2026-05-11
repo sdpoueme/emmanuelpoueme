@@ -9,8 +9,20 @@
       "residence": "Balengou (Kouodjou)",
       "parentId": null,
       "spouseIds": [],
-      "notes": "Prince de Baleng, fondateur de la chefferie de Balengou. Migré de Baleng vers Bamena puis Balengou.",
+      "notes": "Prince de Baleng, fils du Fon (chef) de Baleng (~1740s). Fondateur de la chefferie de Balengou. Selon la tradition orale, il a migré de Baleng vers Bamena puis Balengou. Oncle de Neyou (fils de son frère). Nom du père et du frère à confirmer dans les archives familiales.",
       "gender": "M"
+    },
+    {
+      "id": "gen1_frere_nandjo",
+      "name": "Frère du Prince Nandjo (nom inconnu)",
+      "dates": "~1750s",
+      "role": "Ancêtre (à confirmer)",
+      "birthPlace": "Baleng, Bafoussam",
+      "residence": "Baleng → Ndepgweu-tu (Balengou)",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "notes": "Fils du Fon de Baleng (~1740s). Frère du Prince Nandjo. Père de Neyou. S'est installé à Ndepgweu-tu (Balengou) avec son neveu. Son nom réel est inconnu — à retrouver dans la tradition orale familiale ou les archives du palais de Baleng."
     },
     {
       "id": "gen1_neyou",
@@ -19,9 +31,9 @@
       "role": "Lignée royale",
       "birthPlace": "Baleng",
       "residence": "Balengou (Ndepgweu-tu)",
-      "parentId": null,
+      "parentId": "gen1_frere_nandjo",
       "spouseIds": [],
-      "notes": "Neveu du Prince Nandjo, installé à Ndepgweu-tu",
+      "notes": "Fils du frère du Prince Nandjo. Neveu du Prince Nandjo, fondateur de la lignée de Balengou. Installé à Ndepgweu-tu. Sa mère est inconnue — à confirmer.",
       "gender": "M"
     },
     {
@@ -238,12 +250,12 @@
       "dates": "1906-1998",
       "birthPlace": "Bamena",
       "residence": "Foumbot / Batchingou",
-      "parentId": "gen3_nanwou",
       "spouseIds": [
         "patriarch"
       ],
-      "notes": "Première épouse du patriarche, petite-fille du chef Bamena",
-      "gender": "F"
+      "notes": "Première épouse du patriarche. Princesse — petite-fille du chef de Bamena, fille de Ta'a Nanwou.",
+      "gender": "F",
+      "parentId": "gen3_nanwou"
     },
     {
       "id": "gen4_nougue",
