@@ -10,7 +10,7 @@
       "parentId": null,
       "spouseIds": [],
       "gender": "M",
-      "notes": "Premier roi de Baleng. Venu des plaines Tikar. Fondateur de la dynastie royale de Baleng. Père de Fô Tchoungafo."
+      "notes": "Premier roi de Baleng. Venu des plaines Tikar. Fondateur de la dynastie royale de Baleng. Père de Fô Tchoungafo."Em
     },
     {
       "id": "gen0_tchoungafo",
@@ -378,7 +378,7 @@
     {
       "id": "patriarch",
       "name": "Ta'a Fieu Tagni Tinang Joseph",
-      "ndap": "Ta'a Fieu",
+      "titre": "Ta'a Fieu",
       "dates": "1898-2001",
       "lifespan": "103 ans",
       "role": "Patriarche",
@@ -474,7 +474,7 @@
     {
       "id": "martin",
       "name": "Tagni Nguenang Martin",
-      "ndap": "Le Chancelier",
+      "sobriquet": "Le Chancelier",
       "dates": "~1900-?",
       "birthPlace": "Bazou",
       "residence": "Makenene",
@@ -517,7 +517,7 @@
     {
       "id": "heir",
       "name": "Poueme Emmanuel",
-      "ndap": "Ta'a Fieu Tinang Joseph",
+      "titre": "Ta'a Fieu",
       "born": "1955",
       "role": "Héritier",
       "birthPlace": "Batchingou, Toukou",
