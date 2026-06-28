@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sdpoueme.github.io/sitemap.xml
