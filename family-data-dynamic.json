@@ -110,7 +110,76 @@
         "Ministre chargé de la défense de l'intégrité territoriale",
         "Responsable du lieu sacré Metchoumbouh"
       ],
-      "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou",
+      "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou. A engendré de nombreuses familles, dont celles de Tchassep, Ndomou Juliette et Tagni Meyuka.",
+      "gender": "M"
+    },
+    {
+      "id": "tchie_pere_isaac",
+      "name": "Un Tchié Ngantchié (Père de Tchiémeni Isaac)",
+      "role": "Héritier de Tchié Ngantchié",
+      "birthPlace": "Batchingou",
+      "residence": "Foumbot",
+      "parentId": "gen2_tchie",
+      "spouseIds": [
+        "spouse_pangwa_elisabeth"
+      ],
+      "notes": "Le dernier héritier dans l’ordre de Tchié Ngantchié. S'est installé à Foumbot. Sa succession a été bousculée par un frère de retour d'exil.",
+      "gender": "M"
+    },
+    {
+      "id": "spouse_pangwa_elisabeth",
+      "name": "Maman Pangwa Elisabeth",
+      "residence": "Batchingou",
+      "spouseIds": [
+        "tchie_pere_isaac"
+      ],
+      "notes": "Veuve inhumée dans un petit terrain face à la grande concession familiale en raison du conflit de succession.",
+      "gender": "F"
+    },
+    {
+      "id": "tchiemeni_isaac",
+      "name": "Tchiémeni Isaac",
+      "residence": "Douala",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "occupation": "Hôtel Akwa Palace à Douala",
+      "notes": "Véritable successeur écarté de Tchié Ngantchié suite à une bousculade de l'ordre successoral.",
+      "gender": "M"
+    },
+    {
+      "id": "tchie_christine",
+      "name": "Christine",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F"
+    },
+    {
+      "id": "tchie_josue",
+      "name": "Josué",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "M"
+    },
+    {
+      "id": "tchie_fille_uterine_1",
+      "name": "Fille utérine 1",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F"
+    },
+    {
+      "id": "tchie_fille_uterine_2",
+      "name": "Fille utérine 2",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F"
+    },
+    {
+      "id": "tchie_frere_usurpateur",
+      "name": "Frère exilé",
+      "parentId": "gen2_tchie",
+      "spouseIds": [],
+      "notes": "Frère longtemps en exil après une faute lourde, revenu bousculer l'ordre successoral. Ses enfants occupent aujourd'hui la grande concession.",
       "gender": "M"
     },
     {
