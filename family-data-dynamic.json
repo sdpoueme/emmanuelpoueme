@@ -195,7 +195,7 @@
         "gen4_ngnoumegni",
         "spouse_tchakouyap"
       ],
-      "notes": "Descendant de Tchié Ngantchié",
+      "notes": "Descendant de Tchié Ngantchié. A eu deux épouses : Ngnoumegni et Tchakouyap.",
       "gender": "M"
     },
     {
@@ -206,6 +206,7 @@
       "spouseIds": [
         "gen3_tchiendjo"
       ],
+      "notes": "Deuxième épouse de Tchassep Ta'a Tchiendjo",
       "gender": "F"
     },
     {
@@ -277,7 +278,7 @@
       "spouseIds": [
         "gen3_tchiendjo"
       ],
-      "notes": "Fille unique survivante de Magni Kouabou et Ta'a Wéjiéwou, mère du patriarche",
+      "notes": "Fille unique survivante de Magni Kouabou et Ta'a Wéjiéwou, première épouse de Tchassep, mère du patriarche",
       "gender": "F"
     },
     {
@@ -314,7 +315,7 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "spouseIds": [],
-      "notes": "Fils de Tchassep et Tchakouyap, demi-frère du patriarche",
+      "notes": "Fils de Tchassep et Tchakouyap, demi-frère du patriarche. Héritier désigné.",
       "gender": "M"
     },
     {
@@ -322,18 +323,48 @@
       "name": "Ngoko Monique",
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
-      "spouseIds": [],
+      "spouseIds": [
+        "spouse_bangou_monique"
+      ],
       "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
       "gender": "F"
+    },
+    {
+      "id": "spouse_bangou_monique",
+      "name": "Époux (Bangou)",
+      "spouseIds": ["gen4_ngoko"],
+      "gender": "M"
+    },
+    {
+      "id": "tinang_joseph_bernard",
+      "name": "Tinang Joseph Bernard",
+      "parentId": "gen4_ngoko",
+      "gender": "M",
+      "notes": "Fils de Ngoko Monique et de son époux de Bangou. Héritier désigné."
     },
     {
       "id": "gen4_kouakep_cat",
       "name": "Kouakep Catherine",
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
-      "spouseIds": [],
+      "spouseIds": [
+        "spouse_abel"
+      ],
       "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
       "gender": "F"
+    },
+    {
+      "id": "spouse_abel",
+      "name": "Papa Abel (Fo Trou)",
+      "spouseIds": ["gen4_kouakep_cat"],
+      "gender": "M"
+    },
+    {
+      "id": "tchaya_felix",
+      "name": "Tchaya Félix Rodrigue",
+      "parentId": "gen4_kouakep_cat",
+      "gender": "M",
+      "notes": "Fils de Kouakep Catherine et Papa Abel. Héritier désigné."
     },
     {
       "id": "gen4_ngomegni",
@@ -341,8 +372,8 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "spouseIds": [],
-      "notes": "Fils de Tchassep et Tchakouyap, demi-frère du patriarche",
-      "gender": "F"
+      "notes": "Fils utérin de Tchassep et Tchakouyap, né après la mort de Ta'a Tchiendjo",
+      "gender": "M"
     },
     {
       "id": "gen4_ngoko_andre",
@@ -444,7 +475,25 @@
         "Tcha-Neyou"
       ],
       "notes": "Patriarche de la branche Balengou, fils de Cha Neyou",
-      "gender": "F"
+      "gender": "M"
+    },
+    {
+      "id": "cha_neyou_neyou",
+      "name": "Neyou",
+      "birthPlace": "Balengou",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": [],
+      "notes": "Fils de Cha Neyou. Père de Kouakep Michel et Tchame Marie.",
+      "gender": "M"
+    },
+    {
+      "id": "cha_neyou_tchuindjang",
+      "name": "Tchuindjang",
+      "birthPlace": "Balengou",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": [],
+      "notes": "Fils de Cha Neyou. Décédé jeune.",
+      "gender": "M"
     },
     {
       "id": "etienne",
@@ -566,6 +615,15 @@
         "theodore"
       ],
       "gender": "F"
+    },
+    {
+      "id": "datouo_david",
+      "name": "Datouo David",
+      "birthPlace": "Foumbot",
+      "parentId": "patriarch",
+      "spouseIds": [],
+      "notes": "Fils du patriarche et de Megni Rachel. Décédé jeune.",
+      "gender": "M"
     },
     {
       "id": "elise",
@@ -709,7 +767,7 @@
       "parentId": "heir",
       "spouseIds": [],
       "notes": "Deuxième fils de l'héritier",
-      "gender": "F"
+      "gender": "M"
     },
     {
       "id": "eric",
@@ -940,18 +998,18 @@
       "id": "gen4_noungheu",
       "name": "Noungheu Felix",
       "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
+      "parentId": "gen4_nanwouo",
       "spouseIds": [],
-      "notes": "Fils de Ndomou Juliette, cousin du patriarche",
+      "notes": "Fils de Nanwouo Jean, héritier désigné",
       "gender": "M"
     },
     {
       "id": "gen4_piakep",
       "name": "Piakep Nicaisse",
       "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
+      "parentId": "gen4_nanwouo",
       "spouseIds": [],
-      "notes": "Fils de Ndomou Juliette, cousin du patriarche",
+      "notes": "Fils de Nanwouo Jean, héritier désigné",
       "gender": "M"
     },
     {
@@ -970,7 +1028,7 @@
       "parentId": "mbiendu",
       "spouseIds": [],
       "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "M"
     },
     {
       "id": "ndangang",
@@ -1112,7 +1170,7 @@
       "parentId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "F"
+      "gender": "M"
     },
     {
       "id": "mbiendu_martin",
@@ -1139,7 +1197,7 @@
       "parentId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "F"
+      "gender": "M"
     },
     {
       "id": "joseph_makenene",
