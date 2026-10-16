@@ -745,7 +745,7 @@
       "id": "heir",
       "name": "Poueme Emmanuel",
       "ndap": "Ta'a Fieu Poueme Emmanuel",
-      "born": "1955",
+      "born": "1950",
       "role": "Héritier",
       "birthPlace": "Batchingou, Toukou",
       "residence": "Batchingou / Yaoundé",
@@ -753,7 +753,7 @@
       "spouseIds": [
         "spouse_adeline"
       ],
-      "occupation": "Haut fonctionnaire (38 ans)",
+      "occupation": "Haut fonctionnaire",
       "titles": [
         "Ta'a Fieu Tinang Joseph (depuis 2001)"
       ],
@@ -805,14 +805,14 @@
     },
     {
       "id": "elise",
-      "name": "Ngnoumegni Élise",
-      "dates": "1963-2016",
+      "name": "Ngnoumegni Élise (Moungang Woumegni Élisabeth)",
+      "dates": "1965-2016",
       "birthPlace": "Foumbot",
       "residence": "Bana",
       "deathPlace": "Bana",
       "parentId": "patriarch",
       "spouseIds": [],
-      "notes": "Quatrième enfant du patriarche",
+      "notes": "Quatrième enfant du patriarche. Son âme repose en paix à Bana chez son mari.",
       "gender": "F"
     },
     {
