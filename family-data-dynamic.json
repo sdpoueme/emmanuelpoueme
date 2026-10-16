@@ -12,6 +12,7 @@
       "parentId": null,
       "spouseIds": [],
       "gender": "M",
+      "generation": 1,
       "notes": "Premier roi de Baleng. Venu des plaines Tikar. Fondateur de la dynastie royale de Baleng. Père de Fô Tchoungafo."
     },
     {
@@ -27,6 +28,7 @@
       "fatherId": "gen0_fondoup",
       "spouseIds": [],
       "gender": "M",
+      "generation": 2,
       "notes": "2ème roi de Baleng. Fils de Fô Fondoup. C'est sous son règne que le royaume se stabilise. Père de trois fils majeurs : Lefoum Kougoung (son successeur), Notchwegom (fondateur de Bandjoun) et Prince Nanjo (fondateur de Balengou)."
     },
     {
@@ -42,7 +44,8 @@
       "fatherId": "gen0_tchoungafo",
       "spouseIds": [],
       "notes": "Fils cadet de Fô Tchoungafo, 2ème roi de Baleng. Prince de Baleng. Leader de la migration de 1770 vers le sud. Devient le 1er roi de Balengou. Oncle de Neyou (fils de son frère Lefoum Kougoung). Frère de Notchwegom (fondateur de Bandjoun).",
-      "gender": "M"
+      "gender": "M",
+      "generation": 3
     },
     {
       "id": "gen1_notchwegom",
@@ -57,6 +60,7 @@
       "fatherId": "gen0_tchoungafo",
       "spouseIds": [],
       "gender": "M",
+      "generation": 3,
       "notes": "Fils de Fô Tchoungafo. Frère de Lefoum Kougoung et du Prince Nanjo. Quitte Baleng pour fonder la chefferie de Bandjoun."
     },
     {
@@ -72,6 +76,7 @@
       "fatherId": "gen0_tchoungafo",
       "spouseIds": [],
       "gender": "M",
+      "generation": 3,
       "notes": "3ème roi de Baleng. Fils aîné de Fô Tchoungafo. Reste sur le trône principal après le départ de ses frères. Père de Neyou, qui choisit de suivre son oncle Nanjo dans l'exil de 1770."
     },
     {
@@ -87,7 +92,8 @@
       "fatherId": "gen1_lefoum_kougoung",
       "spouseIds": [],
       "notes": "Fils de Fô Lefoum Kougoung (3ème roi de Baleng). Neveu du Prince Nanjo. Choisit de suivre son oncle dans l'exil de 1770 plutôt que de rester à Baleng pour succéder au trône. Ancêtre des grandes lignées de notables à Balengou, dont les Ta'a Fieu.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 4
     },
     {
       "id": "gen2_wetio",
@@ -100,9 +106,12 @@
       "residence": "Balengou, Ndepgweu-tu",
       "parentId": "gen1_neyou",
       "fatherId": "gen1_neyou",
-      "spouseIds": ["spouse_magni_juebou"],
+      "spouseIds": [
+        "spouse_magni_juebou"
+      ],
       "notes": "Descendant de Neyou, patriarche de la souche originelle à Ndepgweu",
-      "gender": "M"
+      "gender": "M",
+      "generation": 5
     },
     {
       "id": "spouse_magni_juebou",
@@ -112,8 +121,11 @@
       "estimatedDates": "Vers 1795 (~1800s)",
       "birthPlace": "Balengou",
       "parentId": null,
-      "spouseIds": ["gen2_wetio"],
-      "gender": "F"
+      "spouseIds": [
+        "gen2_wetio"
+      ],
+      "gender": "F",
+      "generation": 5
     },
     {
       "id": "gen1_chef_bamena",
@@ -126,6 +138,7 @@
       "parentId": null,
       "spouseIds": [],
       "gender": "M",
+      "generation": 6,
       "notes": "Chef de la chefferie de Bamena. Père de Ta'a Nanwou."
     },
     {
@@ -139,6 +152,7 @@
       "parentId": null,
       "spouseIds": [],
       "gender": "M",
+      "generation": 7,
       "notes": "Voisin à Batchingou et père de Tchihikou Agnès."
     },
     {
@@ -157,7 +171,8 @@
         "Responsable du lieu sacré Metchoumbouh"
       ],
       "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou. A engendré de nombreuses familles, dont celles de Tchassep, Ndomou Juliette et Tagni Meyuka.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 6
     },
     {
       "id": "tchie_pere_isaac",
@@ -169,9 +184,12 @@
       "residence": "Foumbot",
       "parentId": "gen2_tchie",
       "fatherId": "gen2_tchie",
-      "spouseIds": ["spouse_pangwa_elisabeth"],
+      "spouseIds": [
+        "spouse_pangwa_elisabeth"
+      ],
       "notes": "Le dernier héritier dans l’ordre de Tchié Ngantchié. S'est installé à Foumbot. Sa succession a été bousculée par un frère de retour d'exil.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "spouse_pangwa_elisabeth",
@@ -180,9 +198,12 @@
       "estimatedDates": "Vers 1860",
       "residence": "Batchingou",
       "parentId": null,
-      "spouseIds": ["tchie_pere_isaac"],
+      "spouseIds": [
+        "tchie_pere_isaac"
+      ],
       "notes": "Veuve inhumée dans un petit terrain face à la grande concession familiale en raison du conflit de succession.",
-      "gender": "F"
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "tchiemeni_isaac",
@@ -195,7 +216,8 @@
       "spouseIds": [],
       "occupation": "Hôtel Akwa Palace à Douala",
       "notes": "Véritable successeur écarté de Tchié Ngantchié suite à une bousculade de l'ordre successoral.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "tchie_christine",
@@ -205,7 +227,8 @@
       "parentId": "tchie_pere_isaac",
       "fatherId": "tchie_pere_isaac",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "tchie_josue",
@@ -215,7 +238,8 @@
       "parentId": "tchie_pere_isaac",
       "fatherId": "tchie_pere_isaac",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "tchie_fille_uterine_1",
@@ -225,7 +249,8 @@
       "parentId": "tchie_pere_isaac",
       "fatherId": "tchie_pere_isaac",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "tchie_fille_uterine_2",
@@ -235,7 +260,8 @@
       "parentId": "tchie_pere_isaac",
       "fatherId": "tchie_pere_isaac",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "tchie_frere_usurpateur",
@@ -246,7 +272,8 @@
       "fatherId": "gen2_tchie",
       "spouseIds": [],
       "notes": "Frère longtemps en exil après une faute lourde, revenu bousculer l'ordre successoral. Ses enfants occupent aujourd'hui la grande concession.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "gen2_chaneyou",
@@ -259,9 +286,13 @@
       "parentId": "gen2_wetio",
       "fatherId": "gen2_wetio",
       "motherId": "spouse_magni_juebou",
-      "spouseIds": ["spouse_ketchignou", "spouse_tchayep"],
+      "spouseIds": [
+        "spouse_ketchignou",
+        "spouse_tchayep"
+      ],
       "notes": "Frère de Magni Kouabou, patriarche de la branche Balengou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 6
     },
     {
       "id": "spouse_ketchignou",
@@ -270,8 +301,11 @@
       "birthYear": 1825,
       "estimatedDates": "Vers 1825",
       "parentId": null,
-      "spouseIds": ["gen2_chaneyou"],
-      "gender": "F"
+      "spouseIds": [
+        "gen2_chaneyou"
+      ],
+      "gender": "F",
+      "generation": 6
     },
     {
       "id": "spouse_tchayep",
@@ -280,8 +314,11 @@
       "birthYear": 1825,
       "estimatedDates": "Vers 1825",
       "parentId": null,
-      "spouseIds": ["gen2_chaneyou"],
-      "gender": "F"
+      "spouseIds": [
+        "gen2_chaneyou"
+      ],
+      "gender": "F",
+      "generation": 6
     },
     {
       "id": "gen2_wajiamou",
@@ -296,7 +333,8 @@
       "motherId": "spouse_magni_juebou",
       "spouseIds": [],
       "notes": "Sœur de Magni Kouabou, ancêtre de la branche Makenene",
-      "gender": "F"
+      "gender": "F",
+      "generation": 6
     },
     {
       "id": "gen3_kouakep_bazou",
@@ -307,7 +345,8 @@
       "motherId": "gen2_wajiamou",
       "spouseIds": [],
       "notes": "Fille de Wajiamou, partie en mariage à Bazou. Mère de Tagni Nguenang Martin.",
-      "gender": "F"
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "gen3_nguebou",
@@ -320,7 +359,8 @@
       "motherId": "spouse_magni_juebou",
       "spouseIds": [],
       "notes": "Quatrième enfant de Wetio Kouamou. Sans progression connue.",
-      "gender": "F"
+      "gender": "F",
+      "generation": 6
     },
     {
       "id": "gen3_kouabou",
@@ -334,9 +374,12 @@
       "parentId": "gen2_wetio",
       "fatherId": "gen2_wetio",
       "motherId": "spouse_magni_juebou",
-      "spouseIds": ["spouse_taawejiewou"],
+      "spouseIds": [
+        "spouse_taawejiewou"
+      ],
       "notes": "Fille aînée de Wetio Kouamou, mariée à Batchingou chez Ta'a Wéjiéwou au lieu sacré Kou Tchap",
-      "gender": "F"
+      "gender": "F",
+      "generation": 6
     },
     {
       "id": "spouse_taawejiewou",
@@ -346,8 +389,11 @@
       "estimatedDates": "Vers 1845 (~1850s)",
       "residence": "Batchingou, Toukou",
       "parentId": null,
-      "spouseIds": ["gen3_kouabou"],
-      "gender": "M"
+      "spouseIds": [
+        "gen3_kouabou"
+      ],
+      "gender": "M",
+      "generation": 6
     },
     {
       "id": "gen4_njionda",
@@ -356,7 +402,8 @@
       "motherId": "gen3_kouabou",
       "fatherId": "spouse_taawejiewou",
       "notes": "Enfant de Magni Kouabou et Ta'a Wéjiéwou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "gen4_wetie",
@@ -365,7 +412,8 @@
       "motherId": "gen3_kouabou",
       "fatherId": "spouse_taawejiewou",
       "notes": "Enfant de Magni Kouabou et Ta'a Wéjiéwou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "gen4_ngnoumegni",
@@ -378,9 +426,12 @@
       "parentId": "gen3_kouabou",
       "motherId": "gen3_kouabou",
       "fatherId": "spouse_taawejiewou",
-      "spouseIds": ["gen3_tchiendjo"],
+      "spouseIds": [
+        "gen3_tchiendjo"
+      ],
       "notes": "Fille unique survivante de Magni Kouabou et Ta'a Wéjiéwou, première épouse de Tchassep, mère du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "gen3_tchiendjo",
@@ -393,9 +444,13 @@
       "residence": "Batchingou, Tousseu",
       "parentId": "gen2_tchie",
       "fatherId": "gen2_tchie",
-      "spouseIds": ["gen4_ngnoumegni", "spouse_tchakouyap"],
+      "spouseIds": [
+        "gen4_ngnoumegni",
+        "spouse_tchakouyap"
+      ],
       "notes": "Descendant de Tchié Ngantchié. A eu deux épouses : Ngnoumegni et Tchakouyap.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "spouse_tchakouyap",
@@ -404,9 +459,12 @@
       "birthYear": 1865,
       "estimatedDates": "Vers 1865",
       "parentId": null,
-      "spouseIds": ["gen3_tchiendjo"],
+      "spouseIds": [
+        "gen3_tchiendjo"
+      ],
       "notes": "Deuxième épouse de Tchassep Ta'a Tchiendjo",
-      "gender": "F"
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "gen3_nanwou",
@@ -421,7 +479,8 @@
       "fatherId": "gen1_chef_bamena",
       "spouseIds": [],
       "notes": "Patriarche de Bamena, décédé après la guerre de l'indépendance de 1958",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "gen3_tagni",
@@ -433,9 +492,12 @@
       "residence": "Batchingou",
       "parentId": "gen2_tchie",
       "fatherId": "gen2_tchie",
-      "spouseIds": ["spouse_wougang"],
+      "spouseIds": [
+        "spouse_wougang"
+      ],
       "notes": "Frère de Tchassep Ta'a Tchiendjo, oncle du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "spouse_wougang",
@@ -444,8 +506,11 @@
       "birthYear": 1865,
       "estimatedDates": "Vers 1865",
       "parentId": null,
-      "spouseIds": ["gen3_tagni"],
-      "gender": "F"
+      "spouseIds": [
+        "gen3_tagni"
+      ],
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "gen3_ndomou",
@@ -457,9 +522,12 @@
       "residence": "Batchingou",
       "parentId": "gen2_tchie",
       "fatherId": "gen2_tchie",
-      "spouseIds": ["spouse_ngomeni"],
+      "spouseIds": [
+        "spouse_ngomeni"
+      ],
       "notes": "Sœur de Tchassep Ta'a Tchiendjo, tante du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "spouse_ngomeni",
@@ -468,8 +536,11 @@
       "birthYear": 1860,
       "estimatedDates": "Vers 1860",
       "parentId": null,
-      "spouseIds": ["gen3_ndomou"],
-      "gender": "M"
+      "spouseIds": [
+        "gen3_ndomou"
+      ],
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "spouse_rebecca",
@@ -481,9 +552,12 @@
       "residence": "Foumbot / Batchingou",
       "parentId": "gen3_nanwou",
       "fatherId": "gen3_nanwou",
-      "spouseIds": ["patriarch"],
+      "spouseIds": [
+        "patriarch"
+      ],
       "notes": "Princesse de Bamena — petite-fille du chef de la chefferie de Bamena. Fille de Ta'a Nanwou. Son mariage avec le patriarche Ta'a Fieu Tagni Tinang Joseph unit deux lignées royales.",
       "gender": "F",
+      "generation": 8,
       "role": "Princesse de Bamena",
       "titles": [
         "Petite-fille du chef de Bamena",
@@ -499,9 +573,12 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "fatherId": "gen3_tchiendjo",
-      "spouseIds": ["spouse_bamena_pauline"],
+      "spouseIds": [
+        "spouse_bamena_pauline"
+      ],
       "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_bamena_pauline",
@@ -509,8 +586,11 @@
       "birthYear": 1885,
       "estimatedDates": "Vers 1885",
       "parentId": null,
-      "spouseIds": ["gen4_nougue"],
-      "gender": "M"
+      "spouseIds": [
+        "gen4_nougue"
+      ],
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "nankep_christian",
@@ -521,7 +601,8 @@
       "motherId": "gen4_nougue",
       "fatherId": "spouse_bamena_pauline",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "tinang_hermine",
@@ -532,7 +613,8 @@
       "motherId": "gen4_nougue",
       "fatherId": "spouse_bamena_pauline",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "gen4_nagouo",
@@ -542,9 +624,12 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "fatherId": "gen3_tchiendjo",
-      "spouseIds": ["spouse_bangou_mega"],
+      "spouseIds": [
+        "spouse_bangou_mega"
+      ],
       "notes": "Fils de Tchassep et Tchakouyap, demi-frère du patriarche. Héritier désigné.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_bangou_mega",
@@ -552,8 +637,11 @@
       "birthYear": 1900,
       "estimatedDates": "Vers 1900",
       "parentId": null,
-      "spouseIds": ["gen4_nagouo"],
-      "gender": "F"
+      "spouseIds": [
+        "gen4_nagouo"
+      ],
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "ze_helene",
@@ -564,7 +652,8 @@
       "fatherId": "gen4_nagouo",
       "motherId": "spouse_bangou_mega",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "kouamou_yvette",
@@ -575,7 +664,8 @@
       "fatherId": "gen4_nagouo",
       "motherId": "spouse_bangou_mega",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "gen4_ngoko",
@@ -585,9 +675,12 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "fatherId": "gen3_tchiendjo",
-      "spouseIds": ["spouse_bangou_monique"],
+      "spouseIds": [
+        "spouse_bangou_monique"
+      ],
       "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_bangou_monique",
@@ -595,8 +688,11 @@
       "birthYear": 1895,
       "estimatedDates": "Vers 1895",
       "parentId": null,
-      "spouseIds": ["gen4_ngoko"],
-      "gender": "M"
+      "spouseIds": [
+        "gen4_ngoko"
+      ],
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "tinang_joseph_bernard",
@@ -608,7 +704,8 @@
       "fatherId": "spouse_bangou_monique",
       "spouseIds": [],
       "notes": "Héritier désigné.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_kouakep_cat",
@@ -618,9 +715,12 @@
       "birthPlace": "Batchingou",
       "parentId": "gen3_tchiendjo",
       "fatherId": "gen3_tchiendjo",
-      "spouseIds": ["spouse_abel"],
+      "spouseIds": [
+        "spouse_abel"
+      ],
       "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_abel",
@@ -628,8 +728,11 @@
       "birthYear": 1900,
       "estimatedDates": "Vers 1900",
       "parentId": null,
-      "spouseIds": ["gen4_kouakep_cat"],
-      "gender": "M"
+      "spouseIds": [
+        "gen4_kouakep_cat"
+      ],
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "tchaya_felix",
@@ -641,7 +744,8 @@
       "fatherId": "spouse_abel",
       "spouseIds": [],
       "notes": "Héritier désigné.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_ngomegni",
@@ -653,7 +757,8 @@
       "fatherId": "gen3_tchiendjo",
       "spouseIds": [],
       "notes": "Fils utérin de Tchassep et Tchakouyap, né après la mort de Ta'a Tchiendjo",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_ngoko_andre",
@@ -667,7 +772,8 @@
       "fatherId": "gen3_nanwou",
       "spouseIds": [],
       "notes": "Frère de Megni Ngongang Rebecca, héritier de Ta'a Nanwou, plusieurs épouses bamoun",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_ketchozo",
@@ -680,7 +786,8 @@
       "fatherId": "gen3_nanwou",
       "spouseIds": [],
       "notes": "Frère de Megni Ngongang Rebecca",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_ngongang_elisabeth",
@@ -693,7 +800,8 @@
       "fatherId": "gen3_nanwou",
       "spouseIds": [],
       "notes": "Sœur de Megni Ngongang Rebecca",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "kamka_martin",
@@ -705,7 +813,8 @@
       "fatherId": "gen3_nanwou",
       "spouseIds": [],
       "notes": "Fils de Ta'a Nanwou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "patriarch",
@@ -741,7 +850,8 @@
         "Médaille du mérite camerounais"
       ],
       "notes": "Patriarche de la famille, vécu 103 ans. Né sous le règne de Sa Majesté le roi Tchiengué.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_emilienne",
@@ -754,7 +864,8 @@
         "patriarch"
       ],
       "notes": "Deuxième épouse du patriarche, aucun enfant biologique",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_rachel",
@@ -768,7 +879,8 @@
         "patriarch"
       ],
       "notes": "Troisième épouse du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "mbiendu",
@@ -793,7 +905,8 @@
         "Tcha-Neyou"
       ],
       "notes": "Patriarche de la branche Balengou, fils de Cha Neyou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "spouse_mbami",
@@ -801,8 +914,11 @@
       "birthYear": 1905,
       "estimatedDates": "Vers 1905",
       "parentId": null,
-      "spouseIds": ["mbiendu"],
-      "gender": "F"
+      "spouseIds": [
+        "mbiendu"
+      ],
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "spouse_nzepang",
@@ -810,8 +926,11 @@
       "birthYear": 1905,
       "estimatedDates": "Vers 1905",
       "parentId": null,
-      "spouseIds": ["mbiendu"],
-      "gender": "F"
+      "spouseIds": [
+        "mbiendu"
+      ],
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "spouse_seumou",
@@ -819,8 +938,11 @@
       "birthYear": 1905,
       "estimatedDates": "Vers 1905",
       "parentId": null,
-      "spouseIds": ["mbiendu"],
-      "gender": "F"
+      "spouseIds": [
+        "mbiendu"
+      ],
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "spouse_tchienang",
@@ -828,8 +950,11 @@
       "birthYear": 1905,
       "estimatedDates": "Vers 1905",
       "parentId": null,
-      "spouseIds": ["mbiendu"],
-      "gender": "F"
+      "spouseIds": [
+        "mbiendu"
+      ],
+      "gender": "F",
+      "generation": 7
     },
     {
       "id": "cha_neyou_neyou",
@@ -841,7 +966,8 @@
       "fatherId": "gen2_chaneyou",
       "spouseIds": [],
       "notes": "Fils de Cha Neyou. Père de Kouakep Michel et Tchame Marie.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "cha_neyou_tchuindjang",
@@ -853,7 +979,8 @@
       "fatherId": "gen2_chaneyou",
       "spouseIds": [],
       "notes": "Fils de Cha Neyou. Décédé jeune.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 7
     },
     {
       "id": "etienne",
@@ -871,7 +998,8 @@
       ],
       "occupation": "Tailleur, Commerçant, Transporteur, Planteur",
       "notes": "Dernier né de Cha Neyou, très proche du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_tchihikou",
@@ -884,7 +1012,8 @@
       "spouseIds": [
         "etienne"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "martin",
@@ -900,7 +1029,8 @@
       "spouseIds": [],
       "occupation": "Planteur (cacaoyers)",
       "notes": "Patriarche de la branche Makenene",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "wetie_gabriel",
@@ -915,7 +1045,8 @@
         "spouse_fankou"
       ],
       "notes": "Fils de Cha Neyou",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_fankou",
@@ -926,7 +1057,8 @@
       "spouseIds": [
         "wetie_gabriel"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "doussa",
@@ -938,7 +1070,8 @@
       "fatherId": "gen2_chaneyou",
       "spouseIds": [],
       "notes": "Fille de Cha Neyou",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "heir",
@@ -961,7 +1094,8 @@
         "Ta'a Fieu Tinang Joseph (depuis 2001)"
       ],
       "notes": "Deuxième enfant et héritier désigné du patriarche. Intronisé en 2001.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "spouse_adeline",
@@ -973,7 +1107,8 @@
       "spouseIds": [
         "heir"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "theodore",
@@ -991,7 +1126,8 @@
       ],
       "occupation": "Garagiste dieseliste",
       "notes": "Premier enfant du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "spouse_mbouguen",
@@ -1003,7 +1139,8 @@
       "spouseIds": [
         "theodore"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "datouo_david",
@@ -1015,7 +1152,8 @@
       "fatherId": "patriarch",
       "spouseIds": [],
       "notes": "Fils du patriarche et de Megni Rachel. Décédé jeune.",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "elise",
@@ -1030,7 +1168,8 @@
       "fatherId": "patriarch",
       "spouseIds": [],
       "notes": "Quatrième enfant du patriarche. Son âme repose en paix à Bana chez son mari.",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "samuel",
@@ -1047,7 +1186,8 @@
         "spouse_pulcherie"
       ],
       "notes": "Cinquième enfant du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "spouse_pulcherie",
@@ -1059,7 +1199,8 @@
       "spouseIds": [
         "samuel"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "lucienne",
@@ -1074,7 +1215,8 @@
         "spouse_djoh"
       ],
       "notes": "Sixième enfant du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "spouse_djoh",
@@ -1086,7 +1228,8 @@
       "spouseIds": [
         "lucienne"
       ],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "maryse",
@@ -1101,7 +1244,8 @@
         "spouse_nassi"
       ],
       "notes": "Septième enfant du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "spouse_nassi",
@@ -1113,7 +1257,8 @@
       "spouseIds": [
         "maryse"
       ],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "jean",
@@ -1128,7 +1273,8 @@
         "spouse_lele_eveline"
       ],
       "notes": "Huitième enfant du patriarche, surnommé 'Vieux'",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "spouse_lele_eveline",
@@ -1140,7 +1286,8 @@
       "spouseIds": [
         "jean"
       ],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "valerie",
@@ -1155,7 +1302,8 @@
         "spouse_mambou"
       ],
       "notes": "Neuvième enfant du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "spouse_mambou",
@@ -1167,7 +1315,8 @@
       "spouseIds": [
         "valerie"
       ],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "serge",
@@ -1182,7 +1331,8 @@
       "motherId": "spouse_adeline",
       "spouseIds": [],
       "notes": "Premier petit-enfant de l'héritier",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "armand",
@@ -1196,7 +1346,8 @@
       "motherId": "spouse_adeline",
       "spouseIds": [],
       "notes": "Deuxième fils de l'héritier",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "eric",
@@ -1210,7 +1361,8 @@
       "motherId": "spouse_adeline",
       "spouseIds": [],
       "notes": "Troisième fils de l'héritier",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "thierry",
@@ -1224,7 +1376,8 @@
       "motherId": "spouse_adeline",
       "spouseIds": [],
       "notes": "Quatrième fils de l'héritier",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "inesta",
@@ -1238,7 +1391,8 @@
       "motherId": "spouse_mbouguen",
       "spouseIds": [],
       "notes": "Fille de Ngoughou Theodore",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "carine",
@@ -1249,7 +1403,8 @@
       "motherId": "elise",
       "spouseIds": [],
       "notes": "Fille de Ngnoumegni Elise",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "tuisseu",
@@ -1260,7 +1415,8 @@
       "motherId": "elise",
       "spouseIds": [],
       "notes": "Fils de Ngnoumegni Elise",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "kombou",
@@ -1271,7 +1427,8 @@
       "motherId": "elise",
       "spouseIds": [],
       "notes": "Fille de Ngnoumegni Elise",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "estha",
@@ -1283,7 +1440,8 @@
       "motherId": "spouse_pulcherie",
       "spouseIds": [],
       "notes": "Fille de Langue Samuel",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "josiane",
@@ -1295,7 +1453,8 @@
       "motherId": "spouse_pulcherie",
       "spouseIds": [],
       "notes": "Fille de Langue Samuel",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "linda",
@@ -1307,7 +1466,8 @@
       "motherId": "spouse_pulcherie",
       "spouseIds": [],
       "notes": "Fille de Langue Samuel",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "erika",
@@ -1319,7 +1479,8 @@
       "motherId": "spouse_pulcherie",
       "spouseIds": [],
       "notes": "Fille de Langue Samuel",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "steve",
@@ -1331,7 +1492,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fils de Lélé Jean",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "dilane",
@@ -1343,7 +1505,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fils de Lélé Jean",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "boris",
@@ -1355,7 +1518,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fils de Lélé Jean",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "daina",
@@ -1367,7 +1531,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fille de Lélé Jean",
-      "gender": "F"
+      "gender": "F",
+      "generation": 10
     },
     {
       "id": "daniel",
@@ -1379,7 +1544,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fils de Lélé Jean",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "christien",
@@ -1391,7 +1557,8 @@
       "motherId": "spouse_lele_eveline",
       "spouseIds": [],
       "notes": "Fils de Lélé Jean",
-      "gender": "M"
+      "gender": "M",
+      "generation": 10
     },
     {
       "id": "gen4_tinang_disparu",
@@ -1403,7 +1570,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fils de Tagni Meyuka, cousin du patriarche, disparu",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_samou",
@@ -1415,7 +1583,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "ngongang_pierre",
@@ -1426,7 +1595,8 @@
       "fatherId": "gen4_samou",
       "spouseIds": [],
       "notes": "Fils de Samou Pierre",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_nanwou",
@@ -1438,7 +1608,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "tinang_bertin",
@@ -1448,7 +1619,8 @@
       "parentId": "gen4_nanwou",
       "fatherId": "gen4_nanwou",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "tchaya_flaubert",
@@ -1458,7 +1630,8 @@
       "parentId": "gen4_nanwou",
       "fatherId": "gen4_nanwou",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "woungang_charles",
@@ -1468,7 +1641,8 @@
       "parentId": "gen4_nanwou",
       "fatherId": "gen4_nanwou",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_konya",
@@ -1480,7 +1654,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fille de Tagni Meyuka, cousine du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "gen4_tchiengang",
@@ -1492,7 +1667,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_ngouleu",
@@ -1505,7 +1681,8 @@
       "fatherId": "gen3_tagni",
       "spouseIds": [],
       "notes": "Fils et héritier de Tagni Meyuka, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "gen4_nanwouo",
@@ -1520,7 +1697,8 @@
         "spouse_tchuisseu_eli"
       ],
       "notes": "Fils de Ndomou Juliette, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_djogoua",
@@ -1528,8 +1706,11 @@
       "birthYear": 1900,
       "estimatedDates": "Vers 1900",
       "parentId": null,
-      "spouseIds": ["gen4_nanwouo"],
-      "gender": "F"
+      "spouseIds": [
+        "gen4_nanwouo"
+      ],
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_tchuisseu_eli",
@@ -1537,8 +1718,11 @@
       "birthYear": 1902,
       "estimatedDates": "Vers 1902",
       "parentId": null,
-      "spouseIds": ["gen4_nanwouo"],
-      "gender": "F"
+      "spouseIds": [
+        "gen4_nanwouo"
+      ],
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "nanwouo_c1",
@@ -1548,7 +1732,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c2",
@@ -1558,7 +1743,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c3",
@@ -1568,7 +1754,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c4",
@@ -1578,7 +1765,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c5",
@@ -1588,7 +1776,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "gen4_noungheu",
@@ -1600,7 +1789,8 @@
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
       "notes": "Fils de Nanwouo Jean, héritier désigné",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c7",
@@ -1610,7 +1800,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c8",
@@ -1620,7 +1811,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c9",
@@ -1630,7 +1822,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c10",
@@ -1640,7 +1833,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c11",
@@ -1650,7 +1844,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c12",
@@ -1660,7 +1855,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nanwouo_c13",
@@ -1670,7 +1866,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nanwouo_c14",
@@ -1680,7 +1877,8 @@
       "parentId": "gen4_nanwouo",
       "fatherId": "gen4_nanwouo",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_nguenang",
@@ -1694,7 +1892,8 @@
         "spouse_kouatcho"
       ],
       "notes": "Fils de Ndomou Juliette, cousin du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "spouse_kouatcho",
@@ -1702,8 +1901,11 @@
       "birthYear": 1903,
       "estimatedDates": "Vers 1903",
       "parentId": null,
-      "spouseIds": ["gen4_nguenang"],
-      "gender": "F"
+      "spouseIds": [
+        "gen4_nguenang"
+      ],
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "nguenang_c1",
@@ -1714,7 +1916,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguenang_c2",
@@ -1725,7 +1928,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nguenang_c3",
@@ -1736,7 +1940,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguenang_c4",
@@ -1747,7 +1952,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguenang_c5",
@@ -1758,7 +1964,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguenang_c6",
@@ -1769,7 +1976,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nguenang_c7",
@@ -1780,7 +1988,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nguenang_c8",
@@ -1791,7 +2000,8 @@
       "fatherId": "gen4_nguenang",
       "motherId": "spouse_kouatcho",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "gen4_nguegang",
@@ -1805,7 +2015,8 @@
         "spouse_mougang"
       ],
       "notes": "Fille de Ndomou Juliette, cousine du patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "spouse_mougang",
@@ -1813,8 +2024,11 @@
       "birthYear": 1898,
       "estimatedDates": "Vers 1898",
       "parentId": null,
-      "spouseIds": ["gen4_nguegang"],
-      "gender": "M"
+      "spouseIds": [
+        "gen4_nguegang"
+      ],
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "nguegang_c1",
@@ -1825,7 +2039,8 @@
       "fatherId": "spouse_mougang",
       "motherId": "gen4_nguegang",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "gen4_piakep",
@@ -1838,7 +2053,8 @@
       "motherId": "gen4_nguegang",
       "spouseIds": [],
       "notes": "Fils de Nguegang Yakopine",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguegang_c3",
@@ -1849,7 +2065,8 @@
       "fatherId": "spouse_mougang",
       "motherId": "gen4_nguegang",
       "spouseIds": [],
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "nguegang_c4",
@@ -1860,7 +2077,8 @@
       "fatherId": "spouse_mougang",
       "motherId": "gen4_nguegang",
       "spouseIds": [],
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "gen4_ndjanpouep",
@@ -1872,7 +2090,8 @@
       "motherId": "gen3_ndomou",
       "spouseIds": [],
       "notes": "Enfant de Ndomou Juliette, cousin(e) du patriarche",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "kouamou_marie",
@@ -1884,7 +2103,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "keptukoua",
@@ -1896,7 +2116,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "ndangang",
@@ -1908,7 +2129,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "ndamen",
@@ -1920,7 +2142,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M"
+      "gender": "M",
+      "generation": 8
     },
     {
       "id": "mbakop",
@@ -1932,7 +2155,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "yitkou",
@@ -1944,7 +2168,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "mbahnang",
@@ -1956,7 +2181,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "yankeu",
@@ -1968,7 +2194,8 @@
       "fatherId": "mbiendu",
       "spouseIds": [],
       "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F"
+      "gender": "F",
+      "generation": 8
     },
     {
       "id": "noupa",
@@ -1981,7 +2208,8 @@
       "fatherId": "etienne",
       "spouseIds": [],
       "notes": "Fils de Ngantchou Etienne",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "tchanang",
@@ -1994,7 +2222,8 @@
       "fatherId": "etienne",
       "spouseIds": [],
       "notes": "Fille de Ngantchou Etienne",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "tchuissang",
@@ -2007,7 +2236,8 @@
       "fatherId": "etienne",
       "spouseIds": [],
       "notes": "Fils de Ngantchou Etienne",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "ndonkep",
@@ -2020,7 +2250,8 @@
       "fatherId": "etienne",
       "spouseIds": [],
       "notes": "Fille de Ngantchou Etienne",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "mbiendu_serge",
@@ -2034,7 +2265,8 @@
       "fatherId": "etienne",
       "spouseIds": [],
       "notes": "Fils et héritier de Ngantchou Etienne",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "ngantchou_paul",
@@ -2047,7 +2279,8 @@
       "fatherId": "wetie_gabriel",
       "spouseIds": [],
       "notes": "Fils de Wetie Gabriel, a aidé Ngoughou Theodore",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "tinang_cecile",
@@ -2059,7 +2292,8 @@
       "fatherId": "wetie_gabriel",
       "spouseIds": [],
       "notes": "Fille de Wetie Gabriel",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "wanseu",
@@ -2071,7 +2305,8 @@
       "motherId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "wetie_david",
@@ -2083,7 +2318,8 @@
       "motherId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "mbiendu_martin",
@@ -2095,7 +2331,8 @@
       "motherId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "noukawolo",
@@ -2107,7 +2344,8 @@
       "motherId": "doussa",
       "spouseIds": [],
       "notes": "Fille de Doussa Elisabeth",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "njueya",
@@ -2119,7 +2357,8 @@
       "motherId": "doussa",
       "spouseIds": [],
       "notes": "Fils de Doussa Elisabeth",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "joseph_makenene",
@@ -2131,7 +2370,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "therese",
@@ -2143,7 +2383,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fille de Tagni Nguenang Martin",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "nouthe",
@@ -2156,7 +2397,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "delphine",
@@ -2169,7 +2411,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fille de Tagni Nguenang Martin, envoyée chez le patriarche",
-      "gender": "F"
+      "gender": "F",
+      "generation": 9
     },
     {
       "id": "jeanpierre",
@@ -2181,7 +2424,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     },
     {
       "id": "fidele",
@@ -2194,7 +2438,8 @@
       "fatherId": "martin",
       "spouseIds": [],
       "notes": "Fils et héritier de Tagni Nguenang Martin",
-      "gender": "M"
+      "gender": "M",
+      "generation": 9
     }
   ],
   "locations": [
