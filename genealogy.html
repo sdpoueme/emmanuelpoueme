@@ -45,27 +45,29 @@
         /* Person box glass style */
         .members-container {
             display: flex;
-            flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si elles manquent d'espace */
-            gap: 20px;       /* Augmentez cet espace (ex: 20px ou 30px) pour écarter les nœuds horizontalement et verticalement */
+            flex-wrap: wrap; 
+            gap: 20px;       
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
+            position: relative;
         }
         .person-box {
-            background: rgba(255,255,255,0.58);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.75);
             border-left: 4px solid var(--gen-accent, #C07D2A);
             box-shadow: 0 4px 18px rgba(160,82,45,0.10), 0 1px 4px rgba(30,26,20,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
             padding: 14px 18px;
-            min-width: 150px;
-            max-width: 205px;
+            min-width: 170px;
+            max-width: 215px;
             cursor: pointer;
             text-align: center;
             position: relative;
             transition: transform 0.22s, box-shadow 0.22s;
+            flex: 0 0 auto;
         }
         .person-box:hover {
             transform: translateY(-5px);
@@ -112,7 +114,7 @@
         .person-role { font-size: 0.78em; margin-top: 4px; font-weight: 500; color: #C07D2A; }
 
         /* Generation row */
-        .generation-row { display: flex; justify-content: center; align-items: flex-start; margin-bottom: 48px; position: relative; }
+        .generation-row { display: flex; justify-content: flex-start; align-items: stretch; margin-bottom: 48px; position: relative; background: #ffffff; border: 1px solid #a2a9b1; border-radius: 12px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .generation-row.hidden { display: none; }
 
         .generation-label {
@@ -120,25 +122,20 @@
             text-orientation: mixed;
             font-family: 'DM Sans', sans-serif;
             font-weight: 700;
-            font-size: 0.7em;
+            font-size: 0.75em;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            padding: 12px 8px;
+            padding: 12px 10px;
             border-radius: 8px;
             margin-right: 16px;
             border-left: 3px solid var(--gen-color, #2E5C3A);
             color: var(--gen-color, #2E5C3A);
             background: var(--gen-bg, rgba(46,92,58,0.08));
-        }
-
-        .members-container {
             display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
-            flex: 1;
-            position: relative;
-            z-index: 2;
+            text-align: center;
+            flex-shrink: 0;
         }
 
         /* Marriage lines SVG overlay */
@@ -251,10 +248,9 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .generation-label { writing-mode: horizontal-tb; margin-right: 0; margin-bottom: 10px; }
-            .slide-panel { width: 100%; }
+            .generation-row { flex-direction: column; }
+            .generation-label { writing-mode: horizontal-tb; margin-right: 0; margin-bottom: 15px; width: 100%; text-align: left; padding: 8px 12px; }
         }
-    
 
         .d3-menu-btn {
             display: block; width: 100%; text-align: left;
@@ -281,7 +277,6 @@
         <div style="height:5px;background:linear-gradient(90deg,#A0522D 0%,#C07D2A 50%,#2E5C3A 100%)"></div>
         <div class="text-center px-8 py-10">
             <h1 class="font-serif text-4xl font-bold text-forest flex items-center justify-center gap-3">
-                <!-- Heroicons: tree/leaf icon (custom SVG) -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-forest" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-6m0 0c-2.5 0-4.5-1.5-5.5-3.5C5.5 9.5 7 6.5 9 5c1-.8 2-1.5 3-2 1 .5 2 1.2 3 2 2 1.5 3.5 4.5 2.5 6.5-1 2-3 3.5-5.5 3.5z"/>
                 </svg>
@@ -340,7 +335,6 @@
             <!-- Royal Lineages Tab -->
             <div id="royal" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Lignees Royales</h2>
-                <!-- Statut Royal -->
                 <div class="bg-ochre-pale border border-ochre rounded-xl p-7 mb-7 text-center">
                     <h3 class="font-serif text-xl text-forest mb-3">Statut Royal</h3>
                     <p class="text-ink-mid leading-relaxed max-w-2xl mx-auto">
@@ -352,7 +346,6 @@
                     </p>
                 </div>
 
-                <!-- L'Exil de 1770 — Rupture Dynastique -->
                 <div class="bg-ink rounded-2xl p-7 mb-7 text-cream">
                     <div class="flex items-center gap-3 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 flex-shrink-0" style="color:#C07D2A" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -387,7 +380,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- L'Union Royale — Rebecca et le Patriarche -->
+
                 <div class="rounded-2xl p-6 mb-7 border" style="background:rgba(123,63,140,0.08);border-color:rgba(123,63,140,0.3)">
                     <div class="flex items-center gap-3 mb-3">
                         <span style="font-size:1.3em">♛</span>
@@ -400,15 +393,12 @@
                         réunit <strong>deux lignées royales distinctes</strong> :
                         la lignée de <strong>Balengou</strong> (issue du Prince Nanjo de Baleng, plaines Tikar)
                         et la lignée de <strong>Bamena</strong>.
-                        C'est cette double noblesse qui confère à leurs descendants
-                        un rang princier reconnu dans les quatre chefferies.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class="bg-white rounded-xl p-6 border-t-4 border-terra shadow-sm">
                         <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-terra" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                             <h4 class="font-serif font-bold text-terra">Chefferie Baleng</h4>
                         </div>
                         <p class="text-ink-mid text-sm leading-relaxed"><strong>Connexion:</strong> Prince Nandjo (~1770s)</p>
@@ -416,7 +406,6 @@
                     </div>
                     <div class="bg-white rounded-xl p-6 border-t-4 border-forest shadow-sm">
                         <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-forest" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                             <h4 class="font-serif font-bold text-forest">Chefferie Balengou</h4>
                         </div>
                         <p class="text-ink-mid text-sm leading-relaxed"><strong>Connexion:</strong> Wetio Kouamou</p>
@@ -424,7 +413,6 @@
                     </div>
                     <div class="bg-white rounded-xl p-6 border-t-4 border-slate-500 shadow-sm">
                         <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                             <h4 class="font-serif font-bold text-slate-600">Chefferie Batchingou</h4>
                         </div>
                         <p class="text-ink-mid text-sm leading-relaxed"><strong>Connexion:</strong> Tchie Ngantchie</p>
@@ -432,7 +420,6 @@
                     </div>
                     <div class="bg-white rounded-xl p-6 border-t-4 border-purple-600 shadow-sm">
                         <div class="flex items-center gap-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
                             <h4 class="font-serif font-bold text-purple-600">Chefferie Bamena</h4>
                         </div>
                         <p class="text-ink-mid text-sm leading-relaxed"><strong>Connexion:</strong> Ta'a Nanwou</p>
@@ -445,7 +432,6 @@
             <div id="tree" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Arbre (generations automatiques)</h2>
 
-                <!-- Search + view toggle row -->
                 <div class="flex gap-3 items-center mb-4 flex-wrap">
                     <div class="flex-1 min-w-[220px] relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink-light absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
@@ -462,7 +448,6 @@
                     <button id="btnResetView" onclick="resetD3View()" class="hidden px-3 py-2 text-sm font-semibold border border-ochre rounded-lg bg-ochre-pale text-ochre-dark cursor-pointer">&#8634; Vue complete</button>
                 </div>
 
-                <!-- Generation Filters (flat view only) -->
                 <div id="generationFiltersBar" class="bg-white rounded-xl border border-parchment-dark p-5 mb-5">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-sm font-semibold text-forest">Filtrer par generation</span>
@@ -471,16 +456,13 @@
                     <div class="flex gap-2 flex-wrap items-center" id="filterButtons"></div>
                 </div>
 
-                <!-- Flat tree (default) -->
                 <div id="flatTreeView">
                     <div id="familyTree" class="rounded-xl border border-parchment-dark p-6 overflow-x-auto" style="background:linear-gradient(135deg,#F5EDD8 0%,#EDE0C4 100%)">
                         <p class="text-center text-ink-light">Chargement...</p>
                     </div>
                 </div>
 
-                <!-- D3 tree (hidden by default) -->
                 <div id="d3TreeView" style="display:none">
-                    <!-- Viz mode selector -->
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <span class="text-xs font-semibold uppercase tracking-widest text-ink-light">Visualisation :</span>
                         <button class="d3-viz-btn active" data-viz="forcetree" onclick="setD3Viz('forcetree')">⬡ Force</button>
@@ -489,7 +471,6 @@
                         <button class="d3-viz-btn" data-viz="radial" onclick="setD3Viz('radial')">◎ Radial</button>
                         <span class="ml-auto text-xs text-ink-light">Molette = zoom · Glisser = déplacer · Double-clic = profil</span>
                     </div>
-                    <!-- Zoom controls overlay -->
                     <div style="position:relative">
                         <div id="d3TreeContainer" class="w-full rounded-xl border border-parchment-dark overflow-hidden relative" style="height:72vh;min-height:500px;background:linear-gradient(135deg,#F5EDD8 0%,#EDE0C4 100%)"></div>
                         <div style="position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:6px;z-index:10">
@@ -498,7 +479,6 @@
                             <button onclick="resetD3View()" title="Vue complète" style="width:34px;height:34px;border-radius:8px;border:1.5px solid #E8D9BC;background:rgba(255,255,255,0.92);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#C07D2A;backdrop-filter:blur(4px)">⟳</button>
                             <button onclick="d3FreezeAll()" title="Figer la disposition" style="width:34px;height:34px;border-radius:8px;border:1.5px solid #E8D9BC;background:rgba(255,255,255,0.92);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#4A7C53;backdrop-filter:blur(4px)">❄</button>
                         </div>
-                        <!-- Node action menu (hidden by default) -->
                         <div id="d3NodeMenu" style="position:absolute;display:none;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(30,26,20,0.18);border:1px solid #E8D9BC;padding:8px;z-index:20;min-width:200px;font-family:'DM Sans',sans-serif">
                             <div id="d3NodeMenuName" style="font-weight:700;font-size:0.9em;color:#1E1A14;padding:6px 10px 8px;border-bottom:1px solid #F5EDD8;margin-bottom:4px"></div>
                             <button class="d3-menu-btn" onclick="d3MenuAction('profile')">👤 Voir le profil</button>
@@ -540,7 +520,7 @@
         </div>
     </div>
 
-    <!-- MODAL (persons tab detail) -->
+    <!-- MODAL -->
     <div class="hidden fixed inset-0 z-[1000] items-center justify-center bg-black/50 backdrop-blur-sm" id="personModal">
         <div class="bg-cream rounded-2xl max-w-lg w-[90%] max-h-[80vh] overflow-y-auto shadow-2xl border-t-4 border-ochre relative p-8" id="modalContent">
             <button class="absolute top-4 right-4 text-ink-light hover:text-ink cursor-pointer" onclick="closeModal()">
@@ -550,7 +530,7 @@
         </div>
     </div>
 
-    <!-- SLIDE-IN PANEL (tree card detail) -->
+    <!-- SLIDE-IN PANEL -->
     <div class="slide-overlay" id="slideOverlay" onclick="closeSlidePanel()"></div>
     <div class="slide-panel" id="slidePanel">
         <div class="p-7">
@@ -597,7 +577,6 @@
 
         function calculateGenerations() {
             generationsMap.clear();
-            // Utiliser directement la génération définie dans le JSON, ou 1 par défaut
             familyData.persons.forEach(p => {
                 const gen = p.generation || 1;
                 generationsMap.set(p.id, gen);
@@ -678,32 +657,6 @@
                             <h4 class="text-sm font-bold text-purple-600 mb-1">BAMENA</h4>
                             <p class="text-xs text-ink-mid">Ta'a Nanwou - Patriarche de Bamena</p>
                         </div>
-                    </div>
-                </div>
-                <div class="bg-ink rounded-xl p-5 mb-4">
-                    <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:#E8A84B">Origine de la lignée</p>
-                    <p class="text-sm leading-relaxed" style="color:#C8C0B0">
-                      Descendant de <strong style="color:#fff">Fô Fondoup</strong> venu des plaines Tikar, fondateur de Baleng.
-                      Son petit-fils <strong style="color:#fff">Prince Nanjo</strong> quitte Baleng vers 1770 avec son neveu
-                      <strong style="color:#fff">Neyou</strong> pour fonder Balengou — transmettant un rang princier
-                      qui atteint le <em style="color:#E8A84B">Ta'a Fieu</em> à la 8ème génération.
-                    </p>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="bg-white rounded-xl p-5 border-l-4 border-ochre">
-                        <h4 class="text-sm font-semibold text-ochre-dark mb-1">Générations</h4>
-                        <p class="font-serif text-xl font-bold text-ink">10</p>
-                        <p class="text-xs text-ink-light">Tikar → Baleng → Balengou</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 border-l-4 border-forest">
-                        <h4 class="text-sm font-semibold text-forest mb-1">Le Patriarche</h4>
-                        <p class="font-serif text-xl font-bold text-ink">9 enfants</p>
-                        <p class="text-xs text-ink-light">3 epouses</p>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 border-l-4 border-forest-mid">
-                        <h4 class="text-sm font-semibold text-forest-mid mb-1">Generation 7</h4>
-                        <p class="font-serif text-xl font-bold text-ink">18 petits-enfants</p>
-                        <p class="text-xs text-ink-light">Disperses mondialement</p>
                     </div>
                 </div>
             `;
@@ -932,7 +885,6 @@
             let cssClasses = 'person-box';
             let isHero = (p.role === 'Patriarche' || p.role === 'Heritier' || p.role === 'Héritier');
 
-            // Detect merged lineage
             let mergedLineageIndicator = '';
             if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
                 const parent = familyData.persons.find(x => x.id === p.parentId);
@@ -951,7 +903,6 @@
                 cssClasses += ' hero-dark';
             }
 
-            // Spouse info (compact mode only)
             let spouseInfo = '';
             if (!showSpousesAsSeparateBoxes && p.spouseIds && p.spouseIds.length > 0) {
                 const spouses = p.spouseIds
@@ -969,7 +920,6 @@
                 }
             }
 
-            // Role badge
             let badge = '';
             if (p.role === 'Patriarche') {
                 badge = '<span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#A0522D;color:white;font-size:0.65em;padding:2px 8px;border-radius:10px;font-weight:600">Patriarche</span>';
@@ -1045,7 +995,6 @@
                 + (children.length > 0 ? '<div class="mt-5"><span class="text-xs uppercase tracking-widest text-ink-light">Enfants (' + children.length + ')</span><ul class="mt-2 space-y-1">' + children.map(c => '<li class="text-sm text-ink-mid pl-3 border-l-2 border-forest-light">' + c.name + '</li>').join('') + '</ul></div>' : '')
                 + (p.notes ? '<div class="mt-4 p-3 bg-parchment rounded-lg text-sm text-ink-mid italic">' + p.notes + '</div>' : '');
 
-            // Use modal for persons tab, slide panel for tree tab
             const activeTab = document.querySelector('.tab-content.active');
             if (activeTab && activeTab.id === 'tree') {
                 document.getElementById('slidePanelBody').innerHTML = detailHTML;
@@ -1132,10 +1081,6 @@
                 }).join('');
         }
 
-
-        /* ================================================================
-            VIEW SWITCHER  (flat / D3)
-            ================================================================ */
         let currentView = 'flat';
         let d3Initialized = false;
 
@@ -1167,30 +1112,21 @@
             }
         }
 
-        /* ================================================================
-            D3 TREE
-            ================================================================ */
         let d3Svg, d3Zoom;
 
         function buildHierarchy() {
-            // Two-pass approach: add ALL bloodline nodes first, then wire parents.
-            // This avoids ordering issues where a child's generationsMap gen is lower
-            // than the parent's (because the parent was bumped up via spouse-merge).
             const root = { id: '__root__', name: '', children: [] };
             const nm = { '__root__': root };
 
-            // Bloodline = has parentId OR (no parentId AND no spouseIds)
             const bloodline = familyData.persons.filter(p =>
                 p.parentId || (!p.parentId && (!p.spouseIds || !p.spouseIds.length))
             );
 
-            // Pass 1: create all nodes
             bloodline.forEach(p => {
                 const g = generationsMap.get(p.id) || 1;
                 nm[p.id] = { id: p.id, name: p.name, gen: g, data: p, children: [] };
             });
 
-            // Pass 2: wire parent-child relationships
             bloodline.forEach(p => {
                 const node = nm[p.id];
                 if (p.parentId && nm[p.parentId]) {
@@ -1203,26 +1139,20 @@
             return d3.hierarchy(root);
         }
 
-        
-        // Get all spouse-only nodes (no parentId, has spouseIds)
         function getSpouseNodes() {
             return familyData.persons.filter(p => !p.parentId && p.spouseIds && p.spouseIds.length > 0);
         }
 
-
         function autoFitD3(allNodes, viz, W, H) {
-            // LR + cluster: y = horizontal (depth), x = vertical (siblings)
-            // TB: x = horizontal (siblings), y = vertical (depth)
-            // radial: convert polar to cartesian
             function nx(d) {
                 if (viz === 'radial') return d.y * Math.cos(d.x - Math.PI/2);
                 if (viz === 'lr') return d.y;
-                return d.x;  // tb
+                return d.x;
             }
             function ny(d) {
                 if (viz === 'radial') return d.y * Math.sin(d.x - Math.PI/2);
                 if (viz === 'lr') return d.x;
-                return d.y;  // tb
+                return d.y;
             }
             const xs = allNodes.map(nx), ys = allNodes.map(ny);
             const minX = Math.min(...xs), maxX = Math.max(...xs);
@@ -1259,27 +1189,20 @@
             const maxGen = Math.max(...Array.from(generationsMap.values()));
             const root = buildHierarchy();
 
-            // nodeSize gives each node a fixed space so labels never overlap
-            // regardless of how many siblings exist — zoom/pan handles navigation
             if (viz === 'radial') {
-                // Radial: use size() with enough radius per generation
                 d3.tree()
                     .size([2 * Math.PI, maxGen * 120])
                     .separation((a, b) => (a.parent === b.parent ? 2 : 3) / a.depth)(root);
             } else if (viz === 'forcetree') {
-                // Force-directed: handled separately below
+                // Force
             } else if (viz === 'lr') {
-                // Left→right — nodeSize: [vertical spacing, horizontal depth]
                 d3.tree()
                     .nodeSize([34, 210])
                     .separation((a, b) => a.parent === b.parent ? 1 : 1.5)(root);
             } else if (viz === 'tb') {
-                // Top→bottom — nodeSize: [horizontal spacing, vertical depth]
                 d3.tree()
                     .nodeSize([38, 130])
                     .separation((a, b) => a.parent === b.parent ? 1 : 1.5)(root);
-            } else if (viz === 'icicle') {
-                // Icicle: partition layout — handled separately below
             }
 
             d3Svg = d3.select('#d3TreeContainer').append('svg')
@@ -1292,26 +1215,15 @@
 
             const allNodes = root.descendants().filter(d => d.data.id !== '__root__');
             const links = root.links().filter(d => d.source.data.id !== '__root__');
-
-            // Build a lookup of bloodline node positions after layout
             const nodeById = {};
             allNodes.forEach(d => { nodeById[d.data.id] = d; });
 
-            // ── Force-directed layout ───────────────────────
             if (viz === 'forcetree') {
                 renderForceTree(gGroup, allNodes, links, W, H);
                 setTimeout(() => { d3Svg.call(d3Zoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(0.7)); }, 50);
                 return;
             }
 
-            // ── Icicle (partition) layout ────────────────────
-            if (viz === 'icicle') {
-                renderIcicle(gGroup, W, H, root);
-                setTimeout(() => { d3Svg.call(d3Zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1)); }, 50);
-                return;
-            }
-
-            // ── Links ──────────────────────────────────────
             gGroup.selectAll('.d3-link').data(links).join('path')
                 .attr('class','d3-link').attr('fill','none')
                 .attr('stroke', d => GEN_COLORS[(d.target.data.gen-1) % GEN_COLORS.length])
@@ -1320,13 +1232,11 @@
                     ? d3.linkRadial().angle(d=>d.x).radius(d=>d.y)
                     : viz === 'lr'
                         ? d3.linkHorizontal().x(d=>nx(d)).y(d=>ny(d))
-                        : d3.linkVertical().x(d=>nx(d)).y(d=>ny(d)));  // tb
+                        : d3.linkVertical().x(d=>nx(d)).y(d=>ny(d)));
 
-            // ── Node position helper ────────────────────────
             function nx(d) { return viz==='radial' ? d.y*Math.cos(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.y : d.x; }
             function ny(d) { return viz==='radial' ? d.y*Math.sin(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.x : d.y; }
 
-            // ── Nodes ──────────────────────────────────────
             const nodeGroups = gGroup.selectAll('.d3-node').data(allNodes).join('g')
                 .attr('class','d3-node')
                 .attr('transform', d => 'translate('+nx(d)+','+ny(d)+')')
@@ -1334,18 +1244,15 @@
                 .on('click', (event,d) => {
                     event.stopPropagation();
                     d3ActiveNodes = nodeGroups;
-                    // Pulse highlight on clicked node
                     gGroup.selectAll('circle')
                         .transition().duration(200)
                         .attr('stroke', n => n === d ? '#C07D2A' : '#FFFBF4')
                         .attr('stroke-width', n => n === d ? 4 : 2)
                         .attr('opacity', 1);
-                    // Show context menu at click position
                     showD3NodeMenu(event, d, event.clientX, event.clientY);
                 })
                 .on('dblclick', (event,d) => { event.stopPropagation(); showPersonDetails(d.data.id); });
 
-            // Circle radius — patriarche/héritier/princesse larger
             const circleR = d => {
                 const role = d.data.data && d.data.data.role;
                 if (role === 'Patriarche' || role === 'Héritier' || (role && role.includes('Princesse'))) return 16;
@@ -1355,7 +1262,7 @@
                 const role = d.data.data && d.data.data.role;
                 if (role === 'Patriarche') return '#A0522D';
                 if (role === 'Héritier')   return '#1E1A14';
-                if (role && role.includes('Princesse')) return '#7B3F8C';  // royal purple
+                if (role && role.includes('Princesse')) return '#7B3F8C';
                 if (d.data.isSpouse)       return 'white';
                 return GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
             };
@@ -1363,7 +1270,7 @@
                 const role = d.data.data && d.data.data.role;
                 if (role === 'Patriarche') return '#C07D2A';
                 if (role === 'Héritier')   return '#C07D2A';
-                if (role && role.includes('Princesse')) return '#E8A84B';  // gold ring
+                if (role && role.includes('Princesse')) return '#E8A84B';
                 if (d.data.isSpouse)       return GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
                 return '#FFFBF4';
             };
@@ -1375,218 +1282,34 @@
                 .attr('stroke-width', d => {
                     const role = d.data.data && d.data.data.role;
                     return (role === 'Patriarche' || role === 'Héritier') ? 3 : 2;
-                })
-                .on('mouseover', function(event, d) {
-                    d3.select(this).transition().duration(150).attr('r', circleR(d) + 3);
-                })
-                .on('mouseout', function(event, d) {
-                    d3.select(this).transition().duration(150).attr('r', circleR(d));
                 });
 
-            // Name label below circle — use first + last name, pill background
             nodeGroups.each(function(d) {
                 const g = d3.select(this);
                 const r = circleR(d);
                 const role = d.data.data && d.data.data.role;
                 const isHero = role === 'Patriarche' || role === 'Héritier' || (role && role.includes('Princesse'));
                 const parts = d.data.name.trim().split(/ +/);
-                const label = (isHero || parts.length <= 2)
-                    ? d.data.name
-                    : parts[0] + ' ' + parts[parts.length - 1];
+                const label = (isHero || parts.length <= 2) ? d.data.name : parts[0] + ' ' + parts[parts.length - 1];
                 const labelY = r + 15;
-                const charW = 6.2;
-                const pillW = label.length * charW + 10;
+                const pillW = label.length * 6.2 + 10;
                 const fillColor = GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
-                const pillBg = role === 'Patriarche' || role === 'Héritier' ? 'rgba(30,26,20,0.85)'
-                           : (role && role.includes('Princesse')) ? 'rgba(123,63,140,0.85)'
-                           : 'rgba(255,255,255,0.92)';
+                const pillBg = role === 'Patriarche' || role === 'Héritier' ? 'rgba(30,26,20,0.85)' : (role && role.includes('Princesse')) ? 'rgba(123,63,140,0.85)' : 'rgba(255,255,255,0.92)';
                 const textColor = isHero ? '#F5EDD8' : fillColor;
-                g.append('rect')
-                    .attr('x', -pillW/2).attr('y', labelY - 11)
-                    .attr('width', pillW).attr('height', 15)
-                    .attr('rx', 5)
-                    .attr('fill', pillBg);
-                g.append('text')
-                    .attr('dy', labelY).attr('text-anchor','middle')
-                    .attr('font-size','11px')
-                    .attr('fill', textColor)
-                    .attr('font-weight', (isHero || d.data.gen <= 2) ? '700' : '400')
-                    .attr('font-family','"DM Sans", sans-serif')
-                    .attr('pointer-events','none')
-                    .text(label);
-            });
-
-            // Role badge ring for Patriarche + Héritier
-            nodeGroups.filter(d => d.data.data && (d.data.data.role === 'Patriarche' || d.data.data.role === 'Héritier'))
-                .append('circle')
-                .attr('r', d => circleR(d) + 5)
-                .attr('fill', 'none')
-                .attr('stroke', '#C07D2A')
-                .attr('stroke-width', 1.5)
-                .attr('stroke-dasharray', '4,3')
-                .attr('opacity', 0.7);
-
-            nodeGroups.append('title').text(d => d.data.name+' — G'+d.data.gen+'\nDouble-clic → profil');
-
-            // ── Spouse dashed lines ─────────────────────────
-            // ── Marriage connectors for bloodline members who have spouseIds ──
-            // (they stay in the tree at their proper bloodline position, but get a
-            //  dashed ochre connector to their spouse)
-            const drawnMarriages = new Set();
-            allNodes.forEach(n => {
-                const p = n.data.data;
-                if (!p || !p.spouseIds || !p.spouseIds.length) return;
-                p.spouseIds.forEach(sid => {
-                    const key = [n.data.id, sid].sort().join('|');
-                    if (drawnMarriages.has(key)) return;
-                    drawnMarriages.add(key);
-                    const spouseNode = allNodes.find(d => d.data.id === sid);
-                    if (!spouseNode) return;  // spouse is a spouse-only node (drawn separately)
-                    // Draw dashed marriage connector between two bloodline members
-                    gGroup.append('line')
-                        .attr('x1', nx(n)).attr('y1', ny(n))
-                        .attr('x2', nx(spouseNode)).attr('y2', ny(spouseNode))
-                        .attr('stroke','#C07D2A').attr('stroke-width',2.5)
-                        .attr('stroke-dasharray','6,4').attr('stroke-opacity',0.85);
-                    // ♥ at midpoint
-                    gGroup.append('text')
-                        .attr('x',(nx(n)+nx(spouseNode))/2)
-                        .attr('y',(ny(n)+ny(spouseNode))/2+4)
-                        .attr('text-anchor','middle').attr('font-size','11px')
-                        .attr('fill','#C07D2A').attr('opacity',0.8)
-                        .attr('pointer-events','none').text('♥');
-                });
-            });
-
-            // ── Spouse nodes (positioned beside their partner, not as children) ──
-            // Perpendicular offset for spouse nodes (beside partner, not below)
-            // LR/cluster: offset vertically (perpendicular to left-right flow)
-            // TB: offset horizontally (perpendicular to top-bottom flow)
-            // radial: offset radially outward
-            const spouseOffsetVal = 40;
-            const drawnSpouses = new Set();
-            const spousePositions = {};  // id → {sx, sy}
-
-            getSpouseNodes().forEach(sp => {
-                const g = generationsMap.get(sp.id) || 1;
-                // Find first bloodline spouse already in tree
-                const partner = (sp.spouseIds || []).map(sid => nodeById[sid]).find(n => n);
-                if (!partner) return;
-                // Position beside partner, offset perpendicular to flow
-                const px = nx(partner), py = ny(partner);
-                let sx, sy;
-                if (viz === 'radial') {
-                    sx = px * 1.05; sy = py * 1.05;
-                } else if (viz === 'lr') {
-                    sx = px; sy = py + spouseOffsetVal;  // LR: offset in vertical axis
-                } else {
-                    sx = px + spouseOffsetVal; sy = py;  // tb: offset in horizontal axis
-                }
-                spousePositions[sp.id] = { sx, sy, gen: g, data: sp };
-
-                // Dashed connector line
-                gGroup.append('line')
-                    .attr('x1', px).attr('y1', py)
-                    .attr('x2', sx).attr('y2', sy)
-                    .attr('stroke','#C07D2A').attr('stroke-width',1.5)
-                    .attr('stroke-dasharray','4,3').attr('stroke-opacity',0.65);
-
-                // ♥ midpoint
-                gGroup.append('text')
-                    .attr('x',(px+sx)/2).attr('y',(py+sy)/2+4)
-                    .attr('text-anchor','middle').attr('font-size','9px')
-                    .attr('fill','#C07D2A').attr('opacity',0.8)
-                    .attr('pointer-events','none').text('♥');
-
-                // Spouse circle
-                const r = 9;
-                const spG = gGroup.append('g').attr('class','d3-node d3-spouse')
-                    .attr('transform','translate('+sx+','+sy+')')
-                    .style('cursor','pointer')
-                    .on('click', (event) => {
-                        event.stopPropagation();
-                        const fakeD = { data: { id: sp.id, name: sp.name, gen: g, data: sp, isSpouse: true } };
-                        d3ActiveNodes = null;
-                        showD3NodeMenu(event, fakeD, event.clientX, event.clientY);
-                    })
-                    .on('dblclick', (event) => { event.stopPropagation(); showPersonDetails(sp.id); });
-                spG.append('circle').attr('r', r)
-                    .attr('fill','white')
-                    .attr('stroke', GEN_COLORS[(g-1)%GEN_COLORS.length])
-                    .attr('stroke-width', 2)
-                    .attr('stroke-dasharray','3,2');
-
-                // Spouse name label
-                const parts = sp.name.trim().split(/ +/);
-                const label = parts.length > 2 ? parts[0]+' '+parts[parts.length-1] : sp.name;
-                const pillW = label.length * 6 + 10;
-                spG.append('rect').attr('x',-pillW/2).attr('y',r+4)
-                    .attr('width',pillW).attr('height',14).attr('rx',5)
-                    .attr('fill','rgba(255,255,255,0.9)');
-                spG.append('text').attr('y',r+15).attr('text-anchor','middle')
-                    .attr('font-size','10px')
-                    .attr('fill', GEN_COLORS[(g-1)%GEN_COLORS.length])
-                    .attr('font-weight','400').attr('font-family','"DM Sans",sans-serif')
-                    .attr('pointer-events','none').text(label);
-            });
-
-            // ── Generation labels ───────────────────────────
-            const GL = ['Fondateurs','Pionniers','Ancêtres','Patriarche','Enfants','Petits-enfants','Arrière-petits'];
-            if (viz !== 'radial') {
-                for (let g=1; g<=maxGen; g++) {
-                    const gn = allNodes.filter(d=>d.data.gen===g); if(!gn.length) continue;
-                    const color = GEN_COLORS[g-1]||'#888', lbl = 'G'+g+' · '+(GL[g-1]||'');
-                    if (viz==='lr'||viz==='cluster') {
-                        gGroup.append('text').attr('x', d3.mean(gn,d=>d.y)).attr('y', d3.min(gn,d=>d.x)-22)
-                            .attr('text-anchor','middle').attr('fill',color).attr('font-size','10px')
-                            .attr('font-weight','700').attr('font-family','"DM Sans",sans-serif')
-                            .attr('letter-spacing','0.06em').attr('opacity',0.9).text(lbl);
-                    } else {
-                        gGroup.append('text').attr('x', d3.min(gn,d=>d.x)-8).attr('y', d3.mean(gn,d=>d.y))
-                            .attr('text-anchor','end').attr('fill',color).attr('font-size','10px')
-                            .attr('font-weight','700').attr('font-family','"DM Sans",sans-serif')
-                            .attr('letter-spacing','0.06em').attr('opacity',0.9).text(lbl);
-                    }
-                }
-            }
-
-            // ── Uncle-nephew connectors (special non-parent relationships) ──
-            // Draw a dotted line between Nandjo and Neyou to show the uncle-nephew bond
-            const uncleNephewPairs = [['gen1_nandjo', 'gen1_neyou']];
-            uncleNephewPairs.forEach(([uid, nid]) => {
-                const un = allNodes.find(d => d.data.id === uid);
-                const nn = allNodes.find(d => d.data.id === nid);
-                if (!un || !nn) return;
-                gGroup.append('line')
-                    .attr('x1', nx(un)).attr('y1', ny(un))
-                    .attr('x2', nx(nn)).attr('y2', ny(nn))
-                    .attr('stroke','#8B6914').attr('stroke-width',1.5)
-                    .attr('stroke-dasharray','3,5').attr('stroke-opacity',0.6);
-                gGroup.append('text')
-                    .attr('x',(nx(un)+nx(nn))/2).attr('y',(ny(un)+ny(nn))/2-6)
-                    .attr('text-anchor','middle').attr('font-size','8px')
-                    .attr('fill','#8B6914').attr('opacity',0.75).attr('pointer-events','none')
-                    .text('oncle / neveu (exil 1770)');
+                g.append('rect').attr('x', -pillW/2).attr('y', labelY - 11).attr('width', pillW).attr('height', 15).attr('rx', 5).attr('fill', pillBg);
+                g.append('text').attr('dy', labelY).attr('text-anchor','middle').attr('font-size','11px').attr('fill', textColor).attr('font-weight', (isHero || d.data.gen <= 2) ? '700' : '400').attr('font-family','"DM Sans", sans-serif').attr('pointer-events','none').text(label);
             });
 
             setTimeout(() => autoFitD3(allNodes, viz, W, H), 30);
-
           } catch(e) {
-            console.error('D3 tree error:', e);
-            document.getElementById('d3TreeContainer').innerHTML =
-                '<p style="padding:20px;color:#A0522D">Erreur D3: '+e.message+'</p>';
+            console.error('D3 error:', e);
           }
         }
 
-
-        /* ── Force-directed tree ─────────────────────────── */
         function renderForceTree(gGroup, allNodes, links, W, H) {
             window._d3ForceSimulation = null;
             const simulation = d3.forceSimulation(allNodes)
-                .force('link', d3.forceLink(links).id(d => d.data.id).distance(d => {
-                    const g = d.target.data.gen || 1;
-                    return 80 + (7 - g) * 8;  // longer links for early gens
-                }).strength(0.7))
+                .force('link', d3.forceLink(links).id(d => d.data.id).distance(80).strength(0.7))
                 .force('charge', d3.forceManyBody().strength(-220))
                 .force('x', d3.forceX(d => (d.data.gen || 1) * (W / 9)).strength(0.4))
                 .force('y', d3.forceY(H / 2).strength(0.05))
@@ -1605,221 +1328,42 @@
             const nodeEl = gGroup.selectAll('.d3-node').data(allNodes).join('g')
                 .attr('class', 'd3-node').style('cursor', 'pointer')
                 .call(d3.drag()
-                    .on('start', (e,d) => {
-                        if (!e.active) simulation.alphaTarget(0.3).restart();
-                        d.fx = d.x; d.fy = d.y;
-                    })
-                    .on('drag', (e,d) => {
-                        d.fx = e.x; d.fy = e.y;
-                    })
-                    .on('end', (e,d) => {
-                        if (!e.active) simulation.alphaTarget(0);
-                        // PIN the node at drop position (keep d.fx/d.fy set)
-                        d._pinned = true;
-                        // Show pin indicator
-                        d3.select(e.sourceEvent.target.closest('.d3-node'))
-                            .select('.pin-dot').attr('opacity', 1);
-                    })
+                    .on('start', (e,d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+                    .on('drag', (e,d) => { d.fx = e.x; d.fy = e.y; })
+                    .on('end', (e,d) => { if (!e.active) simulation.alphaTarget(0); d._pinned = true; })
                 )
                 .on('dblclick', (event,d) => { event.stopPropagation(); showPersonDetails(d.data.id); });
 
-            const circleFill = d => {
-                const role = d.data.data && d.data.data.role;
-                if (role === 'Patriarche') return '#A0522D';
-                if (role === 'Héritier')   return '#1E1A14';
-                if (d.data.isSpouse)       return 'white';
-                return GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
-            };
-            nodeEl.append('circle').attr('r', circleR).attr('fill', circleFill)
-                .attr('stroke', d => (d.data.data&&(d.data.data.role==='Patriarche'||d.data.data.role==='Héritier')) ? '#C07D2A' : '#FFFBF4')
-                .attr('stroke-width', 2.5);
-
-            // Pin indicator dot (hidden by default, shown when node is pinned)
-            nodeEl.append('circle')
-                .attr('class', 'pin-dot')
-                .attr('r', 4)
-                .attr('cx', d => circleR(d) - 2)
-                .attr('cy', d => -(circleR(d) - 2))
-                .attr('fill', '#C07D2A')
-                .attr('stroke', 'white').attr('stroke-width', 1.5)
-                .attr('opacity', 0)
-                .attr('pointer-events', 'none');
-
-            nodeEl.each(function(d) {
-                const g = d3.select(this);
-                const r = circleR(d);
-                const parts = d.data.name.trim().split(/ +/);
-                const label = parts.length > 2 ? parts[0]+' '+parts[parts.length-1] : d.data.name;
-                const pillW = label.length * 6.2 + 10;
-                g.append('rect').attr('x',-pillW/2).attr('y',r+4).attr('width',pillW).attr('height',15).attr('rx',5)
-                    .attr('fill','rgba(255,255,255,0.92)');
-                g.append('text').attr('y',r+15).attr('text-anchor','middle').attr('font-size','11px')
-                    .attr('fill', GEN_COLORS[(d.data.gen-1)%GEN_COLORS.length])
-                    .attr('font-weight', d.data.gen<=2?'700':'400')
-                    .attr('font-family','"DM Sans",sans-serif').attr('pointer-events','none').text(label);
-            });
+            nodeEl.append('circle').attr('r', circleR).attr('fill', d => GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length])
+                .attr('stroke', '#FFFBF4').attr('stroke-width', 2.5);
 
             window._d3ForceSimulation = simulation;
-
-            // ── Bloodline marriage connectors in force mode ──
-            // (e.g. Rebecca in her lineage + connected to patriarch)
-            const bloodlineMarriageLines = [];
-            const drawnBM = new Set();
-            allNodes.forEach(n => {
-                const p = n.data.data;
-                if (!p || !p.spouseIds || !p.spouseIds.length) return;
-                p.spouseIds.forEach(sid => {
-                    const key = [n.data.id, sid].sort().join('|');
-                    if (drawnBM.has(key)) return; drawnBM.add(key);
-                    const spouseNode = allNodes.find(d => d.data.id === sid);
-                    if (!spouseNode) return;
-                    const lineEl = gGroup.append('line')
-                        .attr('stroke','#C07D2A').attr('stroke-width',2.5)
-                        .attr('stroke-dasharray','6,4').attr('stroke-opacity',0.8);
-                    const heartEl = gGroup.append('text')
-                        .attr('text-anchor','middle').attr('font-size','13px')
-                        .attr('fill','#C07D2A').attr('opacity',0.85).attr('pointer-events','none').text('♥');
-                    bloodlineMarriageLines.push({ n1: n, n2: spouseNode, lineEl, heartEl });
-                });
-            });
-
-            // ── Spouses in force mode — anchored to their partner ──
-            const spouseElems = [];
-            getSpouseNodes().forEach(sp => {
-                const gen = generationsMap.get(sp.id) || 1;
-                const partner = (sp.spouseIds||[]).map(sid => allNodes.find(d=>d.data.id===sid)).find(n=>n);
-                if (!partner) return;
-                const r = 9;
-                const lineEl = gGroup.append('line')
-                    .attr('stroke','#C07D2A').attr('stroke-width',1.5)
-                    .attr('stroke-dasharray','4,3').attr('stroke-opacity',0.65);
-                const heartEl = gGroup.append('text')
-                    .attr('text-anchor','middle').attr('font-size','9px')
-                    .attr('fill','#C07D2A').attr('opacity',0.8).attr('pointer-events','none').text('♥');
-                const parts = sp.name.trim().split(/ +/);
-                const label = parts.length>2?parts[0]+' '+parts[parts.length-1]:sp.name;
-                const pillW = label.length*6+10;
-                const spG = gGroup.append('g').attr('class','d3-node d3-spouse').style('cursor','pointer')
-                    .on('click',(event)=>{ event.stopPropagation(); const fd={data:{id:sp.id,name:sp.name,gen,data:sp,isSpouse:true}}; d3ActiveNodes=null; showD3NodeMenu(event,fd,event.clientX,event.clientY); })
-                    .on('dblclick',(event)=>{ event.stopPropagation(); showPersonDetails(sp.id); });
-                spG.append('circle').attr('r',r).attr('fill','white')
-                    .attr('stroke',GEN_COLORS[(gen-1)%GEN_COLORS.length]).attr('stroke-width',2).attr('stroke-dasharray','3,2');
-                spG.append('rect').attr('x',-pillW/2).attr('y',r+4).attr('width',pillW).attr('height',14).attr('rx',5).attr('fill','rgba(255,255,255,0.9)');
-                spG.append('text').attr('y',r+15).attr('text-anchor','middle').attr('font-size','10px')
-                    .attr('fill',GEN_COLORS[(gen-1)%GEN_COLORS.length]).attr('font-weight','400')
-                    .attr('font-family','"DM Sans",sans-serif').attr('pointer-events','none').text(label);
-                spouseElems.push({ sp, partner, lineEl, heartEl, spG });
-            });
-
             simulation.on('tick', () => {
-                linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
-                      .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+                linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
                 nodeEl.attr('transform', d => 'translate('+d.x+','+d.y+')');
-                // Update bloodline marriage connectors
-                bloodlineMarriageLines.forEach(({n1,n2,lineEl,heartEl}) => {
-                    lineEl.attr('x1',n1.x).attr('y1',n1.y).attr('x2',n2.x).attr('y2',n2.y);
-                    heartEl.attr('x',(n1.x+n2.x)/2).attr('y',(n1.y+n2.y)/2+5);
-                });
-                // Update spouse positions (beside partner, slight offset)
-                // Uncle-nephew connectors in force mode
-                [['gen1_nandjo', 'gen1_neyou']].forEach(([uid, nid]) => {
-                    const un = allNodes.find(d => d.data.id === uid);
-                    const nn = allNodes.find(d => d.data.id === nid);
-                    if (un && nn) {
-                        gGroup.selectAll('.uncle-nephew-'+uid+'-'+nid)
-                            .attr('x1',un.x).attr('y1',un.y).attr('x2',nn.x).attr('y2',nn.y);
-                    }
-                });
-                spouseElems.forEach(({sp,partner,lineEl,heartEl,spG}) => {
-                    const px=partner.x, py=partner.y;
-                    const sx=px, sy=py+40;  // below in force mode
-                    lineEl.attr('x1',px).attr('y1',py).attr('x2',sx).attr('y2',sy);
-                    heartEl.attr('x',(px+sx)/2).attr('y',(py+sy)/2+4);
-                    spG.attr('transform','translate('+sx+','+sy+')');
-                });
             });
         }
-
-        /* ── Icicle (partition) layout ────────────────────── */
-        function renderIcicle(gGroup, W, H, root) {
-            const part = d3.partition().size([H, W]);
-            root.sum(() => 1);
-            part(root);
-
-            const nodes = root.descendants().filter(d => d.data.id !== '__root__');
-            const colorFn = d => {
-                const role = d.data.data && d.data.data.role;
-                if (role === 'Patriarche') return '#A0522D';
-                if (role === 'Héritier')   return '#1E1A14';
-                if (d.data.isSpouse)       return '#F5EDD8';
-                return GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
-            };
-
-            const rects = gGroup.selectAll('rect').data(nodes).join('rect')
-                .attr('x', d => d.y0).attr('y', d => d.x0)
-                .attr('width', d => d.y1 - d.y0 - 2)
-                .attr('height', d => Math.max(0, d.x1 - d.x0 - 2))
-                .attr('rx', 4)
-                .attr('fill', colorFn)
-                .attr('stroke', '#FFFBF4').attr('stroke-width', 1)
-                .style('cursor', 'pointer')
-                .on('dblclick', (e,d) => { e.stopPropagation(); showPersonDetails(d.data.id); })
-                .append('title').text(d => d.data.name+' — G'+d.data.gen);
-
-            gGroup.selectAll('text').data(nodes).join('text')
-                .attr('x', d => d.y0 + 6)
-                .attr('y', d => (d.x0 + d.x1) / 2 + 4)
-                .attr('font-size', d => Math.min(12, Math.max(7, (d.x1-d.x0)*0.55))+'px')
-                .attr('fill', d => {
-                    const role = d.data.data && d.data.data.role;
-                    return (role==='Patriarche'||role==='Héritier'||d.data.isSpouse) ? '#F5EDD8' : '#1E1A14';
-                })
-                .attr('font-family','"DM Sans",sans-serif').attr('font-weight','500')
-                .attr('pointer-events','none')
-                .text(d => {
-                    const w = d.y1 - d.y0 - 8;
-                    const h = d.x1 - d.x0;
-                    if (h < 10) return '';
-                    const parts = d.data.name.trim().split(/ +/);
-                    const s = parts.length > 2 ? parts[0]+' '+parts[parts.length-1] : d.data.name;
-                    return w > s.length*6 ? s : parts[parts.length-1];
-                });
-        }
-
-
-        /* ── D3 Zoom controls ──────────────────────────────── */
 
         function d3FreezeAll() {
-            // Pin all nodes at current positions
             if (!window._d3ForceSimulation) return;
             window._d3ForceSimulation.nodes().forEach(d => { d.fx = d.x; d.fy = d.y; d._pinned = true; });
             window._d3ForceSimulation.stop();
-            // Show all pin dots
-            if (d3ActiveNodes) d3ActiveNodes.selectAll('.pin-dot').attr('opacity', 1);
         }
 
         function d3ZoomIn()  { if(d3Svg&&d3Zoom) d3Svg.transition().duration(300).call(d3Zoom.scaleBy, 1.5); }
         function d3ZoomOut() { if(d3Svg&&d3Zoom) d3Svg.transition().duration(300).call(d3Zoom.scaleBy, 0.67); }
 
-        /* ── Node context menu ─────────────────────────────── */
         let d3ActiveNode = null;
-        let d3ActiveNodes = null;  // store for ancestor/descendant highlighting
+        let d3ActiveNodes = null;
 
         function showD3NodeMenu(event, d, screenX, screenY) {
             d3ActiveNode = d;
             const menu = document.getElementById('d3NodeMenu');
             const wrapper = document.getElementById('d3TreeContainer').parentElement;
             const rect = wrapper.getBoundingClientRect();
-            let x = screenX - rect.left + 8;
-            let y = screenY - rect.top + 8;
-            // Keep menu within bounds
-            const menuW = 220, menuH = 220;
-            if (x + menuW > rect.width)  x = Math.max(4, x - menuW - 16);
-            if (y + menuH > rect.height) y = Math.max(4, y - menuH);
-            menu.style.left = x + 'px';
-            menu.style.top  = y + 'px';
-            const nameEl = document.getElementById('d3NodeMenuName');
-            if (nameEl) nameEl.textContent = (d.data.name || '?') + ' — G' + (d.data.gen || '?');
+            menu.style.left = (screenX - rect.left + 8) + 'px';
+            menu.style.top  = (screenY - rect.top + 8) + 'px';
+            document.getElementById('d3NodeMenuName').textContent = (d.data.name || '?') + ' — G' + (d.data.gen || '?');
             menu.style.display = 'block';
         }
 
@@ -1834,65 +1378,7 @@
             const d = d3ActiveNode;
             if (action === 'profile') {
                 showPersonDetails(d.data.id);
-            } else if (action === 'focus') {
-                const container = document.getElementById('d3TreeContainer');
-                const W = container.clientWidth, H = container.clientHeight;
-                const viz = currentViz;
-                function nx(n) { return viz==='radial'?n.y*Math.cos(n.x-Math.PI/2):(viz==='lr'||viz==='cluster')?n.y:n.x; }
-                function ny(n) { return viz==='radial'?n.y*Math.sin(n.x-Math.PI/2):(viz==='lr'||viz==='cluster')?n.x:n.y; }
-                const sc = 2.2;
-                d3Svg.transition().ease(d3.easeCubicInOut).duration(600)
-                    .call(d3Zoom.transform, d3.zoomIdentity.translate(W/2-sc*nx(d), H/2-sc*ny(d)).scale(sc));
-            } else if (action === 'ancestors') {
-                // Highlight path from node to root
-                const ancestors = new Set();
-                let cur = d;
-                while (cur) { ancestors.add(cur.data.id); cur = cur.parent; }
-                if (d3ActiveNodes) {
-                    d3ActiveNodes.selectAll('circle')
-                        .transition().duration(300)
-                        .attr('opacity', n => ancestors.has(n.data.id) ? 1 : 0.2)
-                        .attr('stroke', n => ancestors.has(n.data.id) ? '#C07D2A' : '#FFFBF4')
-                        .attr('stroke-width', n => ancestors.has(n.data.id) ? 3 : 2);
-                }
-            } else if (action === 'descendants') {
-                // Highlight subtree
-                const descendants = new Set();
-                (function walk(n) { descendants.add(n.data.id); (n.children||[]).forEach(walk); })(d);
-                if (d3ActiveNodes) {
-                    d3ActiveNodes.selectAll('circle')
-                        .transition().duration(300)
-                        .attr('opacity', n => descendants.has(n.data.id) ? 1 : 0.2)
-                        .attr('stroke', n => descendants.has(n.data.id) ? '#4A7C53' : '#FFFBF4')
-                        .attr('stroke-width', n => descendants.has(n.data.id) ? 3 : 2);
-                }
-            } else if (action === 'unpin') {
-                // Release the pinned node back into the simulation
-                if (d3ActiveNode) {
-                    d3ActiveNode._pinned = false;
-                    d3ActiveNode.fx = null;
-                    d3ActiveNode.fy = null;
-                    // Hide pin dot
-                    if (d3ActiveNodes) {
-                        d3ActiveNodes.filter(n => n === d3ActiveNode).select('.pin-dot').attr('opacity', 0);
-                    }
-                    // Reheat simulation
-                    if (window._d3ForceSimulation) window._d3ForceSimulation.alphaTarget(0.2).restart();
-                }
-            } else if (action === 'unpin-all') {
-                // Unpin all nodes
-                if (d3ActiveNodes) {
-                    d3ActiveNodes.each(n => { n._pinned = false; n.fx = null; n.fy = null; });
-                    d3ActiveNodes.selectAll('.pin-dot').attr('opacity', 0);
-                    if (window._d3ForceSimulation) window._d3ForceSimulation.alphaTarget(0.3).restart();
-                }
-            } else if (action === 'collapse') {
-                // Toggle collapse — only works in tree modes
-                if (d.children) { d._children = d.children; d.children = null; }
-                else if (d._children) { d.children = d._children; d._children = null; }
-                setD3Viz(currentViz);  // re-render
             } else if (action === 'flat') {
-                // Switch to flat view and highlight this person
                 setTreeView('flat');
                 setTimeout(() => {
                     const box = document.querySelector('[data-id="'+d.data.id+'"]');
@@ -1901,7 +1387,6 @@
             }
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', e => {
             if (!e.target.closest('#d3NodeMenu') && !e.target.closest('.d3-node'))
                 hideD3NodeMenu();
