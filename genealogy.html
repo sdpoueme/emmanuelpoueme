@@ -670,6 +670,19 @@
             document.getElementById('slideOverlay').classList.remove('open');
         }
 
+        // Stub for the modal close button, which was referenced but never defined
+        function closeModal() {
+            document.getElementById('personModal').classList.add('hidden');
+            document.getElementById('personModal').classList.remove('flex');
+        }
+
+        // Stub for the D3 node menu, which was referenced but never defined.
+        // Profile opens the side panel; "flat" switches to the generation view.
+        function d3MenuAction(action) {
+            document.getElementById('d3NodeMenu').style.display = 'none';
+            if (action === 'flat') setTreeView('flat');
+        }
+
         function switchTab(tab, el) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -883,12 +896,18 @@
             const allLinks = links.map(l => ({ source: l.source, target: l.target, spouse: false }))
                 .concat(spouseEdges.map(e => ({ source: e.source, target: e.target, spouse: true })));
 
+            const maxGen = Math.max(...allNodes.map(d => d.data.gen));
+            const LEVEL = 130; // vertical distance between generations
+
             const simulation = d3.forceSimulation(allNodes)
                 .force('link', d3.forceLink(allLinks).id(d => d.data.id)
-                    .distance(d => d.spouse ? 60 : 90)
-                    .strength(d => d.spouse ? 1 : 0.7))
-                .force('charge', d3.forceManyBody().strength(-250))
-                .force('collision', d3.forceCollide(28));
+                    .distance(d => d.spouse ? 80 : 120)
+                    .strength(d => d.spouse ? 0.3 : 0.5))
+                .force('charge', d3.forceManyBody().strength(-450).distanceMax(500))
+                .force('collide', d3.forceCollide(32).iterations(3))
+                .force('y', d3.forceY(d => (d.data.gen - (maxGen + 1) / 2) * LEVEL).strength(0.6))
+                .force('x', d3.forceX(0).strength(0.02))
+                .alphaDecay(0.025);
 
             const linkEl = gGroup.selectAll('.d3-link').data(allLinks).join('line')
                 .attr('stroke', d => d.spouse ? '#C07D2A' : GEN_COLORS[(d.target.data.gen-1) % GEN_COLORS.length])
@@ -901,7 +920,7 @@
                 .call(d3.drag()
                     .on('start', (e,d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
                     .on('drag', (e,d) => { d.fx = e.x; d.fy = e.y; })
-                    .on('end', (e,d) => { if (!e.active) simulation.alphaTarget(0); })
+                    .on('end', (e,d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
                 )
                 .on('dblclick', (e,d) => { e.stopPropagation(); showPersonDetails(d.data.id); });
 
@@ -909,7 +928,13 @@
                 .attr('fill', d => nodeFill(d.data.data))
                 .attr('stroke', d => isSpouseNode(d.data.data) ? '#C07D2A' : '#FFFBF4')
                 .attr('stroke-width', d => isSpouseNode(d.data.data) ? 3 : 2.5);
-            nodeEl.append('text').attr('dy', 25).attr('text-anchor', 'middle').attr('font-size', '11px').attr('fill', '#1E1A14').text(d => d.data.name);
+
+            // Halo behind the label so overlapping text stays readable
+            nodeEl.append('text').attr('dy', 25).attr('text-anchor', 'middle')
+                .attr('font-size', '11px').attr('font-family', '"DM Sans", sans-serif')
+                .attr('fill', '#1E1A14')
+                .attr('stroke', '#FFFBF4').attr('stroke-width', 3).attr('paint-order', 'stroke')
+                .text(d => d.data.name);
 
             simulation.on('tick', () => {
                 linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
