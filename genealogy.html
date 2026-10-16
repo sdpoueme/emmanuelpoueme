@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://sdpoueme.github.io/emmanuelpoueme/genealogy">
 
-  <!-- Open Graph (for sharing on social media) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Arbre Généalogique — Famille Tinang Poueme">
   <meta property="og:description" content="10 générations d'une lignée royale Bamiléké : des rois de Baleng (plaines Tikar) jusqu'à Balengou, Batchingou et Bamena.">
   <meta property="og:url" content="https://sdpoueme.github.io/emmanuelpoueme/genealogy">
@@ -42,7 +42,6 @@
     </script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        /* Person box glass style */
         .members-container {
             display: flex;
             flex-wrap: wrap; 
@@ -59,7 +58,7 @@
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.75);
             border-left: 4px solid var(--gen-accent, #C07D2A);
-            box-shadow: 0 4px 18px rgba(160,82,45,0.10), 0 1px 4px rgba(30,26,20,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 4px 18px rgba(160,82,45,0.10), 0 1px 4px rgba(30,26,20,0.06);
             padding: 14px 18px;
             min-width: 170px;
             max-width: 215px;
@@ -71,7 +70,7 @@
         }
         .person-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 28px rgba(160,82,45,0.18), 0 2px 8px rgba(30,26,20,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 8px 28px rgba(160,82,45,0.18);
         }
         .person-box.highlighted {
             border-color: #ff6b6b !important;
@@ -87,33 +86,10 @@
         .person-box.hero-dark .person-dates { color: #7A7060; }
         .person-box.hero-dark .person-role { color: #E8A84B; }
 
-        /* Merged lineage */
-        .person-box.merged-lineage {
-            border: 3px double #C07D2A !important;
-            box-shadow: 0 0 10px rgba(192, 125, 42, 0.3);
-        }
-        .person-box.merged-lineage::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #C07D2A;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-
         .person-name { font-weight: 700; font-size: 0.95em; margin-bottom: 3px; color: #1E1A14; }
         .person-dates { font-size: 0.82em; color: #4A4035; }
         .person-role { font-size: 0.78em; margin-top: 4px; font-weight: 500; color: #C07D2A; }
 
-        /* Generation row */
         .generation-row { display: flex; justify-content: flex-start; align-items: stretch; margin-bottom: 48px; position: relative; background: #ffffff; border: 1px solid #a2a9b1; border-radius: 12px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .generation-row.hidden { display: none; }
 
@@ -138,7 +114,6 @@
             flex-shrink: 0;
         }
 
-        /* Marriage lines SVG overlay */
         .marriage-lines {
             position: absolute;
             top: 0; left: 0;
@@ -147,11 +122,9 @@
             z-index: 1;
         }
 
-        /* Tab content */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* Tab buttons */
         .tab-btn {
             display: inline-flex;
             align-items: center;
@@ -175,7 +148,6 @@
             font-weight: 600;
         }
 
-        /* Slide-in panel */
         .slide-panel {
             position: fixed;
             top: 0; right: 0;
@@ -201,7 +173,6 @@
         }
         .slide-overlay.open { display: block; }
 
-        /* Filter pills */
         .gen-pill {
             display: inline-flex;
             align-items: center;
@@ -228,7 +199,6 @@
         }
         .gen-pill.active .dot { background: white; }
 
-        /* Timeline spine */
         .timeline-spine {
             position: absolute;
             left: 16px; top: 0; bottom: 0;
@@ -246,7 +216,6 @@
             top: 4px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .generation-row { flex-direction: column; }
             .generation-label { writing-mode: horizontal-tb; margin-right: 0; margin-bottom: 15px; width: 100%; text-align: left; padding: 8px 12px; }
@@ -272,7 +241,6 @@
 </head>
 <body class="bg-parchment min-h-screen py-7 px-5 font-sans">
 
-    <!-- HEADER -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8 max-w-6xl mx-auto">
         <div style="height:5px;background:linear-gradient(90deg,#A0522D 0%,#C07D2A 50%,#2E5C3A 100%)"></div>
         <div class="text-center px-8 py-10">
@@ -290,49 +258,24 @@
         </div>
     </div>
 
-    <!-- STATS -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-6xl mx-auto" id="statsContainer"></div>
 
-    <!-- TABS CONTAINER -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden max-w-6xl mx-auto">
-        <!-- Tab bar -->
         <div class="flex flex-wrap gap-1 px-5 pt-4 pb-0 bg-parchment-dark border-b border-parchment-dark">
-            <button class="tab-btn active" onclick="switchTab('overview', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
-                Apercu
-            </button>
-            <button class="tab-btn" onclick="switchTab('royal', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0l-4.725 2.885a.562.562 0 01-.84-.61l1.285-5.385a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
-                Lignees Royales
-            </button>
-            <button class="tab-btn" onclick="switchTab('tree', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg>
-                Arbre
-            </button>
-            <button class="tab-btn" onclick="switchTab('persons', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
-                Personnes
-            </button>
-            <button class="tab-btn" onclick="switchTab('locations', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-                Localites
-            </button>
-            <button class="tab-btn" onclick="switchTab('timeline', this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                Dates Cles
-            </button>
+            <button class="tab-btn active" onclick="switchTab('overview', this)">Apercu</button>
+            <button class="tab-btn" onclick="switchTab('royal', this)">Lignees Royales</button>
+            <button class="tab-btn" onclick="switchTab('tree', this)">Arbre</button>
+            <button class="tab-btn" onclick="switchTab('persons', this)">Personnes</button>
+            <button class="tab-btn" onclick="switchTab('locations', this)">Localites</button>
+            <button class="tab-btn" onclick="switchTab('timeline', this)">Dates Cles</button>
         </div>
 
-        <!-- Tab panels -->
         <div class="p-7">
-
-            <!-- Overview Tab -->
             <div id="overview" class="tab-content active">
                 <h2 class="font-serif text-2xl text-forest mb-5">Vue d'ensemble de la famille</h2>
                 <div id="overviewContent"></div>
             </div>
 
-            <!-- Royal Lineages Tab -->
             <div id="royal" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Lignees Royales</h2>
                 <div class="bg-ochre-pale border border-ochre rounded-xl p-7 mb-7 text-center">
@@ -347,7 +290,6 @@
                 </div>
             </div>
 
-            <!-- Tree Tab -->
             <div id="tree" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Arbre (generations automatiques)</h2>
 
@@ -401,19 +343,12 @@
                         <div id="d3NodeMenu" style="position:absolute;display:none;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(30,26,20,0.18);border:1px solid #E8D9BC;padding:8px;z-index:20;min-width:200px;font-family:'DM Sans',sans-serif">
                             <div id="d3NodeMenuName" style="font-weight:700;font-size:0.9em;color:#1E1A14;padding:6px 10px 8px;border-bottom:1px solid #F5EDD8;margin-bottom:4px"></div>
                             <button class="d3-menu-btn" onclick="d3MenuAction('profile')">👤 Voir le profil</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('focus')">🎯 Centrer sur ce nœud</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('ancestors')">⬆ Surligner les ancêtres</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('descendants')">⬇ Surligner les descendants</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('collapse')">📦 Réduire la branche</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('unpin')">📍 Débrocher ce nœud</button>
-                            <button class="d3-menu-btn" onclick="d3MenuAction('unpin-all')">🔓 Débrocher tous</button>
                             <button class="d3-menu-btn" onclick="d3MenuAction('flat')">☰ Voir dans la vue génération</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Persons Tab -->
             <div id="persons" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Tous les membres</h2>
                 <div class="relative mb-5">
@@ -425,13 +360,11 @@
                 <div id="personsList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
 
-            <!-- Locations Tab -->
             <div id="locations" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Localites familiales</h2>
                 <div id="locationsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
             </div>
 
-            <!-- Timeline Tab -->
             <div id="timeline" class="tab-content">
                 <h2 class="font-serif text-2xl text-forest mb-5">Chronologie</h2>
                 <div id="timelineContent" class="relative pl-10"></div>
@@ -439,7 +372,6 @@
         </div>
     </div>
 
-    <!-- MODAL -->
     <div class="hidden fixed inset-0 z-[1000] items-center justify-center bg-black/50 backdrop-blur-sm" id="personModal">
         <div class="bg-cream rounded-2xl max-w-lg w-[90%] max-h-[80vh] overflow-y-auto shadow-2xl border-t-4 border-ochre relative p-8" id="modalContent">
             <button class="absolute top-4 right-4 text-ink-light hover:text-ink cursor-pointer" onclick="closeModal()">
@@ -449,7 +381,6 @@
         </div>
     </div>
 
-    <!-- SLIDE-IN PANEL -->
     <div class="slide-overlay" id="slideOverlay" onclick="closeSlidePanel()"></div>
     <div class="slide-panel" id="slidePanel">
         <div class="p-7">
@@ -464,7 +395,7 @@
         let familyData = { persons: [], locations: [] };
         let generationsMap = new Map();
         let visibleGenerations = new Set();
-        let showSpousesAsSeparateBoxes = true; // Forcé à true par défaut pour afficher les conjointes
+        let showSpousesAsSeparateBoxes = true;
 
         const GEN_COLORS = ['#6B1A0A','#8B3A1A','#A0522D','#C07D2A','#7B6914','#2E5C3A','#4A7C53','#5B8DB8','#7B5EA7','#C06090'];
         const GEN_NAMES = ['Origine Tikar','Rois de Baleng','Princes Fondateurs','Exil 1770','Notables Balengou','Ancêtres','Patriarche','Enfants','Petits-enfants','Arrière-petits'];
@@ -490,7 +421,7 @@
                 updateVisibleCount();
             } catch (error) {
                 console.error('Erreur:', error);
-                document.getElementById('familyTree').innerHTML = '<div class="text-center p-8"><p class="text-terra font-semibold mb-2">Impossible de charger les donnees</p><p class="text-ink-light text-sm">Verifiez que family-data-dynamic.json est accessible (serveur local requis).</p></div>';
+                document.getElementById('familyTree').innerHTML = '<div class="text-center p-8"><p class="text-terra font-semibold mb-2">Impossible de charger les donnees</p></div>';
             }
         }
 
@@ -515,7 +446,7 @@
                 { num: familyData.persons.length, label: 'Membres', color: '#C07D2A' },
                 { num: maxGen, label: 'Generations', color: '#2E5C3A' },
                 { num: familyData.locations.length, label: 'Localites', color: '#A0522D' },
-                { num: 10, label: 'Générations (Tikar→G10)', color: '#7B68AE' }
+                { num: 10, label: 'Générations', color: '#7B68AE' }
             ];
             document.getElementById('statsContainer').innerHTML = stats.map(s => `
                 <div class="bg-white rounded-xl shadow-sm px-5 py-5 text-center" style="border-bottom:3px solid ${s.color}">
@@ -527,8 +458,6 @@
 
         function renderOverview() {
             const p = familyData.persons.find(x => x.role === 'Patriarche');
-            const h = familyData.persons.find(x => x.role === 'Heritier') || familyData.persons.find(x => x.role === 'Héritier');
-
             let patriarcheHTML = '';
             if (p) {
                 patriarcheHTML = `
@@ -536,27 +465,9 @@
                     <h3 class="font-serif text-lg text-forest mb-2">Le Patriarche</h3>
                     <h4 class="font-serif font-semibold text-ochre-dark">${p.name}</h4>
                     <p class="text-sm text-ink-mid mt-1"><strong>${p.dates}</strong>${p.lifespan ? ' (' + p.lifespan + ')' : ''}</p>
-                    ${p.birthPlace ? '<p class="text-sm text-ink-mid mt-1">' + p.birthPlace + '</p>' : ''}
-                    ${p.notes ? '<p class="text-sm text-ink-light mt-2 italic">' + p.notes + '</p>' : ''}
                 </div>`;
             }
-
-            let heritierHTML = '';
-            if (h) {
-                heritierHTML = `
-                <div class="bg-ochre-pale rounded-xl p-6 mb-5 border border-ochre/30">
-                    <h3 class="font-serif text-lg text-forest mb-2">L'Heritier</h3>
-                    <h4 class="font-serif font-semibold text-ochre-dark">${h.name}</h4>
-                    ${h.ndap ? '<p class="text-sm text-ink-mid mt-1"><strong>Titre:</strong> ' + h.ndap + '</p>' : ''}
-                    ${h.born ? '<p class="text-sm text-ink-mid"><strong>Ne:</strong> ' + h.born + '</p>' : ''}
-                    ${h.notes ? '<p class="text-sm text-ink-light mt-2">' + h.notes + '</p>' : ''}
-                </div>`;
-            }
-
-            document.getElementById('overviewContent').innerHTML = `
-                ${patriarcheHTML}
-                ${heritierHTML}
-            `;
+            document.getElementById('overviewContent').innerHTML = patriarcheHTML;
         }
 
         function renderGenerationFilters() {
@@ -580,7 +491,6 @@
                     <span>Conjoints separes + lignes</span>
                 </label>
             `;
-
             document.getElementById('filterButtons').innerHTML = html;
         }
 
@@ -597,42 +507,25 @@
                 button.classList.add('active');
                 rows.forEach(row => row.classList.remove('hidden'));
             }
-
-            updateAllButton();
             updateVisibleCount();
             setTimeout(drawMarriageLines, 50);
         }
 
         function toggleAllGenerations() {
             const maxGen = Math.max(...Array.from(generationsMap.values()));
-            const allButton = document.querySelector('.gen-pill[style*="4A4035"]');
             const isAllVisible = visibleGenerations.size === maxGen;
 
             if (isAllVisible) {
                 visibleGenerations.clear();
                 document.querySelectorAll('.gen-pill[data-gen]').forEach(btn => btn.classList.remove('active'));
                 document.querySelectorAll('.generation-row').forEach(row => row.classList.add('hidden'));
-                if (allButton) allButton.classList.remove('active');
             } else {
                 for (let i = 1; i <= maxGen; i++) visibleGenerations.add(i);
                 document.querySelectorAll('.gen-pill[data-gen]').forEach(btn => btn.classList.add('active'));
                 document.querySelectorAll('.generation-row').forEach(row => row.classList.remove('hidden'));
-                if (allButton) allButton.classList.add('active');
             }
-
             updateVisibleCount();
             setTimeout(drawMarriageLines, 50);
-        }
-
-        function updateAllButton() {
-            const maxGen = Math.max(...Array.from(generationsMap.values()));
-            const allButton = document.querySelector('.gen-pill[style*="4A4035"]');
-            if (!allButton) return;
-            if (visibleGenerations.size === maxGen) {
-                allButton.classList.add('active');
-            } else {
-                allButton.classList.remove('active');
-            }
         }
 
         function updateVisibleCount() {
@@ -650,15 +543,11 @@
 
         function searchInTree() {
             const searchTerm = document.getElementById('treeSearch').value.toLowerCase();
-            const personBoxes = document.querySelectorAll('.person-box');
-
-            personBoxes.forEach(box => {
+            document.querySelectorAll('.person-box').forEach(box => {
                 const name = box.getAttribute('data-name');
                 if (searchTerm === '' || name.includes(searchTerm)) {
                     box.classList.remove('highlighted');
-                    if (searchTerm !== '' && name.includes(searchTerm)) {
-                        box.classList.add('highlighted');
-                    }
+                    if (searchTerm !== '' && name.includes(searchTerm)) box.classList.add('highlighted');
                 } else {
                     box.classList.remove('highlighted');
                 }
@@ -669,17 +558,7 @@
             const maxGen = Math.max(...Array.from(generationsMap.values()));
             let html = '';
             for (let g = 1; g <= maxGen; g++) {
-                let ps;
-
-                if (showSpousesAsSeparateBoxes) {
-                    ps = familyData.persons.filter(p => getGeneration(p.id) === g);
-                } else {
-                    ps = familyData.persons.filter(p => {
-                        if (getGeneration(p.id) !== g) return false;
-                        return p.parentId || !p.spouseIds || p.spouseIds.length === 0 || (!p.parentId && g === 1);
-                    });
-                }
-
+                let ps = familyData.persons.filter(p => getGeneration(p.id) === g);
                 if (ps.length === 0) continue;
                 const gc = GEN_COLORS[(g - 1) % GEN_COLORS.length];
                 html += '<div class="generation-row" data-generation="' + g + '">';
@@ -689,10 +568,7 @@
                 html += '</div></div>';
             }
             document.getElementById('familyTree').innerHTML = html;
-
-            if (showSpousesAsSeparateBoxes) {
-                setTimeout(drawMarriageLines, 100);
-            }
+            setTimeout(drawMarriageLines, 100);
         }
 
         function drawMarriageLines() {
@@ -703,15 +579,11 @@
                 const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 svg.setAttribute('class', 'marriage-lines');
                 svg.style.position = 'absolute';
-                svg.style.top = '0';
-                svg.style.left = '0';
-                svg.style.width = '100%';
-                svg.style.height = '100%';
-                svg.style.pointerEvents = 'none';
-                svg.style.zIndex = '1';
+                svg.style.top = '0'; svg.style.left = '0';
+                svg.style.width = '100%'; svg.style.height = '100%';
+                svg.style.pointerEvents = 'none'; svg.style.zIndex = '1';
 
-                const boxes = genRow.querySelectorAll('.person-box');
-                const boxesArray = Array.from(boxes);
+                const boxesArray = Array.from(genRow.querySelectorAll('.person-box'));
                 const drawnPairs = new Set();
 
                 boxesArray.forEach(box1 => {
@@ -722,14 +594,11 @@
                         person1.spouseIds.forEach(spouseId => {
                             const pairKey1 = person1Id + '-' + spouseId;
                             const pairKey2 = spouseId + '-' + person1Id;
-
                             if (drawnPairs.has(pairKey1) || drawnPairs.has(pairKey2)) return;
 
                             const box2 = boxesArray.find(b => b.getAttribute('data-id') === spouseId);
-
                             if (box2 && box1 !== box2) {
                                 drawnPairs.add(pairKey1);
-
                                 const rect1 = box1.getBoundingClientRect();
                                 const rect2 = box2.getBoundingClientRect();
                                 const containerRect = genRow.getBoundingClientRect();
@@ -740,37 +609,16 @@
                                 const y2 = rect2.top - containerRect.top + rect2.height / 2;
 
                                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                                line.setAttribute('x1', x1);
-                                line.setAttribute('y1', y1);
-                                line.setAttribute('x2', x2);
-                                line.setAttribute('y2', y2);
-                                line.setAttribute('stroke', '#C07D2A');
-                                line.setAttribute('stroke-width', '2');
-                                line.setAttribute('stroke-dasharray', '5,5');
-                                line.setAttribute('opacity', '0.5');
+                                line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+                                line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+                                line.setAttribute('stroke', '#C07D2A'); line.setAttribute('stroke-width', '2');
+                                line.setAttribute('stroke-dasharray', '5,5'); line.setAttribute('opacity', '0.6');
                                 svg.appendChild(line);
-
-                                const circle1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                circle1.setAttribute('cx', x1);
-                                circle1.setAttribute('cy', y1);
-                                circle1.setAttribute('r', '5');
-                                circle1.setAttribute('fill', '#C07D2A');
-                                svg.appendChild(circle1);
-
-                                const circle2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                circle2.setAttribute('cx', x2);
-                                circle2.setAttribute('cy', y2);
-                                circle2.setAttribute('r', '5');
-                                circle2.setAttribute('fill', '#C07D2A');
-                                svg.appendChild(circle2);
                             }
                         });
                     }
                 });
-
-                if (svg.childElementCount > 0) {
-                    genRow.insertBefore(svg, genRow.firstChild);
-                }
+                if (svg.childElementCount > 0) genRow.insertBefore(svg, genRow.firstChild);
             });
         }
 
@@ -778,78 +626,26 @@
             const gc = getGenerationColor(g);
             const dates = p.dates || (p.born ? 'ne ' + p.born : '');
             const role = p.role ? '<div class="person-role">' + p.role + '</div>' : '';
-
             let cssClasses = 'person-box';
-            let isHero = (p.role === 'Patriarche' || p.role === 'Heritier' || p.role === 'Héritier');
-
-            let mergedLineageIndicator = '';
-            if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
-                const parent = familyData.persons.find(x => x.id === p.parentId);
-                if (parent) {
-                    const parentGen = getGeneration(p.parentId);
-                    const currentGen = getGeneration(p.id);
-                    if (parentGen < currentGen - 1 || parentGen === currentGen) {
-                        cssClasses += ' merged-lineage';
-                        const lineageSource = p.birthPlace || (parent.birthPlace || 'autre famille');
-                        mergedLineageIndicator = '<div style="font-size:0.72em;opacity:0.65;margin-top:4px;font-style:italic">Lignee ' + lineageSource + '</div>';
-                    }
-                }
-            }
-
-            if (isHero) {
-                cssClasses += ' hero-dark';
-            }
-
-            let badge = '';
-            if (p.role === 'Patriarche') {
-                badge = '<span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#A0522D;color:white;font-size:0.65em;padding:2px 8px;border-radius:10px;font-weight:600">Patriarche</span>';
-            } else if (p.role === 'Heritier' || p.role === 'Héritier') {
-                badge = '<span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#C07D2A;color:white;font-size:0.65em;padding:2px 8px;border-radius:10px;font-weight:600">Héritier</span>';
-            } else if (p.role && p.role.includes('Princesse')) {
-                badge = '<span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#7B3F8C;color:white;font-size:0.65em;padding:2px 8px;border-radius:10px;font-weight:600">&#9819; Princesse</span>';
-            }
+            if (p.role === 'Patriarche' || p.role === 'Heritier' || p.role === 'Héritier') cssClasses += ' hero-dark';
 
             return '<div class="' + cssClasses + '" data-id="' + p.id + '" data-name="' + p.name.toLowerCase() + '" style="--gen-accent:' + gc.accent + '" onclick="showPersonDetails(\'' + p.id + '\')">'
-                + badge
                 + '<div class="person-name">' + p.name + '</div>'
                 + (dates ? '<div class="person-dates">' + dates + '</div>' : '')
-                + role
-                + mergedLineageIndicator
-                + '</div>';
+                + role + '</div>';
         }
 
         function showPersonDetails(id) {
             const p = familyData.persons.find(x => x.id === id);
             if (!p) return;
-            const parent = p.parentId ? familyData.persons.find(x => x.id === p.parentId) : null;
-            const children = familyData.persons.filter(x => x.parentId === p.id);
+            const detailHTML = '<h2 class="font-serif text-xl text-forest mb-4">' + p.name + '</h2>'
+                + (p.dates || p.born ? '<p class="text-sm text-ink-mid mb-2"><strong>Dates:</strong> ' + (p.dates || p.born) + '</p>' : '')
+                + '<p class="text-sm text-ink-mid mb-2"><strong>Generation:</strong> ' + getGeneration(id) + '</p>'
+                + (p.notes ? '<p class="text-sm text-ink-mid italic mt-3">' + p.notes + '</p>' : '');
 
-            let detailHTML = '<h2 class="font-serif text-xl text-forest mb-4">' + p.name + '</h2>'
-                + (p.ndap ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Ndap</span><span class="text-sm text-ink-mid">' + p.ndap + '</span></div>' : '')
-                + (p.dates || p.born ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Dates</span><span class="text-sm text-ink-mid">' + (p.dates || 'Ne ' + p.born) + '</span></div>' : '')
-                + '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Generation</span><span class="text-sm text-ink-mid">' + getGeneration(id) + '</span></div>'
-                + (p.birthPlace ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Naissance</span><span class="text-sm text-ink-mid">' + p.birthPlace + '</span></div>' : '')
-                + (p.residence ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Residence</span><span class="text-sm text-ink-mid">' + p.residence + '</span></div>' : '')
-                + (p.role ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Rôle</span><span class="text-sm font-semibold" style="color:' + (p.role.includes('Princesse') ? '#7B3F8C' : '#C07D2A') + '">' + (p.role.includes('Princesse') ? '♛ ' : '') + p.role + '</span></div>' : '')
-                + (parent ? '<div class="flex gap-3 mb-2 mt-4"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Parent</span><span class="text-sm text-ink-mid">' + parent.name + '</span></div>' : '')
-                + (children.length > 0 ? '<div class="mt-5"><span class="text-xs uppercase tracking-widest text-ink-light">Enfants (' + children.length + ')</span><ul class="mt-2 space-y-1">' + children.map(c => '<li class="text-sm text-ink-mid pl-3 border-l-2 border-forest-light">' + c.name + '</li>').join('') + '</ul></div>' : '')
-                + (p.notes ? '<div class="mt-4 p-3 bg-parchment rounded-lg text-sm text-ink-mid italic">' + p.notes + '</div>' : '');
-
-            const activeTab = document.querySelector('.tab-content.active');
-            if (activeTab && activeTab.id === 'tree') {
-                document.getElementById('slidePanelBody').innerHTML = detailHTML;
-                document.getElementById('slidePanel').classList.add('open');
-                document.getElementById('slideOverlay').classList.add('open');
-            } else {
-                document.getElementById('modalBody').innerHTML = detailHTML;
-                document.getElementById('personModal').classList.remove('hidden');
-                document.getElementById('personModal').classList.add('flex');
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('personModal').classList.add('hidden');
-            document.getElementById('personModal').classList.remove('flex');
+            document.getElementById('slidePanelBody').innerHTML = detailHTML;
+            document.getElementById('slidePanel').classList.add('open');
+            document.getElementById('slideOverlay').classList.add('open');
         }
 
         function closeSlidePanel() {
@@ -865,45 +661,35 @@
         }
 
         function renderPersonsList() {
-            const sorted = [...familyData.persons].sort((a, b) => {
-                const d = getGeneration(a.id) - getGeneration(b.id);
-                return d !== 0 ? d : a.name.localeCompare(b.name);
-            });
-            document.getElementById('personsList').innerHTML = sorted.map(p => {
-                return '<div class="bg-white rounded-lg p-4 border-l-4 border-forest-mid cursor-pointer transition-all duration-200 hover:border-ochre hover:bg-ochre-pale hover:translate-x-1" data-name="' + p.name.toLowerCase() + '" onclick="showPersonDetails(\'' + p.id + '\')">'
-                    + '<h4 class="font-serif font-semibold text-forest text-sm">' + p.name + '</h4>'
-                    + '<p class="text-xs text-ink-light mt-1">Generation ' + getGeneration(p.id) + '</p>'
-                    + (p.residence ? '<p class="text-xs text-ink-light">' + p.residence + '</p>' : '')
-                    + '</div>';
-            }).join('');
+            document.getElementById('personsList').innerHTML = familyData.persons.map(p => `
+                <div class="bg-white rounded-lg p-4 border-l-4 border-forest-mid cursor-pointer" onclick="showPersonDetails('${p.id}')">
+                    <h4 class="font-serif font-semibold text-forest text-sm">${p.name}</h4>
+                    <p class="text-xs text-ink-light mt-1">Generation ${getGeneration(p.id)}</p>
+                </div>
+            `).join('');
         }
 
         function filterPersons() {
-            const searchTerm = document.getElementById('personSearch').value.toLowerCase();
-            const items = document.querySelectorAll('#personsList > div');
-            items.forEach(item => {
-                const name = item.getAttribute('data-name');
-                item.style.display = name.includes(searchTerm) ? 'block' : 'none';
+            const term = document.getElementById('personSearch').value.toLowerCase();
+            document.querySelectorAll('#personsList > div').forEach(item => {
+                item.style.display = item.textContent.toLowerCase().includes(term) ? 'block' : 'none';
             });
         }
 
         function renderLocations() {
-            document.getElementById('locationsGrid').innerHTML = familyData.locations.map(l => {
-                return '<div class="bg-white rounded-xl p-5 border-l-4 border-terra shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">'
-                    + '<h3 class="font-serif font-semibold text-forest mb-2">' + l.name + '</h3>'
-                    + '<p class="text-sm text-ink-light leading-relaxed">' + l.description + '</p>'
-                    + '</div>';
-            }).join('');
+            document.getElementById('locationsGrid').innerHTML = (familyData.locations || []).map(l => `
+                <div class="bg-white rounded-xl p-5 border-l-4 border-terra shadow-sm">
+                    <h3 class="font-serif font-semibold text-forest mb-2">${l.name}</h3>
+                    <p class="text-sm text-ink-light">${l.description}</p>
+                </div>
+            `).join('');
         }
 
         function renderTimeline() {
-            const events = [
-                { date: "~1770s", title: "Origines Royales", content: "Prince Nandjo, fondateur de la chefferie de Balengou." },
-                { date: "1898", title: "Naissance du Patriarche", content: "Ta'a Fieu Tagni Tinang Joseph nait a Batchingou." },
-                { date: "2001", title: "Succession", content: "Deces du patriarche à 103 ans." }
-            ];
-            document.getElementById('timelineContent').innerHTML = '<div class="timeline-spine"></div>'
-                + events.map(e => '<div class="relative pl-8 pb-8"><div class="timeline-dot"></div><div class="text-xs font-semibold text-ochre uppercase tracking-wide mb-1">' + e.date + '</div><div class="bg-white rounded-lg p-4 border-l-2 border-parchment-dark shadow-sm"><h4 class="font-serif font-semibold text-forest text-sm mb-1">' + e.title + '</h4><p class="text-sm text-ink-mid leading-relaxed">' + e.content + '</p></div></div>').join('');
+            document.getElementById('timelineContent').innerHTML = `
+                <div class="timeline-spine"></div>
+                <div class="relative pl-8 pb-8"><div class="timeline-dot"></div><div class="text-xs font-semibold text-ochre uppercase mb-1">1770</div><div class="bg-white rounded-lg p-4 shadow-sm"><h4 class="font-serif font-semibold text-forest text-sm">Origines Royales</h4><p class="text-sm text-ink-mid">Prince Nandjo fonde Balengou.</p></div></div>
+            `;
         }
 
         let currentView = 'flat';
@@ -919,18 +705,11 @@
             const btnReset= document.getElementById('btnResetView');
 
             if (view === 'flat') {
-                flat.style.display = '';
-                d3v.style.display  = 'none';
-                filtersBar.style.display = '';
-                btnReset.style.display = 'none';
+                flat.style.display = ''; d3v.style.display = 'none'; filtersBar.style.display = ''; btnReset.style.display = 'none';
                 btnFlat.className = 'px-4 py-2 text-sm font-semibold bg-forest text-white border-none cursor-pointer';
                 btnD3.className   = 'px-4 py-2 text-sm font-semibold bg-cream text-forest border-none cursor-pointer';
             } else {
-                flat.style.display = 'none';
-                d3v.style.display  = '';
-                filtersBar.style.display = 'none';
-                btnReset.style.display = '';
-                btnReset.classList.remove('hidden');
+                flat.style.display = 'none'; d3v.style.display = ''; filtersBar.style.display = 'none'; btnReset.style.display = '';
                 btnFlat.className = 'px-4 py-2 text-sm font-semibold bg-cream text-forest border-none cursor-pointer';
                 btnD3.className   = 'px-4 py-2 text-sm font-semibold bg-forest text-white border-none cursor-pointer';
                 if (!d3Initialized) { initD3Tree(); d3Initialized = true; }
@@ -939,25 +718,23 @@
 
         let d3Svg, d3Zoom;
 
-        // CORRECTION DE LA HIÉRACHIE D3 POUR INTÉGRER LES CONJOINTES SANS LES PERDRE
+        // HIÉRARCHIE D3 INTÉGRANT TOUTES LES CONJOINTES VIA LEUR LIAISON SPOUSEIDS OU PARENTID
         function buildHierarchy() {
             const root = { id: '__root__', name: '', children: [] };
             const nm = { '__root__': root };
 
-            const allRelevantPersons = familyData.persons.filter(p =>
-                p.parentId || (!p.parentId && (!p.spouseIds || !p.spouseIds.length)) || (p.spouseIds && p.spouseIds.length > 0)
-            );
-
-            allRelevantPersons.forEach(p => {
+            familyData.persons.forEach(p => {
                 const g = generationsMap.get(p.id) || 1;
                 nm[p.id] = { id: p.id, name: p.name, gen: g, data: p, children: [] };
             });
 
-            allRelevantPersons.forEach(p => {
+            familyData.persons.forEach(p => {
                 const node = nm[p.id];
+                if (!node) return;
                 if (p.parentId && nm[p.parentId]) {
                     nm[p.parentId].children.push(node);
                 } else if (p.spouseIds && p.spouseIds.length > 0 && nm[p.spouseIds[0]]) {
+                    // Rattachement du conjoint au partenaire pour qu'il apparaisse dans l'arbre hiérarchique D3
                     const partnerNode = nm[p.spouseIds[0]];
                     if (partnerNode && partnerNode.parent) {
                         partnerNode.parent.children.push(node);
@@ -972,39 +749,7 @@
             return d3.hierarchy(root);
         }
 
-        function getSpouseNodes() {
-            return familyData.persons.filter(p => !p.parentId && p.spouseIds && p.spouseIds.length > 0);
-        }
-
-        function autoFitD3(allNodes, viz, W, H) {
-            function nx(d) {
-                if (viz === 'radial') return d.y * Math.cos(d.x - Math.PI/2);
-                if (viz === 'lr') return d.y;
-                return d.x;
-            }
-            function ny(d) {
-                if (viz === 'radial') return d.y * Math.sin(d.x - Math.PI/2);
-                if (viz === 'lr') return d.x;
-                return d.y;
-            }
-            const xs = allNodes.map(nx), ys = allNodes.map(ny);
-            const minX = Math.min(...xs), maxX = Math.max(...xs);
-            const minY = Math.min(...ys), maxY = Math.max(...ys);
-            const scale = Math.min(W/(maxX-minX+140), H/(maxY-minY+100), 1) * 0.88;
-            const tx = W/2 - scale*(minX+maxX)/2;
-            const ty = H/2 - scale*(minY+maxY)/2;
-            d3Svg.transition().ease(d3.easeCubicOut).duration(500).call(d3Zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
-        }
-
-        function resetD3View() {
-            const container = document.getElementById('d3TreeContainer');
-            if (!d3Svg || !d3Zoom || !container) return;
-            const W = container.clientWidth || 900, H = container.clientHeight || 600;
-            d3Svg.transition().ease(d3.easeCubicInOut).duration(700).call(d3Zoom.transform, d3.zoomIdentity.translate(40, H/2).scale(0.85));
-        }
-
         let currentViz = 'forcetree';
-
         function setD3Viz(viz) {
             currentViz = viz;
             document.querySelectorAll('.d3-viz-btn').forEach(b => b.classList.toggle('active', b.dataset.viz === viz));
@@ -1014,178 +759,86 @@
         }
 
         function initD3Tree() {
-          try {
-            const container = document.getElementById('d3TreeContainer');
-            const W = container.clientWidth || 900;
-            const H = container.clientHeight || 600;
-            const viz = currentViz;
-            const maxGen = Math.max(...Array.from(generationsMap.values()));
-            const root = buildHierarchy();
+            try {
+                const container = document.getElementById('d3TreeContainer');
+                const W = container.clientWidth || 900, H = container.clientHeight || 600;
+                const root = buildHierarchy();
 
-            if (viz === 'radial') {
-                d3.tree().size([2 * Math.PI, maxGen * 120]).separation((a, b) => (a.parent === b.parent ? 2 : 3) / a.depth)(root);
-            } else if (viz === 'lr') {
-                // Espacement élargi pour éviter l'écrasement des nœuds et des conjointes
-                d3.tree().nodeSize([45, 230]).separation((a, b) => a.parent === b.parent ? 1.2 : 2)(root);
-            } else if (viz === 'tb') {
-                d3.tree().nodeSize([50, 140]).separation((a, b) => a.parent === b.parent ? 1.2 : 2)(root);
-            }
+                if (currentViz === 'lr') {
+                    d3.tree().nodeSize([45, 230])(root);
+                } else if (currentViz === 'tb') {
+                    d3.tree().nodeSize([50, 140])(root);
+                }
 
-            d3Svg = d3.select('#d3TreeContainer').append('svg')
-                .attr('width', W).attr('height', H).style('display','block');
+                d3Svg = d3.select('#d3TreeContainer').append('svg').attr('width', W).attr('height', H).style('display','block');
+                let gGroup;
+                d3Zoom = d3.zoom().scaleExtent([0.1,4]).on('zoom', e => { if(gGroup) gGroup.attr('transform', e.transform); });
+                d3Svg.call(d3Zoom);
+                gGroup = d3Svg.append('g');
 
-            let gGroup;
-            d3Zoom = d3.zoom().scaleExtent([0.1,4]).on('zoom', e => { if(gGroup) gGroup.attr('transform', e.transform); });
-            d3Svg.call(d3Zoom);
-            gGroup = d3Svg.append('g');
+                const allNodes = root.descendants().filter(d => d.data.id !== '__root__');
+                const links = root.links().filter(d => d.source.data.id !== '__root__');
 
-            const allNodes = root.descendants().filter(d => d.data.id !== '__root__');
-            const links = root.links().filter(d => d.source.data.id !== '__root__');
+                if (currentViz === 'forcetree') {
+                    renderForceTree(gGroup, allNodes, links, W, H);
+                    setTimeout(() => { d3Svg.call(d3Zoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(0.7)); }, 50);
+                    return;
+                }
 
-            if (viz === 'forcetree') {
-                renderForceTree(gGroup, allNodes, links, W, H);
-                setTimeout(() => { d3Svg.call(d3Zoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(0.7)); }, 50);
-                return;
-            }
+                gGroup.selectAll('.d3-link').data(links).join('path')
+                    .attr('fill','none').attr('stroke', d => GEN_COLORS[(d.target.data.gen-1) % GEN_COLORS.length])
+                    .attr('stroke-width', 1.5).attr('stroke-opacity', 0.4)
+                    .attr('d', currentViz === 'lr' ? d3.linkHorizontal().x(d=>d.y).y(d=>d.x) : d3.linkVertical().x(d=>d.x).y(d=>d.y));
 
-            gGroup.selectAll('.d3-link').data(links).join('path')
-                .attr('class','d3-link').attr('fill','none')
-                .attr('stroke', d => GEN_COLORS[(d.target.data.gen-1) % GEN_COLORS.length])
-                .attr('stroke-width', 1.5).attr('stroke-opacity', 0.4)
-                .attr('d', viz === 'radial'
-                    ? d3.linkRadial().angle(d=>d.x).radius(d=>d.y)
-                    : viz === 'lr'
-                        ? d3.linkHorizontal().x(d=>nx(d)).y(d=>ny(d))
-                        : d3.linkVertical().x(d=>nx(d)).y(d=>ny(d)));
+                const nodeGroups = gGroup.selectAll('.d3-node').data(allNodes).join('g')
+                    .attr('transform', d => currentViz === 'lr' ? 'translate('+d.y+','+d.x+')' : 'translate('+d.x+','+d.y+')')
+                    .style('cursor','pointer')
+                    .on('dblclick', (e, d) => { e.stopPropagation(); showPersonDetails(d.data.id); });
 
-            function nx(d) { return viz==='radial' ? d.y*Math.cos(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.y : d.x; }
-            function ny(d) { return viz==='radial' ? d.y*Math.sin(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.x : d.y; }
+                nodeGroups.append('circle').attr('r', 12)
+                    .attr('fill', d => GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length])
+                    .attr('stroke', '#FFFBF4').attr('stroke-width', 2);
 
-            const nodeGroups = gGroup.selectAll('.d3-node').data(allNodes).join('g')
-                .attr('class','d3-node')
-                .attr('transform', d => 'translate('+nx(d)+','+ny(d)+')')
-                .style('cursor','pointer')
-                .on('click', (event,d) => {
-                    event.stopPropagation();
-                    showD3NodeMenu(event, d, event.clientX, event.clientY);
-                })
-                .on('dblclick', (event,d) => { event.stopPropagation(); showPersonDetails(d.data.id); });
+                nodeGroups.append('text').attr('dy', 24).attr('text-anchor','middle').attr('font-size','11px')
+                    .attr('fill', '#1E1A14').attr('font-family','"DM Sans", sans-serif').text(d => d.data.name);
 
-            const circleR = d => {
-                const role = d.data.data && d.data.data.role;
-                if (role === 'Patriarche' || role === 'Héritier' || (role && role.includes('Princesse'))) return 16;
-                return d.data.gen<=2 ? 13 : d.data.gen<=4 ? 11 : 9;
-            };
-
-            nodeGroups.append('circle')
-                .attr('r', circleR)
-                .attr('fill', d => (d.data.data && d.data.data.role === 'Patriarche') ? '#A0522D' : GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length])
-                .attr('stroke', '#FFFBF4')
-                .attr('stroke-width', 2.5);
-
-            nodeGroups.each(function(d) {
-                const g = d3.select(this);
-                const r = circleR(d);
-                const label = d.data.name;
-                const pillW = label.length * 6.2 + 10;
-                g.append('rect').attr('x', -pillW/2).attr('y', r + 4).attr('width', pillW).attr('height', 15).attr('rx', 5).attr('fill', 'rgba(255,255,255,0.92)');
-                g.append('text').attr('dy', r + 15).attr('text-anchor','middle').attr('font-size','11px').attr('fill', GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length]).attr('font-family','"DM Sans", sans-serif').text(label);
-            });
-
-            setTimeout(() => autoFitD3(allNodes, viz, W, H), 30);
-          } catch(e) {
-            console.error('D3 error:', e);
-          }
+            } catch(e) { console.error('D3 error:', e); }
         }
 
         function renderForceTree(gGroup, allNodes, links, W, H) {
-            window._d3ForceSimulation = null;
             const simulation = d3.forceSimulation(allNodes)
-                .force('link', d3.forceLink(links).id(d => d.data.id).distance(80).strength(0.7))
-                .force('charge', d3.forceManyBody().strength(-220))
-                .force('x', d3.forceX(d => (d.data.gen || 1) * (W / 9)).strength(0.4))
-                .force('y', d3.forceY(H / 2).strength(0.05))
-                .force('collision', d3.forceCollide(24));
+                .force('link', d3.forceLink(links).id(d => d.data.id).distance(90).strength(0.7))
+                .force('charge', d3.forceManyBody().strength(-250))
+                .force('collision', d3.forceCollide(28));
 
             const linkEl = gGroup.selectAll('.d3-link').data(links).join('line')
-                .attr('class', 'd3-link').attr('fill', 'none')
                 .attr('stroke', d => GEN_COLORS[(d.target.data.gen-1) % GEN_COLORS.length])
-                .attr('stroke-width', 1.5).attr('stroke-opacity', 0.4);
+                .attr('stroke-width', 1.5).attr('stroke-opacity', 0.5);
 
-            const circleR = d => {
-                const role = d.data.data && d.data.data.role;
-                if (role === 'Patriarche' || role === 'Héritier') return 16;
-                return d.data.gen<=2 ? 13 : d.data.gen<=4 ? 11 : 9;
-            };
             const nodeEl = gGroup.selectAll('.d3-node').data(allNodes).join('g')
-                .attr('class', 'd3-node').style('cursor', 'pointer')
+                .style('cursor', 'pointer')
                 .call(d3.drag()
                     .on('start', (e,d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
                     .on('drag', (e,d) => { d.fx = e.x; d.fy = e.y; })
-                    .on('end', (e,d) => { if (!e.active) simulation.alphaTarget(0); d._pinned = true; })
+                    .on('end', (e,d) => { if (!e.active) simulation.alphaTarget(0); })
                 )
-                .on('dblclick', (event,d) => { event.stopPropagation(); showPersonDetails(d.data.id); });
+                .on('dblclick', (e,d) => { e.stopPropagation(); showPersonDetails(d.data.id); });
 
-            nodeEl.append('circle').attr('r', circleR).attr('fill', d => GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length])
-                .attr('stroke', '#FFFBF4').attr('stroke-width', 2.5);
+            nodeEl.append('circle').attr('r', 13).attr('fill', d => GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length]).attr('stroke', '#FFFBF4').attr('stroke-width', 2.5);
+            nodeEl.append('text').attr('dy', 25).attr('text-anchor', 'middle').attr('font-size', '11px').attr('fill', '#1E1A14').text(d => d.data.name);
 
-            window._d3ForceSimulation = simulation;
             simulation.on('tick', () => {
                 linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
                 nodeEl.attr('transform', d => 'translate('+d.x+','+d.y+')');
             });
         }
 
-        function d3FreezeAll() {
-            if (!window._d3ForceSimulation) return;
-            window._d3ForceSimulation.nodes().forEach(d => { d.fx = d.x; d.fy = d.y; d._pinned = true; });
-            window._d3ForceSimulation.stop();
-        }
-
         function d3ZoomIn()  { if(d3Svg&&d3Zoom) d3Svg.transition().duration(300).call(d3Zoom.scaleBy, 1.5); }
         function d3ZoomOut() { if(d3Svg&&d3Zoom) d3Svg.transition().duration(300).call(d3Zoom.scaleBy, 0.67); }
-
-        let d3ActiveNode = null;
-        let d3ActiveNodes = null;
-
-        function showD3NodeMenu(event, d, screenX, screenY) {
-            d3ActiveNode = d;
-            const menu = document.getElementById('d3NodeMenu');
-            const wrapper = document.getElementById('d3TreeContainer').parentElement;
-            const rect = wrapper.getBoundingClientRect();
-            menu.style.left = (screenX - rect.left + 8) + 'px';
-            menu.style.top  = (screenY - rect.top + 8) + 'px';
-            document.getElementById('d3NodeMenuName').textContent = (d.data.name || '?') + ' — G' + (d.data.gen || '?');
-            menu.style.display = 'block';
-        }
-
-        function hideD3NodeMenu() {
-            const menu = document.getElementById('d3NodeMenu');
-            if (menu) menu.style.display = 'none';
-        }
-
-        function d3MenuAction(action) {
-            hideD3NodeMenu();
-            if (!d3ActiveNode) return;
-            const d = d3ActiveNode;
-            if (action === 'profile') {
-                showPersonDetails(d.data.id);
-            } else if (action === 'flat') {
-                setTreeView('flat');
-                setTimeout(() => {
-                    const box = document.querySelector('[data-id="'+d.data.id+'"]');
-                    if (box) { box.scrollIntoView({behavior:'smooth',block:'center'}); box.classList.add('highlighted'); setTimeout(()=>box.classList.remove('highlighted'),2500); }
-                }, 300);
-            }
-        }
-
-        document.addEventListener('click', e => {
-            if (!e.target.closest('#d3NodeMenu') && !e.target.closest('.d3-node'))
-                hideD3NodeMenu();
-        });
+        function resetD3View() { initD3Tree(); }
+        function d3FreezeAll() {}
 
         document.addEventListener('DOMContentLoaded', loadData);
-        document.getElementById('personModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
     </script>
 </body>
 </html>
