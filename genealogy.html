@@ -562,30 +562,32 @@
         const GEN_NAMES = ['Origine Tikar','Rois de Baleng','Princes Fondateurs','Exil 1770','Notables Balengou','Ancêtres','Patriarche','Enfants','Petits-enfants','Arrière-petits'];
 
         async function loadData() {
+            // 1. La vue d'ensemble s'affiche même si le JSON ne se charge pas
+            try { renderOverview(); } catch (e) { console.error('renderOverview (avant chargement) :', e); }
+
             try {
                 const response = await fetch('family-data-dynamic.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status + ' sur family-data-dynamic.json');
                 familyData = await response.json();
-                // Safety net: treat missing lists as empty so one missing key can't blank the page
                 familyData.persons = familyData.persons || [];
                 familyData.locations = familyData.locations || [];
                 calculateGenerations();
 
+                visibleGenerations.clear();
                 const maxGen = Math.max(...Array.from(generationsMap.values()));
-                for (let i = 1; i <= maxGen; i++) {
-                    visibleGenerations.add(i);
-                }
+                for (let i = 1; i <= maxGen; i++) visibleGenerations.add(i);
 
-                renderStats();
-                renderOverview();
-                renderTree();
-                renderGenerationFilters();
-                renderPersonsList();
-                renderLocations();
-                renderTimeline();
-                updateVisibleCount();
+                // 2. Chaque étape est isolée : une erreur n'empêche pas les autres
+                const steps = [renderOverview, renderStats, renderTree, renderGenerationFilters,
+                               renderPersonsList, renderLocations, renderTimeline, updateVisibleCount];
+                steps.forEach(fn => {
+                    try { fn(); } catch (e) { console.error(fn.name + ' :', e); }
+                });
             } catch (error) {
-                console.error('Erreur:', error);
-                document.getElementById('familyTree').innerHTML = '<div class="text-center p-8"><p class="text-terra font-semibold mb-2">Impossible de charger les donnees</p><p class="text-ink-light text-sm">Verifiez que family-data-dynamic.json est accessible (serveur local requis).</p></div>';
+                console.error('Erreur de chargement :', error);
+                document.getElementById('familyTree').innerHTML =
+                    '<div class="text-center p-8"><p class="text-terra font-semibold mb-2">Impossible de charger les donnees</p>' +
+                    '<p class="text-ink-light text-sm">' + error.message + '</p></div>';
             }
         }
 
@@ -599,6 +601,11 @@
         }
 
         function getGeneration(id) { return generationsMap.get(id) || 1; }
+
+        // Personnes entrées dans la famille par mariage (id « spouse_ » ou marriedIn: true)
+        function isSpouseNode(p) {
+            return p.marriedIn === true || String(p.id).startsWith('spouse_');
+        }
 
         function getGenerationColor(n) {
             const accent = GEN_COLORS[(n - 1) % GEN_COLORS.length];
@@ -1170,38 +1177,45 @@
         const TB_UNIT  = 150;  // pixels entre deux frères et sœurs (ou un conjoint et son voisin)
         const TB_LEVEL = 140;  // pixels entre deux générations
 
+        // Conjoints rattachés à côté de leur partenaire : personnes sans parent,
+        // ou personnes entrées dans la famille par mariage (id « spouse_ »), même si elles ont un parent
+        function getSpouseNodes() {
+            return familyData.persons.filter(p =>
+                p.spouseIds && p.spouseIds.length && (!p.parentId || isSpouseNode(p))
+            );
+        }
+
         function buildHierarchy() {
-            // Two-pass approach: add ALL bloodline nodes first, then wire parents.
             const root = { id: '__root__', name: '', children: [] };
             const nm = { '__root__': root };
 
-            // Bloodline = has parentId OR (no parentId AND no spouseIds)
+            // Les conjoints rattachés ne sont jamais placés dans la lignée de leurs parents d'origine
+            const spouseOnly = new Set(getSpouseNodes().map(p => p.id));
             const bloodline = familyData.persons.filter(p =>
-                p.parentId || (!p.parentId && (!p.spouseIds || !p.spouseIds.length))
+                !spouseOnly.has(p.id) && (p.parentId || !p.spouseIds || !p.spouseIds.length)
             );
 
-            // Pass 1: create all nodes
+            // Pass 1 : créer tous les nœuds de la lignée
             bloodline.forEach(p => {
-                const g = generationsMap.get(p.id) || 1;
-                nm[p.id] = { id: p.id, name: p.name, gen: g, data: p, children: [] };
+                nm[p.id] = { id: p.id, name: p.name, gen: generationsMap.get(p.id) || 1, data: p, children: [] };
             });
 
-            // Pass 2: wire parent-child relationships
+            // Pass 2 : relier parents et enfants
             bloodline.forEach(p => {
                 const node = nm[p.id];
                 if (p.parentId && nm[p.parentId]) {
                     nm[p.parentId].children.push(node);
+                } else if (p.parentId && spouseOnly.has(p.parentId)) {
+                    // Enfant d'un conjoint rattaché : il est placé sous le partenaire de ce conjoint
+                    const sp = familyData.persons.find(x => x.id === p.parentId);
+                    const partner = (sp.spouseIds || []).find(id => nm[id]);
+                    (partner ? nm[partner] : root).children.push(node);
                 } else {
                     root.children.push(node);
                 }
             });
 
             return d3.hierarchy(root);
-        }
-
-        // Get all spouse-only nodes (no parentId, has spouseIds)
-        function getSpouseNodes() {
-            return familyData.persons.filter(p => !p.parentId && p.spouseIds && p.spouseIds.length > 0);
         }
 
         function autoFitD3(allNodes, viz, W, H) {
@@ -1628,7 +1642,7 @@
         function renderForceTree(gGroup, allNodes, links, W, H) {
             window._d3ForceSimulation = null;
 
-            // Conjoints sans parent : ce sont aussi des nœuds de la simulation
+            // Conjoints rattachés : ce sont aussi des nœuds de la simulation
             const spouseNodes = getSpouseNodes()
                 .filter(sp => (sp.spouseIds || []).some(sid => allNodes.some(d => d.data.id === sid)))
                 .map(sp => ({
