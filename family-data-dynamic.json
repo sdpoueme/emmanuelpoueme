@@ -99,4 +99,1571 @@
       "parentId": null,
       "spouseIds": ["gen2_wetio"],
       "gender": "F",
-      "generation
+      "generation": 5
+    },
+    {
+      "id": "gen1_chef_bamena",
+      "name": "Chef de Bamena",
+      "role": "Roi de Bamena",
+      "birthPlace": "Bamena",
+      "residence": "Bamena",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 6,
+      "notes": "Chef de la chefferie de Bamena. Père de Ta'a Nanwou."
+    },
+    {
+      "id": "ndokep_antoine",
+      "name": "Papa Ndokep Antoine",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 6,
+      "notes": "Voisin à Batchingou et père de Tchihikou Agnès."
+    },
+    {
+      "id": "gen2_tchie",
+      "name": "Tchié Ngantchié",
+      "dates": "~1800s",
+      "role": "Lignée royale",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou, Tousseu",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 6,
+      "titles": [
+        "Ministre chargé de la défense de l'intégrité territoriale",
+        "Responsable du lieu sacré Metchoumbouh"
+      ],
+      "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou."
+    },
+    {
+      "id": "gen2_chaneyou",
+      "name": "Cha Neyou",
+      "dates": "~1800s",
+      "birthPlace": "Balengou, Ndepgweu-tu",
+      "residence": "Balengou, Ndepgweu-tu",
+      "parentId": "gen2_wetio",
+      "spouseIds": ["spouse_ketchignou", "spouse_tchayep"],
+      "gender": "M",
+      "generation": 6,
+      "notes": "Frère de Magni Kouabou, patriarche de la branche Balengou"
+    },
+    {
+      "id": "spouse_ketchignou",
+      "name": "Ketchignou",
+      "dates": "~1800s",
+      "parentId": null,
+      "spouseIds": ["gen2_chaneyou"],
+      "gender": "F",
+      "generation": 6
+    },
+    {
+      "id": "spouse_tchayep",
+      "name": "Tchayep",
+      "dates": "~1800s",
+      "parentId": null,
+      "spouseIds": ["gen2_chaneyou"],
+      "gender": "F",
+      "generation": 6
+    },
+    {
+      "id": "gen2_wajiamou",
+      "name": "Wajiamou",
+      "dates": "~1800s",
+      "birthPlace": "Balengou",
+      "residence": "Balengou, Tieuptchoui",
+      "parentId": "gen2_wetio",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 6,
+      "notes": "Sœur de Magni Kouabou, ancêtre de la branche Makenene"
+    },
+    {
+      "id": "gen3_nguebou",
+      "name": "Nguebou",
+      "dates": "~1800s",
+      "parentId": "gen2_wetio",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 6
+    },
+    {
+      "id": "gen3_kouabou",
+      "name": "Magni Kouabou",
+      "dates": "~1850s",
+      "role": "Lignée royale",
+      "birthPlace": "Balengou, Ndepgweu-tu",
+      "residence": "Batchingou, Toukou (Tousseu)",
+      "parentId": "gen2_wetio",
+      "spouseIds": ["spouse_taawejiewou"],
+      "gender": "F",
+      "generation": 6
+    },
+    {
+      "id": "spouse_taawejiewou",
+      "name": "Ta'a Wéjiéwou",
+      "dates": "~1850s",
+      "residence": "Batchingou, Toukou",
+      "parentId": null,
+      "spouseIds": ["gen3_kouabou"],
+      "gender": "M",
+      "generation": 6
+    },
+    {
+      "id": "ngoubeyou_samuel",
+      "name": "Ngoubeyou Samuel",
+      "role": "Évangéliste",
+      "residence": "Balengou",
+      "parentId": null,
+      "spouseIds": ["tchatchou_pauline"],
+      "gender": "M",
+      "generation": 7,
+      "notes": "Évangéliste à Balengou, père de Mafeu Lydie Njofang."
+    },
+    {
+      "id": "tchatchou_pauline",
+      "name": "Tchatchou Pauline",
+      "parentId": null,
+      "spouseIds": ["ngoubeyou_samuel"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "langue_samuel_feugou",
+      "name": "Papa Langue Samuel (de Feugou)",
+      "role": "Chef du village Feugou",
+      "birthPlace": "Feugou",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 7,
+      "notes": "Ami du patriarche Tinang Joseph et père de Megni Rachel."
+    },
+    {
+      "id": "tchie_pere_isaac",
+      "name": "Un Tchié Ngantchié (Père de Tchiémeni Isaac)",
+      "role": "Héritier de Tchié Ngantchié",
+      "birthPlace": "Batchingou",
+      "residence": "Foumbot",
+      "parentId": "gen2_tchie",
+      "spouseIds": ["spouse_pangwa_elisabeth"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_pangwa_elisabeth",
+      "name": "Maman Pangwa Elisabeth",
+      "residence": "Batchingou",
+      "parentId": null,
+      "spouseIds": ["tchie_pere_isaac"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "tchie_frere_usurpateur",
+      "name": "Frère exilé",
+      "parentId": "gen2_tchie",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "gen4_ngnoumegni",
+      "name": "Ngnoumegni",
+      "dates": "~1868-?",
+      "birthPlace": "Batchingou, Toukou",
+      "residence": "Batchingou, Tousseu",
+      "parentId": "gen3_kouabou",
+      "spouseIds": ["gen3_tchiendjo"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "gen3_tchiendjo",
+      "name": "Tchassep Ta'a Tchiendjo",
+      "dates": "1862-?",
+      "role": "Lignée royale",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou, Tousseu",
+      "parentId": "gen2_tchie",
+      "spouseIds": ["gen4_ngnoumegni", "spouse_tchakouyap"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_tchakouyap",
+      "name": "Tchakouyap",
+      "dates": "~1860s",
+      "parentId": null,
+      "spouseIds": ["gen3_tchiendjo"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "gen3_nanwou",
+      "name": "Ta'a Nanwou",
+      "dates": "~1860s-1958",
+      "role": "Lignée royale",
+      "birthPlace": "Bamena",
+      "residence": "Bamena",
+      "parentId": "gen1_chef_bamena",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 7,
+      "notes": "Fils du chef de Bamena. Patriarche de Bamena."
+    },
+    {
+      "id": "gen3_tagni",
+      "name": "Tagni Meyuka",
+      "dates": "~1860s-?",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "parentId": "gen2_tchie",
+      "spouseIds": ["spouse_wougang"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_wougang",
+      "name": "Wougang",
+      "dates": "~1860s",
+      "parentId": null,
+      "spouseIds": ["gen3_tagni"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "gen3_ndomou",
+      "name": "Ndomou Juliette (Maman Souhé)",
+      "dates": "~1860s-?",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "parentId": "gen2_tchie",
+      "spouseIds": ["spouse_ngomeni"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "spouse_ngomeni",
+      "name": "Ngomeni",
+      "dates": "~1860s",
+      "parentId": null,
+      "spouseIds": ["gen3_ndomou"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "gen3_kouakep_bazou",
+      "name": "Kouakep",
+      "parentId": "gen2_wajiamou",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "mbiendu",
+      "name": "Wemba Mbiendu Sadrack",
+      "dates": "~1900-?",
+      "role": "Patriarche Balengou",
+      "birthPlace": "Balengou, Ndepgweu",
+      "residence": "Balengou / Manegolé",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": ["spouse_mbami", "spouse_nzepang", "spouse_seumou", "spouse_tchienang"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_mbami",
+      "name": "Mbami Rebecca",
+      "parentId": null,
+      "spouseIds": ["mbiendu"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "spouse_nzepang",
+      "name": "Nzepang Mbienda Marie",
+      "parentId": null,
+      "spouseIds": ["mbiendu"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "spouse_seumou",
+      "name": "Seumou Pauline",
+      "parentId": null,
+      "spouseIds": ["mbiendu"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "spouse_tchienang",
+      "name": "Tchienang Helene",
+      "parentId": null,
+      "spouseIds": ["mbiendu"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "etienne",
+      "name": "Ouafeu Ngantchou Étienne",
+      "ndap": "Papa Tayou, Papa Iti, Papa Samedi",
+      "dates": "~1920-?",
+      "birthPlace": "Balengou, Ndepgweu",
+      "residence": "Foumban",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": ["spouse_tchihikou"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_tchihikou",
+      "name": "Tchihikou Agnes",
+      "dates": "~1920s",
+      "parentId": "ndokep_antoine",
+      "spouseIds": ["etienne"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "wetie_gabriel",
+      "name": "Wetie Gabriel",
+      "birthPlace": "Balengou",
+      "residence": "Foumbot, Company",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": ["spouse_fankou"],
+      "gender": "M",
+      "generation": 7
+    },
+    {
+      "id": "spouse_fankou",
+      "name": "Fankou Elisabeth",
+      "parentId": null,
+      "spouseIds": ["wetie_gabriel"],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "doussa",
+      "name": "Doussa Elisabeth",
+      "birthPlace": "Balengou",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 7
+    },
+    {
+      "id": "tooua_raymond",
+      "name": "Sop Tooua Raymond",
+      "parentId": null,
+      "spouseIds": ["spouse_lydie_njofang"],
+      "gender": "M",
+      "generation": 8,
+      "notes": "Grand ami de Papa Étienne, beau-père de Poueme Emmanuel."
+    },
+    {
+      "id": "spouse_lydie_njofang",
+      "name": "Mafeu Njofang Lydie",
+      "dates": "1936-2022",
+      "born": "1936-06-22",
+      "birthPlace": "Balengou",
+      "deathPlace": "Bangangté",
+      "parentId": "ngoubeyou_samuel",
+      "spouseIds": ["tooua_raymond"],
+      "gender": "F",
+      "generation": 8,
+      "occupation": "Commerçante",
+      "titles": [
+        "Mafeu",
+        "Chevalier du Mérite Camerounais",
+        "Ancienne honoraire à l'EEC"
+      ],
+      "notes": "Décédée le 14 juillet 2022. Mère de 11 enfants dont Adeline Paule."
+    },
+    {
+      "id": "tchiemeni_isaac",
+      "name": "Tchiémeni Isaac",
+      "residence": "Douala",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "tchie_christine",
+      "name": "Christine",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "tchie_josue",
+      "name": "Josué",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "tchie_fille_uterine_1",
+      "name": "Fille utérine 1",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "tchie_fille_uterine_2",
+      "name": "Fille utérine 2",
+      "parentId": "tchie_pere_isaac",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "patriarch",
+      "name": "Ta'a Fieu Tagni Tinang Joseph",
+      "titre": "Ta'a Fieu",
+      "dates": "1898-2001",
+      "lifespan": "103 ans",
+      "role": "Patriarche",
+      "birthPlace": "Batchingou, Toukou (Tousseu)",
+      "residence": "Foumbot (Company) / Batchingou (Toukou)",
+      "parentId": "gen4_ngnoumegni",
+      "spouseIds": ["spouse_rebecca", "spouse_emilienne", "spouse_rachel"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "spouse_rebecca",
+      "name": "Megni Ngongang Rebecca",
+      "dates": "1906-1998",
+      "birthPlace": "Bamena",
+      "residence": "Foumbot / Batchingou",
+      "parentId": "gen3_nanwou",
+      "spouseIds": ["patriarch"],
+      "gender": "F",
+      "generation": 8,
+      "role": "Princesse de Bamena"
+    },
+    {
+      "id": "spouse_emilienne",
+      "name": "Mekeze Emilienne",
+      "birthPlace": "Batchingou",
+      "parentId": null,
+      "spouseIds": ["patriarch"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_rachel",
+      "name": "Megni Rachel",
+      "birthPlace": "Feugou",
+      "parentId": "langue_samuel_feugou",
+      "spouseIds": ["patriarch"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nougue",
+      "name": "Nougue Pauline",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tchiendjo",
+      "spouseIds": ["spouse_bamena_pauline"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_bamena_pauline",
+      "name": "Époux (Bamena)",
+      "parentId": null,
+      "spouseIds": ["gen4_nougue"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nagouo",
+      "name": "Nagouo Gaston",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tchiendjo",
+      "spouseIds": ["spouse_bangou_mega"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "spouse_bangou_mega",
+      "name": "Épouse (Bangou / Mega)",
+      "parentId": null,
+      "spouseIds": ["gen4_nagouo"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ngoko",
+      "name": "Ngoko Monique",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tchiendjo",
+      "spouseIds": ["spouse_bangou_monique"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_bangou_monique",
+      "name": "Époux (Bangou)",
+      "parentId": null,
+      "spouseIds": ["gen4_ngoko"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_kouakep_cat",
+      "name": "Kouakep Catherine",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tchiendjo",
+      "spouseIds": ["spouse_abel"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_abel",
+      "name": "Papa Abel (Fo Trou)",
+      "parentId": null,
+      "spouseIds": ["gen4_kouakep_cat"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ngomegni",
+      "name": "Ngomegni Benoit",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tchiendjo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ngoko_andre",
+      "name": "Ngoko André",
+      "birthPlace": "Bamena",
+      "residence": "Foumbot",
+      "parentId": "gen3_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ketchozo",
+      "name": "Ketchozo Dieudonné",
+      "birthPlace": "Bamena",
+      "residence": "Foumbot / Loum",
+      "parentId": "gen3_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ngongang_elisabeth",
+      "name": "Ngongang Elisabeth",
+      "birthPlace": "Bamena",
+      "residence": "Foumbot / Loum",
+      "parentId": "gen3_nanwou",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "kamka_martin",
+      "name": "Kamka Martin",
+      "birthPlace": "Bamena",
+      "parentId": "gen3_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "martin",
+      "name": "Tagni Nguenang Martin",
+      "dates": "~1900-?",
+      "birthPlace": "Bazou",
+      "residence": "Makenene",
+      "parentId": "gen3_kouakep_bazou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "cha_neyou_neyou",
+      "name": "Neyou",
+      "birthPlace": "Balengou",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "cha_neyou_tchuindjang",
+      "name": "Tchuindjang",
+      "birthPlace": "Balengou",
+      "parentId": "gen2_chaneyou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_tinang_disparu",
+      "name": "Tinang Joseph",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_samou",
+      "name": "Samou Pierre",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nanwou",
+      "name": "Nanwou (Wouoché)",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_konya",
+      "name": "Konya Jeanne",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "gen4_tchiengang",
+      "name": "Tchiengang Philippe",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ngouleu",
+      "name": "Ngouleu Emmanuel",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_tagni",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nanwouo",
+      "name": "Nanwouo Jean (bèba)",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_ndomou",
+      "spouseIds": ["spouse_djogoua", "spouse_tchuisseu_eli"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "spouse_djogoua",
+      "name": "Djogoua Christine",
+      "parentId": null,
+      "spouseIds": ["gen4_nanwouo"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_tchuisseu_eli",
+      "name": "Tchuisseu Elisabeth",
+      "parentId": null,
+      "spouseIds": ["gen4_nanwouo"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nguenang",
+      "name": "Nguenang Daniel",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_ndomou",
+      "spouseIds": ["spouse_kouatcho"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "spouse_kouatcho",
+      "name": "Kouatcho si",
+      "parentId": null,
+      "spouseIds": ["gen4_nguenang"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "gen4_nguegang",
+      "name": "Nguegang Yakopine",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_ndomou",
+      "spouseIds": ["spouse_mougang"],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "spouse_mougang",
+      "name": "Mougang",
+      "parentId": null,
+      "spouseIds": ["gen4_nguegang"],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "gen4_ndjanpouep",
+      "name": "Ndjanpouep",
+      "birthPlace": "Batchingou",
+      "parentId": "gen3_ndomou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "kouamou_marie",
+      "name": "Kouamou Marie",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "keptukoua",
+      "name": "Keptukoua Josué",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "ndangang",
+      "name": "Ndangang Martin",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "ndamen",
+      "name": "Ndamen Paul",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "mbakop",
+      "name": "Mbakop Elise",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "yitkou",
+      "name": "Yitkou Catherine",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "mbahnang",
+      "name": "Mbahnang Elisabeth",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "yankeu",
+      "name": "Yankeu Florence",
+      "parentId": "mbiendu",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "noupa",
+      "name": "Noupa Jean",
+      "parentId": "etienne",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "tchanang",
+      "name": "Tchanang Françoise",
+      "parentId": "etienne",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "tchuissang",
+      "name": "Tchuissang Robert",
+      "parentId": "etienne",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "ndonkep",
+      "name": "Ndonkep Irène",
+      "parentId": "etienne",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "mbiendu_serge",
+      "name": "Mbiendu Serge",
+      "parentId": "etienne",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "ngantchou_paul",
+      "name": "Ngantchou Paul (Bosco)",
+      "parentId": "wetie_gabriel",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "tinang_cecile",
+      "name": "Tinang Cécile",
+      "parentId": "wetie_gabriel",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "wanseu",
+      "name": "Wanseu François",
+      "parentId": "doussa",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "wetie_david",
+      "name": "Wetie David",
+      "parentId": "doussa",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "mbiendu_martin",
+      "name": "Mbiendu Martin",
+      "parentId": "doussa",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "noukawolo",
+      "name": "Noukawolo Pauline",
+      "parentId": "doussa",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 8
+    },
+    {
+      "id": "njueya",
+      "name": "Njueya Andre",
+      "parentId": "doussa",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 8
+    },
+    {
+      "id": "heir",
+      "name": "Poueme Emmanuel",
+      "ndap": "Ta'a Fieu Poueme Emmanuel",
+      "born": "1950",
+      "role": "Héritier",
+      "birthPlace": "Batchingou, Toukou",
+      "residence": "Batchingou / Yaoundé",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_adeline"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "spouse_adeline",
+      "name": "Ngankeu Tooua Adeline Paule",
+      "birthPlace": "Balengou",
+      "parentId": "tooua_raymond",
+      "spouseIds": ["heir"],
+      "gender": "F",
+      "generation": 9,
+      "notes": "Fille de Sop Tooua Raymond et Mafeu Lydie Njofang."
+    },
+    {
+      "id": "theodore",
+      "name": "Ngoughou Théodore",
+      "dates": "1947-2017",
+      "birthPlace": "Batchingou, Toukou",
+      "residence": "Batchingou / Bertoua",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_mbouguen"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "spouse_mbouguen",
+      "name": "Mbouguen Lucienne",
+      "parentId": null,
+      "spouseIds": ["theodore"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "datouo_david",
+      "name": "Datouo David",
+      "birthPlace": "Foumbot",
+      "parentId": "patriarch",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "elise",
+      "name": "Ngnoumegni Élise (Moungang Woumegni Élisabeth)",
+      "dates": "1965-2016",
+      "birthPlace": "Foumbot",
+      "residence": "Bana",
+      "parentId": "patriarch",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "samuel",
+      "name": "Langue Samuel",
+      "dates": "1968-2017",
+      "birthPlace": "Foumbot",
+      "residence": "Batchingou",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_pulcherie"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "spouse_pulcherie",
+      "name": "Pulcherie Langue",
+      "parentId": null,
+      "spouseIds": ["samuel"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "lucienne",
+      "name": "Njankep Lucienne",
+      "birthPlace": "Foumbot",
+      "residence": "Bafia",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_djoh"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "spouse_djoh",
+      "name": "Djoh A Koung Ruben",
+      "parentId": null,
+      "spouseIds": ["lucienne"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "maryse",
+      "name": "Pangwa Sophie Maryse",
+      "birthPlace": "Foumbot",
+      "residence": "Bafang",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_nassi"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "spouse_nassi",
+      "name": "Nassi Eric",
+      "parentId": null,
+      "spouseIds": ["maryse"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "jean",
+      "name": "Lélé Jean",
+      "birthPlace": "Foumbot",
+      "residence": "Batchingou",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_lele_eveline"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "spouse_lele_eveline",
+      "name": "Lele Eveline",
+      "parentId": null,
+      "spouseIds": ["jean"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "valerie",
+      "name": "Kouakep Valérie",
+      "birthPlace": "Foumbot",
+      "residence": "Bameka",
+      "parentId": "patriarch",
+      "spouseIds": ["spouse_mambou"],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "spouse_mambou",
+      "name": "Mambou Jean Jacques",
+      "parentId": null,
+      "spouseIds": ["valerie"],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nankep_christian",
+      "name": "Nankep Christian",
+      "parentId": "gen4_nougue",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "tinang_hermine",
+      "name": "Tinang Hermine",
+      "parentId": "gen4_nougue",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "ze_helene",
+      "name": "Ze Hélène (Ndongwou)",
+      "parentId": "gen4_nagouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "kouamou_yvette",
+      "name": "Kouamou Yvette M",
+      "parentId": "gen4_nagouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "tinang_joseph_bernard",
+      "name": "Tinang Joseph Bernard",
+      "parentId": "gen4_ngoko",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "tchaya_felix",
+      "name": "Tchaya Félix Rodrigue",
+      "parentId": "gen4_kouakep_cat",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "ngongang_pierre",
+      "name": "Ngongang Pierre",
+      "parentId": "gen4_samou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "tinang_bertin",
+      "name": "Tinang Bertin",
+      "parentId": "gen4_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "tchaya_flaubert",
+      "name": "Tchaya Flaubert",
+      "parentId": "gen4_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "woungang_charles",
+      "name": "Woungang Charles",
+      "parentId": "gen4_nanwou",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c1",
+      "name": "Piakep Isaac",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c2",
+      "name": "Jotie Emmanuel",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c3",
+      "name": "Tchiengue Ivette",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c4",
+      "name": "Tchuisseu Clarice",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c5",
+      "name": "Hontcho Edvige",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "gen4_noungheu",
+      "name": "Noungheu Felix",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c7",
+      "name": "Tchouamou Vicky",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c8",
+      "name": "Tchiengang Christine",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c9",
+      "name": "Pakba Jeannette",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c10",
+      "name": "Nguenang Daniel",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c11",
+      "name": "Ndousseu Flobert",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c12",
+      "name": "Djomou Veaugelard Simplice",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c13",
+      "name": "Wandji Elodie Rosine",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nanwouo_c14",
+      "name": "Tchatie Bertrand",
+      "parentId": "gen4_nanwouo",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c1",
+      "name": "Namou Théophile",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c2",
+      "name": "Bontougang Lucresse",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c3",
+      "name": "Kouameni Louis Martin",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c4",
+      "name": "Ngoumeni Jules Fabrice",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c5",
+      "name": "Djomo Patrick",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c6",
+      "name": "Wansseu Lilianne",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c7",
+      "name": "Nguegang Anne Marie",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nguenang_c8",
+      "name": "Simeu Urbain Rue",
+      "parentId": "gen4_nguenang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguegang_c1",
+      "name": "Pado Brigitte",
+      "parentId": "gen4_nguegang",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "gen4_piakep",
+      "name": "Piakep Nicaisse",
+      "parentId": "gen4_nguegang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguegang_c3",
+      "name": "Sangang Jean Paul",
+      "parentId": "gen4_nguegang",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "nguegang_c4",
+      "name": "Domou Luise",
+      "parentId": "gen4_nguegang",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "joseph_makenene",
+      "name": "Joseph",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "therese",
+      "name": "Thérèse",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "nouthe",
+      "name": "Dr. Nouthe François",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "delphine",
+      "name": "Delphine",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 9
+    },
+    {
+      "id": "jeanpierre",
+      "name": "Jean Pierre",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "fidele",
+      "name": "Fidèle Tchakounte",
+      "parentId": "martin",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 9
+    },
+    {
+      "id": "serge",
+      "name": "Poueme Daouda Serge Donald",
+      "born": "1983",
+      "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
+      "parentId": "heir",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "armand",
+      "name": "Poueme Tooua Armand Cédric",
+      "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
+      "parentId": "heir",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "eric",
+      "name": "Poueme Tinang Eric Joel",
+      "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
+      "parentId": "heir",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "thierry",
+      "name": "Poueme Ngoughou Thierry Williams",
+      "birthPlace": "Yaoundé",
+      "residence": "Canada (Québec)",
+      "parentId": "heir",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "inesta",
+      "name": "Inesta Ngoughou",
+      "parentId": "theodore",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "carine",
+      "name": "Ngongang Carine",
+      "parentId": "elise",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "tuisseu",
+      "name": "Tuisseu Junior",
+      "parentId": "elise",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "kombou",
+      "name": "Kombou Rolande",
+      "parentId": "elise",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "estha",
+      "name": "Estha Langue",
+      "parentId": "samuel",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "josiane",
+      "name": "Josiane Langue",
+      "parentId": "samuel",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "linda",
+      "name": "Linda Langue",
+      "parentId": "samuel",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "erika",
+      "name": "Erika Langue",
+      "parentId": "samuel",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "steve",
+      "name": "Poueme Lele Steve",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "dilane",
+      "name": "Koualong Lele Dilane",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "boris",
+      "name": "Ngoughou Lele Boris",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "daina",
+      "name": "Magne Lele Daina Lorvine",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "F",
+      "generation": 10
+    },
+    {
+      "id": "daniel",
+      "name": "Kouatchang Lele Daniel",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    },
+    {
+      "id": "christien",
+      "name": "Pangoua Lele Christien",
+      "parentId": "jean",
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 10
+    }
+  ],
+  "locations": [
+    {
+      "name": "Batchingou (Toukou, Tousseu)",
+      "description": "Terre ancestrale de la famille. Concession originelle de Ta'a Wéjiéwou et Magni Kouabou, héritée par le patriarche Ta'a fieu Tinang Joseph. Lieu sacré Kou Tchap avec plantation de raphias."
+    },
+    {
+      "name": "Balengou (Ndepgweu-tu)",
+      "description": "Origine de la lignée maternelle du patriarche. Famille de Wetio Kouamou et Magni Kouabou. Lieu des rencontres familiales annuelles chez le patriarche Wemba Mbiendu Sadrack."
+    },
+    {
+      "name": "Bamena",
+      "description": "Origine maternelle - famille de Megni Ngongang Rebecca, épouse du patriarche. Petite-fille du chef Bamena."
+    },
+    {
+      "name": "Foumbot (Quartier Company)",
+      "description": "Lieu d'installation principale du patriarche après la guerre de l'indépendance (1960). Développement commercial et social. Chef de la communauté Batchingou."
+    },
+    {
+      "name": "Makenene",
+      "description": "Branche familiale issue de Wajiamou via Bazou. Plantations de cacaoyers."
+    },
+    {
+      "name": "Baleng (Bafoussam)",
+      "description": "Origines lointaines de la famille (~1770s). Chefferie d'origine du Prince Nandjo."
+    }
+  ]
+}
