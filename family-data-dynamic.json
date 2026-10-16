@@ -1,2470 +1,353 @@
-{
-  "persons": [
-    {
-      "id": "gen0_fondoup",
-      "name": "Fô Fondoup",
-      "dates": "~XVIIe siècle",
-      "birthYear": 1600,
-      "estimatedDates": "Vers 1600 (~XVIIe siècle)",
-      "role": "1er Roi de Baleng",
-      "birthPlace": "Plaines Tikar (Cameroun central)",
-      "residence": "Baleng, Bafoussam",
-      "parentId": null,
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 1,
-      "notes": "Premier roi de Baleng. Venu des plaines Tikar. Fondateur de la dynastie royale de Baleng. Père de Fô Tchoungafo."
-    },
-    {
-      "id": "gen0_tchoungafo",
-      "name": "Fô Tchoungafo",
-      "dates": "~XVIIe-XVIIIe siècle",
-      "birthYear": 1650,
-      "estimatedDates": "Vers 1650 (~XVIIe-XVIIIe siècle)",
-      "role": "2ème Roi de Baleng",
-      "birthPlace": "Baleng, Bafoussam",
-      "residence": "Baleng, Bafoussam",
-      "parentId": "gen0_fondoup",
-      "fatherId": "gen0_fondoup",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 2,
-      "notes": "2ème roi de Baleng. Fils de Fô Fondoup. C'est sous son règne que le royaume se stabilise. Père de trois fils majeurs : Lefoum Kougoung (son successeur), Notchwegom (fondateur de Bandjoun) et Prince Nanjo (fondateur de Balengou)."
-    },
-    {
-      "id": "gen1_nandjo",
-      "name": "Prince Nandjo",
-      "dates": "~1770s",
-      "birthYear": 1740,
-      "estimatedDates": "Vers 1740 (~1770s)",
-      "role": "Fondateur de la lignée",
-      "birthPlace": "Baleng, Bafoussam",
-      "residence": "Balengou (Kouodjou)",
-      "parentId": "gen0_tchoungafo",
-      "fatherId": "gen0_tchoungafo",
-      "spouseIds": [],
-      "notes": "Fils cadet de Fô Tchoungafo, 2ème roi de Baleng. Prince de Baleng. Leader de la migration de 1770 vers le sud. Devient le 1er roi de Balengou. Oncle de Neyou (fils de son frère Lefoum Kougoung). Frère de Notchwegom (fondateur de Bandjoun).",
-      "gender": "M",
-      "generation": 3
-    },
-    {
-      "id": "gen1_notchwegom",
-      "name": "Notchwegom",
-      "dates": "~1740s",
-      "birthYear": 1720,
-      "estimatedDates": "Vers 1720 (~1740s)",
-      "role": "Fondateur de Bandjoun",
-      "birthPlace": "Baleng, Bafoussam",
-      "residence": "Bandjoun",
-      "parentId": "gen0_tchoungafo",
-      "fatherId": "gen0_tchoungafo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 3,
-      "notes": "Fils de Fô Tchoungafo. Frère de Lefoum Kougoung et du Prince Nanjo. Quitte Baleng pour fonder la chefferie de Bandjoun."
-    },
-    {
-      "id": "gen1_lefoum_kougoung",
-      "name": "Fô Lefoum Kougoung",
-      "dates": "~1740s-1780s",
-      "birthYear": 1720,
-      "estimatedDates": "Vers 1720 (~1740s-1780s)",
-      "role": "3ème Roi de Baleng",
-      "birthPlace": "Baleng, Bafoussam",
-      "residence": "Baleng, Bafoussam",
-      "parentId": "gen0_tchoungafo",
-      "fatherId": "gen0_tchoungafo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 3,
-      "notes": "3ème roi de Baleng. Fils aîné de Fô Tchoungafo. Reste sur le trône principal après le départ de ses frères. Père de Neyou, qui choisit de suivre son oncle Nanjo dans l'exil de 1770."
-    },
-    {
-      "id": "gen1_neyou",
-      "name": "Neyou",
-      "dates": "~1770s",
-      "birthYear": 1750,
-      "estimatedDates": "Vers 1750 (~1770s)",
-      "role": "Lignée royale",
-      "birthPlace": "Baleng",
-      "residence": "Balengou (Ndepgweu-tu)",
-      "parentId": "gen1_lefoum_kougoung",
-      "fatherId": "gen1_lefoum_kougoung",
-      "spouseIds": [],
-      "notes": "Fils de Fô Lefoum Kougoung (3ème roi de Baleng). Neveu du Prince Nanjo. Choisit de suivre son oncle dans l'exil de 1770 plutôt que de rester à Baleng pour succéder au trône. Ancêtre des grandes lignées de notables à Balengou, dont les Ta'a Fieu.",
-      "gender": "M",
-      "generation": 4
-    },
-    {
-      "id": "gen2_wetio",
-      "name": "Wetio Kouamou",
-      "dates": "~1800s",
-      "birthYear": 1790,
-      "estimatedDates": "Vers 1790 (~1800s)",
-      "role": "Lignée royale",
-      "birthPlace": "Balengou",
-      "residence": "Balengou, Ndepgweu-tu",
-      "parentId": "gen1_neyou",
-      "fatherId": "gen1_neyou",
-      "spouseIds": [
-        "spouse_magni_juebou"
-      ],
-      "notes": "Descendant de Neyou, patriarche de la souche originelle à Ndepgweu",
-      "gender": "M",
-      "generation": 5
-    },
-    {
-      "id": "spouse_magni_juebou",
-      "name": "Magni Juebou",
-      "dates": "~1800s",
-      "birthYear": 1795,
-      "estimatedDates": "Vers 1795 (~1800s)",
-      "birthPlace": "Balengou",
-      "parentId": null,
-      "spouseIds": [
-        "gen2_wetio"
-      ],
-      "gender": "F",
-      "generation": 5
-    },
-    {
-      "id": "gen1_chef_bamena",
-      "name": "Chef de Bamena",
-      "birthYear": 1820,
-      "estimatedDates": "Vers 1820",
-      "role": "Roi de Bamena",
-      "birthPlace": "Bamena",
-      "residence": "Bamena",
-      "parentId": null,
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 5,
-      "notes": "Chef de la chefferie de Bamena. Père de Ta'a Nanwou."
-    },
-    {
-      "id": "ndokep_antoine",
-      "name": "Papa Ndokep Antoine",
-      "dates": "~1890",
-      "birthYear": 1890,
-      "estimatedDates": "Vers 1890",
-      "birthPlace": "Batchingou",
-      "residence": "Batchingou",
-      "parentId": null,
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 7,
-      "notes": "Voisin à Batchingou et père de Tchihikou Agnès."
-    },
-    {
-      "id": "gen2_tchie",
-      "name": "Tchié Ngantchié",
-      "dates": "~1800s",
-      "birthYear": 1820,
-      "estimatedDates": "Vers 1820 (~1800s)",
-      "role": "Lignée royale",
-      "birthPlace": "Batchingou",
-      "residence": "Batchingou, Tousseu",
-      "parentId": null,
-      "spouseIds": [],
-      "titles": [
-        "Ministre chargé de la défense de l'intégrité territoriale",
-        "Responsable du lieu sacré Metchoumbouh"
-      ],
-      "notes": "Notable issu de la lignée de la chefferie supérieure Batchingou. A engendré de nombreuses familles, dont celles de Tchassep, Ndomou Juliette et Tagni Meyuka.",
-      "gender": "M",
-      "generation": 5
-    },
-    {
-      "id": "tchie_pere_isaac",
-      "name": "Un Tchié Ngantchié (Père de Tchiémeni Isaac)",
-      "birthYear": 1855,
-      "estimatedDates": "Vers 1855",
-      "role": "Héritier de Tchié Ngantchié",
-      "birthPlace": "Batchingou",
-      "residence": "Foumbot",
-      "parentId": "gen2_tchie",
-      "fatherId": "gen2_tchie",
-      "spouseIds": [
-        "spouse_pangwa_elisabeth"
-      ],
-      "notes": "Le dernier héritier dans l’ordre de Tchié Ngantchié. S'est installé à Foumbot. Sa succession a été bousculée par un frère de retour d'exil.",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "spouse_pangwa_elisabeth",
-      "name": "Maman Pangwa Elisabeth",
-      "birthYear": 1860,
-      "estimatedDates": "Vers 1860",
-      "residence": "Batchingou",
-      "parentId": null,
-      "spouseIds": [
-        "tchie_pere_isaac"
-      ],
-      "notes": "Veuve inhumée dans un petit terrain face à la grande concession familiale en raison du conflit de succession.",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "tchiemeni_isaac",
-      "name": "Tchiémeni Isaac",
-      "birthYear": 1885,
-      "estimatedDates": "Vers 1885",
-      "residence": "Douala",
-      "parentId": "tchie_pere_isaac",
-      "fatherId": "tchie_pere_isaac",
-      "spouseIds": [],
-      "occupation": "Hôtel Akwa Palace à Douala",
-      "notes": "Véritable successeur écarté de Tchié Ngantchié suite à une bousculade de l'ordre successoral.",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "tchie_christine",
-      "name": "Christine",
-      "birthYear": 1888,
-      "estimatedDates": "Vers 1888",
-      "parentId": "tchie_pere_isaac",
-      "fatherId": "tchie_pere_isaac",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "tchie_josue",
-      "name": "Josué",
-      "birthYear": 1890,
-      "estimatedDates": "Vers 1890",
-      "parentId": "tchie_pere_isaac",
-      "fatherId": "tchie_pere_isaac",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "tchie_fille_uterine_1",
-      "name": "Fille utérine 1",
-      "birthYear": 1892,
-      "estimatedDates": "Vers 1892",
-      "parentId": "tchie_pere_isaac",
-      "fatherId": "tchie_pere_isaac",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "tchie_fille_uterine_2",
-      "name": "Fille utérine 2",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "parentId": "tchie_pere_isaac",
-      "fatherId": "tchie_pere_isaac",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "tchie_frere_usurpateur",
-      "name": "Frère exilé",
-      "birthYear": 1855,
-      "estimatedDates": "Vers 1855",
-      "parentId": "gen2_tchie",
-      "fatherId": "gen2_tchie",
-      "spouseIds": [],
-      "notes": "Frère longtemps en exil après une faute lourde, revenu bousculer l'ordre successoral. Ses enfants occupent aujourd'hui la grande concession.",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "gen2_chaneyou",
-      "name": "Cha Neyou",
-      "dates": "~1800s",
-      "birthYear": 1820,
-      "estimatedDates": "Vers 1820 (~1800s)",
-      "birthPlace": "Balengou, Ndepgweu-tu",
-      "residence": "Balengou, Ndepgweu-tu",
-      "parentId": "gen2_wetio",
-      "fatherId": "gen2_wetio",
-      "motherId": "spouse_magni_juebou",
-      "spouseIds": [
-        "spouse_ketchignou",
-        "spouse_tchayep"
-      ],
-      "notes": "Frère de Magni Kouabou, patriarche de la branche Balengou",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "spouse_ketchignou",
-      "name": "Ketchignou",
-      "dates": "~1800s",
-      "birthYear": 1825,
-      "estimatedDates": "Vers 1825",
-      "parentId": null,
-      "spouseIds": [
-        "gen2_chaneyou"
-      ],
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "spouse_tchayep",
-      "name": "Tchayep",
-      "dates": "~1800s",
-      "birthYear": 1825,
-      "estimatedDates": "Vers 1825",
-      "parentId": null,
-      "spouseIds": [
-        "gen2_chaneyou"
-      ],
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "gen2_wajiamou",
-      "name": "Wajiamou",
-      "dates": "~1800s",
-      "birthYear": 1825,
-      "estimatedDates": "Vers 1825",
-      "birthPlace": "Balengou",
-      "residence": "Balengou, Tieuptchoui",
-      "parentId": "gen2_wetio",
-      "fatherId": "gen2_wetio",
-      "motherId": "spouse_magni_juebou",
-      "spouseIds": [],
-      "notes": "Sœur de Magni Kouabou, ancêtre de la branche Makenene",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "gen3_kouakep_bazou",
-      "name": "Kouakep",
-      "birthYear": 1845,
-      "estimatedDates": "Vers 1845",
-      "parentId": "gen2_wajiamou",
-      "motherId": "gen2_wajiamou",
-      "spouseIds": [],
-      "notes": "Fille de Wajiamou, partie en mariage à Bazou. Mère de Tagni Nguenang Martin.",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "gen3_nguebou",
-      "name": "Nguebou",
-      "dates": "~1800s",
-      "birthYear": 1830,
-      "estimatedDates": "Vers 1830",
-      "parentId": "gen2_wetio",
-      "fatherId": "gen2_wetio",
-      "motherId": "spouse_magni_juebou",
-      "spouseIds": [],
-      "notes": "Quatrième enfant de Wetio Kouamou. Sans progression connue.",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "gen3_kouabou",
-      "name": "Magni Kouabou",
-      "dates": "~1850s",
-      "birthYear": 1850,
-      "estimatedDates": "Vers 1850 (~1850s)",
-      "role": "Lignée royale",
-      "birthPlace": "Balengou, Ndepgweu-tu",
-      "residence": "Batchingou, Toukou (Tousseu)",
-      "parentId": "gen2_wetio",
-      "fatherId": "gen2_wetio",
-      "motherId": "spouse_magni_juebou",
-      "spouseIds": [
-        "spouse_taawejiewou"
-      ],
-      "notes": "Fille aînée de Wetio Kouamou, mariée à Batchingou chez Ta'a Wéjiéwou au lieu sacré Kou Tchap",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "spouse_taawejiewou",
-      "name": "Ta'a Wéjiéwou",
-      "dates": "~1850s",
-      "birthYear": 1845,
-      "estimatedDates": "Vers 1845 (~1850s)",
-      "residence": "Batchingou, Toukou",
-      "parentId": null,
-      "spouseIds": [
-        "gen3_kouabou"
-      ],
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "gen4_njionda",
-      "name": "Njionda",
-      "parentId": "gen3_kouabou",
-      "motherId": "gen3_kouabou",
-      "fatherId": "spouse_taawejiewou",
-      "notes": "Enfant de Magni Kouabou et Ta'a Wéjiéwou",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_wetie",
-      "name": "Wétié",
-      "parentId": "gen3_kouabou",
-      "motherId": "gen3_kouabou",
-      "fatherId": "spouse_taawejiewou",
-      "notes": "Enfant de Magni Kouabou et Ta'a Wéjiéwou",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_ngnoumegni",
-      "name": "Ngnoumegni",
-      "dates": "~1868-?",
-      "birthYear": 1868,
-      "estimatedDates": "1868",
-      "birthPlace": "Batchingou, Toukou",
-      "residence": "Batchingou, Tousseu",
-      "parentId": "gen3_kouabou",
-      "motherId": "gen3_kouabou",
-      "fatherId": "spouse_taawejiewou",
-      "spouseIds": [
-        "gen3_tchiendjo"
-      ],
-      "notes": "Fille unique survivante de Magni Kouabou et Ta'a Wéjiéwou, première épouse de Tchassep, mère du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "gen3_tchiendjo",
-      "name": "Tchassep Ta'a Tchiendjo",
-      "dates": "1862-?",
-      "birthYear": 1862,
-      "estimatedDates": "1862",
-      "role": "Lignée royale",
-      "birthPlace": "Batchingou",
-      "residence": "Batchingou, Tousseu",
-      "parentId": "gen2_tchie",
-      "fatherId": "gen2_tchie",
-      "spouseIds": [
-        "gen4_ngnoumegni",
-        "spouse_tchakouyap"
-      ],
-      "notes": "Descendant de Tchié Ngantchié. A eu deux épouses : Ngnoumegni et Tchakouyap.",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "spouse_tchakouyap",
-      "name": "Tchakouyap",
-      "dates": "~1860s",
-      "birthYear": 1865,
-      "estimatedDates": "Vers 1865",
-      "parentId": null,
-      "spouseIds": [
-        "gen3_tchiendjo"
-      ],
-      "notes": "Deuxième épouse de Tchassep Ta'a Tchiendjo",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "gen3_nanwou",
-      "name": "Ta'a Nanwou",
-      "dates": "~1860s-1958",
-      "birthYear": 1860,
-      "estimatedDates": "Vers 1860-1958",
-      "role": "Lignée royale",
-      "birthPlace": "Bamena",
-      "residence": "Bamena",
-      "parentId": "gen1_chef_bamena",
-      "fatherId": "gen1_chef_bamena",
-      "spouseIds": [],
-      "notes": "Patriarche de Bamena, décédé après la guerre de l'indépendance de 1958",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "gen3_tagni",
-      "name": "Tagni Meyuka",
-      "dates": "~1860s-?",
-      "birthYear": 1860,
-      "estimatedDates": "Vers 1860",
-      "birthPlace": "Batchingou",
-      "residence": "Batchingou",
-      "parentId": "gen2_tchie",
-      "fatherId": "gen2_tchie",
-      "spouseIds": [
-        "spouse_wougang"
-      ],
-      "notes": "Frère de Tchassep Ta'a Tchiendjo, oncle du patriarche",
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "spouse_wougang",
-      "name": "Wougang",
-      "dates": "~1860s",
-      "birthYear": 1865,
-      "estimatedDates": "Vers 1865",
-      "parentId": null,
-      "spouseIds": [
-        "gen3_tagni"
-      ],
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "gen3_ndomou",
-      "name": "Ndomou Juliette (Maman Souhé)",
-      "dates": "~1860s-?",
-      "birthYear": 1865,
-      "estimatedDates": "Vers 1865",
-      "birthPlace": "Batchingou",
-      "residence": "Batchingou",
-      "parentId": "gen2_tchie",
-      "fatherId": "gen2_tchie",
-      "spouseIds": [
-        "spouse_ngomeni"
-      ],
-      "notes": "Sœur de Tchassep Ta'a Tchiendjo, tante du patriarche",
-      "gender": "F",
-      "generation": 6
-    },
-    {
-      "id": "spouse_ngomeni",
-      "name": "Ngomeni",
-      "dates": "~1860s",
-      "birthYear": 1860,
-      "estimatedDates": "Vers 1860",
-      "parentId": null,
-      "spouseIds": [
-        "gen3_ndomou"
-      ],
-      "gender": "M",
-      "generation": 6
-    },
-    {
-      "id": "spouse_rebecca",
-      "name": "Megni Ngongang Rebecca",
-      "dates": "1906-1998",
-      "birthYear": 1906,
-      "estimatedDates": "1906-1998",
-      "birthPlace": "Bamena",
-      "residence": "Foumbot / Batchingou",
-      "parentId": "gen3_nanwou",
-      "fatherId": "gen3_nanwou",
-      "spouseIds": [
-        "patriarch"
-      ],
-      "notes": "Princesse de Bamena — petite-fille du chef de la chefferie de Bamena. Fille de Ta'a Nanwou. Son mariage avec le patriarche Ta'a Fieu Tagni Tinang Joseph unit deux lignées royales.",
-      "gender": "F",
-      "generation": 7,
-      "role": "Princesse de Bamena",
-      "titles": [
-        "Petite-fille du chef de Bamena",
-        "Fille de Ta'a Nanwou",
-        "Première épouse du Patriarche Ta'a Fieu"
-      ]
-    },
-    {
-      "id": "gen4_nougue",
-      "name": "Nougue Pauline",
-      "birthYear": 1890,
-      "estimatedDates": "Vers 1890",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tchiendjo",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [
-        "spouse_bamena_pauline"
-      ],
-      "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_bamena_pauline",
-      "name": "Époux (Bamena)",
-      "birthYear": 1885,
-      "estimatedDates": "Vers 1885",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nougue"
-      ],
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "nankep_christian",
-      "name": "Nankep Christian",
-      "birthYear": 1920,
-      "estimatedDates": "Vers 1920",
-      "parentId": "gen4_nougue",
-      "motherId": "gen4_nougue",
-      "fatherId": "spouse_bamena_pauline",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "tinang_hermine",
-      "name": "Tinang Hermine",
-      "birthYear": 1923,
-      "estimatedDates": "Vers 1923",
-      "parentId": "gen4_nougue",
-      "motherId": "gen4_nougue",
-      "fatherId": "spouse_bamena_pauline",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "gen4_nagouo",
-      "name": "Nagouo Gaston",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tchiendjo",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [
-        "spouse_bangou_mega"
-      ],
-      "notes": "Fils de Tchassep et Tchakouyap, demi-frère du patriarche. Héritier désigné.",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_bangou_mega",
-      "name": "Épouse (Bangou / Mega)",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nagouo"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "ze_helene",
-      "name": "Ze Hélène (Ndongwou)",
-      "birthYear": 1925,
-      "estimatedDates": "Vers 1925",
-      "parentId": "gen4_nagouo",
-      "fatherId": "gen4_nagouo",
-      "motherId": "spouse_bangou_mega",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "kouamou_yvette",
-      "name": "Kouamou Yvette M",
-      "birthYear": 1928,
-      "estimatedDates": "Vers 1928",
-      "parentId": "gen4_nagouo",
-      "fatherId": "gen4_nagouo",
-      "motherId": "spouse_bangou_mega",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "gen4_ngoko",
-      "name": "Ngoko Monique",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tchiendjo",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [
-        "spouse_bangou_monique"
-      ],
-      "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_bangou_monique",
-      "name": "Époux (Bangou)",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_ngoko"
-      ],
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "tinang_joseph_bernard",
-      "name": "Tinang Joseph Bernard",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "parentId": "gen4_ngoko",
-      "motherId": "gen4_ngoko",
-      "fatherId": "spouse_bangou_monique",
-      "spouseIds": [],
-      "notes": "Héritier désigné.",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_kouakep_cat",
-      "name": "Kouakep Catherine",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tchiendjo",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [
-        "spouse_abel"
-      ],
-      "notes": "Fille de Tchassep et Tchakouyap, demi-sœur du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_abel",
-      "name": "Papa Abel (Fo Trou)",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_kouakep_cat"
-      ],
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "tchaya_felix",
-      "name": "Tchaya Félix Rodrigue",
-      "birthYear": 1935,
-      "estimatedDates": "Vers 1935",
-      "parentId": "gen4_kouakep_cat",
-      "motherId": "gen4_kouakep_cat",
-      "fatherId": "spouse_abel",
-      "spouseIds": [],
-      "notes": "Héritier désigné.",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_ngomegni",
-      "name": "Ngomegni Benoit",
-      "birthYear": 1910,
-      "estimatedDates": "Vers 1910",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tchiendjo",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [],
-      "notes": "Fils utérin de Tchassep et Tchakouyap, né après la mort de Ta'a Tchiendjo",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_ngoko_andre",
-      "name": "Ngoko André",
-      "birthYear": 1890,
-      "estimatedDates": "Vers 1890",
-      "birthPlace": "Bamena",
-      "residence": "Foumbot",
-      "role": "Patriarche de Bamena",
-      "parentId": "gen3_nanwou",
-      "fatherId": "gen3_nanwou",
-      "spouseIds": [],
-      "notes": "Frère de Megni Ngongang Rebecca, héritier de Ta'a Nanwou, plusieurs épouses bamoun",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_ketchozo",
-      "name": "Ketchozo Dieudonné",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "birthPlace": "Bamena",
-      "residence": "Foumbot / Loum",
-      "parentId": "gen3_nanwou",
-      "fatherId": "gen3_nanwou",
-      "spouseIds": [],
-      "notes": "Frère de Megni Ngongang Rebecca",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_ngongang_elisabeth",
-      "name": "Ngongang Elisabeth",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "birthPlace": "Bamena",
-      "residence": "Foumbot / Loum",
-      "parentId": "gen3_nanwou",
-      "fatherId": "gen3_nanwou",
-      "spouseIds": [],
-      "notes": "Sœur de Megni Ngongang Rebecca",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "kamka_martin",
-      "name": "Kamka Martin",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "birthPlace": "Bamena",
-      "parentId": "gen3_nanwou",
-      "fatherId": "gen3_nanwou",
-      "spouseIds": [],
-      "notes": "Fils de Ta'a Nanwou",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "patriarch",
-      "name": "Ta'a Fieu Tagni Tinang Joseph",
-      "titre": "Ta'a Fieu",
-      "dates": "1898-2001",
-      "birthYear": 1898,
-      "estimatedDates": "1898-2001",
-      "lifespan": "103 ans",
-      "role": "Patriarche",
-      "birthPlace": "Batchingou, Toukou (Tousseu)",
-      "residence": "Foumbot (Company) / Batchingou (Toukou)",
-      "deathPlace": "Hôpital protestant de Njissé, Foumban",
-      "burialPlace": "Batchingou, Toukou (Tousseu)",
-      "parentId": "gen4_ngnoumegni",
-      "motherId": "gen4_ngnoumegni",
-      "fatherId": "gen3_tchiendjo",
-      "spouseIds": [
-        "spouse_rebecca",
-        "spouse_emilienne",
-        "spouse_rachel"
-      ],
-      "occupation": "Commerçant, Planteur",
-      "titles": [
-        "Ta'a Fieu (Père du Chef)",
-        "Adjoint au chef du quartier Company à Foumbot",
-        "Assesseur à la Mairie de Foumbot",
-        "Notable de la cour royale (Teta Fon)",
-        "Collecteur d'impôts",
-        "Chef de la Communauté Batchingou de Foumbot"
-      ],
-      "awards": [
-        "Médaille du mérite camerounais"
-      ],
-      "notes": "Patriarche de la famille, vécu 103 ans. Né sous le règne de Sa Majesté le roi Tchiengué.",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_emilienne",
-      "name": "Mekeze Emilienne",
-      "birthYear": 1910,
-      "estimatedDates": "Vers 1910",
-      "birthPlace": "Batchingou",
-      "parentId": null,
-      "spouseIds": [
-        "patriarch"
-      ],
-      "notes": "Deuxième épouse du patriarche, aucun enfant biologique",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_rachel",
-      "name": "Megni Rachel",
-      "birthYear": 1912,
-      "estimatedDates": "Vers 1912",
-      "birthPlace": "Feugou",
-      "parentId": null,
-      "spouseIds": [
-        "patriarch"
-      ],
-      "notes": "Troisième épouse du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "mbiendu",
-      "name": "Wemba Mbiendu Sadrack",
-      "dates": "~1900-?",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "role": "Patriarche Balengou",
-      "birthPlace": "Balengou, Ndepgweu",
-      "residence": "Balengou / Manegolé",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [
-        "spouse_mbami",
-        "spouse_nzepang",
-        "spouse_seumou",
-        "spouse_tchienang"
-      ],
-      "occupation": "Commerçant, Transporteur, Planteur",
-      "titles": [
-        "Notable",
-        "Tcha-Neyou"
-      ],
-      "notes": "Patriarche de la branche Balengou, fils de Cha Neyou",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_mbami",
-      "name": "Mbami Rebecca",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "parentId": null,
-      "spouseIds": [
-        "mbiendu"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_nzepang",
-      "name": "Nzepang Mbienda Marie",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "parentId": null,
-      "spouseIds": [
-        "mbiendu"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_seumou",
-      "name": "Seumou Pauline",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "parentId": null,
-      "spouseIds": [
-        "mbiendu"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_tchienang",
-      "name": "Tchienang Helene",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "parentId": null,
-      "spouseIds": [
-        "mbiendu"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "cha_neyou_neyou",
-      "name": "Neyou",
-      "birthYear": 1850,
-      "estimatedDates": "Vers 1850",
-      "birthPlace": "Balengou",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [],
-      "notes": "Fils de Cha Neyou. Père de Kouakep Michel et Tchame Marie.",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "cha_neyou_tchuindjang",
-      "name": "Tchuindjang",
-      "birthYear": 1855,
-      "estimatedDates": "Vers 1855",
-      "birthPlace": "Balengou",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [],
-      "notes": "Fils de Cha Neyou. Décédé jeune.",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "etienne",
-      "name": "Ouafeu Ngantchou Étienne",
-      "ndap": "Papa Tayou, Papa Iti, Papa Samedi",
-      "dates": "~1920-?",
-      "birthYear": 1920,
-      "estimatedDates": "Vers 1920",
-      "birthPlace": "Balengou, Ndepgweu",
-      "residence": "Foumban",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [
-        "spouse_tchihikou"
-      ],
-      "occupation": "Tailleur, Commerçant, Transporteur, Planteur",
-      "notes": "Dernier né de Cha Neyou, très proche du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_tchihikou",
-      "name": "Tchihikou Agnes",
-      "dates": "~1920s",
-      "birthYear": 1925,
-      "estimatedDates": "Vers 1925",
-      "parentId": "ndokep_antoine",
-      "fatherId": "ndokep_antoine",
-      "spouseIds": [
-        "etienne"
-      ],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "martin",
-      "name": "Tagni Nguenang Martin",
-      "sobriquet": "Le Chancelier",
-      "dates": "~1900-?",
-      "birthYear": 1900,
-      "estimatedDates": "~1900-?",
-      "birthPlace": "Bazou",
-      "residence": "Makenene",
-      "parentId": "gen3_kouakep_bazou",
-      "motherId": "gen3_kouakep_bazou",
-      "spouseIds": [],
-      "occupation": "Planteur (cacaoyers)",
-      "notes": "Patriarche de la branche Makenene",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "wetie_gabriel",
-      "name": "Wetie Gabriel",
-      "birthYear": 1915,
-      "estimatedDates": "Vers 1915",
-      "birthPlace": "Balengou",
-      "residence": "Foumbot, Company",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [
-        "spouse_fankou"
-      ],
-      "notes": "Fils de Cha Neyou",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_fankou",
-      "name": "Fankou Elisabeth",
-      "birthYear": 1920,
-      "estimatedDates": "Vers 1920",
-      "parentId": null,
-      "spouseIds": [
-        "wetie_gabriel"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "doussa",
-      "name": "Doussa Elisabeth",
-      "birthYear": 1922,
-      "estimatedDates": "Vers 1922",
-      "birthPlace": "Balengou",
-      "parentId": "gen2_chaneyou",
-      "fatherId": "gen2_chaneyou",
-      "spouseIds": [],
-      "notes": "Fille de Cha Neyou",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "heir",
-      "name": "Poueme Emmanuel",
-      "ndap": "Ta'a Fieu Poueme Emmanuel",
-      "born": "1950",
-      "birthYear": 1950,
-      "estimatedDates": "1950",
-      "role": "Héritier",
-      "birthPlace": "Batchingou, Toukou",
-      "residence": "Batchingou / Yaoundé",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "motherId": "spouse_rebecca",
-      "spouseIds": [
-        "spouse_adeline"
-      ],
-      "occupation": "Haut fonctionnaire",
-      "titles": [
-        "Ta'a Fieu Tinang Joseph (depuis 2001)"
-      ],
-      "notes": "Deuxième enfant et héritier désigné du patriarche. Intronisé en 2001.",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "spouse_adeline",
-      "name": "Ngankeu Tooua Adeline Paule",
-      "birthYear": 1955,
-      "estimatedDates": "Vers 1955",
-      "birthPlace": "Balengou",
-      "parentId": null,
-      "spouseIds": [
-        "heir"
-      ],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "theodore",
-      "name": "Ngoughou Théodore",
-      "dates": "1947-2017",
-      "birthYear": 1947,
-      "estimatedDates": "1947-2017",
-      "birthPlace": "Batchingou, Toukou",
-      "residence": "Batchingou / Bertoua",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "motherId": "spouse_rebecca",
-      "spouseIds": [
-        "spouse_mbouguen"
-      ],
-      "occupation": "Garagiste dieseliste",
-      "notes": "Premier enfant du patriarche",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "spouse_mbouguen",
-      "name": "Mbouguen Lucienne",
-      "birthYear": 1952,
-      "estimatedDates": "Vers 1952",
-      "birthPlace": "Batchingou",
-      "parentId": null,
-      "spouseIds": [
-        "theodore"
-      ],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "datouo_david",
-      "name": "Datouo David",
-      "birthYear": 1953,
-      "estimatedDates": "Vers 1953",
-      "birthPlace": "Foumbot",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [],
-      "notes": "Fils du patriarche et de Megni Rachel. Décédé jeune.",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "elise",
-      "name": "Ngnoumegni Élise (Moungang Woumegni Élisabeth)",
-      "dates": "1965-2016",
-      "birthYear": 1965,
-      "estimatedDates": "1965-2016",
-      "birthPlace": "Foumbot",
-      "residence": "Bana",
-      "deathPlace": "Bana",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [],
-      "notes": "Quatrième enfant du patriarche. Son âme repose en paix à Bana chez son mari.",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "samuel",
-      "name": "Langue Samuel",
-      "dates": "1968-2017",
-      "birthYear": 1968,
-      "estimatedDates": "1968-2017",
-      "birthPlace": "Foumbot",
-      "residence": "Batchingou",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "motherId": "spouse_rachel",
-      "spouseIds": [
-        "spouse_pulcherie"
-      ],
-      "notes": "Cinquième enfant du patriarche",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "spouse_pulcherie",
-      "name": "Pulcherie Langue",
-      "birthYear": 1972,
-      "estimatedDates": "Vers 1972",
-      "birthPlace": "Bafia",
-      "parentId": null,
-      "spouseIds": [
-        "samuel"
-      ],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "lucienne",
-      "name": "Njankep Lucienne",
-      "birthYear": 1956,
-      "estimatedDates": "Vers 1956",
-      "birthPlace": "Foumbot",
-      "residence": "Bafia",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [
-        "spouse_djoh"
-      ],
-      "notes": "Sixième enfant du patriarche",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "spouse_djoh",
-      "name": "Djoh A Koung Ruben",
-      "birthYear": 1950,
-      "estimatedDates": "Vers 1950",
-      "birthPlace": "Bafia",
-      "parentId": null,
-      "spouseIds": [
-        "lucienne"
-      ],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "maryse",
-      "name": "Pangwa Sophie Maryse",
-      "birthYear": 1959,
-      "estimatedDates": "Vers 1959",
-      "birthPlace": "Foumbot",
-      "residence": "Bafang",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [
-        "spouse_nassi"
-      ],
-      "notes": "Septième enfant du patriarche",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "spouse_nassi",
-      "name": "Nassi Eric",
-      "birthYear": 1955,
-      "estimatedDates": "Vers 1955",
-      "birthPlace": "Bafang",
-      "parentId": null,
-      "spouseIds": [
-        "maryse"
-      ],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "jean",
-      "name": "Lélé Jean",
-      "birthYear": 1961,
-      "estimatedDates": "Vers 1961",
-      "birthPlace": "Foumbot",
-      "residence": "Batchingou",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [
-        "spouse_lele_eveline"
-      ],
-      "notes": "Huitième enfant du patriarche, surnommé 'Vieux'",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "spouse_lele_eveline",
-      "name": "Lele Eveline",
-      "birthYear": 1965,
-      "estimatedDates": "Vers 1965",
-      "birthPlace": "Batchingou",
-      "parentId": null,
-      "spouseIds": [
-        "jean"
-      ],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "valerie",
-      "name": "Kouakep Valérie",
-      "birthYear": 1963,
-      "estimatedDates": "Vers 1963",
-      "birthPlace": "Foumbot",
-      "residence": "Bameka",
-      "parentId": "patriarch",
-      "fatherId": "patriarch",
-      "spouseIds": [
-        "spouse_mambou"
-      ],
-      "notes": "Neuvième enfant du patriarche",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "spouse_mambou",
-      "name": "Mambou Jean Jacques",
-      "birthYear": 1958,
-      "estimatedDates": "Vers 1958",
-      "birthPlace": "Bameka",
-      "parentId": null,
-      "spouseIds": [
-        "valerie"
-      ],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "serge",
-      "name": "Poueme Daouda Serge Donald",
-      "born": "1983",
-      "birthYear": 1983,
-      "estimatedDates": "1983",
-      "birthPlace": "Yaoundé",
-      "residence": "Canada (Québec)",
-      "parentId": "heir",
-      "fatherId": "heir",
-      "motherId": "spouse_adeline",
-      "spouseIds": [],
-      "notes": "Premier petit-enfant de l'héritier",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "armand",
-      "name": "Poueme Tooua Armand Cédric",
-      "birthYear": 1985,
-      "estimatedDates": "Vers 1985",
-      "birthPlace": "Yaoundé",
-      "residence": "Canada (Québec)",
-      "parentId": "heir",
-      "fatherId": "heir",
-      "motherId": "spouse_adeline",
-      "spouseIds": [],
-      "notes": "Deuxième fils de l'héritier",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "eric",
-      "name": "Poueme Tinang Eric Joel",
-      "birthYear": 1988,
-      "estimatedDates": "Vers 1988",
-      "birthPlace": "Yaoundé",
-      "residence": "Canada (Québec)",
-      "parentId": "heir",
-      "fatherId": "heir",
-      "motherId": "spouse_adeline",
-      "spouseIds": [],
-      "notes": "Troisième fils de l'héritier",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "thierry",
-      "name": "Poueme Ngoughou Thierry Williams",
-      "birthYear": 1991,
-      "estimatedDates": "Vers 1991",
-      "birthPlace": "Yaoundé",
-      "residence": "Canada (Québec)",
-      "parentId": "heir",
-      "fatherId": "heir",
-      "motherId": "spouse_adeline",
-      "spouseIds": [],
-      "notes": "Quatrième fils de l'héritier",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "inesta",
-      "name": "Inesta Ngoughou",
-      "birthYear": 1978,
-      "estimatedDates": "Vers 1978",
-      "birthPlace": "Bertoua",
-      "residence": "Bertoua (Cameroun)",
-      "parentId": "theodore",
-      "fatherId": "theodore",
-      "motherId": "spouse_mbouguen",
-      "spouseIds": [],
-      "notes": "Fille de Ngoughou Theodore",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "carine",
-      "name": "Ngongang Carine",
-      "birthYear": 1988,
-      "estimatedDates": "Vers 1988",
-      "parentId": "elise",
-      "motherId": "elise",
-      "spouseIds": [],
-      "notes": "Fille de Ngnoumegni Elise",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "tuisseu",
-      "name": "Tuisseu Junior",
-      "birthYear": 1991,
-      "estimatedDates": "Vers 1991",
-      "parentId": "elise",
-      "motherId": "elise",
-      "spouseIds": [],
-      "notes": "Fils de Ngnoumegni Elise",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "kombou",
-      "name": "Kombou Rolande",
-      "birthYear": 1994,
-      "estimatedDates": "Vers 1994",
-      "parentId": "elise",
-      "motherId": "elise",
-      "spouseIds": [],
-      "notes": "Fille de Ngnoumegni Elise",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "estha",
-      "name": "Estha Langue",
-      "birthYear": 1992,
-      "estimatedDates": "Vers 1992",
-      "parentId": "samuel",
-      "fatherId": "samuel",
-      "motherId": "spouse_pulcherie",
-      "spouseIds": [],
-      "notes": "Fille de Langue Samuel",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "josiane",
-      "name": "Josiane Langue",
-      "birthYear": 1995,
-      "estimatedDates": "Vers 1995",
-      "parentId": "samuel",
-      "fatherId": "samuel",
-      "motherId": "spouse_pulcherie",
-      "spouseIds": [],
-      "notes": "Fille de Langue Samuel",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "linda",
-      "name": "Linda Langue",
-      "birthYear": 1998,
-      "estimatedDates": "Vers 1998",
-      "parentId": "samuel",
-      "fatherId": "samuel",
-      "motherId": "spouse_pulcherie",
-      "spouseIds": [],
-      "notes": "Fille de Langue Samuel",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "erika",
-      "name": "Erika Langue",
-      "birthYear": 2001,
-      "estimatedDates": "Vers 2001",
-      "parentId": "samuel",
-      "fatherId": "samuel",
-      "motherId": "spouse_pulcherie",
-      "spouseIds": [],
-      "notes": "Fille de Langue Samuel",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "steve",
-      "name": "Poueme Lele Steve",
-      "birthYear": 1985,
-      "estimatedDates": "Vers 1985",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fils de Lélé Jean",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "dilane",
-      "name": "Koualong Lele Dilane",
-      "birthYear": 1988,
-      "estimatedDates": "Vers 1988",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fils de Lélé Jean",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "boris",
-      "name": "Ngoughou Lele Boris",
-      "birthYear": 1991,
-      "estimatedDates": "Vers 1991",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fils de Lélé Jean",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "daina",
-      "name": "Magne Lele Daina Lorvine",
-      "birthYear": 1994,
-      "estimatedDates": "Vers 1994",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fille de Lélé Jean",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "daniel",
-      "name": "Kouatchang Lele Daniel",
-      "birthYear": 1997,
-      "estimatedDates": "Vers 1997",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fils de Lélé Jean",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "christien",
-      "name": "Pangoua Lele Christien",
-      "birthYear": 2000,
-      "estimatedDates": "Vers 2000",
-      "parentId": "jean",
-      "fatherId": "jean",
-      "motherId": "spouse_lele_eveline",
-      "spouseIds": [],
-      "notes": "Fils de Lélé Jean",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "gen4_tinang_disparu",
-      "name": "Tinang Joseph",
-      "birthYear": 1890,
-      "estimatedDates": "Vers 1890",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Meyuka, cousin du patriarche, disparu",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_samou",
-      "name": "Samou Pierre",
-      "birthYear": 1892,
-      "estimatedDates": "Vers 1892",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "ngongang_pierre",
-      "name": "Ngongang Pierre",
-      "birthYear": 1925,
-      "estimatedDates": "Vers 1925",
-      "parentId": "gen4_samou",
-      "fatherId": "gen4_samou",
-      "spouseIds": [],
-      "notes": "Fils de Samou Pierre",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_nanwou",
-      "name": "Nanwou (Wouoché)",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "tinang_bertin",
-      "name": "Tinang Bertin",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "parentId": "gen4_nanwou",
-      "fatherId": "gen4_nanwou",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "tchaya_flaubert",
-      "name": "Tchaya Flaubert",
-      "birthYear": 1933,
-      "estimatedDates": "Vers 1933",
-      "parentId": "gen4_nanwou",
-      "fatherId": "gen4_nanwou",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "woungang_charles",
-      "name": "Woungang Charles",
-      "birthYear": 1936,
-      "estimatedDates": "Vers 1936",
-      "parentId": "gen4_nanwou",
-      "fatherId": "gen4_nanwou",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_konya",
-      "name": "Konya Jeanne",
-      "birthYear": 1898,
-      "estimatedDates": "Vers 1898",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fille de Tagni Meyuka, cousine du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "gen4_tchiengang",
-      "name": "Tchiengang Philippe",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Meyuka, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_ngouleu",
-      "name": "Ngouleu Emmanuel",
-      "role": "Héritier de Tagni Meyuka",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_tagni",
-      "fatherId": "gen3_tagni",
-      "spouseIds": [],
-      "notes": "Fils et héritier de Tagni Meyuka, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "gen4_nanwouo",
-      "name": "Nanwouo Jean (bèba)",
-      "birthYear": 1895,
-      "estimatedDates": "Vers 1895",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
-      "motherId": "gen3_ndomou",
-      "spouseIds": [
-        "spouse_djogoua",
-        "spouse_tchuisseu_eli"
-      ],
-      "notes": "Fils de Ndomou Juliette, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_djogoua",
-      "name": "Djogoua Christine",
-      "birthYear": 1900,
-      "estimatedDates": "Vers 1900",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nanwouo"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_tchuisseu_eli",
-      "name": "Tchuisseu Elisabeth",
-      "birthYear": 1902,
-      "estimatedDates": "Vers 1902",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nanwouo"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "nanwouo_c1",
-      "name": "Piakep Isaac",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c2",
-      "name": "Jotie Emmanuel",
-      "birthYear": 1933,
-      "estimatedDates": "Vers 1933",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c3",
-      "name": "Tchiengue Ivette",
-      "birthYear": 1935,
-      "estimatedDates": "Vers 1935",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c4",
-      "name": "Tchuisseu Clarice",
-      "birthYear": 1938,
-      "estimatedDates": "Vers 1938",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c5",
-      "name": "Hontcho Edvige",
-      "birthYear": 1940,
-      "estimatedDates": "Vers 1940",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "gen4_noungheu",
-      "name": "Noungheu Felix",
-      "birthYear": 1943,
-      "estimatedDates": "Vers 1943",
-      "birthPlace": "Batchingou",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "notes": "Fils de Nanwouo Jean, héritier désigné",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c7",
-      "name": "Tchouamou Vicky",
-      "birthYear": 1945,
-      "estimatedDates": "Vers 1945",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c8",
-      "name": "Tchiengang Christine",
-      "birthYear": 1948,
-      "estimatedDates": "Vers 1948",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c9",
-      "name": "Pakba Jeannette",
-      "birthYear": 1950,
-      "estimatedDates": "Vers 1950",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c10",
-      "name": "Nguenang Daniel",
-      "birthYear": 1953,
-      "estimatedDates": "Vers 1953",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c11",
-      "name": "Ndousseu Flobert",
-      "birthYear": 1955,
-      "estimatedDates": "Vers 1955",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c12",
-      "name": "Djomou Veaugelard Simplice",
-      "birthYear": 1958,
-      "estimatedDates": "Vers 1958",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c13",
-      "name": "Wandji Elodie Rosine",
-      "birthYear": 1960,
-      "estimatedDates": "Vers 1960",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nanwouo_c14",
-      "name": "Tchatie Bertrand",
-      "birthYear": 1963,
-      "estimatedDates": "Vers 1963",
-      "parentId": "gen4_nanwouo",
-      "fatherId": "gen4_nanwouo",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_nguenang",
-      "name": "Nguenang Daniel",
-      "birthYear": 1898,
-      "estimatedDates": "Vers 1898",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
-      "motherId": "gen3_ndomou",
-      "spouseIds": [
-        "spouse_kouatcho"
-      ],
-      "notes": "Fils de Ndomou Juliette, cousin du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "spouse_kouatcho",
-      "name": "Kouatcho si",
-      "birthYear": 1903,
-      "estimatedDates": "Vers 1903",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nguenang"
-      ],
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "nguenang_c1",
-      "name": "Namou Théophile",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c2",
-      "name": "Bontougang Lucresse",
-      "birthYear": 1933,
-      "estimatedDates": "Vers 1933",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c3",
-      "name": "Kouameni Louis Martin",
-      "birthYear": 1935,
-      "estimatedDates": "Vers 1935",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c4",
-      "name": "Ngoumeni Jules Fabrice",
-      "birthYear": 1938,
-      "estimatedDates": "Vers 1938",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c5",
-      "name": "Djomo Patrick",
-      "birthYear": 1940,
-      "estimatedDates": "Vers 1940",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c6",
-      "name": "Wansseu Lilianne",
-      "birthYear": 1943,
-      "estimatedDates": "Vers 1943",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c7",
-      "name": "Nguegang Anne Marie",
-      "birthYear": 1945,
-      "estimatedDates": "Vers 1945",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "nguenang_c8",
-      "name": "Simeu Urbain Rue",
-      "birthYear": 1948,
-      "estimatedDates": "Vers 1948",
-      "parentId": "gen4_nguenang",
-      "fatherId": "gen4_nguenang",
-      "motherId": "spouse_kouatcho",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "gen4_nguegang",
-      "name": "Nguegang Yakopine",
-      "birthYear": 1902,
-      "estimatedDates": "Vers 1902",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
-      "motherId": "gen3_ndomou",
-      "spouseIds": [
-        "spouse_mougang"
-      ],
-      "notes": "Fille de Ndomou Juliette, cousine du patriarche",
-      "gender": "F",
-      "generation": 7
-    },
-    {
-      "id": "spouse_mougang",
-      "name": "Mougang",
-      "birthYear": 1898,
-      "estimatedDates": "Vers 1898",
-      "parentId": null,
-      "spouseIds": [
-        "gen4_nguegang"
-      ],
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "nguegang_c1",
-      "name": "Pado Brigitte",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "parentId": "gen4_nguegang",
-      "fatherId": "spouse_mougang",
-      "motherId": "gen4_nguegang",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "gen4_piakep",
-      "name": "Piakep Nicaisse",
-      "birthYear": 1933,
-      "estimatedDates": "Vers 1933",
-      "birthPlace": "Batchingou",
-      "parentId": "gen4_nguegang",
-      "fatherId": "spouse_mougang",
-      "motherId": "gen4_nguegang",
-      "spouseIds": [],
-      "notes": "Fils de Nguegang Yakopine",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguegang_c3",
-      "name": "Sangang Jean Paul",
-      "birthYear": 1936,
-      "estimatedDates": "Vers 1936",
-      "parentId": "gen4_nguegang",
-      "fatherId": "spouse_mougang",
-      "motherId": "gen4_nguegang",
-      "spouseIds": [],
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "nguegang_c4",
-      "name": "Domou Luise",
-      "birthYear": 1940,
-      "estimatedDates": "Vers 1940",
-      "parentId": "gen4_nguegang",
-      "fatherId": "spouse_mougang",
-      "motherId": "gen4_nguegang",
-      "spouseIds": [],
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "gen4_ndjanpouep",
-      "name": "Ndjanpouep",
-      "birthYear": 1905,
-      "estimatedDates": "Vers 1905",
-      "birthPlace": "Batchingou",
-      "parentId": "gen3_ndomou",
-      "motherId": "gen3_ndomou",
-      "spouseIds": [],
-      "notes": "Enfant de Ndomou Juliette, cousin(e) du patriarche",
-      "gender": "M",
-      "generation": 7
-    },
-    {
-      "id": "kouamou_marie",
-      "name": "Kouamou Marie",
-      "birthYear": 1920,
-      "estimatedDates": "Vers 1920",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "keptukoua",
-      "name": "Keptukoua Josué",
-      "birthYear": 1922,
-      "estimatedDates": "Vers 1922",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "ndangang",
-      "name": "Ndangang Martin",
-      "birthYear": 1925,
-      "estimatedDates": "Vers 1925",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "ndamen",
-      "name": "Ndamen Paul",
-      "birthYear": 1928,
-      "estimatedDates": "Vers 1928",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fils de Wemba Mbiendu Sadrack",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "mbakop",
-      "name": "Mbakop Elise",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "yitkou",
-      "name": "Yitkou Catherine",
-      "birthYear": 1932,
-      "estimatedDates": "Vers 1932",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "mbahnang",
-      "name": "Mbahnang Elisabeth",
-      "birthYear": 1935,
-      "estimatedDates": "Vers 1935",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "yankeu",
-      "name": "Yankeu Florence",
-      "birthYear": 1938,
-      "estimatedDates": "Vers 1938",
-      "birthPlace": "Balengou",
-      "parentId": "mbiendu",
-      "fatherId": "mbiendu",
-      "spouseIds": [],
-      "notes": "Fille de Wemba Mbiendu Sadrack",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "noupa",
-      "name": "Noupa Jean",
-      "birthYear": 1945,
-      "estimatedDates": "Vers 1945",
-      "birthPlace": "Balengou",
-      "residence": "Foumban",
-      "parentId": "etienne",
-      "fatherId": "etienne",
-      "spouseIds": [],
-      "notes": "Fils de Ngantchou Etienne",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "tchanang",
-      "name": "Tchanang Françoise",
-      "birthYear": 1948,
-      "estimatedDates": "Vers 1948",
-      "birthPlace": "Balengou",
-      "residence": "Foumban",
-      "parentId": "etienne",
-      "fatherId": "etienne",
-      "spouseIds": [],
-      "notes": "Fille de Ngantchou Etienne",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "tchuissang",
-      "name": "Tchuissang Robert",
-      "birthYear": 1950,
-      "estimatedDates": "Vers 1950",
-      "birthPlace": "Balengou",
-      "residence": "Foumban",
-      "parentId": "etienne",
-      "fatherId": "etienne",
-      "spouseIds": [],
-      "notes": "Fils de Ngantchou Etienne",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "ndonkep",
-      "name": "Ndonkep Irène",
-      "birthYear": 1953,
-      "estimatedDates": "Vers 1953",
-      "birthPlace": "Balengou",
-      "residence": "Foumban",
-      "parentId": "etienne",
-      "fatherId": "etienne",
-      "spouseIds": [],
-      "notes": "Fille de Ngantchou Etienne",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "mbiendu_serge",
-      "name": "Mbiendu Serge",
-      "role": "Héritier de Ngantchou Etienne",
-      "birthYear": 1956,
-      "estimatedDates": "Vers 1956",
-      "birthPlace": "Balengou",
-      "residence": "Foumban",
-      "parentId": "etienne",
-      "fatherId": "etienne",
-      "spouseIds": [],
-      "notes": "Fils et héritier de Ngantchou Etienne",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "ngantchou_paul",
-      "name": "Ngantchou Paul (Bosco)",
-      "birthYear": 1940,
-      "estimatedDates": "Vers 1940",
-      "birthPlace": "Balengou",
-      "residence": "Foumbot",
-      "parentId": "wetie_gabriel",
-      "fatherId": "wetie_gabriel",
-      "spouseIds": [],
-      "notes": "Fils de Wetie Gabriel, a aidé Ngoughou Theodore",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "tinang_cecile",
-      "name": "Tinang Cécile",
-      "birthYear": 1943,
-      "estimatedDates": "Vers 1943",
-      "birthPlace": "Balengou",
-      "parentId": "wetie_gabriel",
-      "fatherId": "wetie_gabriel",
-      "spouseIds": [],
-      "notes": "Fille de Wetie Gabriel",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "wanseu",
-      "name": "Wanseu François",
-      "birthYear": 1945,
-      "estimatedDates": "Vers 1945",
-      "birthPlace": "Balengou",
-      "parentId": "doussa",
-      "motherId": "doussa",
-      "spouseIds": [],
-      "notes": "Fils de Doussa Elisabeth",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "wetie_david",
-      "name": "Wetie David",
-      "birthYear": 1948,
-      "estimatedDates": "Vers 1948",
-      "birthPlace": "Balengou",
-      "parentId": "doussa",
-      "motherId": "doussa",
-      "spouseIds": [],
-      "notes": "Fils de Doussa Elisabeth",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "mbiendu_martin",
-      "name": "Mbiendu Martin",
-      "birthYear": 1951,
-      "estimatedDates": "Vers 1951",
-      "birthPlace": "Balengou",
-      "parentId": "doussa",
-      "motherId": "doussa",
-      "spouseIds": [],
-      "notes": "Fils de Doussa Elisabeth",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "noukawolo",
-      "name": "Noukawolo Pauline",
-      "birthYear": 1954,
-      "estimatedDates": "Vers 1954",
-      "birthPlace": "Balengou",
-      "parentId": "doussa",
-      "motherId": "doussa",
-      "spouseIds": [],
-      "notes": "Fille de Doussa Elisabeth",
-      "gender": "F",
-      "generation": 8
-    },
-    {
-      "id": "njueya",
-      "name": "Njueya Andre",
-      "birthYear": 1957,
-      "estimatedDates": "Vers 1957",
-      "birthPlace": "Balengou",
-      "parentId": "doussa",
-      "motherId": "doussa",
-      "spouseIds": [],
-      "notes": "Fils de Doussa Elisabeth",
-      "gender": "M",
-      "generation": 8
-    },
-    {
-      "id": "joseph_makenene",
-      "name": "Joseph",
-      "birthYear": 1930,
-      "estimatedDates": "Vers 1930",
-      "birthPlace": "Makenene",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "therese",
-      "name": "Thérèse",
-      "birthYear": 1933,
-      "estimatedDates": "Vers 1933",
-      "birthPlace": "Makenene",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fille de Tagni Nguenang Martin",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "nouthe",
-      "name": "Dr. Nouthe François",
-      "birthYear": 1935,
-      "estimatedDates": "Vers 1935",
-      "birthPlace": "Makenene",
-      "occupation": "Médecin",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "delphine",
-      "name": "Delphine",
-      "birthYear": 1938,
-      "estimatedDates": "Vers 1938",
-      "birthPlace": "Makenene",
-      "residence": "Foumbot",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fille de Tagni Nguenang Martin, envoyée chez le patriarche",
-      "gender": "F",
-      "generation": 9
-    },
-    {
-      "id": "jeanpierre",
-      "name": "Jean Pierre",
-      "birthYear": 1942,
-      "estimatedDates": "Vers 1942",
-      "birthPlace": "Makenene",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fils de Tagni Nguenang Martin",
-      "gender": "M",
-      "generation": 9
-    },
-    {
-      "id": "fidele",
-      "name": "Fidèle Tchakounte",
-      "role": "Héritier de Tagni Nguenang Martin",
-      "birthYear": 1946,
-      "estimatedDates": "Vers 1946",
-      "birthPlace": "Makenene",
-      "parentId": "martin",
-      "fatherId": "martin",
-      "spouseIds": [],
-      "notes": "Fils et héritier de Tagni Nguenang Martin",
-      "gender": "M",
-      "generation": 9
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+  <!-- SEO -->
+  <meta name="description" content="Arbre généalogique de la famille Tinang Poueme — descendants des chefferies royales Bamiléké de Baleng, Balengou, Batchingou et Bamena. 10 générations depuis Fô Fondoup (plaines Tikar) jusqu'à la génération actuelle.">
+  <meta name="keywords" content="généalogie Bamiléké, famille Poueme, famille Tinang, chefferie Balengou, Prince Nandjo, Ta'a Fieu, arbre généalogique Cameroun, Grassfields, Baleng, Bamena">
+  <meta name="author" content="Serge Poueme">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://sdpoueme.github.io/emmanuelpoueme/genealogy">
+
+  <!-- Open Graph (for sharing on social media) -->
+  <meta property="og:title" content="Arbre Généalogique — Famille Tinang Poueme">
+  <meta property="og:description" content="10 générations d'une lignée royale Bamiléké : des rois de Baleng (plaines Tikar) jusqu'à Balengou, Batchingou et Bamena.">
+  <meta property="og:url" content="https://sdpoueme.github.io/emmanuelpoueme/genealogy">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbre Généalogique - Ta'a Fieu Tagni Tinang Joseph</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          ochre: { DEFAULT:'#C07D2A', light:'#E8A84B', pale:'#FDF3E3', dark:'#8E5C1A' },
+          terra: { DEFAULT:'#A0522D', light:'#C4704A' },
+          forest: { DEFAULT:'#2E5C3A', mid:'#4A7C53', light:'#7FB08A' },
+          parchment: { DEFAULT:'#F5EDD8', dark:'#E8D9BC' },
+          ink: { DEFAULT:'#1E1A14', mid:'#4A4035', light:'#7A7060' },
+          cream: '#FFFBF4',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"','Georgia','serif'],
+          sans: ['"DM Sans"','ui-sans-serif','system-ui','sans-serif'],
+        }
+      }}
     }
-  ],
-  "locations": [
-    {
-      "name": "Batchingou (Toukou, Tousseu)",
-      "description": "Terre ancestrale de la famille. Concession originelle de Ta'a Wéjiéwou et Magni Kouabou, héritée par le patriarche Ta'a fieu Tinang Joseph. Lieu sacré Kou Tchap avec plantation de raphias."
-    },
-    {
-      "name": "Balengou (Ndepgweu-tu)",
-      "description": "Origine de la lignée maternelle du patriarche. Famille de Wetio Kouamou et Magni Kouabou. Lieu des rencontres familiales annuelles chez le patriarche Wemba Mbiendu Sadrack."
-    },
-    {
-      "name": "Bamena",
-      "description": "Origine maternelle - famille de Megni Ngongang Rebecca, épouse du patriarche. Petite-fille du chef Bamena."
-    },
-    {
-      "name": "Foumbot (Quartier Company)",
-      "description": "Lieu d'installation principale du patriarche après la guerre de l'indépendance (1960). Développement commercial et social. Chef de la communauté Batchingou."
-    },
-    {
-      "name": "Makenene",
-      "description": "Branche familiale issue de Wajiamou via Bazou. Plantations de cacaoyers."
-    },
-    {
-      "name": "Baleng (Bafoussam)",
-      "description": "Origines lointaines de la famille (~1770s). Chefferie d'origine du Prince Nandjo."
-    }
-  ]
-}
+    </script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Person box glass style */
+        .person-box {
+            background: rgba(255,255,255,0.58);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.75);
+            border-left: 4px solid var(--gen-accent, #C07D2A);
+            box-shadow: 0 4px 18px rgba(160,82,45,0.10), 0 1px 4px rgba(30,26,20,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+            padding: 14px 18px;
+            min-width: 150px;
+            max-width: 205px;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            transition: transform 0.22s, box-shadow 0.22s;
+        }
+        .person-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 28px rgba(160,82,45,0.18), 0 2px 8px rgba(30,26,20,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .person-box.highlighted {
+            border-color: #ff6b6b !important;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5) !important;
+        }
+        .person-box.hero-dark {
+            background: #1E1A14 !important;
+            border: 1px solid #3A3028 !important;
+            border-left: 4px solid #C07D2A !important;
+            box-shadow: 0 6px 24px rgba(30,26,20,0.4) !important;
+        }
+        .person-box.hero-dark .person-name { color: #F5EDD8; }
+        .person-box.hero-dark .person-dates { color: #7A7060; }
+        .person-box.hero-dark .person-role { color: #E8A84B; }
+
+        /* Merged lineage */
+        .person-box.merged-lineage {
+            border: 3px double #C07D2A !important;
+            box-shadow: 0 0 10px rgba(192, 125, 42, 0.3);
+        }
+        .person-box.merged-lineage::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #C07D2A;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .person-name { font-weight: 700; font-size: 0.95em; margin-bottom: 3px; color: #1E1A14; }
+        .person-dates { font-size: 0.82em; color: #4A4035; }
+        .person-role { font-size: 0.78em; margin-top: 4px; font-weight: 500; color: #C07D2A; }
+
+        /* Generation row */
+        .generation-row { display: flex; justify-content: center; align-items: flex-start; margin-bottom: 48px; position: relative; }
+        .generation-row.hidden { display: none; }
+
+        .generation-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 12px 8px;
+            border-radius: 8px;
+            margin-right: 16px;
+            border-left: 3px solid var(--gen-color, #2E5C3A);
+            color: var(--gen-color, #2E5C3A);
+            background: var(--gen-bg, rgba(46,92,58,0.08));
+        }
+
+        .members-container {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Marriage lines SVG overlay */
+        .marriage-lines {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Tab content */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Tab buttons */
+        .tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 16px;
+            font-size: 0.88em;
+            font-weight: 500;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: #4A4035;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover { color: #2E5C3A; background: rgba(46,92,58,0.06); }
+        .tab-btn.active {
+            color: #2E5C3A;
+            background: white;
+            border-bottom-color: #C07D2A;
+            font-weight: 600;
+        }
+
+        /* Slide-in panel */
+        .slide-panel {
+            position: fixed;
+            top: 0; right: 0;
+            height: 100%; width: 420px;
+            max-width: 92vw;
+            background: #FFFBF4;
+            box-shadow: -4px 0 24px rgba(30,26,20,0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+            z-index: 1100;
+            overflow-y: auto;
+            border-left: 4px solid #C07D2A;
+        }
+        .slide-panel.open { transform: translateX(0); }
+        .slide-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(30,26,20,0.4);
+            backdrop-filter: blur(2px);
+            z-index: 1050;
+            display: none;
+        }
+        .slide-overlay.open { display: block; }
+
+        /* Filter pills */
+        .gen-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 2px solid var(--pill-color, #2E5C3A);
+            background: white;
+            color: var(--pill-color, #2E5C3A);
+            font-size: 0.82em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .gen-pill:hover { transform: translateY(-2px); box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+        .gen-pill.active {
+            background: var(--pill-color, #2E5C3A);
+            color: white;
+        }
+        .gen-pill .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--pill-color, #2E5C3A);
+        }
+        .gen-pill.active .dot { background: white; }
+
+        /* Timeline spine */
+        .timeline-spine {
+            position: absolute;
+            left: 16px; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #A0522D 0%, #C07D2A 50%, #2E5C3A 100%);
+            border-radius: 2px;
+        }
+        .timeline-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #C07D2A;
+            border: 2px solid #FFFBF4;
+            position: absolute;
+            left: 11px;
+            top: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .generation-label { writing-mode: horizontal-tb; margin-right: 0; margin-bottom: 10px; }
+            .slide-panel { width: 100%; }
+        }
+
+        .d3-menu-btn {
+            display: block; width: 100%; text-align: left;
+            padding: 7px 12px; border: none; background: none;
+            font-size: 0.85em; color: #1E1A14; cursor: pointer;
+            border-radius: 6px; font-family: "DM Sans", sans-serif;
+            transition: background 0.15s;
+        }
+        .d3-menu-btn:hover { background: #FDF3E3; color: #2E5C3A; }
+        .d3-viz-btn {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 5px 13px; border: 1.5px solid #4A7C53; border-radius: 20px;
+            background: white; color: #4A7C53; font-size: 0.8em; font-weight: 600;
+            cursor: pointer; transition: all 0.2s; font-family: "DM Sans", ui-sans-serif, sans-serif;
+        }
+        .d3-viz-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(46,92,58,0.2); }
+        .d3-viz-btn.active { background: #2E5C3A; color: white; border-color: #2E5C3A; }
+    </style>
+</head>
+<body class="bg-parchment min-h-screen py-7 px-5 font-sans">
+
+    <!-- HEADER -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8 max-w-6xl mx-auto">
+        <div style="height:5px;background:linear-gradient(90deg,#A0522D 0%,#C07D2A 50%,#2E5C3A 100%)"></div>
+        <div class="text-center px-8 py-10">
+            <h1 class="font-serif text-4xl font-bold text-forest flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-forest" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-6m0 0c-2.5 0-4.5-1.5-5.5-3.5C5.5 9.5 7 6.5 9 5c1-.8 2-1.5 3-2 1 .5 2 1.2 3 2 2 1.5 3.5 4.5 2.5 6.5-1 2-3 3.5-5.5 3.5z"/>
+                </svg>
+                Arbre Genealogique
+            </h1>
+            <p class="font-serif text-xl text-ink-mid mt-2 font-semibold">Ta'a Fieu Tagni Tinang Joseph</p>
+            <p class="text-sm text-ink-light mt-3 max-w-2xl mx-auto leading-relaxed">
+                Famille originaire des chefferies Bamileke du Cameroun. Descendants des chefferies de Baleng, Balengou, Batchingou et Bamena — une lignee royale de plus de 250 ans.
+            </p>
+            <div class="mx-auto mt-5" style="width:60px;height:3px;background:linear-gradient(90deg,#A0522D 0%,#C07D2A 50%,#2E5C3A 100%);border-radius:2px"></div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-6xl mx-auto" id="statsContainer"></div>
+
+    <!-- TABS CONTAINER -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden max-w-6xl mx-auto">
+        <!-- Tab bar -->
+        <div class="flex flex-wrap gap-1 px-5 pt-4 pb-0 bg-parchment-dark border-b border-parchment-dark">
+            <button class="tab-btn active" onclick="switchTab('overview', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
+                Apercu
+            </button>
+            <button class="tab-btn" onclick="switchTab('royal', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0l-4.725 2.885a.562.562 0 01-.84-.61l1.285-5.385a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+                Lignees Royales
+            </button>
+            <button class="tab-btn" onclick="switchTab('tree', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg>
+                Arbre
+            </button>
+            <button class="tab-btn" onclick="switchTab('persons', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+                Personnes
+            </button>
+            <button class="tab-btn" onclick="switchTab('locations', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                Localites
+            </button>
+            <button class="tab-btn" onclick="switchTab('timeline', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                Dates Cles
+            </button>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="p-7">
+
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <h2 class="font-serif text-2xl text-forest mb-5">Vue d'ensemble de la famille</h2>
+                <div id="overviewContent"></div>
+            </div>
+
+            <!-- Royal Lineages Tab -->
+            <div id="royal" class="tab-content">
+                <h2 class="font-serif text-2xl text-forest mb-5">Lignees Royales</h2>
+                <!-- Statut Royal -->
+                <div class="bg-ochre-pale border border-ochre rounded-xl p-7 mb-7 text-center">
+                    <h3 class="font-serif text-xl text-forest mb-3">Statut Royal</h3>
+                    <p class="text-ink-mid leading-relaxed max-w-2xl mx-auto">
+                        En tant que descendants des chefferies <strong class="text-ink">Baleng</strong>,
+                        <strong class="text-ink">Balengou</strong>, <strong class="text-ink">Batchingou</strong>
+                        et <strong class="text-ink">Bamena</strong>, les descendants de Magni Kouabou et
+                        de Tchié Ngantchié sont des <strong class="text-ochre">princes et altesses royales</strong>
+                        des Grassfields Bamiléké.
+                    </p>
+                </div>
+
+                <!-- L'Exil de 1770 — Rupture Dynastique -->
+                <div class="bg-ink rounded-2xl p-7 mb-7 text-cream">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 flex-shrink-0" style="color:#C07D2A" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
+                        </svg>
+                        <h3 class="font-serif text-xl" style="color:#E8A84B">L'Exil de 1770 — La Rupture Dynastique</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-4"
