@@ -76,6 +76,7 @@
         .person-box.hero-dark .person-name { color: #F5EDD8; }
         .person-box.hero-dark .person-dates { color: #7A7060; }
         .person-box.hero-dark .person-role { color: #E8A84B; }
+        .person-box.spouse-box { background: #FFFFFF; border: 2px dashed #C07D2A; }
 
         /* Merged lineage */
         .person-box.merged-lineage {
@@ -141,6 +142,9 @@
             pointer-events: none;
             z-index: 1;
         }
+
+        /* Labels masqués quand l'arbre est très dézoomé (sauf Patriarche / Héritier / Princesse) */
+        svg.zoomed-out .lbl:not(.lbl-hero) { display: none; }
 
         /* Tab content */
         .tab-content { display: none; }
@@ -439,8 +443,9 @@
                 <div class="flex gap-3 items-center mb-4 flex-wrap">
                     <div class="flex-1 min-w-[220px] relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink-light absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-                        <input type="text" id="treeSearch" placeholder="Rechercher une personne..."
+                        <input type="text" id="treeSearch" placeholder="Rechercher une personne... (Entrée = centrer)"
                             onkeyup="searchInTree()"
+                            onkeydown="if(event.key==='Enter') centerFirstMatch()"
                             class="w-full pl-11 pr-4 py-2.5 rounded-full border border-parchment-dark bg-cream text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest-light">
                     </div>
                     <div class="flex rounded-lg overflow-hidden border border-parchment-dark">
@@ -583,12 +588,55 @@
                 steps.forEach(fn => {
                     try { fn(); } catch (e) { console.error(fn.name + ' :', e); }
                 });
+
+                // 3. Vérification des données : console toujours, bandeau seulement avec ?debug
+                const issues = validateData();
+                if (issues.length && location.search.includes('debug')) renderDataWarnings(issues);
             } catch (error) {
                 console.error('Erreur de chargement :', error);
                 document.getElementById('familyTree').innerHTML =
                     '<div class="text-center p-8"><p class="text-terra font-semibold mb-2">Impossible de charger les donnees</p>' +
                     '<p class="text-ink-light text-sm">' + error.message + '</p></div>';
             }
+        }
+
+        /* ── Vérification des données ─────────────────────────────── */
+        function validateData() {
+            const byId = new Map(familyData.persons.map(p => [p.id, p]));
+            const issues = [];
+            const nameCount = {};
+
+            familyData.persons.forEach(p => {
+                if (!p.name) issues.push(p.id + ' : nom manquant');
+                nameCount[p.name] = (nameCount[p.name] || 0) + 1;
+
+                if (p.parentId && !byId.has(p.parentId))
+                    issues.push(p.name + ' : parentId « ' + p.parentId + ' » introuvable');
+
+                (p.spouseIds || []).forEach(sid => {
+                    const s = byId.get(sid);
+                    if (!s) issues.push(p.name + ' : conjoint « ' + sid + ' » introuvable');
+                    else if (!(s.spouseIds || []).includes(p.id))
+                        issues.push(p.name + ' → ' + s.name + ' : lien de mariage non réciproque');
+                });
+
+                if (!p.generation) issues.push(p.name + ' : génération non renseignée (1 par défaut)');
+            });
+
+            Object.entries(nameCount).forEach(([n, c]) => {
+                if (c > 1) issues.push('Nom en double : ' + n + ' (×' + c + ')');
+            });
+
+            issues.forEach(i => console.warn('[données] ' + i));
+            return issues;
+        }
+
+        function renderDataWarnings(issues) {
+            const box = document.createElement('div');
+            box.className = 'bg-ochre-pale border border-ochre rounded-xl p-4 mb-5 text-sm text-ink-mid';
+            box.innerHTML = '<p class="font-semibold text-ochre-dark mb-2">Vérification des données : ' + issues.length + ' point(s) à revoir</p>'
+                + '<ul class="list-disc pl-5 space-y-1">' + issues.map(i => '<li>' + i + '</li>').join('') + '</ul>';
+            document.getElementById('overviewContent').prepend(box);
         }
 
         function calculateGenerations() {
@@ -799,21 +847,39 @@
             renderTree();
         }
 
+        /* ── Recherche ───────────────────────────────────────────── */
+        // Pendant la frappe : surbrillance dans la vue Générations
         function searchInTree() {
-            const searchTerm = document.getElementById('treeSearch').value.toLowerCase();
-            const personBoxes = document.querySelectorAll('.person-box');
-
-            personBoxes.forEach(box => {
+            const searchTerm = document.getElementById('treeSearch').value.toLowerCase().trim();
+            document.querySelectorAll('#familyTree .person-box').forEach(box => {
                 const name = box.getAttribute('data-name');
-                if (searchTerm === '' || name.includes(searchTerm)) {
-                    box.classList.remove('highlighted');
-                    if (searchTerm !== '' && name.includes(searchTerm)) {
-                        box.classList.add('highlighted');
-                    }
-                } else {
-                    box.classList.remove('highlighted');
-                }
+                box.classList.toggle('highlighted', searchTerm !== '' && name.includes(searchTerm));
             });
+        }
+
+        // Entrée : centre la vue sur la première personne trouvée
+        function centerFirstMatch() {
+            const term = document.getElementById('treeSearch').value.toLowerCase().trim();
+            if (!term) return;
+
+            if (currentView === 'flat') {
+                const box = document.querySelector('#familyTree .person-box.highlighted');
+                if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            const hit = d3SearchIndex.find(e => e.name.toLowerCase().includes(term));
+            if (hit) centerD3On(hit);
+        }
+
+        function centerD3On(entry) {
+            if (!d3Svg || !d3Zoom) return;
+            const container = document.getElementById('d3TreeContainer');
+            const W = container.clientWidth, H = container.clientHeight;
+            const [x, y] = entry.xy();
+            const k = 1.3;
+            d3Svg.transition().duration(600)
+                .call(d3Zoom.transform, d3.zoomIdentity.translate(W / 2 - k * x, H / 2 - k * y).scale(k));
         }
 
         function renderTree() {
@@ -990,63 +1056,66 @@
                 + '</div>';
         }
 
+        /* ── Fiche personne : tous les liens sont cliquables ─────── */
         function showPersonDetails(id) {
             const p = familyData.persons.find(x => x.id === id);
             if (!p) return;
-            const parent = p.parentId ? familyData.persons.find(x => x.id === p.parentId) : null;
+
+            const byId = s => familyData.persons.find(x => x.id === s);
+            const btn = (q, cls) => '<button onclick="showPersonDetails(\'' + q.id + '\')" class="' +
+                (cls || 'block text-left text-sm text-forest underline decoration-dotted hover:text-ochre') + '">' + q.name + '</button>';
+            const row = (label, html) => html
+                ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">' + label + '</span><div class="text-sm text-ink-mid">' + html + '</div></div>'
+                : '';
+
+            const parent   = p.parentId ? byId(p.parentId) : null;
             const children = familyData.persons.filter(x => x.parentId === p.id);
+            const siblings = p.parentId ? familyData.persons.filter(x => x.parentId === p.parentId && x.id !== p.id) : [];
+            const spouses  = (p.spouseIds || []).map(byId).filter(Boolean);
 
             let mergedLineageHTML = '';
-            if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
+            if (p.parentId && spouses.length > 0) {
                 const parentGen = getGeneration(p.parentId);
                 const currentGen = getGeneration(p.id);
-                const spouse = familyData.persons.find(s => s.id === p.spouseIds[0]);
-                const spouseGen = spouse ? getGeneration(spouse.id) : null;
-
+                const spouseGen = getGeneration(spouses[0].id);
                 if (parentGen && spouseGen && currentGen === spouseGen && parentGen < currentGen) {
-                    mergedLineageHTML = '<div class="bg-ochre-pale border-l-4 border-ochre p-3 rounded mt-4 text-sm"><strong>Fusion de deux lignees familiales</strong><br><span class="text-ink-light italic">' + p.name + ' apporte sa propre lignee ancestrale (' + (p.birthPlace || 'origine familiale') + ') et rejoint la famille par mariage avec ' + (spouse ? spouse.name : 'conjoint') + '.</span></div>';
+                    mergedLineageHTML = '<div class="bg-ochre-pale border-l-4 border-ochre p-3 rounded mt-4 text-sm"><strong>Fusion de deux lignees familiales</strong><br><span class="text-ink-light italic">' + p.name + ' apporte sa propre lignee ancestrale (' + (p.birthPlace || 'origine familiale') + ') et rejoint la famille par mariage avec ' + spouses[0].name + '.</span></div>';
                 }
             }
 
             let spousesHTML = '';
-            if (p.spouseIds && p.spouseIds.length > 0) {
-                const spouses = p.spouseIds
-                    .map(sid => familyData.persons.find(s => s.id === sid))
-                    .filter(s => s);
-
-                if (spouses.length > 0) {
-                    spousesHTML = '<div class="bg-parchment rounded-xl p-4 mt-5">';
-                    spousesHTML += '<h3 class="font-serif text-forest text-sm font-semibold mb-3">Conjoint' + (spouses.length > 1 ? 's' : '') + '</h3>';
-                    spouses.forEach((spouse, idx) => {
-                        if (idx > 0) spousesHTML += '<hr class="my-3 border-parchment-dark">';
-                        spousesHTML += '<div>';
-                        spousesHTML += '<h4 class="font-semibold text-ochre-dark text-sm">' + spouse.name + '</h4>';
-                        if (spouse.ndap) spousesHTML += '<p class="text-xs text-ink-mid"><strong>Ndap:</strong> ' + spouse.ndap + '</p>';
-                        if (spouse.dates || spouse.born) spousesHTML += '<p class="text-xs text-ink-mid">' + (spouse.dates || 'Ne ' + spouse.born) + '</p>';
-                        if (spouse.birthPlace) spousesHTML += '<p class="text-xs text-ink-mid">Naissance: ' + spouse.birthPlace + '</p>';
-                        if (spouse.residence) spousesHTML += '<p class="text-xs text-ink-mid">Residence: ' + spouse.residence + '</p>';
-                        if (spouse.notes) spousesHTML += '<p class="text-xs text-ink-light italic mt-1">' + spouse.notes + '</p>';
-                        spousesHTML += '</div>';
-                    });
+            if (spouses.length > 0) {
+                spousesHTML = '<div class="bg-parchment rounded-xl p-4 mt-5">'
+                    + '<h3 class="font-serif text-forest text-sm font-semibold mb-3">Conjoint' + (spouses.length > 1 ? 's' : '') + '</h3>';
+                spouses.forEach((s, idx) => {
+                    if (idx > 0) spousesHTML += '<hr class="my-3 border-parchment-dark">';
+                    spousesHTML += '<div>' + btn(s, 'font-semibold text-ochre-dark text-sm text-left hover:underline');
+                    if (s.ndap) spousesHTML += '<p class="text-xs text-ink-mid"><strong>Ndap:</strong> ' + s.ndap + '</p>';
+                    if (s.dates || s.born) spousesHTML += '<p class="text-xs text-ink-mid">' + (s.dates || 'Ne ' + s.born) + '</p>';
+                    if (s.birthPlace) spousesHTML += '<p class="text-xs text-ink-mid">Naissance: ' + s.birthPlace + '</p>';
+                    if (s.residence) spousesHTML += '<p class="text-xs text-ink-mid">Residence: ' + s.residence + '</p>';
+                    if (s.notes) spousesHTML += '<p class="text-xs text-ink-light italic mt-1">' + s.notes + '</p>';
                     spousesHTML += '</div>';
-                }
+                });
+                spousesHTML += '</div>';
             }
 
             const detailHTML = '<h2 class="font-serif text-xl text-forest mb-4">' + p.name + '</h2>'
-                + (p.ndap ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Ndap</span><span class="text-sm text-ink-mid">' + p.ndap + '</span></div>' : '')
-                + (p.dates || p.born ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Dates</span><span class="text-sm text-ink-mid">' + (p.dates || 'Ne ' + p.born) + '</span></div>' : '')
-                + '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Generation</span><span class="text-sm text-ink-mid">' + getGeneration(id) + '</span></div>'
-                + (p.birthPlace ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Naissance</span><span class="text-sm text-ink-mid">' + p.birthPlace + '</span></div>' : '')
-                + (p.residence ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Residence</span><span class="text-sm text-ink-mid">' + p.residence + '</span></div>' : '')
-                + (p.role ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Rôle</span><span class="text-sm font-semibold" style="color:' + (p.role.includes('Princesse') ? '#7B3F8C' : '#C07D2A') + '">' + (p.role.includes('Princesse') ? '♛ ' : '') + p.role + '</span></div>' : '')
-                + (p.titles && p.titles.length ? '<div class="flex gap-3 mb-2"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Titres</span><div class="text-sm text-ink-mid">' + p.titles.map(t => '♛ ' + t).join('<br>') + '</div></div>' : '')
-                + (parent ? '<div class="flex gap-3 mb-2 mt-4"><span class="text-xs uppercase tracking-widest text-ink-light min-w-[110px]">Parent</span><span class="text-sm text-ink-mid">' + parent.name + '</span></div>' : '')
+                + row('Ndap', p.ndap)
+                + row('Dates', p.dates || (p.born ? 'Ne ' + p.born : ''))
+                + row('Generation', String(getGeneration(id)))
+                + row('Naissance', p.birthPlace)
+                + row('Residence', p.residence)
+                + (p.role ? row('Rôle', '<span class="font-semibold" style="color:' + (p.role.includes('Princesse') ? '#7B3F8C' : '#C07D2A') + '">' + (p.role.includes('Princesse') ? '♛ ' : '') + p.role + '</span>') : '')
+                + (p.titles && p.titles.length ? row('Titres', p.titles.map(t => '♛ ' + t).join('<br>')) : '')
+                + row('Parent', parent ? btn(parent) : '')
+                + row('Fratrie', siblings.map(s => btn(s)).join(''))
+                + row('Enfants (' + children.length + ')', children.map(c => btn(c)).join(''))
                 + mergedLineageHTML
                 + spousesHTML
-                + (children.length > 0 ? '<div class="mt-5"><span class="text-xs uppercase tracking-widest text-ink-light">Enfants (' + children.length + ')</span><ul class="mt-2 space-y-1">' + children.map(c => '<li class="text-sm text-ink-mid pl-3 border-l-2 border-forest-light">' + c.name + '</li>').join('') + '</ul></div>' : '')
                 + (p.notes ? '<div class="mt-4 p-3 bg-parchment rounded-lg text-sm text-ink-mid italic">' + p.notes + '</div>' : '');
 
-            // Use modal for persons tab, slide panel for tree tab
+            // Panneau latéral dans l'arbre, fenêtre modale ailleurs
             const activeTab = document.querySelector('.tab-content.active');
             if (activeTab && activeTab.id === 'tree') {
                 document.getElementById('slidePanelBody').innerHTML = detailHTML;
@@ -1172,10 +1241,17 @@
             D3 TREE
             ================================================================ */
         let d3Svg, d3Zoom;
+        let d3SearchIndex = [];   // { name, xy() } pour centrer la vue sur une personne
 
         // Espacement de la vue Verticale : assez large pour que les noms ne se chevauchent pas
         const TB_UNIT  = 150;  // pixels entre deux frères et sœurs (ou un conjoint et son voisin)
         const TB_LEVEL = 140;  // pixels entre deux générations
+        const LABEL_ZOOM = 0.5; // en dessous de ce zoom, les noms sont masqués (sauf dirigeants)
+
+        function isHeroNode(d) {
+            const r = d.data.data && d.data.data.role;
+            return r === 'Patriarche' || r === 'Héritier' || (!!r && r.includes('Princesse'));
+        }
 
         // Conjoints rattachés à côté de leur partenaire : personnes sans parent,
         // ou personnes entrées dans la famille par mariage (id « spouse_ »), même si elles ont un parent
@@ -1257,6 +1333,7 @@
 
         function initD3Tree() {
           try {
+            d3SearchIndex = [];
             const container = document.getElementById('d3TreeContainer');
             const W = container.clientWidth || 900;
             const H = container.clientHeight || 600;
@@ -1298,7 +1375,10 @@
                 .attr('width', W).attr('height', H).style('display','block');
 
             let gGroup;
-            d3Zoom = d3.zoom().scaleExtent([0.1,4]).on('zoom', e => { if(gGroup) gGroup.attr('transform', e.transform); });
+            d3Zoom = d3.zoom().scaleExtent([0.1,4]).on('zoom', e => {
+                if (gGroup) gGroup.attr('transform', e.transform);
+                d3Svg.classed('zoomed-out', e.transform.k < LABEL_ZOOM);
+            });
             d3Svg.call(d3Zoom);
             gGroup = d3Svg.append('g');
 
@@ -1325,6 +1405,8 @@
             // ── Node position helper ────────────────────────
             function nx(d) { return viz==='radial' ? d.y*Math.cos(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.y : d.x; }
             function ny(d) { return viz==='radial' ? d.y*Math.sin(d.x-Math.PI/2) : (viz==='lr'||viz==='cluster') ? d.x : d.y; }
+
+            allNodes.forEach(d => d3SearchIndex.push({ name: d.data.name, xy: () => [nx(d), ny(d)] }));
 
             // ── Links ──────────────────────────────────────
             gGroup.selectAll('.d3-link').data(links).join('path')
@@ -1396,7 +1478,8 @@
                 const g = d3.select(this);
                 const r = circleR(d);
                 const role = d.data.data && d.data.data.role;
-                const isHero = role === 'Patriarche' || role === 'Héritier' || (role && role.includes('Princesse'));
+                const isHero = isHeroNode(d);
+                const cls = 'lbl' + (isHero ? ' lbl-hero' : '');
                 const parts = d.data.name.trim().split(/ +/);
                 const label = (isHero || parts.length <= 2)
                     ? d.data.name
@@ -1409,12 +1492,12 @@
                            : (role && role.includes('Princesse')) ? 'rgba(123,63,140,0.85)'
                            : 'rgba(255,255,255,0.92)';
                 const textColor = isHero ? '#F5EDD8' : fillColor;
-                g.append('rect')
+                g.append('rect').attr('class', cls)
                     .attr('x', -pillW/2).attr('y', labelY - 11)
                     .attr('width', pillW).attr('height', 15)
                     .attr('rx', 5)
                     .attr('fill', pillBg);
-                g.append('text')
+                g.append('text').attr('class', cls)
                     .attr('dy', labelY).attr('text-anchor','middle')
                     .attr('font-size','11px')
                     .attr('fill', textColor)
@@ -1484,11 +1567,11 @@
                                         .attr('stroke', m => m.data.id === to.data.id ? '#C07D2A' : '#FFFBF4')
                                         .attr('stroke-width', m => m.data.id === to.data.id ? 4 : 2);
                                 });
-                            tag.append('rect')
+                            tag.append('rect').attr('class', 'lbl')
                                 .attr('x', -w / 2).attr('y', -10).attr('width', w).attr('height', 15)
                                 .attr('rx', 6).attr('fill', '#FDF3E3')
                                 .attr('stroke', '#C07D2A').attr('stroke-width', 1).attr('stroke-dasharray', '3,2');
-                            tag.append('text')
+                            tag.append('text').attr('class', 'lbl')
                                 .attr('text-anchor', 'middle').attr('y', 1)
                                 .attr('font-size', '10px').attr('font-family', '"DM Sans", sans-serif')
                                 .attr('fill', '#8E5C1A').attr('pointer-events', 'none')
@@ -1500,7 +1583,8 @@
 
             // ── Conjoints rajoutés (non membres de l'arbre) ──
             const spouseOffsetVal = 40;
-            const spouseSlots = {};  // partenaire id → nombre de conjoints déjà placés
+            const spouseSlots = {};   // partenaire id → nombre de conjoints déjà placés
+            const spousePosMap = {};  // conjoint id → [x, y] dans le dessin
 
             getSpouseNodes().forEach(sp => {
                 const g = generationsMap.get(sp.id) || 1;
@@ -1518,6 +1602,8 @@
                     sx = px + TB_UNIT * spouseSlots[partner.data.id];
                     sy = py;
                 }
+                spousePosMap[sp.id] = [sx, sy];
+                d3SearchIndex.push({ name: sp.name, xy: () => [sx, sy] });
 
                 gGroup.append('line')
                     .attr('x1', px).attr('y1', py)
@@ -1551,14 +1637,38 @@
                 const parts = sp.name.trim().split(/ +/);
                 const label = parts.length > 2 ? parts[0]+' '+parts[parts.length-1] : sp.name;
                 const pillW = label.length * 6 + 10;
-                spG.append('rect').attr('x',-pillW/2).attr('y',r+4)
+                spG.append('rect').attr('class','lbl').attr('x',-pillW/2).attr('y',r+4)
                     .attr('width',pillW).attr('height',14).attr('rx',5)
                     .attr('fill','rgba(255,255,255,0.9)');
-                spG.append('text').attr('y',r+15).attr('text-anchor','middle')
+                spG.append('text').attr('class','lbl').attr('y',r+15).attr('text-anchor','middle')
                     .attr('font-size','10px')
                     .attr('fill', GEN_COLORS[(g-1)%GEN_COLORS.length])
                     .attr('font-weight','400').attr('font-family','"DM Sans",sans-serif')
                     .attr('pointer-events','none').text(label);
+            });
+
+            // ── Filiation : lien parent → enfant, même si le conjoint est placé à côté de son mari ──
+            // (ex. Rebecca reste reliée à Ta'a Nanwou, son père)
+            getSpouseNodes().forEach(sp => {
+                const par = sp.parentId && nodeById[sp.parentId];
+                const pos = spousePosMap[sp.id];
+                if (!par || !pos) return;
+                const px = nx(par), py = ny(par);
+                const sx = pos[0], sy = pos[1];
+                let d;
+                if (viz === 'radial' || viz === 'lr') {
+                    d = viz === 'lr'
+                        ? `M${px},${py} C${(px+sx)/2},${py} ${(px+sx)/2},${sy} ${sx},${sy}`
+                        : `M${px},${py} L${sx},${sy}`;
+                } else {
+                    d = `M${px},${py} C${px},${(py+sy)/2} ${sx},${(py+sy)/2} ${sx},${sy}`;
+                }
+                gGroup.append('path')
+                    .attr('class', 'd3-filiation')
+                    .attr('d', d).attr('fill', 'none')
+                    .attr('stroke', '#7B3F8C').attr('stroke-width', 1.3)
+                    .attr('stroke-dasharray', '2,4').attr('stroke-opacity', 0.6)
+                    .attr('pointer-events', 'none');
             });
 
             // ── Étiquettes de génération ───────────────────────────
@@ -1656,17 +1766,24 @@
                      : n.data.isSpouse ? 9
                      : n.data.gen <= 2 ? 13 : n.data.gen <= 4 ? 11 : 9;
                 n._w = shortLabel(n.data.name).length * 6.2 + 12;
+                d3SearchIndex.push({ name: n.data.name, xy: () => [n.x, n.y] });
             });
 
             // Liens parent → enfant
             const parentLinks = links.map(l => ({ source: l.source, target: l.target }));
+
+            // Filiation : conjoint rattaché relié à son parent
+            const byNodeId = new Map(nodes.map(n => [n.data.id, n]));
+            const filiationLinks = spouseNodes
+                .filter(n => n.data.data.parentId && byNodeId.has(n.data.data.parentId))
+                .map(n => ({ source: byNodeId.get(n.data.data.parentId), target: n }));
 
             // Liens de mariage (chaque couple une seule fois)
             const marriageLinks = [];
             const seenPairs = new Set();
             nodes.forEach(n => {
                 ((n.data.data && n.data.data.spouseIds) || []).forEach(sid => {
-                    const other = nodes.find(m => m.data.id === sid);
+                    const other = byNodeId.get(sid);
                     const key = [n.data.id, sid].sort().join('|');
                     if (other && !seenPairs.has(key)) {
                         seenPairs.add(key);
@@ -1682,6 +1799,7 @@
 
             const simulation = d3.forceSimulation(nodes)
                 .force('parent', d3.forceLink(parentLinks).id(d => d.data.id).distance(LEVEL * 0.9).strength(0.4))
+                .force('filiation', d3.forceLink(filiationLinks).distance(LEVEL * 0.9).strength(0.3))
                 .force('marriage', d3.forceLink(marriageLinks).id(d => d.data.id).distance(95).strength(0.9))
                 .force('charge', d3.forceManyBody().strength(-160).distanceMax(400))
                 .force('y', d3.forceY(bandY).strength(0.9))
@@ -1693,6 +1811,12 @@
                 .attr('class', 'd3-link')
                 .attr('stroke', d => GEN_COLORS[(d.target.data.gen - 1) % GEN_COLORS.length])
                 .attr('stroke-width', 1.5).attr('stroke-opacity', 0.45);
+
+            const filiationEl = gGroup.selectAll('.d3-filiation').data(filiationLinks).join('line')
+                .attr('class', 'd3-filiation')
+                .attr('stroke', '#7B3F8C').attr('stroke-width', 1.3)
+                .attr('stroke-dasharray', '2,4').attr('stroke-opacity', 0.6)
+                .attr('pointer-events', 'none');
 
             const marriageEl = gGroup.selectAll('.d3-marriage').data(marriageLinks).join('line')
                 .attr('stroke', '#C07D2A').attr('stroke-width', 2)
@@ -1732,12 +1856,12 @@
                 .attr('opacity', 0).attr('pointer-events', 'none');
 
             // Étiquette sur fond clair pour rester lisible
-            nodeEl.append('rect')
+            nodeEl.append('rect').attr('class', d => 'lbl' + (isHeroNode(d) ? ' lbl-hero' : ''))
                 .attr('x', d => -d._w / 2).attr('y', d => d._r + 4)
                 .attr('width', d => d._w).attr('height', 15).attr('rx', 5)
                 .attr('fill', 'rgba(255,255,255,0.92)').attr('pointer-events', 'none');
 
-            nodeEl.append('text')
+            nodeEl.append('text').attr('class', d => 'lbl' + (isHeroNode(d) ? ' lbl-hero' : ''))
                 .attr('y', d => d._r + 15).attr('text-anchor', 'middle')
                 .attr('font-size', '11px').attr('font-family', '"DM Sans", sans-serif')
                 .attr('fill', d => GEN_COLORS[(d.data.gen - 1) % GEN_COLORS.length])
@@ -1748,6 +1872,8 @@
             simulation.on('tick', () => {
                 linkEl.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
                       .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+                filiationEl.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+                           .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
                 marriageEl.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
                           .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
                 nodeEl.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
@@ -1848,14 +1974,8 @@
             if (action === 'profile') {
                 showPersonDetails(d.data.id);
             } else if (action === 'focus') {
-                const container = document.getElementById('d3TreeContainer');
-                const W = container.clientWidth, H = container.clientHeight;
-                const viz = currentViz;
-                function nx(n) { return viz==='radial'?n.y*Math.cos(n.x-Math.PI/2):(viz==='lr'||viz==='cluster')?n.y:n.x; }
-                function ny(n) { return viz==='radial'?n.y*Math.sin(n.x-Math.PI/2):(viz==='lr'||viz==='cluster')?n.x:n.y; }
-                const sc = 2.2;
-                d3Svg.transition().ease(d3.easeCubicInOut).duration(600)
-                    .call(d3Zoom.transform, d3.zoomIdentity.translate(W/2-sc*nx(d), H/2-sc*ny(d)).scale(sc));
+                const entry = d3SearchIndex.find(e => e.name === d.data.name);
+                if (entry) centerD3On(entry);
             } else if (action === 'ancestors') {
                 const ancestors = new Set();
                 let cur = d;
