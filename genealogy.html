@@ -589,60 +589,11 @@
 
         function calculateGenerations() {
             generationsMap.clear();
-
-            const trueRoots = familyData.persons.filter(p => !p.parentId && (!p.spouseIds || p.spouseIds.length === 0));
-            trueRoots.forEach(p => generationsMap.set(p.id, 1));
-
-            let changed = true, iter = 0;
-            while (changed && iter++ < 20) {
-                changed = false;
-                familyData.persons.forEach(p => {
-                    if (!generationsMap.has(p.id) && p.parentId) {
-                        const parentGen = generationsMap.get(p.parentId);
-                        if (parentGen !== undefined) {
-                            generationsMap.set(p.id, parentGen + 1);
-                            changed = true;
-                        }
-                    }
-                });
-            }
-
-            iter = 0;
-            changed = true;
-            while (changed && iter++ < 20) {
-                changed = false;
-                familyData.persons.forEach(p => {
-                    if (p.parentId && p.spouseIds && p.spouseIds.length > 0) {
-                        const currentGen = generationsMap.get(p.id);
-                        for (const spouseId of p.spouseIds) {
-                            const spouseGen = generationsMap.get(spouseId);
-                            if (spouseGen !== undefined && spouseGen > currentGen) {
-                                generationsMap.set(p.id, spouseGen);
-                                changed = true;
-                                break;
-                            }
-                        }
-                    }
-                });
-            }
-
-            iter = 0;
-            changed = true;
-            while (changed && iter++ < 20) {
-                changed = false;
-                familyData.persons.forEach(p => {
-                    if (!generationsMap.has(p.id) && p.spouseIds && p.spouseIds.length > 0) {
-                        for (const spouseId of p.spouseIds) {
-                            const spouseGen = generationsMap.get(spouseId);
-                            if (spouseGen !== undefined) {
-                                generationsMap.set(p.id, spouseGen);
-                                changed = true;
-                                break;
-                            }
-                        }
-                    }
-                });
-            }
+            // Utiliser directement la génération définie dans le JSON, ou 1 par défaut
+            familyData.persons.forEach(p => {
+                const gen = p.generation || 1;
+                generationsMap.set(p.id, gen);
+            });
         }
 
         function getGeneration(id) { return generationsMap.get(id) || 1; }
@@ -1175,8 +1126,8 @@
 
 
         /* ================================================================
-           VIEW SWITCHER  (flat / D3)
-           ================================================================ */
+            VIEW SWITCHER  (flat / D3)
+            ================================================================ */
         let currentView = 'flat';
         let d3Initialized = false;
 
@@ -1209,8 +1160,8 @@
         }
 
         /* ================================================================
-           D3 TREE
-           ================================================================ */
+            D3 TREE
+            ================================================================ */
         let d3Svg, d3Zoom;
 
         function buildHierarchy() {
@@ -1439,8 +1390,8 @@
                 const pillW = label.length * charW + 10;
                 const fillColor = GEN_COLORS[(d.data.gen-1) % GEN_COLORS.length];
                 const pillBg = role === 'Patriarche' || role === 'Héritier' ? 'rgba(30,26,20,0.85)'
-                             : (role && role.includes('Princesse')) ? 'rgba(123,63,140,0.85)'
-                             : 'rgba(255,255,255,0.92)';
+                           : (role && role.includes('Princesse')) ? 'rgba(123,63,140,0.85)'
+                           : 'rgba(255,255,255,0.92)';
                 const textColor = isHero ? '#F5EDD8' : fillColor;
                 g.append('rect')
                     .attr('x', -pillW/2).attr('y', labelY - 11)
