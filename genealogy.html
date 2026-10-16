@@ -43,6 +43,14 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         /* Person box glass style */
+        .members-container {
+            display: flex;
+            flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si elles manquent d'espace */
+            gap: 20px;       /* Augmentez cet espace (ex: 20px ou 30px) pour écarter les nœuds horizontalement et verticalement */
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
         .person-box {
             background: rgba(255,255,255,0.58);
             backdrop-filter: blur(10px);
