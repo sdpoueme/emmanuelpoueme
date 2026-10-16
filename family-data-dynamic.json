@@ -587,5 +587,31 @@
       "gender": "M",
       "generation": 10
     }
+  ],
+  "locations": [
+    {
+      "name": "Batchingou (Toukou, Tousseu)",
+      "description": "Terre ancestrale de la famille. Concession originelle de Ta'a Wéjiéwou et Magni Kouabou, héritée par le patriarche Ta'a fieu Tinang Joseph. Lieu sacré Kou Tchap avec plantation de raphias."
+    },
+    {
+      "id": "Balengou (Ndepgweu-tu)",
+      "description": "Origine de la lignée maternelle du patriarche. Famille de Wetio Kouamou et Magni Kouabou. Lieu des rencontres familiales annuelles chez le patriarche Wemba Mbiendu Sadrack."
+    },
+    {
+      "id": "Bamena",
+      "description": "Origine maternelle - famille de Megni Ngongang Rebecca, épouse du patriarche. Petite-fille du chef Bamena."
+    },
+    {
+      "id": "Foumbot (Quartier Company)",
+      "description": "Lieu d'installation principale du patriarche après la guerre de l'indépendance (1960). Développement commercial et social. Chef de la communauté Batchingou."
+    },
+    {
+      "id": "Makenene",
+      "description": "Branche familiale issue de Wajiamou via Bazou. Plantations de cacaoyers."
+    },
+    {
+      "id": "Baleng (Bafoussam)",
+      "description": "Origines lointaines de la famille (~1770s). Chefferie d'origine du Prince Nandjo."
+    }
   ]
 }
