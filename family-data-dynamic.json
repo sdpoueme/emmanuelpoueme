@@ -130,13 +130,27 @@
       "notes": "Chef de la chefferie de Bamena. Père de Ta'a Nanwou."
     },
     {
+      "id": "souche_ndokep",
+      "name": "Ancêtre Souche Ndokep (Lien de rattachement)",
+      "birthYear": 1860,
+      "estimatedDates": "Vers 1860",
+      "birthPlace": "Batchingou",
+      "residence": "Batchingou",
+      "parentId": null,
+      "spouseIds": [],
+      "gender": "M",
+      "generation": 6,
+      "notes": "Nœud de rattachement structurel pour ancrer la lignée de Papa Ndokep Antoine à la bonne génération."
+    },
+    {
       "id": "ndokep_antoine",
       "name": "Papa Ndokep Antoine",
       "birthYear": 1890,
       "estimatedDates": "Vers 1890",
       "birthPlace": "Batchingou",
       "residence": "Batchingou",
-      "parentId": null,
+      "parentId": "souche_ndokep",
+      "fatherId": "souche_ndokep",
       "spouseIds": [],
       "gender": "M",
       "generation": 7,
