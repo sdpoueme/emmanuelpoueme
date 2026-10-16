@@ -431,16 +431,17 @@
         function calculateGenerations() {
             generationsMap.clear();
             familyData.persons.forEach(p => {
-                const gen = p.generation || 1;
+                const gen = Number(p.generation) || 1;
                 generationsMap.set(p.id, gen);
             });
         }
 
         function getGeneration(id) { return generationsMap.get(id) || 1; }
 
-        // A spouse is anyone listed in another person's spouseIds
+        // Only people who marry into the family get the gold ring.
+        // In the data, these have ids starting with "spouse_". You can also set "marriedIn": true on any entry.
         function isSpouseNode(p) {
-            return familyData.persons.some(o => (o.spouseIds || []).includes(p.id));
+            return p.marriedIn === true || String(p.id).startsWith('spouse_');
         }
 
         function nodeFill(p) {
@@ -800,6 +801,17 @@
                 } else if (currentViz === 'radial') {
                     d3.tree().size([2 * Math.PI, 260])(root);
                 }
+
+                // Place each node on its generation's level, not its depth in the parent tree,
+                // so spouses share a row even when one of them sits under a different branch
+                const maxGenNow = Math.max(...Array.from(generationsMap.values()));
+                root.descendants().forEach(d => {
+                    if (d.data.id === '__root__') return;
+                    const g = d.data.gen - 1;
+                    if (currentViz === 'lr') d.y = g * 230;
+                    else if (currentViz === 'tb') d.y = g * 140;
+                    else if (currentViz === 'radial') d.y = (g / Math.max(maxGenNow - 1, 1)) * 260;
+                });
 
                 d3Svg = d3.select('#d3TreeContainer').append('svg').attr('width', W).attr('height', H).style('display','block');
                 let gGroup;
